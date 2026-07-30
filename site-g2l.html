@@ -137,6 +137,28 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
 .requisito-resposta { font-size:13px; line-height:1.55; border-top:1px solid var(--color-border); padding-top:8px; }
 .requisito-resposta b { color: var(--color-primary); }
 
+.org-chart { display:flex; flex-direction:column; align-items:center; padding:12px 0 4px; }
+.org-connector { width:2px; height:26px; background: var(--color-border); }
+.org-row { display:flex; justify-content:center; gap:64px; align-items:flex-start; flex-wrap:wrap; }
+.org-branch { display:flex; flex-direction:column; align-items:center; }
+.org-branch-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color: var(--color-primary); margin-bottom:4px; }
+.org-branch-sub { font-size:11px; font-style:italic; color: var(--color-fg-muted); margin-bottom:14px; text-align:center; max-width:200px; }
+.org-people { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; }
+.org-node { display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:6px; }
+.org-node-sm { margin:0; }
+.org-name { font-size:13px; font-weight:700; color: var(--color-fg); }
+.org-role { font-size:11px; color: var(--color-fg-muted); text-align:center; }
+.avatar-circle { width:72px; height:72px; border-radius:50%; background: var(--color-bg-alt); border:2px dashed var(--color-border); display:flex; align-items:center; justify-content:center; overflow:hidden; cursor:pointer; position:relative; transition:border-color 200ms ease; }
+.avatar-circle:hover { border-color: var(--color-primary); }
+.avatar-circle input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+.avatar-circle img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.avatar-placeholder { pointer-events:none; color: var(--color-fg-muted); }
+.avatar-circle-sm { width:52px; height:52px; }
+@media (max-width:768px) {
+  .org-row { gap:28px; }
+  .org-people { gap:14px; }
+}
+
 .fase-preparacao { border:1px solid var(--color-border); border-left:3px solid var(--color-primary); border-radius:8px; padding:18px 20px; margin-bottom:32px; display:flex; align-items:flex-start; gap:16px; }
 .fase-preparacao-dot { width:40px; height:40px; border-radius:50%; background: var(--color-surface); border:2px solid var(--color-primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px; }
 .fase-preparacao-fase { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color: var(--color-primary); margin-bottom:3px; }
@@ -198,8 +220,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
 </header>
 
 <nav class="tabs-nav">
-  <button class="tab-btn active" onclick="showTab('contexto')">Contexto</button>
-  <button class="tab-btn" onclick="showTab('desafios')">Desafios</button>
+  <button class="tab-btn active" onclick="showTab('contexto')">Contexto do Projeto</button>
   <button class="tab-btn" onclick="showTab('responsaveis')">Responsáveis pelo Projeto</button>
   <button class="tab-btn" onclick="showTab('requisitos')">Requisitos do Projeto</button>
   <button class="tab-btn" onclick="showTab('cenario')">Cenário Atual</button>
@@ -209,7 +230,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
 
 <main>
 
-  <!-- CONTEXTO -->
+  <!-- CONTEXTO DO PROJETO -->
   <div class="tab-panel active" id="tab-contexto">
     <div class="hero">
       <div class="hero-eyebrow">Logística · GVZL</div>
@@ -240,10 +261,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- DESAFIOS -->
-  <div class="tab-panel" id="tab-desafios">
     <div class="section">
       <div class="section-title">Desafios mapeados</div>
 
@@ -307,23 +325,152 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
     <div class="section">
       <div class="section-title">Responsáveis pelo Projeto</div>
 
-      <div class="requisito-area-title">Time G2L</div>
-      <div class="frentes-grid">
-        <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
-          <div class="fornecedor-nome">Fernanda Moreno</div>
-          <div class="fornecedor-papel">Liderança de DHO. Principal ponto de decisão sobre o desenho do ciclo de avaliação, calibração e sucessão.</div>
+      <div class="requisito-area-title">Organograma da Área de Pessoas — G2L</div>
+
+      <div class="org-chart">
+        <div class="org-node">
+          <div class="avatar-circle" title="Clique para adicionar foto">
+            <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-diogo')">
+            <div class="avatar-placeholder" id="org-diogo-placeholder">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </div>
+            <img id="org-diogo" alt="Diogo" style="display:none;">
+          </div>
+          <div class="org-name">Diogo</div>
+          <div class="org-role">Gerência geral de RH</div>
         </div>
-        <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
-          <div class="fornecedor-nome">Raniely</div>
-          <div class="fornecedor-papel">Analista de DHO. Ponto focal operacional do projeto — treinamentos, formato SCORM e testes da plataforma.</div>
-        </div>
-        <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
-          <div class="fornecedor-nome">Carolina</div>
-          <div class="fornecedor-papel">Interface com o time de TI da G2L. Responsável pela definição técnica da integração com o Protheus (via API).</div>
+
+        <div class="org-connector"></div>
+
+        <div class="org-row">
+          <div class="org-branch">
+            <div class="org-branch-title">Remuneração e Metas</div>
+            <div class="org-branch-sub">Sem coordenação · responde direto ao Diogo</div>
+            <div class="org-people">
+              <div class="org-node org-node-sm">
+                <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                  <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-telma')">
+                  <div class="avatar-placeholder" id="org-telma-placeholder">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                  </div>
+                  <img id="org-telma" alt="Telma" style="display:none;">
+                </div>
+                <div class="org-name">Telma</div>
+                <div class="org-role">Analista sênior</div>
+              </div>
+              <div class="org-node org-node-sm">
+                <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                  <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-nycole')">
+                  <div class="avatar-placeholder" id="org-nycole-placeholder">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                  </div>
+                  <img id="org-nycole" alt="Nycole" style="display:none;">
+                </div>
+                <div class="org-name">Nycole</div>
+                <div class="org-role">Analista pleno</div>
+              </div>
+              <div class="org-node org-node-sm">
+                <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                  <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-jessica')">
+                  <div class="avatar-placeholder" id="org-jessica-placeholder">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                  </div>
+                  <img id="org-jessica" alt="Jéssica" style="display:none;">
+                </div>
+                <div class="org-name">Jéssica</div>
+                <div class="org-role">Analista pleno</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-branch">
+            <div class="org-node">
+              <div class="avatar-circle" title="Clique para adicionar foto">
+                <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-carolina')">
+                <div class="avatar-placeholder" id="org-carolina-placeholder">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                </div>
+                <img id="org-carolina" alt="Carolina" style="display:none;">
+              </div>
+              <div class="org-name">Carolina</div>
+              <div class="org-role">Coordenação de DHO e treinamento</div>
+            </div>
+
+            <div class="org-connector"></div>
+
+            <div class="org-row">
+              <div class="org-branch">
+                <div class="org-branch-title">DHO</div>
+                <div class="org-people">
+                  <div class="org-node org-node-sm">
+                    <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                      <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-fernanda')">
+                      <div class="avatar-placeholder" id="org-fernanda-placeholder">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      </div>
+                      <img id="org-fernanda" alt="Fernanda" style="display:none;">
+                    </div>
+                    <div class="org-name">Fernanda</div>
+                    <div class="org-role">Especialista de DHO</div>
+                  </div>
+                  <div class="org-node org-node-sm">
+                    <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                      <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-comunicacao')">
+                      <div class="avatar-placeholder" id="org-comunicacao-placeholder">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      </div>
+                      <img id="org-comunicacao" alt="A definir" style="display:none;">
+                    </div>
+                    <div class="org-name" style="font-style:italic;">A definir</div>
+                    <div class="org-role">Especialista de comunicação</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="org-branch">
+                <div class="org-branch-title">Treinamento</div>
+                <div class="org-people">
+                  <div class="org-node org-node-sm">
+                    <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                      <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-raniely')">
+                      <div class="avatar-placeholder" id="org-raniely-placeholder">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      </div>
+                      <img id="org-raniely" alt="Raniely" style="display:none;">
+                    </div>
+                    <div class="org-name">Raniely</div>
+                    <div class="org-role">Analista sênior</div>
+                  </div>
+                  <div class="org-node org-node-sm">
+                    <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                      <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-mari')">
+                      <div class="avatar-placeholder" id="org-mari-placeholder">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      </div>
+                      <img id="org-mari" alt="Mari" style="display:none;">
+                    </div>
+                    <div class="org-name">Mari</div>
+                    <div class="org-role">Analista pleno</div>
+                  </div>
+                  <div class="org-node org-node-sm">
+                    <div class="avatar-circle avatar-circle-sm" title="Clique para adicionar foto">
+                      <input type="file" accept="image/*" onchange="loadAvatar(this, 'org-vitoria')">
+                      <div class="avatar-placeholder" id="org-vitoria-placeholder">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                      </div>
+                      <img id="org-vitoria" alt="Vitória" style="display:none;">
+                    </div>
+                    <div class="org-name">Vitória</div>
+                    <div class="org-role">Analista jr</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="requisito-area-title">Time impulseup</div>
+      <div class="requisito-area-title" style="margin-top:36px;">Time impulseup</div>
       <div class="frentes-grid">
         <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
           <div class="fornecedor-nome">Luís Fonseca</div>
@@ -870,6 +1017,20 @@ document.getElementById('client-logo-upload').addEventListener('change', functio
   };
   reader.readAsDataURL(file);
 });
+
+function loadAvatar(input, id) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = document.getElementById(id);
+    const placeholder = document.getElementById(id + '-placeholder');
+    img.src = e.target.result;
+    img.style.display = 'block';
+    if (placeholder) placeholder.style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
 
 function toggleTheme() {
   const root = document.documentElement;
