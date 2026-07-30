@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conexão — G2L × impulseup</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root, [data-theme="light"] {
+  --color-bg:             #FFFFFF;
+  --color-bg-alt:         #F4F2EF;
+  --color-fg:             #0C0C0C;
+  --color-fg-muted:       #666666;
+  --color-border:         #E0E0E0;
+  --color-primary:        #CC0088;
+  --color-primary-hover:  #A3006D;
+  --color-primary-active: #770055;
+  --color-surface:        #F4F2EF;
+  --font-family:          'Poppins', sans-serif;
+}
+[data-theme="dark"] {
+  --color-bg:             #0C0C0C;
+  --color-bg-alt:         #1A1A1A;
+  --color-fg:             #FFFFFF;
+  --color-fg-muted:       #888888;
+  --color-border:         #333333;
+  --color-primary:        #CC0088;
+  --color-primary-hover:  #FF1FA0;
+  --color-primary-active: #A3006D;
+  --color-surface:        #1A1A1A;
+  --font-family:          'Poppins', sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: var(--font-family); background: var(--color-bg-alt); color: var(--color-fg); transition: background .3s, color .3s; }
+
+header {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 16px 48px;
+  display:flex; align-items:center; justify-content:space-between;
+  position: sticky; top:0; z-index:10;
+}
+.header-left { display:flex; align-items:center; gap:16px; color: var(--color-fg); }
+.header-sep { width:1px; height:22px; background: var(--color-border); }
+.client-brand { display:flex; align-items:center; gap:6px; }
+.badge {
+  font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  background: rgba(204,0,136,0.12); color: var(--color-primary);
+  padding:5px 12px; border-radius:20px;
+}
+.header-right { display:flex; align-items:center; gap:14px; }
+.theme-toggle {
+  background:none; border:1px solid var(--color-border); border-radius:20px;
+  padding:6px 14px; font-family: var(--font-family); font-size:12px; color: var(--color-fg);
+  cursor:pointer;
+}
+
+nav.tabs-nav {
+  display:flex; gap:4px; background: var(--color-bg);
+  border-bottom:1px solid var(--color-border);
+  padding: 0 44px; overflow-x:auto;
+}
+.tab-btn {
+  background:none; border:none; font-family: var(--font-family);
+  font-size:14px; font-weight:600; color: var(--color-fg-muted);
+  padding:16px 18px; cursor:pointer; border-bottom:3px solid transparent;
+  white-space:nowrap;
+}
+.tab-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+
+main { max-width: 980px; margin: 0 auto; padding: 0 0 60px; }
+.tab-panel { display:none; animation: fadeIn 250ms ease; }
+.tab-panel.active { display:block; }
+@keyframes fadeIn { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+.hero { background: linear-gradient(135deg, #CC0088 0%, #7a0052 100%); color:#fff; padding:44px 48px 36px; }
+.hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; opacity:.75; margin-bottom:10px; }
+.hero h1 { font-size:28px; font-weight:800; margin-bottom:6px; }
+.hero .hero-sub { font-size:14px; opacity:.9; margin-bottom:20px; }
+.hero-context { background: rgba(255,255,255,0.10); border-left:3px solid rgba(255,255,255,0.5); border-radius:0 8px 8px 0; padding:14px 18px; font-size:14px; line-height:1.6; max-width:760px; }
+
+.section { padding: 32px 48px; }
+.section-title { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color: var(--color-primary); display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+.section-title::after { content:''; flex:1; height:1px; background: var(--color-border); }
+
+.field-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:16px; }
+.field { background: var(--color-surface); border-radius:12px; padding:16px 18px; }
+.field-label { font-size:11px; color: var(--color-fg-muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; }
+.field-value { font-size:16px; font-weight:600; }
+
+.dor-card { background: var(--color-surface); border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); overflow:hidden; margin-bottom:14px; }
+.dor-card-body { padding:18px 20px; }
+.dor-tag { font-size:10px; font-weight:700; text-transform:uppercase; padding:3px 9px; border-radius:20px; display:inline-block; margin-bottom:10px; }
+.tag-operacional  { background:#FEF3C7; color:#92400E; }
+.tag-estrategico  { background:#EFF6FF; color:#1E40AF; }
+.tag-risco        { background:#FEE2E2; color:#991B1B; }
+.tag-cultura      { background:#ECFDF5; color:#065F46; }
+.dor-title { font-size:16px; font-weight:700; margin-bottom:6px; }
+.dor-impact { font-size:14px; color: var(--color-fg-muted); line-height:1.5; margin-bottom:10px; }
+.dor-confirm { font-size:13px; font-style:italic; color: var(--color-primary); border-top:1px solid var(--color-border); padding-top:10px; }
+
+.highlight-block { background: var(--color-surface); border-left:4px solid #CC0088; border-radius:0 10px 10px 0; padding:18px 22px; margin: 8px 0 28px; }
+.highlight-block p { font-size:15px; font-style:italic; font-weight:500; }
+.highlight-block span { font-size:12px; color: var(--color-fg-muted); display:block; margin-top:8px; }
+
+.fornecedor-card { background: var(--color-surface); border-radius:12px; padding:18px 20px; margin-bottom:12px; display:flex; justify-content:space-between; gap:20px; align-items:flex-start; flex-wrap:wrap; }
+.fornecedor-nome { font-size:16px; font-weight:700; margin-bottom:4px; }
+.fornecedor-papel { font-size:14px; color: var(--color-fg-muted); }
+.fornecedor-confirm { font-size:12px; color: var(--color-primary); font-weight:600; white-space:nowrap; }
+
+.internal-block { background: rgba(255,193,7,0.08); border:1px dashed #C99A00; border-radius:12px; padding:18px 20px; margin-top:20px; }
+.internal-label { font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#8A6A00; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
+.internal-item { font-size:14px; line-height:1.6; margin-bottom:10px; }
+.internal-item b { display:block; font-size:14px; margin-bottom:2px; }
+
+.evento-card { background: var(--color-surface); border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+.evento-title { font-size:15px; font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+.evento-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:14px; }
+.evento-item .field-label { font-size:10px; }
+.evento-item .field-value { font-size:14px; font-weight:600; }
+
+.sponsor-block { background: linear-gradient(135deg, rgba(204,0,136,0.08), rgba(204,0,136,0.02)); border:1px solid rgba(204,0,136,0.25); border-radius:12px; padding:20px 22px; margin-top:24px; }
+.sponsor-block .field-label { color: var(--color-primary); }
+.status-pill { display:inline-block; font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; background: rgba(204,0,136,0.12); color: var(--color-primary); margin-top:4px; }
+
+footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-muted); border-top:1px solid var(--color-border); }
+.rodape-proxima { text-align:center; font-size:13px; font-weight:600; color: var(--color-primary); padding: 10px 48px 0; }
+
+.requisito-area-title { font-size:13px; font-weight:700; color: var(--color-primary); text-transform:uppercase; letter-spacing:.06em; margin:26px 0 12px; }
+.requisito-area-title:first-child { margin-top:4px; }
+.requisito-card { background: var(--color-surface); border-radius:12px; padding:16px 18px; margin-bottom:12px; }
+.requisito-head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:8px; }
+.requisito-titulo { font-size:14.5px; font-weight:700; line-height:1.4; }
+.requisito-atende { flex-shrink:0; font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; background:#ECFDF5; color:#065F46; padding:4px 10px; border-radius:20px; white-space:nowrap; }
+.requisito-contexto { font-size:12.5px; color: var(--color-fg-muted); line-height:1.55; margin-bottom:8px; }
+.requisito-resposta { font-size:13px; line-height:1.55; border-top:1px solid var(--color-border); padding-top:8px; }
+.requisito-resposta b { color: var(--color-primary); }
+
+.fase-preparacao { border:1px solid var(--color-border); border-left:3px solid var(--color-primary); border-radius:8px; padding:18px 20px; margin-bottom:32px; display:flex; align-items:flex-start; gap:16px; }
+.fase-preparacao-dot { width:40px; height:40px; border-radius:50%; background: var(--color-surface); border:2px solid var(--color-primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px; }
+.fase-preparacao-fase { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color: var(--color-primary); margin-bottom:3px; }
+.fase-preparacao-title { font-size:15px; font-weight:700; margin-bottom:4px; }
+.fase-preparacao-desc { font-size:13px; color: var(--color-fg-muted); line-height:1.6; }
+
+.frente-heading { font-size:13px; font-weight:700; color: var(--color-fg); margin:32px 0 4px; display:flex; align-items:center; gap:10px; }
+.frente-heading:first-of-type { margin-top:8px; }
+.frente-heading-sub { font-size:12px; font-weight:400; color: var(--color-fg-muted); margin-bottom:14px; }
+
+.timeline { display:flex; flex-direction:column; gap:0; position:relative; }
+.timeline::before { content:''; position:absolute; left:19px; top:24px; bottom:24px; width:2px; background: var(--color-border); }
+.timeline-item { display:flex; align-items:flex-start; gap:1.2rem; padding:0.6rem 0; position:relative; }
+.timeline-dot { width:40px; height:40px; border-radius:50%; background: var(--color-surface); border:2px solid var(--color-primary); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:0.72rem; font-weight:800; color: var(--color-primary); position:relative; z-index:1; }
+.timeline-content { flex:1; padding-top:0.35rem; }
+.timeline-fase { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--color-primary); margin-bottom:0.2rem; }
+.timeline-title { font-size:0.88rem; font-weight:700; color: var(--color-fg); margin-bottom:0.15rem; }
+.timeline-desc { font-size:0.78rem; color: var(--color-fg-muted); line-height:1.55; }
+.timeline-item.marco-final .timeline-dot { background: var(--color-primary); color:#fff; }
+
+.frentes-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; align-items:start; }
+.frente-col .frente-heading { margin-top:0; }
+.frente-col .timeline-dot { width:32px; height:32px; font-size:0.62rem; }
+.frente-col .timeline::before { left:15px; }
+.frente-col .timeline-item { gap:0.9rem; }
+.frente-col .timeline-title { font-size:0.82rem; }
+.frente-col .timeline-desc { font-size:0.74rem; }
+@media (max-width:900px) {
+  .frentes-grid { grid-template-columns:1fr; }
+}
+.demo-item { display:flex; align-items:center; gap:14px; font-size:14px; padding:14px 0; border-bottom:1px solid var(--color-border); }
+.demo-item:last-child { border-bottom:none; }
+.demo-num { flex:0 0 26px; height:26px; border-radius:50%; background: var(--color-primary); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+
+@media (max-width:640px) {
+  header, nav.tabs-nav, .section, .hero { padding-left:20px; padding-right:20px; }
+  .field-grid, .evento-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABACAYAAADlNHIOAAAFS0lEQVR4nO2cv3LbNgDGP5Buo63OZjtD5aFjUunajD1LYyc7T2DqCSwtvXiyMvScrfITmH6CKk9geU56lpMHKDsk1lZ5SwYK+SBKkWxRFkHCppLD7w4GxBz+8UeAAKKTwBTnOCyGEAdMVgAUAfQZ2hLy5Cn2O7AYRzAM+QeHnoQ4ZnIebRcPamU0lBSLIYYCEtz8IRLoPsXzMpMWQ4jRtPMv04kQkLVfsO/DYgTxBi9bjPcYkhL8iuebjC0GEK/x8lwAJaYT40JulrEfwJIZNQIkYy24KqraVZEZlIAu458ZEuPCKZfxh8pnyYgS0GK8x5CUK74DVhlbDKC9CuL084LTTxMWI/D9C7zGYVNEO+BFXHAzVrGbMXMMBSje4NDnx13Mhzff8ezcb5YvAhQcCRWOhDqT2wwj5H8S8FdQaNkn3zzXBEyjZHCu78Byp8wVYLkfrICcsQI0WFsrFYHBFoAi340MKuZNFKIrJbrcoga93vkZLyWGZ0GHHQGhCk0M9wLV8fthbe1Jk1cOoEGv904wWkiastmlF73e2ybIKP8WNHBdt/H+fZc3M6JYLK1+/DjYFgJ1KWWJl26FMvqMfCmdo16vG2AB37iAxx0AWwwauFXeuA7IxkZpZzAY/MU2FJEOv1BwG0HQVVJisQJmiAQw7zE/eMiIGhEcDc9UmYjBCriB47jPpBwcyATTjSY19tvHDayAe0TJ/fCh22byC1bAPTKajsqcjgKMsALunw77X2U8xArIgempyArIBRGwjZtMWAH5ES13rYDFnAkh2nx5dl0X/TDEquNgVcrQ4/HDNv89JeKE7fSsgLmIK8dxvPFcHUd0NhT6SFEHpfYvL98+tALmwDOh8vSZ0G2wnT7buQtNVla++8kKiGVSRlLY1oBt/REacBT8bgXEwAO0h7cdoMXBujwAxwwauDUr4AY8dn51efluh0ktomPr8H8mE8MR8KcVMMMkvy669VHAkRUwwyS/Lrr1WQGxTPLrolufFRBLtEFCClifZJSY3ATw7V9V23AsgGX7LHsXWmQTwJsy3CAxqQU3ZRVuyk6hAevKRwArbrCTLSZvZX39ybn+/0xlEzCixlHqQwPWdcqoAi3cfJahmDoNnEeaJyrChAARFApOOelegPV40N4DqGPp73/LScAQn09ZjfEMak396dPgVGo//QoTAliKEN0HD5zqIgkcpXtsZ4tJbQqFwnpmAdFXN8K/mdRGCLSldBt8HwQYsbHxeFtK0WSnSvyYAjMCFJTQlxItPqsn021UD4jOd4XiYN4LbvhKmQU8elQqhWF4zmRqoo7KLpMVZMacgBg6bGuJbV1lOhMsp6Heg5kFKDgN9Xn1ByaXgDsVYAhxxXdMUU1vpgT4vLqLpeCrEHDCNnoghgSkXbHcBcsuYPL084MZAYrl6exyC5j+RoTCoIBlGQXLLGAy9YwxJkDBDntIsSGZj7hibZov92wCuDx8xWVwRb/e22G5F2rZyeQ1jApQmHshixP+CVjWAbTIJkDld12nHYaDDus2JGH2yR9jXICCHfeQYSRwjXzENXKdMpus7QBaZBeg8nNKLXJK9aGdfxpxxSe/yb60+CEWoX6saQAUocEKjxEW/VpKmg6wsRfcGde56+yA5CkAI1iGx3bVpdT5PQ01daLN1U59vNqZh2C4U5QIIQbsgNqyC4brw5qdu+DfjuM4/s2vgai8AIrQI6DAAIQ3r4OMAsZEO/7BDttfQXyZZ8wbsB/t6VXOIgTDN4tJAXeFFTCDFWAMKyBnrICcsQJyxgrIGSsgZ6yAnLECcsYKyJmvQcBnFZ089w1vw14AAAAASUVORK5CYII=" alt="impulseup" style="height:24px;width:auto;object-fit:contain;">
+    <div class="header-sep"></div>
+    <div class="client-brand">
+      <img id="client-logo-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAh4AAAEBCAYAAAA3q6yZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAFRoSURBVHhe7b0JgBTVtf//vbequ2eGYd8UMSbGFeM6wAyuSczye3nGLApxyWaM+CKrolGzPECzqqgDGIPP7NEYSMy+vRjzJzEwM4Br5CXGXURll4GZ6e6qe//n3OoGNMg6PdNVdT5Q3VW3qnu6bt17zvfuEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEAShAqjSuxB/uutZ2tK7IAhpxqbAPyixd72BCI/qR2M8PadR7lkZzHYZpaczi8JM9/c1bb31G4T0sj39HUPpbgLCKHg/WAgPj/dqnqpuZjYNwnD/LSiGphSSPExgUcg8hauXtJdChB5ChEf1ERnZlbQtIqPYfFgWXV4WfYf6KBSzgJ8DghxUWA+jauBn66FMf8pFQ6G0grEHQqs+7pusM6YZKPsmWMWigSnS9iKZcH7nazR9bjN97mX6i1TGsc/QXw1ggw4YXQC8TfT38sh4BeQ7CghsEVsC+uzKgJyAIuNtxXALFWGmE7qU1CidjWrIYUCQRVCXRV0xhy7KBwr94Bd9+F49aZJy+v53LKX1IqVnRena89uxxXShNpuHaS+izi9g9YoC/Q1L4l7ScplbG8+Dr38Aa7voKIF+Qhm6qzzCcAKmtf1/FCDPvAcR4dHzRMJiNrn37fFvnZEdcHw/ZLJvJod/IJ0aQeGDaXsTCYPhqNV9ab8vmc7+ZAzqYU0fEhM1FEbv9Lojr3+qeocrIrP62iv+7fOWQzpopwBPbaSrt5IRaidxshldhoSIWU3nXqa/vw7avkB38iLWP/s8Zr3USdfyZ7d///Z7FYQ3gtNLOd1EeWHoiQfDZo+gozdTej+Q8sCbUeMNI33RH4aEdkh5wJDwICVOH6G8sU1Y/ztUrqVvpvRsA/p8OwnzzZSuN5OI3kJifg2Uep4+v4reVyEI/wW1/nlMezJPn4zScTl/pKlavrnpQtT4P0AxpOKLeq29SATWwFdbKB2dg8lL7+eAKFzoCRKYoKqOHeN4e+JuPiwHb+BhZOwOR+g3kbM/ns7yMYkPZKkUlyUD66FofQrXJNBDMgD0DfxCKDIGhjY6Q+e7N9Oo0nfytypjnHCxmo7obysy8JoyreeFdFWAwHAtCBlpu4G2lfSJpfQbH6ZPPIED2156XbV4OS4kkwucFrang28cOxBBnwZKb6cD3jtJ3L4ZGa+OthylMZ/SGAsMQ0mQPmNc3VxUw0fvkeTYMZ+9lnJadumYRLWmzVB6VpZyD+chFSKjiwgpLedNB4W/RFcupj/3F9RiBS5pe5G+vfxb05GG5zVdQHH/QxQN3acID6F7SWCCqhLGw3NVtxjlY1CWSmiZYSQoRpKxHAvtnUQG9DBK64fC17VkDMmW0mc4j7vkzwG08b7eZlx7/1ltM+D82/g3Emz8OR25V3rxeIdOFc06CnuKAldS5l5B5x6i0uRLyLSvw9qhXThmMbfV811H3yOkgai2j5voXhkzgNL2QQj0aMoD7yORfSI5/7e4dESF7ChlcNIgB+HYls74vXsgGePeFQsa2uW8Fv2NKB2zUClYrtVjIU2C2twHFT6HYNMaTH2SmypZ/iQz/e4oPLiwkTyo8IR2ER69Q/dl4jTjSl/bEq5y/TIwdBSdGEUG7CRk9ZFUYuNq45Fk4LLOqPFnthlXplSq6E7D2lNEcsTtlF9cKdTZcSIkw67VJgp7km7wXyiyIQ8epoLr45jeuoau2B53EeVjIf5sT89zmmpIfB9LSX0c5YG30/uJlDZGULrw3HkWHHw1543o//bP9hQ7pmVXr0I/waN3V2+nXnVdUk3YikD9jcTSUkyj9Bvl/eiXJwURHkIF6fmMnSS4LbrcGW0mfAxrPJwM1HmUUd9OpbgjqARXjy5TQyUlMqFkwbhpxMV4OY2Xoj+OYmN3bKsRoZvlNmL3zlU6RNYrkuPpwNbwRSptcknyO9gQPorZKzrc+SheSyVdIbaUnyOPIHlp9KnQ/lTkvJOhdH90BVnn1LkZccf8UG15oZyOGW7l5No+bprJaUq/wXMUei+M/SYJ6FfoNsq/fvtn4ooID6GCVFcmr362m5U7GnyYzDB02cPJkZ5OzvMsOn0CPO27a0LKsNa1SXtkqCSey7gSJcULd2BVmuOGTAAFGfsMGYJfIDB/RBD+E96mFzHtyQJ9guOOY1wMQ1xgB8zMGT0Stf476Dl/lI7e5YRGwJ0V+QrNjYcxzReUfg2lX4/ugQfThOE6Srs/RcHeg46tj+LaxzbSReV0G09EeAgVJKYZv8cpGxGFbxw7AOjTQAn2PfC8MZQpR5HAGEhnPHB3y20FJPpIEmsyuhMuTbqaEI4pji/XJLOZdp4i4fYAjPlfKNOGKcs28NW0lZ+DUK3ws5x/4oFQuQ+TUx5PISfRVkf5hXMDPWtX+5WMfLGtNoRux+fGGLUGxXAppeMfIRvch4krNpfuNH5pVoSHUEGSmKC6D64iLju7W982HPObroWpfwDZzC9JdFxBSfd0Ku0MosTLve75Onagpa1kcoQ3huOJir7unW04j58pmn5UKj6RwqaiLnMvPP/PmNt4NRY01NEn2DhwB0VJt9UFSwrlOlTPa5wAv+5PlD9upnxxKgnI2kh0lJ91gvJFOa8zgfUo3Q6n4w+hJvMDBNmfY+7Jb6cz0fBgjiNBEBySGXYGG9FZtA0dMwyBfwyy+AgZzw8h67HIICPDpYA4VxXHAFchbwx8HQ2XLGItubXvwoQ/Q7Hrn7j8kVejC+k6oTeJOlPbwWPg6an0vM51NQGuo2giS8q7xxoenqucndDquygUF6DWPoxLVwR8NrqoypEaD6GCiOPcDpfaIpobeajrh5DzzoLVx9D+ANeMErWjbC/lCJUnqs5mA85vBlqvgTHLqYS5EB1bf4trH9vkruNrhJ4kygM3j34Lsv4MeN7ZMHaEyyIs3NOcR1zjIUUEp0itOO2uQiG4l8LmYWrbs9FFVZ5eRXgIFSSdJZId2V4NajF37EGYN+7zyOn/D7WZ60lsnIzQzZJYMqI7VK0KPYOLb9p4LhM2FcVwOD2ps0gUfgt96u/DrePOpWcYDceUJpieIsovzWPfjhrX7DiRnsuB7hm5PhwpzyOuJpSdNadbqxGYkSTOpkJ7f6A4e/e2qwQhpaQ98SvMGVkD/4CjoH3uDPdJZNQI5LlNmkos5ZlBheqCJ37iYY3s4DQdhXgANvwm8sF9aF+xQYbiVhCuzYg6j15I+eWzFDLIxbar5ZC88sbwSC6KHo3NVJC5HZ1dC3DIQ6u6ZcG7SiA1HkIFSWMJkY1j1BGuefQJyI38KnK5u6mAcjWFk+go+yzKbCI6qhP3XOj5kE10tVEKp8Hzb0Ofmu9iyNhzXEdUdoS8Cd3LnDGHw6udR/H/FYp/7vPEcSz9nXaLS6+K4qsfxdRVqK+5w81tIh1PhRSSNuHBGdxi/qg+OG3c9chk/xe+dxny4eGkf31nGFjdixGNB1EzTMmghwNoey+yme+gK/Nt3DZmuHuK0vzSXSjceNxb0Me/l/bf7+ancbUc/AyEPYLjKhLEXE/3TmSowDOk8UN0RkrbQqpIi9GI7nM+OyP/w5TNJ8PTR7lJvhzkvIT447rzWetGwhizBsrORVdwD15d/uy2GWaFvUVhQUMtipmzyHHeTtsAV9MkeWb/4E7T0arRvH0JgXcbpj2w1p2rBqSpRaggSTceLDiUWyNi3rhzoSgjKfV12o5EYCiplUrMQjJwNVX0TPnZQg2l5P155HLfxUAqVbr1c1x6EPacKL7y/ieh9U1kmkujuyTP7Ddc+8F9yFw/Mn05/PDLWHAgz1UjCIknuQYkat+3+MqYQcipO1FDosOqd1BprY60blRFLE0qycM9VXq2rjrb8jo5J6M++2N4QxfghjHDMXMmlzPlue8pc8ddjZw/n+JyhBMckme6j8gC8aiXenj6YgRvvh83NQyR5kEh6SQxgbNhVJh7whA0n/xp9PeXw1PnoSvwnOEU45ki3PP20FmklK4+hj6Z32DYH/4Tcw/ryyeja4R/g4XZ14/si9vGfRZZNQsFnpNCajkqBjdlFA2Q0WNQk/02BjS+iUIlvoXEkrTEHTmTWxrHwqv7DjK4hY7eFE1nLoYzvdCz59EX1vIift+HP/QmNI89qHyy9C5ERLK8fvBnyCFeg6LNlMIknioJi48CiQ9PvQc1ah7mjBpQOiMIiSM5znjheA/j6X7mjbsEdd4DtPcf5GzqXEnNNavQJqSTbc/fGfe+0OpieN7PcfPoQ915aXrZEYtbxp5HIu16BOjPkSeio6dwAjkD7b0PNQN+hxuP61M6IQiJIgnCg42iwqpnj8Lbx30fGXUzORflOsElsze2sD/wGjtFShueOhG53FLMb/wv3Ho8OdjUO1defM/HvJPPQcZbQIcZFyMiOnqYUs2Hr0ajvu+tWNAwpHRCEBJDvB0zd8KaOSqDW8adhz7ZeyjTTkBga+m2pB+HsHM4XXDqcM1vdgiVLr+EbN3X0Dw27f0+LAaOO4oc3kzar3Nrrkge6h3KzS7ARxDkprqwdKdNIWHEV3i4nt+jfAztdyVq9bcQmKMQ8podlGnFYAq7g5teeBn+0A6Ary+Bp+/DvDGHY2Fp3Zd0oUjAZ5FV82DNMSRBouZJofeIOpzW05P5POaOPd81I4v4EBJCPIUHT3c+YPThGN7/W6QzZpPoyMEoj81l6QpB2D2cWsqlS60boP278OKYU0p9PtKSlhS+fnI9hvWfT7tnlJooJR9VA/wUeOh/NnMLTm06ldKlICSCuAmPyCCeOq4RNbk76PB8VzpzK2KWzgnC3sLiI1pz5CTUZu7E3KbxmOnSU/LTFJekc+G5brix4SlJJRtVDSwAucnLmMHIeZ/DbSe+Seb4EJJAnBKxwsQGH81j34Oc/imMPRWB+/3StCLsP67phbaiPRQ13rcxpGmSS2/J9sQKp4w+GrX+lQgN3as0U1YdnC5DsnHGvguqdoqb+l9GYQkxJy7CQ7nOf8dlLkXWu4cy4TDaZMl6oXthp8vDr4umBhn9RRybuRhzRta4M8kjEvJ+5moE9ihYnca+LXEhqvnQ+DTmjn0HH5XCBSGWxEV4WPjeF6D19aT++0s7tFAxWMxy811gB5PI/RqyI2/CzFF9ElnKPDZzAXw93jk1oXpxtXGU/gz6wffnkfh4i9R6CHGm2oWHwsyGOswf9z9Q+koSHP2kP4dQcZyo5ZqPsA+y/qcxtN8M3DyyJjHt63wfN405HJ66jgRWVvJUDHDiw1ABDEcg438Ks1I5+kpICNVsSBVuahiMA3LzqOT5cYRuXLsYSKEH0T4KoU8OegZqRv430FCTgJKmwqDDMqjPXELa6gDw8uySp+IBT36Xd52gL8CgccdyiAsXhJhRvcLj60fWoy73NSqNnYd8yPNziOgQegPu3NcHvjcNw3JfxBVN3Ocjzlhg0FvpdbzrUCqz+8YNTWLxTciqC2mf28jEJgqxoxqNjsItxw9A3eBfw9cXwZgaMo6eZC+hVyg3u+TDLHw1GYeqSVjQwAunxc9hc90Gz4GT8SfR/sGuiUWIGfTIQrKHxk5E8+gTKUA66Aixo/qMJzev1PT5EjJqHBl7CpASmVAFaO2haOpIfFyNYvZcComfwedus2c0joOyHyPHVQoUYoWr9aVnp3U9vOwX3YyzghAzqsup8yJVdbkvUdb6BALjSTWwUFVwjUFoByKjb0Hz2HMoJF41Bs5J6atgyWlFPTukxiOWcK0HdzRVZ2Jo37EyqZgQN6olwUajV4aNu4WM+iUo2joKkswkVBdRswvXfAxBxp+P5tGnx8bocxPLkL5nwNenOaclmiO+sGB0Q6BtH2jvLNdZWB6oECOqwWhqN0nT0OwMaP0pdIVs4EV0CNULTzJmMRSZzCz0O/HQGIgPhVGHZOD7Z8GgvhSSXEfFc3vyvyTDI1wCbnLBu+D1PZhDohOCUP30tsHkzGKRO/h8EhtXUkaqoSDJQEJ1w06bZ86FOhW1td8ExkbOvHohmTRiOL2/FyZxTZiG7imk1+1ig+9uxzvkc7D0StclSZCwAA5wLGzuFDpy8w0IQhzoXQPEC3HNH/dO+hU30xEbb2l3FuIBN7uEVsNT78RQfSPmNNWWzlQp4ekIzWG0E+/8FckLG4kJw6s1WdT6efhqI7R9mQTh83Tun1SIWUZXP09nX6BntBYZvQUZL4TaQYDwv1hDP1/Dh9a8WCZ3HRbbKcSC3hMenEkGNJxOmWYB2cK+rgQpokOIE1xzUDQGnr4AWXy6SkcYKMw8pAbK+xQ0iaXYl/etpftgy0Viw2ujw7noNJeSBnkfioUm5LeOQn3mRGDt6cjkj8aW9uORL7wTRXs+8uHVJEJ+TAKExEjJTVsSInGGn6dFE5pHHyPWU4gLvZVUFW5tHIYa/0cIwtNgeZ4OaWIRYgiXml1Z065GUPwIpi1fUjpTLSjcNnocvOyfounR6TiOea0cz56r6/gbQnsT0PUgCrmNaGkpYNG2pobXS6voXrl2deV4hYan61HrHQTPu4AEzMUUF8PJBhmoGC6S52psSIjlPIWu4BpMbbnRhXYH85ouIIH2QxLWFO+J7HNHBQa0Uzo6B5OX3k/HsZfkcaLnExSbjzlNvPrnbHroZ7hVMUV0CHGFa+ksr5SsRiCb/SZuPunA0pnqgM1pqM8hx5pzx7EVHdbAVy+RSLgSxeBsTFn6a0x+6CVsbsmT6OAJf/hOd+Y8ovDZ5GgWLQrRuaId09pWkrP5AoL8O2Dsz5H1ttAlLGji5XxcDTE9zyJpLqU+7FbwFoQY0PPC444GH1k1iQz1J8kUiOAQ4g87cx5hAPU2ZHPXY86oQXzgzvUuCjcdN9QNuWTnFMeZSrkpxHPrUf8ZheL5WNc6j4RDuzvHNSAsKPaG7dcrTF3xT9jMx1EIZ9HhOvd9cRQfLJky6lCEQfz78AipoKeFh0I+expyegYC47vCiPTrEBIBiw83qdOHket7tqva720nwL8hl22Arw+gI9fIEp2ICSwCPM1yYDkKZioOaFtCwiGqwdh/ou9Zu7gDBSyACaZT7HS6GIqf+OCXevjZMbQTr98upJKeEx4818H8cby40RdRsMPoT+tYVvsKws5gp85t4YHtD8+/GoPGjqDQ3nQCnLcof+sT6VfUxs4fsfPnESvGLEPX1nOxqfWfmLCtSaX74BqQGS1dmNp2D6w5F8puLJ2JD1xzHNospb+3uQ7OLDEFoYrp2RoPpa6gTHKyyxhS0yEkEW7OsDgSvr4Rd57Mbe69k84XUt4efmpfZPwGhIZceMxEvuKpOe0/SGr8FzY/8tJeN6nsHZGYWZu7j3Zvgq+iPh9xgZ8s9zPy1NEY0qcvFvWwXReEvaSnEqjCkKaPwcelMDZqYhGEpMJTkmf9c5HHJXTUO4mdawc6tw6mvaN54EOshD5PCJbxttDv/goOHPloqXml0ljMXhxCbf0mwvBP0K6JJx6GyhXjuPOtPghdfj3GV1SkCcJ+0xPCQ2Fe09voL/03isi6kpc0sXQ/bCQteZjXbLv7t5Nrhf3DOQGl0RUqSvOTMP/kEyi0p0ugUf7S2cNJfrwZVsenBMxp0fM0AtNGwu13mLCInWhPpUuLyx7bSG77q/TE2mmL8kYccM0tZihydiTt8W8WGytULZU2SKWhs2oK/amRpewgGaI7iERCaRbGUrUwT6zk0ZZR3MmRDHjp2E24VNrKYbzxNbxxuIOHFCZlVsfehsSHwcFUEp2EmaN8DojCe5CsdxI85Og3lAKqHJfmKJqU5U6e12FGC/e36OkfrzC1ZRk58fluPza5gNObHQDPvsUdSu4VqphKCg82tDzMaxyM+ggZYZ9Cet74JgU2ytFMA/TKQoNLhkqhNqNR63PMBmR41iO0TyOwj9F2P8JwIW13UfiXyZBeTzrlOjp/M4XdgzBYRGEraHsSxrwCbYv0PRo19H0sSiiQX3bYhL2Bn4hrVsRHMaTPO+i9J11B9Lcs3klbjPIc/ewMvRj7O/x5CU/E1hvusxx3d5AAepqfojuOA1yAUP7hbl8srVDFVDZ5Np8wFNm631MmPoEcHldBS3bYG8rVvFzuKrc4e7qD9tfRyTUohk/SycdpI/EQvgCv+BLW6rWYvaKTP+0+uzumHJbDMf0GIe8fQs/nEGjNJabR9HfeQrJ0KJndISROsi6lhBTiniC9iIjcPfzEeGpuqGdgCqdi8rJXXGhPMGdkLbIHP03OaLhznXF4XiyotepEYM7FtJbfl0J7Hs5tsxpqMTQ7lyLuIndc7fHnmqgUp7iFmLTk/FLoviMzlwoVpFKZSaH5sCz8YV+mzHBFaWY9cVR7ApsO7tHPxi5qHuF6jnXQ3MPfLCej/AiMegI5/QyKa1/F1CcLmEXXziplnJ23774+U+14PvpbDH8Pd+Tj5jHfDIbxDoVvR5EYaSLJ0Uhn3kzPMetEZCSKREzuFtfpT5FI/DIKq76CGau6ODA6VzEU5jaNobTzF1h6XlFIDJ4TxZWnH8XWrnfjyhUbKKA3axsoDhsvJOf7TUrvtXRY3c63LDxCrMCUJWNLofuOCA+hglQuQemBJyGrz0MQ8th7YU9gCQATukmTPHo01j6LMPxvdIXvg9EfQrDu85ja9kNc3tqGy5auxTQSHSw0eKhhuVak/E2v3V7Pa8+VPxsNWbRuXoNpbS/i8qV/xbqWO9CxZRI6tr6LznySDNGvXck047Er48/Hpyq6N+DO1IXQIOt9BDUHv60UWll44jAPxyKjSXSUas1iAcWVMQ+jfd0WOujd3x2l7EcpDjfSQQzSOOnKaCboQ9ycSYJQxVQigSrMbKiF8i8mhzmC/oQvpeJdwGKDSyvclsz9NGozzyM0C6mE/AGszR6ByS1fwRUtD+KVB17FhieLdA2bxB23SrD9+1mMbHm0EzMeWY1JS36MqUs/gKI+HsXijVSSf4R+T5f77a5jasV+T3xheaa1R4KNp7OeiJmjMi600lj1Vp6jj/fcb6h2XDML8iQ8HsPs5/IcEp3oJbj2zzMvoqO4hmyYBxMDARf9wnr0axrg9gShSqmMMh7knUpi44OUdcUR7Qo2ZhxHnmLR8X9kOW5Ae+ECbFWXYFrLrzF7cVC6MpphsbKTKL0x5ZqQMlf8bSWGt38RXcFHSCRdTb99KbQKXH8GFlEiQHYGjx76EAb342mtmUqJAYVBh2UQ2jfTs4mETyygdOPrrbTzZHTcy3CT47plr5IdexRZMpM8T0YcUNZHRg0rHQlCVdL9wsP1D/Bn0zcPpKwrNR1vBE+SlNXc+fBVmOBaFDvegcVLZ2J6axs+u6T3q5p3jcWElUVsbH0KU1u+AS//nyRNeHK4VeQ86KyR2o/XE0nMQfS8b8KUw7jfReXiRw+sh9aHkPgoBcQAqw0yuoPS0YsYX6EC0d7BkUdiQz8Tpem46DdkKPYOKh0JQlXS3RlcIWc/SQak0a3WKU0sr8XVBXCVrQ2R819FEN7tBMfktpsw7eF1bnlvdk/xqCkq9wkxmLhiMyYv+S66Cg0ohnNJUL0E7e6Th/7G4V4qD+cFniHF9xpx+ODzK9YOz/07QtOH3M9QV6MWh6nSOV8o66ErLNDe5lJodWDNi1HnePoXBzidWdWH96IAQag+us/4sSG9pfEQaO9S1xOackDpjMC4GgBj4KkitPo98sWPorPjvzD14Ue3XRFXykLpyhXrsf6la9BZnAClf0T3yRNBGfon4iNCubyR8T+GA5oOrJj48DL9kfGyrnkgTg6zaDroN3diVBWlF16xlrVznMyZYfsrCNVLdxk+hWNoy5iz6fXIKKPSPyEi6jxqkfU0laBuRn7rR7G+5o+48tEOPlvakoDF7Oe6MH1ZC7yuiSiGV8HztkR9P1ztiOCetD0JoTq9In12uG+Csv3Bc69EoxziQWSJ1iPQHe4eqgEeoq6851G03NeKc3BS8qkg9CrdIzw4O750wiAqaZ2DED7l0cqU5OIGG6poUqQitH0I+eA/ManlWkx/5FXXcTQeTSp7D9/XxBWd2NC6AF3FD1JE/IXER57epe8HF51D25eyyGfQfFiOA6LwboOcpeL+VdGkb3HB/VZKGrV+9aQPHtkSBMMp7fquMCUIQrfQPQKBHY1X8x4qYY3hvVJouon6cvBaKHx0Lzmbi7C+9Q+0z3VBybdifI9ccp3euhhB+DGKigXwdadrbkqj+HD3XBoZwfO0KHs07OAj3ZnuxqKWNsqH0ty533jqCGQpKrnGTmpxBaFb6B7hMfOQGlj1RcqWVIJLn0/ZKUpZZMjBFMJmrFlyIaa0/L1UtZ6mCIqamHgysklLr0A+vNZNPOZW/UxVPJDYIsGV46Y2BAiLd6MzeBc2tv69dL57Mbo//cWs6I79hIclGxyPgDuXxmVYiyBUP/svPLiD3JADP0xO9oho+F7K82e5ZKvteirpX42a1qtLbdZpcrSvJ7r3aS3z0WUupL3nyZBTTCW0/npb7Yar4eA+F+2o8VpIhF4PLxyNyW0fw4y2R0pCtAKQyElDrVolYbvmDxgGX59IwoPikgoR8YAKPN72+X8EoQrZX+Gh0G/UAGj90dLMflwZmV7lEXUi5VjtQBj8N7D5dlxKJVw2BgLHgcXGV++lGJkOD/9ya0skS3xEYoPrNdykU2odhf2IBOinUSDBlSl8CZNaH4surSR2AMUrz5Aq7CssCgN9NAmPIfQ0OV/Hw65ZG8IUXuK9KEAQqo/9r/HI9B9HTmS0K7ulfd4OV8q0r6IYno0pyxZg8kqeiVEMwI7MXlnA1CW/xNbCB8lPv5II8cG/nyeE4xTguzVs1pDQ+BKCrpMxecmFmNb2E6xd+gIuXVHkq91nKolWOYTWc04IhoRvtW82cHGoFO1XCTNHZQHvTMrLA+l3xaPfmrO+9MzDsN0dC0KVsu9Cwc1BcIbGsPyt9DWXIqTMWVo0PXVEjpOnPt8IYy/HsKV3Y4KTYiI6dk6UTm5tPAVZbz7F3zEUW16shGtZLGkSTnQAT6+hZ/8EOfyfITC/wOWtz7nzfFVPN3v8z6lT6XddQb+H4jMOfRM0TyfPI0hasaF9Iq59bBMF9l7eYds2eOwhyHi/Qoij6AFWv/CIamV4ZxPWZoe9ZrmFfUFWpxUqyP4YJYUbxgxH3+yfEZrDY5E5K0GU4Wkj5xPa6cg9921c+lKnOyPsmokNGRyfO5X27qbYGu5irNqrtPl5WzLGPI02a44Qz5PT/DEZ6N8ho/4PryxdV7m+G3vI/DEHwHojSkfxwCOBFJp2DF/2FIn23l/Rev642SQmr6HfFI/pAThd8q+05lFMbjkhCtwPRHgIFWT/jPy8xvMocd6FIhmNtDazlDO8wRcxZcmXaY/jQRLxnsKyrbnxP+B7P6M4zLjYq0bx4WZfNQZaa9SSxu4sPg2j5qJzw3dw9T/b3X0sGq8xYVHvO02Gf0/cqI4OsQq3Nx6GUK0Er6wdF7gGzjVb4l5MWjK+FLrviPAQKsi+J6g5I2spi15FZRMycPGzcd2Cy+zIU4l3AbL5GyiEI0IS8N7AzmZa6++opDaRZMc6jtTSmd7F1WzQb+F/PO27RoCs9wyUvRtbC+fSUx+LqUvnOdHBd8H3US2ig3G1cDHbeh+NOU0DYfX10F40326cYOvjqX9GB+5IEKqSfRMebCYyB70dnnccmeR0EpUwOAZbYPM3YuIKblMV0bEvsImsz/2YSla3k3PPU9z2cqoqDYX1qQTpcQq3D9LhTBQL52NNeBmmtv4MV7Rs5Auj6+W5xx62aeNpq8EESpD/j0rCHBIv5825JjRPuX1JkUIVsy/CQ2ERfc7TH6DNo9Qevwy6v7iOhXTLxnTABtNx2XIqCUtW3w8sLlqcR3v7DSiE9yFDyZLFR0+VOF29hqtp4Ym+QvCUDVmvA4HhuTc+gjWrT8OUlq9i3bIHMbuNaziqpYQudBf8PJtOfAuUdw2lgr50HK/mBVdrpDYib58oHQtC1bL3mYuX3X557JuotH8aGWUyvrGZWKf74Ezu41W698n4TNsjFCJOaP+xuOrRDuSLk6jU9mDUZ6jC0VoWHPw8PcU1GwUSPY+T4LgdXYVzUZ87E9Nbf4rZz+XpCpXCmWfTgsKtjYejruYH9HgPpjQRP5vGKxF7WAfV+aJLq5JOhSpm74WHM77qKFh1gEvaaavt4HK4ptfQ/gTYRFvK7r+yWMxYvopfSditomN29N2PExxuzRheN4WfYIH2F9OJ6QjD82DXzcCGtvtw0eKu6AN0Vmo4kgkPnZ3TNAI57xayaWMRxLCjvEvPStNvfxF+tt3VSAtCFbP3CXQh6WqlTyXHyxPrpCuBu9IxbVq/AAS3YvLK8rL2QnfBJn/t0iXIh98mUcCdNfdffDjDXP7HTSokOjJ+iKzagjD4CfLmXZi05F2Y3LIAk1r/gWlPFnp9SKxQeVhO1h9XiyyuQ4j/AK8XzfOJxA22QDyfjLErsW5re2kOIUGoWvZWOCg8d1wNJfJ3pq4EyE6L7zmriygEN2HyspUUKhm8+7GYxfM42DsRmjaKc4p11/9i33DPrdScwqldqS5kvTYEwQ3IF9+Dv7SejytalkQX01WRGU9X2k4nCs1vG4aaurlkzz7JqYTSRzxrL3mKfqW4U/bDmL2yZ2bHFYT9YG+Fh0VN7Rhyt8dxn9J0QffrUWkotL9ELvhuKVCoBCwSprWtgilOpf01rjS3t+Ijqt0gYUify/HcdvZV0ok/hg0/gK7iBGSKs+lvtGGRm6yKv7u8CUmHm1e+fuKByPS9GVp/EqYH+hNVGoUtdB+tpSNBqGr2RnhwaYA2/W7kdI07ShO8zL3Bi+gqXINLV0gTS6XhEui05Q/Bqmba37O4jsRGed0UIKMDeNiAzsI8IDgNk1ouwJTWP2JD22p6hjz8WWqs0oZb6uGQLPrkLqdM/RHWpZTS4tevowynd66pKdp/oLj1GQ6JTghC9bI3wsNi/qg+pKo/jKLhMmmKpAeVnDWKUOZOvNrBnR/TJrt6Hk5hTujmfwgff6V9JyvcudfDKyOzAeanwh1/M94r9P4bBMF0oNiI9W1XlJrGos/L6JS0ojBkzEAMHfFVKD2ZUgHZvxj3U4vyQzSfEMxP3KgwQYgBe1fjYfschZw6whl5Z+VTQOTu+GbXIDA/B1ZyFzRxWj2DxZo+L6EQfsv1reG+GjvCT4ZrN3iiL147BeZVStHzSHBcCD9/Eda2LnBzrIjQELim4xvHDoD1ZkPrSWTDsqUzMYaSNIuOgGxTPiDbJGlciAd7p/aN/3Z6pZTu/qdEeRA8oVVofoapbY/IaIcehlfZXB/ci6JpcSMOuHaDN9dMYg36ZDrp/VEUw2uwdt0h+MzSyzGldTHuW7FRBIfg4ILDiAYPps8XSKBegtB6ZMC4gSLmNox+visUmcW4cvkL0b4gVD97KjwUZjbUQtuTnBlPSwKP2k+5XP0iOgtzS6FCTzN7RQdCEhYam+Ar4zqbajxH2z3oLP4Xwq7/xPqWmzD7yc10NadNW+o0KggKNx1Xh0L2Cmj9GRKtPoXsXYGrqrFb6J7ucbtSEyvEhD3LgAvpuiF6JDLekQjCtJX4FZWm78RnH3za7Qu9gcIDbcsQmEVkWv9BJbzrkC9+mNLiZVjb8iOse+jlHWqixPgKEePhYU5TDWprL0dGf5EcdI5SR4LysA3pvv6OwD4UdZoVhHiwZ4mVJ6TRmYOotDmcjjjrpsMBc8laUcna2G+WQsSp9Q6lGozcDATByZjcMhuXL3sE09raneCQ5i/h9XDOHXWGQkZdBM+/mkRqjvSrju3oldfDQ8UzWqEQ/BGb2ldTHhDbJMSGPREeitQ0ZdbwaBTMIMq46VDWrsc4ZW5lfwe1flMpVOhNJi/e4sRGVLpjQyvGVtgZCjePrMHgrmnw9fUITR2ZOr90Lv6Uu7tbbCET9SvX4V3yghAj9kxEcMcsT7+NVHYONiElht3iqjE3Im9+jQ1PymyA1YOVGg5hF/Dy9hrZkReiJvMlGNO/5KYTBJki31Mw4S8xfNlDkh+EuLEnwoN0dcaHUceCNUcqmll43g7lkeh4AsXO5aVAQRCqm8g2vWPsh6nQcB06gwwFeYlpXmHcVAZEMdxMwuNLmCCdqIX4sWc1Hr5fD2OPSo2u5hKSW+3f3IurHl0rJQpBqHoUJsLH/LHnQWduRWiHw9M8V37y8EhsKPU/mLLsCTpKQUFQSBp7JjxUeAo544HJq7LcCa79lG4ztJuBAg9TkyYWQahulBt5d8y4j6Em04zADKeiQlJtVWl1bNxFG9+j2CchduxOeHDCps02wdd0bRrSON2jxy/2F5jy0OpSoCAI1czL4/4favUsdNoBZLKS1bxShifO85RFGP4KazdtXwJAEGLG7ms8uKOWVsfRK9d3JD+h8z0adEGZ324LEQShemke815k1c0omoPIFydn9MqOcN8OLhAptQpF9T+Y5Za/F4RYsnvhcfoYKkHYI7hV0UmPpKOsoVLFc7BqxQ7DNgVBqD4U5o79T9Tl7kRg3+qaV5JY01FGa7LB5ivYuHSls8aCEFN2LTw4aYf2QLrsEATcvzLhuoP7d1itEZrHUOxcVwoVBKH6UPjmmNOQ8+ehKzwAJkGTg72eqLaDR6/8FpctvUM6uwtxZ3cZVaG56b2oz/4WHUUqT6hk9hIvw40sngphzLVYu/SWxGVwmVY53ojDieCa13lNY5DR34axRye+psPynELqRZIel2DSkj9ySHSigsxrugAZ74coGm7eSaLdIFuPdipYn4PJS++nY6lB6kF2n1nnjZuEnDcP+YASIHcwTTC8xHqN146u4jmY2saJURCE6oIKQ6PHIZtbRKLjACc6otCk1nbw1OgGQfh1ZIqzcemKnunbIcJDqCC7yqzRVOlDGm9Cxp+OwE1ck1zhEU1DbOGrF9DROQ5XPPgKhSajhMk1HYMaT0TWm0WGLEf3mdzSYRLhVKjJ+BfNVzG15b4oMIVwOh4y5iR4mQUUJyc40cGL2ycVtzo23579O/L595JNepkP3LlKI8JDqCC7ER6H5DB0xN20+0H3WBLtsKhk4fOiS+ZXsGsnYNqTBQ6MzsUcXqXzlMZ3ot7/MQLU020lu+YqibDxL5pPkJH8IR2l0UgqzBvTRKLjm+Qy3kYxwNYo4QLa2aQX0ZU/B9OXLysF9gwiPIQK8sYJih9Dff9+pLoH017yMznXePgUHda2JHJtFp+ra+mWAuOhSMJDtnht/Oy4rT+NLCQX0Tz2aBIdd5K7OJZyZsIFB8Oj63QeoZlTEh0puGchLbyx8JhFCb0mNwCe6keZPdlqkEUHL5ndGYRQphWJXmKa7Bd3xJMtPpt7ZqXHlza4eeX5hsNJON9Owusol1cpVty/pML9OriJxdpf0V3+qNQpPNk2WEgVbyw8jhmvENr+0LqeEn/yEz2bMa3WoRA+SnuSyYXqI8nOdmewxBg09ijUZOfB6lNgWIjtwmYlATd0lh6zj2dRKFyPy5aukdFMQtLYdSbWfn/K6H1hTfIdsZsmHU/iyhUyf4dQfbgcaPLlvcTDpfzbThkFP3MvlDqT7jrZgqMMzxBt0Y4tZjymL3+8FCoIieKNM/OERQba9KFMkCuFJBvuIW/NitJRukqWQnXD5Xzu3RGqZ6KAhMOiY2DDSKhwDpQ93LniqHEl2fmSm1igumjnS7ii5cFSqCAkjjcSHpzBKbvrAZQZfGhuZ04BCo+V9gShuuCSsFZpqO1QGPi2ochmboDWb0fobjkFtR0kOjJ0mxo/hQm+QwGRDRaEBLLzDM3zdzAWw2CQjfJAwjG2SC9Pl44kwwvVRXmirCTDNR23Ng5Dtt+PofS5CGyGQpN/326+Dq0QBo9j44bLMWXZeg6NTgpC8th1SYL7d/CcD0k3espl/E0IsaEUIghCT8KNKUNOPgAZ72aySqeQ6FDg+SPcqJ4Ew81IXJsFsxIdnR/A5/4hNkhIPLupwtT9YZSX/DIHT9SD9dDeplKAIAg9h8INR9ZTHvwa7XFNBwuO5DevlEWHVs8iDGZgy6PPlc4IQqLZeeY+piQ1sugPjzs8JR3NQ9g2IjBdbpZPQRB6Bm5emTmqD+oG3kZ75yO0PrniFDSvuLtku6NQDGZj3bI/lobNShOLkHh2XarwdcZ1aEtyb3I2ALAKRm1FqIoYlQKjJwjVAFuWmmP7Y/iAr5OtGY+CSUfzCsPNuz4XdsKpmNr2/WRPWigIr2XnwuPxUiYwlofTJhu+P6s85IMO+CbASjEAgtADKNx0XB361H2FrNDHEdgslE5HbaM1ITy9FYFpxqPFBRTCQkvsjpAadi48yjPlheC1WpJd+uA2Vs/d7xoEmms8xAAIQqVZSDmvrs+tqM1ciqKtS0WfDsYag6ynYcydeOqFm3DHioBDo5OCkA7eKLNHYkOVBEjS4bZWa7rgrzMkugSh+nAjHxKBwpymWrzSeA2V+s9DV2BTIzpcJ3Yq3ITB3ejY+kXcsqqLA6NzgpAedp3hLfzSXnLh6eCVJoGl1uOBJ6X0IVQplCytF//VaRc0+MipK+F7MxCYOsp7KanpINHhqSKMuQsdwXRc9WgHh0YnBSFdvFGmt65UEtjhia/z2J71y80sYgyE6oE7P7sO0AigNz4VBcYS5Uaw5P0bkPFmk+joR0EpER0mRIYnCDN/RHvxCrSu2Mih0UlBSB9vnPE357jPefKbWrhRiWei5uaWWWIMhCpm7cb45scph2UxvGkqst6nkQ9MajqScvOKpy0V4v6CjsJ0XL1iMxa5lXcEIbWko8SxK1hqKGXovZ2ER/KH8QlCzxLlqSOGfIbExueijqQpal7hAo2xv0VX4WO46sGn3bEgpBwRHoxyc5UE2yZOEwShO4jy09xxlyHn30w5bDBnNgpNfj4juQFfK3hooaOpaF/+It21iA5BIER4CEI86ASycWpqUW7I7G0nT0ZGXYeCcXWL6RAd1roZn429D+3hxzBp6fPbpigQBEGEhyBUPTyUVmEt8ByPuooDkbh4eewEaPUFBHYgHel0iA7Do1dIZNjfIOj6DK5se5buWmo6BGEHRHgwzhwqD4vckSBUH1yKjsusujPh4dax50L7d5HoGEp5Kx21HNyRNOPRG5ajaCZjw4PPiOgQhH/njYXHMWuNW08gDQSWrIUZILOWClVJ5LbjMRJiJnwMafwAsplb2QO7LQ01HYxSBRjzc3R1fhTT2l6U5hVB2DlvJDwUJqwsUkbamJo6EctjagWh2qBkySlT6TVVPgyTxYXCgMb3QXtzyAEfwGsvkg1JQW2HiWYkVfYubAkmYcZDPN+K2BNBeAN2JSt4KuNCaT/58OSlglCVOOXRGe1XKa55peFdyHn3wto3sfVw/5LM9uYVi2J4H/IdV2LZsrV8JrpAEISdIX08NJXIrNGwehAwynezKwpC9VGttR08esXD4LGnI5u9hZxx1KshFUvb051qFBCae0h0XITLH3lVJgcThN2zcyc7s1RSUWorbQlX73SrPM2PQS2wVcvspULVoSkPaqwuHVUfL445Bb53O4w6yuWlVDSvWG5eyVOh5ZvoenUqrnpUajoEYQ/ZufAoT6TloT3xwoMNJasPjYGo7+/J7KVCVbK9JbB60ifXdNzeMAYZ/w8kOg4nZ6wTLzrKzStZZVA0d2PNy9di88pNfCa6QBCE3bHrZoXQFmDImESLVCUXtiVa90WY8WX2UqEq8fCKe6+WnMh9OF5pPA3Ifpu0UM455NQ0r+itKKAZXVunYfZzeRm9Igh7x86Fx+Ml8xaYLZSlkt3nITKVBjVeLfpon+5dhIdQXbgp/cnZMdVRI6cwd+xB5IDnwKgjnHBXCV9pNip8lZpX7K0Itn5JlrYXhH1j18bCGMpYbFUSnLlcz3u6PWP7oRhmKURKL0L1wENSi8ZDPnjVHfd2HyTufD137HHI6Aco85xI+cZPRfOK4uYV3UU24iZctmSm60iaZLsoCBVk58Jjm3HzXoFWxVTUAYQkPFQmJ9WmQlURjREJoEzvD6dl0TFo9PHw/QVkOg4m0ZGO5hUujHj6VRId12Fdy3UleyiiQxD2kZ0Lj8jYEWY97ReTn8eUdjUeCv1KAYJQHXDfbg9dlD43RMfutTeg3DFqAPxMM5mDk0io8+iV5Dev8ORgWa9A9zsXawrzqGDCw2VFdAjCfrAbw2E3knEJXMkmyVgqtRkMhrZDSiEJhh6lM6gJ+5dcuFaBnV3v1XhwTcfXTzwQNf3/AK1OgbVe8ptXON7J7mX9LegsXotM/iuYvUL6dAhCN/DGwmPheDIueiuVc7p6sZTVk2Tg+SNK+8nFOJMamc+kbImGnJ/WHST+15QDSu89Add9KgxsfCv61s4n0XESN/q4GsKkw7Hs6ZcRFKdjemszJq6Iy8rAglD1vLGkYOGxdtVJZPR+hNC8JdHGhl2xR5uxN2Hy0qsphOMlOS5tPN3daU3vQI23EIHtTyHJkpLRXCzJxKKIWu95dARn4YCl/8KEPZgZk+fX2NiQKx3tH11hH/h1d1MMn47QZtLTpwMdCMxVqNV3oWuTRaY2Xn2/tmQsZrR00d6+2bF5TRcg4/0QRcM1bkm0/fyM2ylNn0M2/346TnwRppp4YyPC1atDxhwGz/8xAnU8HSXZuFv4tIX2N5QIz6YQvtdkJcTmE4YCNU1UiuP+LMl4lu4+VJGe3afo/YMUksA0agJkvSdQCD+AtS3PYjZ2X/JubjqDjOpXYBWJD7s/ToMH0w+G8g6hvMGxm1wbUMY1sfC74VmbnwBPAR833KriejOCwiewccWqfeowL8JDqCBvnKk4+900bijq1CLaP70Umky213g8h/wLx2DGqupekGvfUdumw08CK8crLFoUYv64P5BxfBc9wWQZSOcEualFLUcxOAcPtL20R2uBzGs8GzWZb6MY9qdHvv9xElKaSYPoeC2cmmLqjHjhOr0WQXAG7m99ep/WjxHhIVSQXRkTclKH5DD4wHug9dnusSTV+Gwr5WAzFTBPxrS2ldEJoYqJ0uKcUQNRM+AROhrhyudJIhIevHcfbHA+1i3buEel1+am96PG+w4K4YBuER7paF55LW5q9JiibAiPhEc+PAN/E+HxBojw6EV2laDoQTxXoNcn4dNlrvouoThBRfeXUf0Ar8k1MwnxwK8/jR7dCAQJaT7aEc5x7PONXY+s6STRsWd5ULsmqGifRcP+bmlkZ/EQl42LUfQmCNXKrh0sl64UnoWmRBznEsCewHfncWY1J7pjodqxrtnIU2ciy8J4D51y3IhWpl2P+1bk6SjZeVAQhFSwa+ERKed/IcMOOeGr1LLrKhh+PQUjGvq6Y6GaUcieMBhWfQR5V9uRvOfFfQx4hhmol/epulwQBKEK2bXw4AWpCnY1OoohCZBkr1LLVZShMajJjECnP4xDohNC1VJf04Cc39c1A/LzSxyU3TQJjhCrSwGCIAixZ3dNLRZ+18tU5nqB3DAZ9oRXemhuH7V9KFaOpaN4jdtPGzNHZeh5vZPEYtYtpJZEuHWTZy3l5k4RwoIgJIRdCw9mw8PryQA+gQwvzZ1w5WG41sPWko0/FjPhl0KFaoMnyBra/0D4ahzYLSfXKVuSvyEQPkP7IjwEQUgEuxceUU/6h90EQiw9kgzfnbEaWo/BkDH9ZXRLlcKzd5rwrdDqMHpg3AE6eenSLcWuNQrBWii7mUOiE4IgCPFmd46VjR1PrPUnEh6u52WiiRyYoZL0MbBqJGaJsa9CokToe2chMMPoOXnuOGlw7SLXMlo8hOHLNlGIpEVBEBLBnpXog5qH6HVLdJBwePCisSPh6zHO+CdebcUOHkZLzwgfItGR3GfDKc/j7KkexwTX30jSoSAIiWDPhEf7lg6yeyvp6nSUuhTdaeiNp7tlYy8lzepCYXDTZdD6ENf5Mon+mOs5WFR1cftmyKI/ChUEQUgAuxce7HxHgBfiepgOUmD8yJG5tSnsqbi56a2lQKE6ULipYTC9XrzNDyexfwfjKjvwKkz4IO2J6BAEITHsXniwWV+9IkTRrqSDAh0le5gpOzLu2OerWmTxcRciVAsWtbkzUecf5eZcSeyjIZ0R1S6uxvQVz9OepEFBEBLDnjS1WDeyReExZPV6N4og+ZTEhz4TN590gIxuqQI4BS5o6E8756MrzEJpj0IS6pBLt6Xsw9G7exUEQUgEe+ZQF9J1XcHLKJo1ZAWTPYMpw7NgBsbC00cik20qhQq9CTvffGYMtB6X8NQXQckP1kj/DkEQEseeCQ/uVa+8F8gY/oOcsWuMKJ1JMCSw8mYgObqzMOiwDAdE4UIvwHFvkfEuhrWDaS/Zz4KngNdqPeW6x0ohgiAIiWFPmxAsZrR0IcSjqWl0cEtM07vGmfCGHCxlzl7F4tbGUxGaDyG0lAKTrgGtIZG1mtLeqsSLLEEQUsdeyghzn3PAPFdkGrBuEZCDYPUn6I75zsUJ9DTseG88bhg54huhddaFJbZvB8HNmCx6i+HTMGYNFqVG6guCkBL2xqhZdHlPoGCeAc8VmfR+HmVCd7cTcXvTQVGA0KOw4Kvr+35k9UkIw+TPnsudt7Pa0tsjmLJsfWnyMEEQhMSwd6Wpq5e0w1ML4SsSHSnQHVzy5NEtGTUUoboSMw/Jlc4IPQHXdsxvOgzKTkTe+MkeyVJG8UL4AULzcGk0VToEviAIqWFvhEdk8BV+i9C20ydTYhC52ptHuKhzMXjIcRQgVd89Q9SJWamLaP/4UrNXsomaWYCi3YwgvxyzpbZDEITksXdNLVwC8/IryCf8yxnJNODcH3mDAAdBZz6OmYdkZV6PHmJO0xn0AK6huM/yg0g+lKU8uk9r/4gZj7xYChQEQUgUe+dAeSKx1fUFWPNXcgRp8AQRmryethae9yEMGXailEQrjGtiOfFNqNNznN7glr3EN7EQrobHhrDFH7sjQRCEBLK3JXeL2YsDBOFiaNVOAiQ9Dti4/h4HQvlfxU0NQyhEHEMl4NqkOxpqoWqmU2o7FrxOGve1SQN8lyFWoWiX0l5KmjIFQUgbe99kMB4eOeFHkNGryFCmR3hwiZvXB8l5pyOXmVoKFboX5WqTOv1TaPcSGOuT6EhXs5bCUly5Yp005wmCkFT23rgtIsewqeZldAUtyPgeFcxSJD60h7zhNVwuQfPo07HQDbUVupMbTxhF4m4+OeBa1+SSFiyLeJWn7PR7dyzNeYIgJJR9KVVxcwsZyPBnCEPXD5+29FQL8/0aOwR+9lo83zCQQqTJpXtQmDvuSNTVfYfi+DCEVqWmicXhOpY+gy7w+iySpgRBSCz7Wp1rMbXtN+QcnklTH1MHN7kYePTv3eiT+zyFsOgSR7E/cLPCzFF9aG82bWMQcCynKGFFw2g1iuYx5DY/UwoVBEFIJPvXjqzs1+kbTOR70wT5xKITINNw27jLShOLifjYF7gGqe7kPhja/3Pw1QdheIG0FMWlqy203HeI89OvMHnlVhcqCIKQUPZPeHSYX1FJ7ZlIfKSI8tBOntXUU1dh8IgzqdTOYSI+9gau6Zg1qg9qzfUkOqa6zqSpi0PSGFppBOHLsPk/i+QQBCHp7LvwYKfR36xHYP8CS4YzTf08GCc+eHprezCVVudg2Ghey0Xcxp6jMaLBw5B+n6b4uxSBybn4TFW/DoZuV9OWNwsx5aHVdChpSBCERLPvwoN73V+6IoC291JpdR0Ulf7TiKE4DM3h0LlfYk7TsRSSMse5T/CKs7Uo5KbA965F0WQpKXJtR/rgydGM2QRVmFsKEQRBSDT719TCKCyjUv//0U66RreU4RI6j8Aw5jjU6rm4vfGw0hlhZ3Cfjplj+6Ku7gvw9SwSbUNcWFpxs5Wq32Pqg0+7I0EQhISzv8LD4rKla6nI9n3UeCQ7rKGQdIoPbm6CPQ3WuwdfGzuydEbYEZ58bi6JjqH6RihvBsKgliIvhc0rJTi/8AzARfMjJ0AqAedH+Zeuf6UHLwjVyv7XeHD67lC/Qlf4FHx2IClO8CHFp8IJ6O//Es2jT8aChgyFSik2igOFtzceAd+7HVp/AsZ6qW1eYdhBRNnlCfhB9y+BH8W4eJ80orn9ThCql+5zivObLqUUfzuV4uhbU1qCZXikC2d8D08hsNdj2NK7qaRvUusEylN/D2k8E9nMjSiGb6OYiMLSnU54CK1GV/B5rG/5WrfOVDq/8X1Q+k76xlqK4/0vXAjxwhqyNXoTPf8zsWHJM/uUtuY1XYCM90MU6buSmYZ4NqZ2hPYcTF56Px2LWOtBus/wzxszGLnsr1AwY12zQ3nIaWohx6IUL6j338D6WzHtyUL5ROk9DSg0H5aFHvoJeOrr5GzrYZSX+rTB4pQ1lwm3QOtjsXbpCxWYIl0Eh7DvaUqEh1BBuitBKTxmNqMzXEil/aIzrGmHsislbR9Z7yvIDv8emsc2pmiuD4WZZ/gkRpuQG/ZDShO3w9j+LqunXpASXPvlIaT3r5PRe45ERyXyCzsd2dK9CUJV0l3Cw+KOFVS6x6/JmD7vnMu2Tk4pJWpGUAgoGoz9MHL+9zCkaaKrAWDKTRBJonxPMxtqMTh/BTLZ75F7/QDdf1SeSHPTyo642g77FIKu2/iItnTnFUEQUkV3Oj+LGS1Pomh/SKV8Ptyhh3VKYQHG1ZRc81G0byXx8Q3ooT/HbY3HAaP8RIkPruFBQw1uG/sODM39ke71ayS6DnX3znEgoiOCawMNyTFjfoDLH9lUChUEQUgN3e34qISfvxPF4J/wpCC3Dde8QM43H/CS+u+B9n+Jof1nYdDo4zFzVDZy2m6LG8qJpzkja3HbmNMwPHszVIab25pQcCsXS1+fHXEjWUh2ZNTjUObnFCKZRBCE1NHdwsPiigdfIsfz37TXBSs+Zxuu9kNrBBQpoTkYWl+JbOYXGNTvFsw96dDSVUy1i5Dtv21Bg4/BJ5+C3MF3ws8uotL8xVSSH+QmVHO1HFV9H72Asch4moT5T5AxT1CAiA5BEFJHJRyDRvPYeuT875KTPZtMq1Sz7wwu+bLbyWhFjmgz+aDvIyiQA88/jcUrOzGezk1A6K6tDrh2g57jGRr98v2QtQ109Bl43tl0iqeNp/I8PWcRGzsnGmbN2uM5mM6xmPbw2tIZQag+ZFSLUEEqkaAMNrRtQRB8D57aTG5I+nrsDBZkXPFeDOlV94X2JiGTuw/+gDtw6riLsa7xBMxsqKMr2ZGXnfmO+5XjtU0/0Xvz2L4Y1HQahhauRB/9U/rNPyfR8QFXgxNw71Gp4dgl/LR9bIU1XxTRIQhCmqmMkuXhgX1q/0Bq8n/hczFPhtfuFOeoyWEbbn6hzerB5MQnIKtvhef/AoOyv0Fz42fxtTGjXF+QSJXzFvWtKIuC7oDFRrmzazTZmcUCEj7No8dhbtOtUN7vUeMvpNLPbBIbp9FFNU50UEBCS0TdC9cGhfg98p0/c3EtCIKQUippABWVko+mkvwD5JgGOO0hTS67x9UOWUMblZA9z0mBkEdC2Fba/yvy5kHU4EFsDTaiprMLmdq8WyWYPxmhML4kIEZtCwNW7vCsF4HH+Efn2Ane0eCjy6tFMcyiRg+H0WOodN5I7++G1oe6b+NKjcDwpGgiNPaG6HlaZPRqhOFHMallcemMIFQv0tQiVJDKC4HbTrkYnroFQdiH/pw4rD3l9c1THh0rZRGakOJzA4WsoRL0c+TTVkHRZtVLMCGF600UtpEEQ4EEQyc5u6ifiM1oaFNH12ZI1wxAqAbCs0Ppi0dQ2AHwSGAoNZI+O5w2Oqe1q4V5/TRE0pyyd/DU6NyPJzTN6Nj6BVz5aAfFoBg5oboR4SFUkMo6Ea66rzm2P/r1vYtKzO+VkvJ+UJ4NlsUHrwHles5QfPI+T83uqTw0byDBoQoUZrC1WKB45xkyuUeJh9psjq7npp0siZYsjMlRxquhsx59CX8p139wk0BJXtCLCI19h5+RT5vB8zCdp2DKQ6tLZwShuhHhIVSQyiYoXn/i2se4BD4HWb2aStrhNgcq7B1REweLAO0EB8prnlAYT9IV2Dp0BQNoG4otwUG0jaTrjoDWR0PpUTD6SBIiB2NL8SB00jV8bZE+w2un8He4tED7/N269LdEdOwnTiB2wAbTRXQIgiBE9IySDdc+gGJ4p6u+Z17fjCDsH5FAIMGgo6XmteLl5qMl5zmmt8U2ixVeip6voWu5JCPiojJwGvd43SLzPWTC31KIxLMgCALRE8LDupVZ87gB1v4JftROIFSYqL7i3/8JPQV3CH4GYXH+6zr/CoIgpJqeqfFgozujpROF4CpY9Qy5P9dDoXROEJKDa0q0IWp0AQi/jKkr/smh0UlBEAShp4QHo6A3/h8Z4/nwvTwdizEWEooCOsNvYO0ri0oBgiBUK25GZqEn6UnhwU0uebzy0jepVPgLZJSi99cP1hSEeMOjiTTuR0fhOsx+rkAhIrAFQRB2oDeUnkLzCUOQq/sdQnsiDB3LxGJC3OEmFh6InFHPo8t8CtNa/sKh0ckeZt6YwfDNUSh6GppnlxVShXFD7gMUvIddE/e+kIbhtDzPURBcA2seg8d9D4UegdJnbxklhfmNp0B53yOD/WY6TGLCFtJCub+Sjy4Uw8uwvv1uzF7JtR29w/yT34esvoN+Sz1lLclbacMa4yYZzOPdeGDJs1hEgnhvSb7wILiwoDppq6bFOJOPtab3SkML4WFN40RkMzciH9SQgfRKZwQhbnDpCQjNbGSLX+31USzNTe9Hjf8dFEw/kviSr9JHSCJ4HbrCM/C31qdFeOwSae7vcazpvQTFS76vbf8WCsECSuBkqC0vEy/VXUK8iJpYAnj6B+jQt2BiFQyd3da84vK3bGnbnF2XFrY95N/jT7bKbha9XA07e2URW4rXoRjeRUdswEV4CPGBRQfPS6PxIDqLX8bVS7ZIGhYEQdg1vSs8WGysWLEFXepaeOrPLoTrPQSh2mHRoalUae1qbM1fhOmtT3JodFIQBEF4I3pbePAS7SGuWroWBftZZNTf4ZFBZ6MuzS5CteKaV9wMvM+gK7wAV8okYYIgCHtK7wuPCItpSx9GMZgITz1OJUkjdlyoSiJBzJ1JN6FoPo8+bS2SVAVBEPacahEeEZNbW1EwnyHhsQrKyhAnobpg0cF9OHytEASXY2PNT3ApitKvQxAEYc+pJuHBxlvhgJYWBOYqZLx1FGRctbYg9DaupoObWLABxeBiTG37PmYvFnEsCIKwl1RXjQeb9wkwGL70XhTMJfDUs/QLyeSL+BB6kXJNh9aboMy1OKD9bgrl8YqSLgVBEPaSahMeTCQ+piz9DZUsSXzoVyhIJnkReoey6PCUQiGYgVdavosJblZSER2CIAj7QDUKD8ZVbOOvbYvJ2F+OjLeKgkKp+RB6FCc6KM1p+zKKxUtweev3MGsfZoEUBEEQtlGtwoMrsq0baru+5qfIh59wo12ihXyk9kOoPCxyOXcotQFBeCX61sokd4IgCN1A9QqPMtyBb1rLYgRdH4VWK9kjyCRjQkVh0eGxwLUvw4TjMaXtHly0OF86KwiCIOwH1S88uJTJTHnw78jnPw6r/kZOIaRgqfkQuhduWrGUrrQKoNQyFMyHMKV1setGWk6HgiAIwn4RB+FRxmLq8oeRL3yU9n9EzqFA2kPa24XugWs5uD9HxmWJP8CEl2JJ63I+U9oEQRCEbiBOwiPq99G6fDW6nr8UQXgD6jIeDHc6Fccg7Cdc0+Fpi0JwGyYteT8ua31sn5YTFwRBEHZJvIQHw87gilVd+GvrddgSTKYS6vPQMuJF2AeiphVKNyQ6st7LKIafQ77zWjqjpBOpIAhCZYif8GCiES8GG5bejmLxE3Tc4qrIrdR+CHuD4fk5KBeopQgKF8Cua8ZVj3bQCUlDgiAIFSKewiPCYjaJj/Vtf8PmwlnoMj8j8eHUR+m8IOwcFqfcRFfjA2H4ExQ7PoS1yx7AtCd55IqkH0EQhAoSZ+ERweLjmhWvYsTICSgE06kE+4Qb9cJt9tL8IrweN2qFtoz+F7YWrsTW4BJMfXidS0eCIAhCxYm/8CgzYREJjfULYMJP0tF9JD6iyZ6k6UVgOB0oEhe+oj11Hwr5i7GxrZlE62bpzyEIgtBzJEd4sGvhqvLJrW14eclZMPZaZNR61/HUrXIrziV1ONlpeTPwKB1odKBoPoe1m87GtOUtpVoOSReCIAg9SJKERxl2JAZrW25BPjiPSrP/C09toTulcHJAQoog0cHP3UMnpYNfwgbvw9SWGzBrZZFOSloQBEHoBZIoPKJ+H7MRYErbn9FpPwYTTiIn9AyydLuu74eUchMNP19jQvhuytHHEZiPo8Neglfa/ubOS9OKIAhCr5FM4VGGHczmlk2Y1HoXivqd6ArvImfURXdN4oMck6uGFyeUCNyT5OdJz5U7j9b5eYT2NhTNuzG19V6XDqQDqSAIQq+TbOHBlJ3N9L+9gPWbP41icCHd9e/he1uhebVb91/ER5yJJgGj1EzP09cbafcn6Ag+gExhBqa3rnHXiOgQBEGoCpIvPCJYWFjMXlnE1LZfYGv+kzDBRRT0F/iKOx1yaVkmH4sb/Lxck4rmvhwhFH4HG34cYTgRU1v+hEtXBO4qQRAEoWpIi/AoEwmQ9hUbMKn1Z3jyhfehGF5DYauR80yp7T+a/8OVooWqg8VGVMNBz4ve6zIBiY0VCMJzcdmSs3BZ6+9JXLa7K6NNEARBqCLSJjwiytXut6zqwtTWm4HCyciHV8FXS8mZdcJTMgdItVEWHFw75Steun4D7f8GncVPYVP4H5jW9ovSldJ5VBAEoYpJp/CIKJeILdYsfxHZwjcQmAtJklwEYxcjo4tOgLghuDIMt9eIBAc/A+6/wQGvUshC11en2Hkx1rXcg88t2xBd7BDRIQiCUMW48YbCNjg+LGaOymJw3zNp7wrk/JNIjPQl7aFglBf5NbqM1y8Vuh8nG0rNXIprnkh0eDpAgM0w4W+gwzmYvGylOx8hQuP1zGs8G9nMt1EIBkBpSrNCquCRXRlvDbqCM/C31qfdit57y7ymC+g7foiioTyo0lxAFbobKkhKgnotkRNznVBbf4cNL78fhfAjlJFvQ0Y/CI0uVwsSdUaN+oII3cP2mg0SGiw4nLjbBF/fh7yZhSB4N6a2fIpEx+Olp8SvEv+CIAgxQ4THzikJkOe6sL7lfgRrr8GWzg+iWJxAoT+lsxuQ9ZRzjtEMmDIp2b4QxVkUf9wvw9eKBB4Q2KdJhHwVyr4LW8ILsSE7Bxtb/+4+w0gfDkEQhNgizQV7wkwSaLOds4sc3pwTD0M2+xGKvvNJgIyAsX0QWp/OshMtVW3vELXSLFMWGW6nRCQ2FKk3rfK0vxnFcAlF1j1oD+7H55atd1dxN98o9kRs7CnS1JJupKlFqGYs91sQ9g52hMwseh80tp72mqD1aVRSbySneSiJkIMpzC+5VaLcHEMONo0CxAkOigN35ywySgLCop1E25NkHB+jo+UU8BeYdU9g2pMFdz5CxMa+0Nz0ftR430Eh7E9xLsIjdVie22Yt8mE3CI+Q8mBUtSsI3YQIj/0kir+JJDTGNPXFlmAoarKjyV2eSQLkvXRmOHKeQtEqBIb7L4BECn8m2SUIFhs8xwb31wCVuHmNHLZfgeGajYfp7n9BWmQpjP4X1uU3YfaKzm2fFPaf+Sd/gITHt0h4DJDSagrhvlIZvQZB8Qzcv4/C47bGjyKX/T6lIa7xED8hdB9S49GNLISHCa6pJXKeMxvqMCh3Kh2+ixztWHIEh1NoPQq2lvyxD9IiJPyMK0wYumLbkyjtVHPtyI6dannkCd8yhykSVVy34VaEVV1U6upAV7gOJnyQLlyKsPPXuPyRZ0ufBMZTnC1y8cXxJnQXc5tOIeF3HT2bDD0YER5pQ2lu9N1C+e4SbGhbvU/LBTSPfQ+U92VKR120Va8tEmKIEuFRYRRm0jZ0VB2KAw5CJnwrjDqSHMLR0Oqt5HbfTCZhAIwdQCUUS84bVDbhJez2jO4WJ9v6YewG/quRuLAIySgZMk7RGikvIQj/Re9P00WPQwX/omtXYdiytSQytjU+EeXfvWd/T9g7Zp7hY1BnHTpDyd9ppdOjvNW2ZZ/XKJrYkMGhqCsdCUL3UeuJku0RuBaA+4SwEeCOqiMaatDp94Uq1sN4B0H7xyKj3gyrjoANSZRQmEKt++yOLpqFSWRGWKS4EPoMfTsJyPJ17N73hHJfC8aQ6HEilPuhuGrV6Pu4rFyuZd12tTUkjl6inadIOP2ThMcT9Defot/9BIVtdtuGtg661+DfOuUKPcmepQMhyexvvpM0JFQESVi9QxTvXBvy2hKJwvxRfbB1QD/UqDfBC99KtuMIUgCHkAkZTgqhH5TuC63qacsgqzP0Ea5xyJAQ4e9UCGh/9yh4qkiv0d/2ddEJmaIpkpAIadtCf5dFxFa6lGcFfYaOn6E/9S/o4jPw7Hqsrt+K2Yt5EbYyCuNJaCxy3ylCQxAEQdgpIjyqAa4ZmEXO+rXzU7z22cwclUG/fvXIqb4kEvrRlVwjQu9aw4Z94SsPxngkTIaQKNl1u74hkcJzkShV7tS5mb4zhDUkOLw8lL8Jtn0LBpoOfPzRjtI1O1L+nTv+RhEbgiAIwm4R4REvoj4jK2kbT0f3kWA5kBz+bNdrnR1/JF24WWd37NgEMhM+XqLP8HetpG0Ubf8uhARBEARhvxHhkTz29JmKqBAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAE4XUA/z9SIqmox8Wp+AAAAABJRU5ErkJggg==" alt="G2L" style="display:block; max-height:30px; width:auto; object-fit:contain;">
+      <span id="client-logo-text" style="display:none; font-family:'Poppins',sans-serif; font-weight:600; font-size:16px;">G2L</span>
+      <label for="client-logo-upload" title="Clique para trocar a logo do cliente" style="cursor:pointer; opacity:0.4; font-size:11px; margin-left:8px;">📎</label>
+      <input type="file" id="client-logo-upload" accept="image/*" style="display:none;">
+    </div>
+    <div class="header-sep"></div>
+    <span class="badge">Reunião de Conexão</span>
+  </div>
+  <div class="header-right">
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 / ☀️ Tema</button>
+  </div>
+</header>
+
+<nav class="tabs-nav">
+  <button class="tab-btn active" onclick="showTab('contexto')">Contexto</button>
+  <button class="tab-btn" onclick="showTab('desafios')">Desafios</button>
+  <button class="tab-btn" onclick="showTab('responsaveis')">Responsáveis pelo Projeto</button>
+  <button class="tab-btn" onclick="showTab('requisitos')">Requisitos do Projeto</button>
+  <button class="tab-btn" onclick="showTab('cenario')">Cenário Atual</button>
+  <button class="tab-btn" onclick="showTab('demometas')">Demonstração Metas e AVD</button>
+  <button class="tab-btn" onclick="showTab('cronograma')">Cronograma e Próximos Passos</button>
+</nav>
+
+<main>
+
+  <!-- CONTEXTO -->
+  <div class="tab-panel active" id="tab-contexto">
+    <div class="hero">
+      <div class="hero-eyebrow">Logística · GVZL</div>
+      <h1>G2L</h1>
+      <div class="hero-sub">~860 colaboradores hoje · meta de 900 até o final do ano</div>
+      <div class="hero-context">
+        Vocês estão conduzindo a primeira avaliação de desempenho da empresa e, ao mesmo tempo, avaliando uma troca de plataforma que precisa sustentar treinamento, avaliação e metas em um único ambiente. A decisão está sendo levada ao comitê executivo pelo time de RH, com o orçamento como ponto de atenção principal.
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Perfil da empresa</div>
+      <div class="field-grid">
+        <div class="field">
+          <div class="field-label">Setor</div>
+          <div class="field-value">Logística (área da GVZL)</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Colaboradores</div>
+          <div class="field-value">~860 hoje · meta 900 até dezembro</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Perfil adicional</div>
+          <div class="field-value">Grande contingente de agregados (motoristas), fora da governança da plataforma hoje</div>
+        </div>
+        <div class="field">
+          <div class="field-label">Ferramenta de gestão de pessoas</div>
+          <div class="field-value">Micropower + Sapiens (conteúdo) + Pin People (clima)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESAFIOS -->
+  <div class="tab-panel" id="tab-desafios">
+    <div class="section">
+      <div class="section-title">Desafios mapeados</div>
+
+      <div class="dor-card">
+        <div class="dor-card-body">
+          <span class="dor-tag tag-operacional">Operacional</span>
+          <div class="dor-title">Plataforma pouco amigável para o administrador</div>
+          <div class="dor-impact">Configuração, gestão de usuários, aderência de cursos e geração de relatórios exigem esforço manual do time de RH, atrasando a leitura de dados para a diretoria.</div>
+        </div>
+      </div>
+
+      <div class="dor-card">
+        <div class="dor-card-body">
+          <span class="dor-tag tag-estrategico">Estratégico</span>
+          <div class="dor-title">Primeira avaliação de desempenho correndo em paralelo à troca de fornecedor</div>
+          <div class="dor-impact">O ciclo está ligado à PLR de 100% do público. Uma migração de plataforma no meio do processo é um risco de continuidade que precisa ser bem orquestrado.</div>
+        </div>
+      </div>
+
+      <div class="dor-card">
+        <div class="dor-card-body">
+          <span class="dor-tag tag-estrategico">Estratégico</span>
+          <div class="dor-title">Ausência de gestão de metas estruturada, ligada à remuneração variável</div>
+          <div class="dor-impact">Sem contratação de metas na plataforma, a calibração de performance conectada ao bônus fica dependente de processos paralelos e menos confiáveis.</div>
+        </div>
+      </div>
+
+      <div class="dor-card">
+        <div class="dor-card-body">
+          <span class="dor-tag tag-estrategico">Estratégico</span>
+          <div class="dor-title">Alto turnover de liderança e sucessão ainda não estruturada</div>
+          <div class="dor-impact">A G2L teve 67% de turnover de liderança no último ano. Hoje só uma coordenadora é vista como possível sucessora — o mapeamento de posições críticas e pessoas-chave é urgente antes de formalizar um plano de sucessão.</div>
+        </div>
+      </div>
+
+      <div class="dor-card">
+        <div class="dor-card-body">
+          <span class="dor-tag tag-operacional">Operacional</span>
+          <div class="dor-title">Histórico de feedbacks trimestrais desorganizado</div>
+          <div class="dor-impact">As one-on-ones trimestrais são obrigatórias, mas o sistema atual limita o líder a 234 caracteres por registro. Ao exportar para Excel, o histórico fica fragmentado e difícil de consolidar por colaborador.</div>
+        </div>
+      </div>
+
+      <div class="dor-card">
+        <div class="dor-card-body">
+          <span class="dor-tag tag-operacional">Operacional</span>
+          <div class="dor-title">Baixa adesão da operação a ferramentas digitais</div>
+          <div class="dor-impact">Parte do público operacional tem baixa escolaridade e pouca familiaridade com sistemas corporativos. Uma mudança de ferramenta mal conduzida no passado já gerou resistência — a curva de adoção precisa ser cuidada de perto.</div>
+        </div>
+      </div>
+
+      <div class="highlight-block">
+        <p>"A gente teve um turnover de 67% de liderança no ano passado."</p>
+        <span>Fernanda Moreno, sobre o desafio de retenção da liderança</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESPONSÁVEIS PELO PROJETO -->
+  <div class="tab-panel" id="tab-responsaveis">
+    <div class="section">
+      <div class="section-title">Responsáveis pelo Projeto</div>
+
+      <div class="requisito-area-title">Time G2L</div>
+      <div class="frentes-grid">
+        <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
+          <div class="fornecedor-nome">Fernanda Moreno</div>
+          <div class="fornecedor-papel">Liderança de DHO. Principal ponto de decisão sobre o desenho do ciclo de avaliação, calibração e sucessão.</div>
+        </div>
+        <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
+          <div class="fornecedor-nome">Raniely</div>
+          <div class="fornecedor-papel">Analista de DHO. Ponto focal operacional do projeto — treinamentos, formato SCORM e testes da plataforma.</div>
+        </div>
+        <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
+          <div class="fornecedor-nome">Carolina</div>
+          <div class="fornecedor-papel">Interface com o time de TI da G2L. Responsável pela definição técnica da integração com o Protheus (via API).</div>
+        </div>
+      </div>
+
+      <div class="requisito-area-title">Time impulseup</div>
+      <div class="frentes-grid">
+        <div class="fornecedor-card" style="flex-direction:column; align-items:flex-start; gap:4px;">
+          <div class="fornecedor-nome">Luís Fonseca</div>
+          <div class="fornecedor-papel">Consultor comercial responsável pela condução do projeto, demonstrações e construção do cronograma de implantação.</div>
+        </div>
+      </div>
+
+      <div class="highlight-block">
+        <p>Próximo passo combinado: reunião para detalhar processo de implantação, cronograma, suporte e pós-venda.</p>
+        <span>Alinhado com Fernanda e Raniely na última reunião</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- REQUISITOS DO PROJETO -->
+  <div class="tab-panel" id="tab-requisitos">
+    <div class="section">
+      <div class="section-title">Requisitos do Projeto</div>
+
+      <div class="requisito-area-title">Treinamentos</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Facilidade de configuração e administração da plataforma para o time interno</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Hoje o Micropower é pouco amigável para configuração, gestão de usuários e geração de relatórios; a dor é do administrador, não do usuário final.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Painel administrativo intuitivo, sem necessidade de suporte técnico externo para configurações do dia a dia.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Gestão de turmas presenciais com controle de presença automatizado</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Hoje a gestão de turmas presenciais é manual: presenças são coletadas na ponta e depois importadas por planilha.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Gestão de cursos presenciais com QR Code para confirmação de presença e vinculação de instrutor por turma.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Organização de cursos em categorias e trilhas de aprendizagem</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Conteúdo de cursos hoje fornecido pela Sapiens, em contrato paralelo ao Micropower.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Organização nativa de cursos em categorias e trilhas de aprendizado.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Notificação de participantes ausentes e de novos cursos por múltiplos canais</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de reduzir o trabalho manual de acompanhamento de presença e engajamento.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Notificação automática de ausências e de cursos por e-mail, SMS e WhatsApp.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Emissão de certificado de conclusão de curso</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Requisito padrão de gestão de treinamento corporativo.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Emissão automática de certificado ao final do curso.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Acompanhamento de progresso e engajamento nos cursos</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de visibilidade sobre aderência de cursos, hoje um ponto de dor com o Micropower.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Dashboard de acompanhamento de progresso e engajamento por curso e por colaborador.</div>
+      </div>
+
+      <div class="requisito-area-title">Treinamentos + Desempenho</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Integração entre PDIs e treinamentos</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Possibilidade de criar PDIs a partir de catálogo de cursos existentes no módulo de treinamentos.</div>
+      </div>
+
+      <div class="requisito-area-title">Desempenho</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Ciclos de avaliação personalizáveis (90, 180 ou 360 graus), com múltiplos públicos em um mesmo ciclo</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Primeira avaliação de desempenho da empresa na plataforma, prevista para outubro/novembro.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Ciclos configuráveis em 90/180/360 graus, com múltiplos públicos rodando simultaneamente no mesmo ciclo.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Formulário único com comportamentos segmentados por público, sem necessidade de formulários separados</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Diferentes áreas e níveis (operacional, liderança) precisam de critérios distintos sem duplicar formulários.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Formulário único com regras de exibição e comportamento segmentadas por público.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Escala de avaliação personalizável, no padrão de 4 níveis sem ponto neutro</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">A G2L utiliza hoje escala de 4 níveis, sem ponto neutro, e precisa manter esse padrão.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Personalização total da escala de resposta, incluindo tamanho, valores e nomes.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Campos de observação configuráveis (obrigatório, opcional ou condicional por nota)</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de flexibilidade na coleta de justificativas conforme a nota atribuída.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Campos de observação configuráveis por tipo de obrigatoriedade e condição de nota.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Avaliação integrada de múltiplos liderados em uma única tela, com histórico de ciclos anteriores visível</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Gestores precisam avaliar times inteiros de forma ágil, com contexto do histórico à mão.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Tela única de avaliação de múltiplos liderados, com histórico de ciclos anteriores disponível durante a avaliação.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Migração de histórico de avaliações de sistemas legados</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">A primeira rodada será feita ainda no fornecedor atual, com migração de plataforma ocorrendo durante o processo.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Serviço de migração de histórico de avaliações do sistema legado para a impulseup.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Recursos de IA para resumo de pontos fortes e a desenvolver, e sugestão de pauta de devolutiva e PDI</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de apoiar gestores na condução de devolutivas e na construção de planos de desenvolvimento.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> IA nativa que resume pontos fortes e a desenvolver e sugere pauta de devolutiva e PDI.</div>
+      </div>
+
+      <div class="requisito-area-title">Sucessão</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Definição de sucessores e árvore de sucessão</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Matriz Nine-box conectada a desempenho.</div>
+      </div>
+
+      <div class="requisito-area-title">Calibração</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Calibração de Matriz com filtros segmentados</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Possibilitar movimentação de pessoas entre quadrantes.</div>
+      </div>
+
+      <div class="requisito-area-title">Metas</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Cascateamento automático de metas corporativas para metas departamentais e individuais</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Hoje as metas são duplicadas manualmente em planilha entre os diferentes níveis da organização.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Desdobramento automático de metas corporativas em departamentais e individuais, sem duplicação manual.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Fluxo de aprovação de metas departamentais, com governança de permissões e notificações</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de controle sobre quem aprova e edita metas em cada nível da organização.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Fluxos de aprovação configuráveis por ciclo, com permissões e notificações automáticas.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Painel de movimentações com proporcionalidade automática</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Colaboradores com movimentação de cargo ou área durante o ciclo precisam ter suas metas ajustadas automaticamente.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Painel de movimentações com recálculo automático de proporcionalidade.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Revisão de metas em fluxo de meio de ciclo</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de revisar metas sem reiniciar o ciclo inteiro, diante de mudanças de cenário.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Fluxo de revisão de metas em ciclo aberto, preservando o histórico de progresso.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Pesos diferenciados por cargo ou grupo, com parametrização automática sem necessidade de subir base a cada nova contratação</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">A cada nova contratação hoje é necessário reconfigurar pesos manualmente.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Distribuição automática ou personalizada de pesos, com regras aplicadas automaticamente a novas contratações.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Visão consolidada de metas organizacionais, departamentais e individuais em um único ciclo, com segmentação por tags vinculadas à PLR</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de visibilidade única do ciclo de metas, cruzando níveis e vínculo com remuneração variável.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Painel consolidado por nível organizacional, com segmentação por tags para vínculo direto com PLR.</div>
+      </div>
+
+      <div class="requisito-area-title">Remuneração Variável</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Cálculo de remuneração variável mensal para o público de motoristas (aprox. 70 pessoas), hoje controlado em Excel</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Processo atualmente manual em planilha, sem automação nem integração com metas.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Cálculo automático de RV mensal, migrando o controle de Excel para a plataforma.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Cálculo de remuneração variável mensal para cargos operacionais (aprox. 15 pessoas), com elegibilidade automática e detratores de segurança</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Necessidade de aplicar regras de elegibilidade e descontos por ocorrências de segurança sem controle manual.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Motor de regras com elegibilidade automática e aplicação de detratores (ex: ocorrências de segurança).</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Construção de programas de RV com gatilhos de performance (ex: atingimento de EBITDA) e fórmulas de cálculo personalizadas</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">A remuneração variável da G2L depende de gatilhos corporativos além do atingimento individual de metas.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Programas de RV configuráveis com gatilhos corporativos e fórmulas de cálculo personalizadas.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Ponderação combinada entre metas e competências no cálculo da remuneração</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">100% do público da G2L recebe PLR vinculada a metas, e a régua de competências também precisa compor o cálculo.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Ponderação configurável entre metas e competências no mesmo cálculo de remuneração.</div>
+      </div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Cálculo de PLR anual por pool salarial e multiplicadores de cargo</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Modelo de PLR da G2L é estruturado por pool salarial com multiplicadores diferentes por cargo.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Motor de cálculo de PLR por pool salarial com multiplicadores configuráveis por cargo.</div>
+      </div>
+
+      <div class="requisito-area-title">Integrações</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Integração com sistema de folha (Protheus) para movimentação de pessoas</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">G2L utiliza Protheus para folha e já opera integrações via RPA em outras conexões.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Integração com folha via API ou RPA, incluindo exportação de arquivo de pagamento compatível com Protheus.</div>
+      </div>
+
+      <div class="requisito-area-title">Acesso</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Acesso à plataforma via WhatsApp para motoristas e público operacional sem e-mail corporativo</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Grande parte do público de motoristas (agregados) não possui e-mail corporativo hoje.</div>
+        <div class="requisito-resposta"><b>Como a impulseup atende:</b> Aplicação via WhatsApp com login único por token, sem exigência de e-mail corporativo.</div>
+      </div>
+
+      <div class="requisito-area-title">Permissões</div>
+      <div class="requisito-card">
+        <div class="requisito-head">
+          <div class="requisito-titulo">Gestão de permissão segmentada para BPs e administradores restritos a módulos específicos</div>
+          <span class="requisito-atende">Atende</span>
+        </div>
+        <div class="requisito-contexto">Múltiplos stakeholders que administram diferentes módulos para diferentes públicos.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CENÁRIO ATUAL -->
+  <div class="tab-panel" id="tab-cenario">
+    <div class="section">
+      <div class="section-title">Fornecedores e ferramentas identificados</div>
+
+      <div class="fornecedor-card">
+        <div>
+          <div class="fornecedor-nome">Micropower</div>
+          <div class="fornecedor-papel">Plataforma de gestão de desempenho e treinamento. Contrato em torno de R$ 8 mil/mês. Primeira avaliação de desempenho ainda não rodou.</div>
+        </div>
+        <div class="fornecedor-confirm">Ainda é assim?</div>
+      </div>
+
+      <div class="fornecedor-card">
+        <div>
+          <div class="fornecedor-nome">Sapiens</div>
+          <div class="fornecedor-papel">Fornecedor parceiro de conteúdo, integrado à plataforma para consumo de cursos pelos colaboradores.</div>
+        </div>
+        <div class="fornecedor-confirm">Tem mais alguma ferramenta envolvida?</div>
+      </div>
+
+      <div class="fornecedor-card">
+        <div>
+          <div class="fornecedor-nome">Pin People</div>
+          <div class="fornecedor-papel">Pesquisa de clima organizacional. Ferramenta bem avaliada internamente, sem intenção de troca imediata.</div>
+        </div>
+        <div class="fornecedor-confirm">Ainda é assim?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEMONSTRAÇÃO METAS E AVD -->
+  <div class="tab-panel" id="tab-demometas">
+    <div class="section" style="padding-top:28px;">
+      <div class="section-title" style="margin-bottom:16px;">Pontos a abordar na demonstração — Metas, RV e AVD</div>
+      <div class="demo-list">
+        <div class="demo-item"><span class="demo-num">1</span>Automação de meta corporativa em cascata (ex. EBITDA), sem planilha linha a linha</div>
+        <div class="demo-item"><span class="demo-num">2</span>Fluxo de aprovação: gestor parametriza, remuneração valida</div>
+        <div class="demo-item"><span class="demo-num">3</span>Painel de alertas de movimentação (entrada, saída, troca de cargo) com peso proporcional automático</div>
+        <div class="demo-item"><span class="demo-num">4</span>Ciclo de revisão de metas durante o ano, com aprovação do comitê</div>
+        <div class="demo-item"><span class="demo-num">5</span>RV mensal dos motoristas (~70 pessoas), saindo do Excel</div>
+        <div class="demo-item"><span class="demo-num">6</span>RV mensal do grupo operacional (~15 cargos): elegibilidade automática, presenteísmo e detratores de segurança</div>
+        <div class="demo-item"><span class="demo-num">7</span>Peso combinado entre metas e competências (ex. 80/20)</div>
+        <div class="demo-item"><span class="demo-num">8</span>Cálculo de PLR por pool salarial e múltiplos de cargo</div>
+        <div class="demo-item"><span class="demo-num">9</span>Integração com Protheus (API de movimentação) e exportação para pagamento</div>
+        <div class="demo-item"><span class="demo-num">10</span>Avaliação de competências, PDIs e calibragem</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRONOGRAMA E PRÓXIMOS PASSOS -->
+  <div class="tab-panel" id="tab-cronograma">
+    <div class="section">
+      <div class="section-title">Cronograma e Próximos Passos</div>
+
+      <div class="fase-preparacao">
+        <div class="fase-preparacao-dot">📝</div>
+        <div>
+          <div class="fase-preparacao-fase">Ago/26</div>
+          <div class="fase-preparacao-title">Negociação, Jurídico, Suprimentos e Assinatura</div>
+          <div class="fase-preparacao-desc">Etapa de fechamento comercial e formalização do contrato. As 3 frentes de implantação abaixo começam a partir de setembro, assim que o contrato estiver assinado.</div>
+        </div>
+      </div>
+
+      <div class="frente-heading">Implantação Geral</div>
+      <div class="frente-heading-sub">Base da plataforma, antes das 3 frentes específicas rodarem em paralelo</div>
+      <div class="timeline" style="margin-bottom:32px;">
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Set/26</div>
+            <div class="timeline-title">Configuração geral da base</div>
+            <div class="timeline-desc">Estrutura organizacional, cargos, níveis e usuários carregados na plataforma impulseup.</div>
+          </div>
+        </div>
+        <div class="timeline-item marco-final">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Set e Out/26</div>
+            <div class="timeline-title">Integração com Protheus</div>
+            <div class="timeline-desc">Conexão com a folha para movimentação de pessoas (entrada, saída, mudança de cargo). Prazo estimado de aproximadamente 45 dias.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="frentes-grid">
+      <div class="frente-col">
+      <div class="frente-heading">Avaliação de Competências</div>
+      <div class="frente-heading-sub">Piloto com a liderança antes da expansão para toda a Cia</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Set/26</div>
+            <div class="timeline-title">Configuração do ciclo piloto</div>
+            <div class="timeline-desc">Ajuste do modelo de competências na plataforma e testes internos com a equipe de RH.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Out/26</div>
+            <div class="timeline-title">Lançamento do piloto com os gerentes</div>
+            <div class="timeline-desc">Início da avaliação de desempenho com o público de liderança.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Nov/26</div>
+            <div class="timeline-title">Piloto em andamento</div>
+            <div class="timeline-desc">Coleta de feedback dos gestores participantes ao longo do processo.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Dez/26</div>
+            <div class="timeline-title">Fechamento do piloto</div>
+            <div class="timeline-desc">Ajustes no modelo de competências com base no aprendizado do piloto.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Jan/27</div>
+            <div class="timeline-title">Preparação para expansão</div>
+            <div class="timeline-desc">Revisão de competências por nível (Operacional, Administrativo, Líderes).</div>
+          </div>
+        </div>
+        <div class="timeline-item marco-final">
+          <div class="timeline-dot">6</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">2027</div>
+            <div class="timeline-title">Expansão para toda a Cia</div>
+            <div class="timeline-desc">Ciclo completo com cerca de 900 colaboradores.</div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="frente-col">
+      <div class="frente-heading">Gestão de Metas</div>
+      <div class="frente-heading-sub">Ciclo de apuração, AD e PLR vinculado às metas 2026/2027</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Nov e Dez/26</div>
+            <div class="timeline-title">Contratação de metas 2027</div>
+            <div class="timeline-desc">Depende do planejamento estratégico da G2L.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Dez/26 e Jan/27</div>
+            <div class="timeline-title">Fechamento das metas 2026</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Jan e Fev/27</div>
+            <div class="timeline-title">Apuração e Ciclo de AD 2026 → 2027</div>
+            <div class="timeline-desc">Apuração dos resultados das metas 2026 em conjunto com o ciclo de avaliação de desempenho.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Mar/27</div>
+            <div class="timeline-title">Pagamento da meta 2026 e Comitê de Gente</div>
+          </div>
+        </div>
+        <div class="timeline-item marco-final">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Abr/27</div>
+            <div class="timeline-title">Meritocracia e tomada de decisão de performance</div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="frente-col">
+      <div class="frente-heading">Treinamentos</div>
+      <div class="frente-heading-sub">Migração, SCORM e sensibilização até o distrato do fornecedor atual</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Set/26</div>
+            <div class="timeline-title">Testes de importação dos pacotes SCORM</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Set e Out/26</div>
+            <div class="timeline-title">Migração do histórico de treinamentos</div>
+            <div class="timeline-desc">Registros de participação e histórico dos colaboradores.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Out/26</div>
+            <div class="timeline-title">Estruturação do módulo de Learning</div>
+            <div class="timeline-desc">Categorias, trilhas e organização de conteúdo na plataforma.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Nov/26</div>
+            <div class="timeline-title">Sensibilização</div>
+            <div class="timeline-desc">Comunicação da troca de ferramenta para líderes e colaboradores.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Dez/26</div>
+            <div class="timeline-title">Treinamento do RH e finalização do SCORM</div>
+            <div class="timeline-desc">Capacitação da equipe de RH/administradores e finalização da subida dos pacotes SCORM.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">6</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Jan/27</div>
+            <div class="timeline-title">Go-live dos treinamentos</div>
+            <div class="timeline-desc">Treinamentos 100% implantados e operando na impulseup.</div>
+          </div>
+        </div>
+        <div class="timeline-item marco-final">
+          <div class="timeline-dot">7</div>
+          <div class="timeline-content">
+            <div class="timeline-fase">Fev/27</div>
+            <div class="timeline-title">Distrato com o fornecedor atual</div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>impulseup · confidencial · julho/2026</footer>
+
+<script>
+document.getElementById('client-logo-upload').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const img = document.getElementById('client-logo-img');
+    const txt = document.getElementById('client-logo-text');
+    img.src = ev.target.result;
+    img.style.display = 'block';
+    txt.style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+});
+
+function toggleTheme() {
+  const root = document.documentElement;
+  const current = root.getAttribute('data-theme') || 'light';
+  root.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+}
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+</script>
+
+</body>
+</html>
