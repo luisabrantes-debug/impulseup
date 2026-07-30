@@ -146,7 +146,9 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
 .org-people { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; }
 .org-node { display:flex; flex-direction:column; align-items:center; gap:6px; margin-bottom:6px; }
 .org-node-sm { margin:0; }
-.org-name { font-size:13px; font-weight:700; color: var(--color-fg); }
+.org-name { font-size:13px; font-weight:700; color: var(--color-fg); border-radius:4px; padding:1px 4px; outline:none; cursor:text; }
+.org-name:hover { background: var(--color-bg-alt); }
+.org-name:focus { background: var(--color-bg-alt); box-shadow:0 0 0 1px var(--color-primary); }
 .org-role { font-size:11px; color: var(--color-fg-muted); text-align:center; }
 .avatar-circle { width:72px; height:72px; border-radius:50%; background: var(--color-bg-alt); border:2px dashed var(--color-border); display:flex; align-items:center; justify-content:center; overflow:hidden; cursor:pointer; position:relative; transition:border-color 200ms ease; }
 .avatar-circle:hover { border-color: var(--color-primary); }
@@ -336,7 +338,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
             </div>
             <img id="org-diogo" alt="Diogo" style="display:none;">
           </div>
-          <div class="org-name">Diogo</div>
+          <div class="org-name" contenteditable="true" spellcheck="false">Diogo</div>
           <div class="org-role">Gerência geral de RH</div>
         </div>
 
@@ -355,7 +357,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                   </div>
                   <img id="org-telma" alt="Telma" style="display:none;">
                 </div>
-                <div class="org-name">Telma</div>
+                <div class="org-name" contenteditable="true" spellcheck="false">Telma</div>
                 <div class="org-role">Analista sênior</div>
               </div>
               <div class="org-node org-node-sm">
@@ -366,7 +368,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                   </div>
                   <img id="org-nycole" alt="Nycole" style="display:none;">
                 </div>
-                <div class="org-name">Nycole</div>
+                <div class="org-name" contenteditable="true" spellcheck="false">Nycole</div>
                 <div class="org-role">Analista pleno</div>
               </div>
               <div class="org-node org-node-sm">
@@ -377,7 +379,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                   </div>
                   <img id="org-jessica" alt="Jéssica" style="display:none;">
                 </div>
-                <div class="org-name">Jéssica</div>
+                <div class="org-name" contenteditable="true" spellcheck="false">Jéssica</div>
                 <div class="org-role">Analista pleno</div>
               </div>
             </div>
@@ -392,7 +394,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                 </div>
                 <img id="org-carolina" alt="Carolina" style="display:none;">
               </div>
-              <div class="org-name">Carolina</div>
+              <div class="org-name" contenteditable="true" spellcheck="false">Carolina</div>
               <div class="org-role">Coordenação de DHO e treinamento</div>
             </div>
 
@@ -410,7 +412,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                       </div>
                       <img id="org-fernanda" alt="Fernanda" style="display:none;">
                     </div>
-                    <div class="org-name">Fernanda</div>
+                    <div class="org-name" contenteditable="true" spellcheck="false">Fernanda</div>
                     <div class="org-role">Especialista de DHO</div>
                   </div>
                   <div class="org-node org-node-sm">
@@ -438,7 +440,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                       </div>
                       <img id="org-raniely" alt="Raniely" style="display:none;">
                     </div>
-                    <div class="org-name">Raniely</div>
+                    <div class="org-name" contenteditable="true" spellcheck="false">Raniely</div>
                     <div class="org-role">Analista sênior</div>
                   </div>
                   <div class="org-node org-node-sm">
@@ -449,7 +451,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                       </div>
                       <img id="org-mari" alt="Mari" style="display:none;">
                     </div>
-                    <div class="org-name">Mari</div>
+                    <div class="org-name" contenteditable="true" spellcheck="false">Mari</div>
                     <div class="org-role">Analista pleno</div>
                   </div>
                   <div class="org-node org-node-sm">
@@ -460,7 +462,7 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
                       </div>
                       <img id="org-vitoria" alt="Vitória" style="display:none;">
                     </div>
-                    <div class="org-name">Vitória</div>
+                    <div class="org-name" contenteditable="true" spellcheck="false">Vitória</div>
                     <div class="org-role">Analista jr</div>
                   </div>
                 </div>
