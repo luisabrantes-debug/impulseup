@@ -443,17 +443,45 @@
     <section class="tab-panel" id="tab-4">
       <h1 class="section-title">Diferenciais impulseup</h1>
       <p class="section-sub">Comparativo com base nos critérios mais importantes para este projeto</p>
-      <div class="empty-state" id="tab4EmptyState">
-        <i class="fa-regular fa-list-check"></i>
-        <h3>Aba liberada após a reunião de Diagnóstico</h3>
-        <p>Assim que o closer finalizar o diagnóstico, esta aba mostra o comparativo entre a impulseup e os concorrentes identificados na conversa. Se nenhum concorrente específico for mencionado, o comparativo é feito contra "Outras soluções", com resultado mediano.</p>
-      </div>
-      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;display:none;">
+      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;">
         <table class="rfp-table" id="tab4Table">
-          <!-- Preenchido pela skill site-cliente-impulseup a partir da transcrição da reunião de Diagnóstico e de references/rfp-criterios.json.
-               Cada critério exibe sua tag (campo "tags" do JSON) junto ao nome, ex:
-               <tr><td><div class="feat-name">Formatos de avaliação diferentes (90/180/360)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>...</tr> -->
+          <tr>
+            <th style="text-align:left;">Critério</th>
+            <th class="iup-col">impulseup</th>
+            <th>Sênior (Convivo/FITS)</th>
+            <th>LG</th>
+          </tr>
+          <tr><td colspan="4" style="background:var(--color-bg-alt);font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);">Avaliação de desempenho</td></tr>
+          <tr><td><div class="feat-name">Formatos de avaliação diferentes (90/180/360)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">Avaliação de consenso entre avaliadores</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">Envio de avaliações por SMS e WhatsApp, sem exigir e-mail corporativo</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+          <tr><td><div class="feat-name">Gestores acompanham em tempo real o status das respostas da equipe</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td colspan="4" style="background:var(--color-bg-alt);font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);">Sucessão e matriz n-Box</td></tr>
+          <tr><td><div class="feat-name">Planejamento de carreira e sucessão</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">Comitês de calibração de resultados</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td colspan="4" style="background:var(--color-bg-alt);font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);">Pesquisas</td></tr>
+          <tr><td><div class="feat-name">Diversos formatos de pesquisa (pulso, clima, NR-01, NPS)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">Envio de pesquisas por SMS e WhatsApp, sem exigir login</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+          <tr><td><div class="feat-name">Criação de planos de ação a partir dos resultados</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">IA para análise de comentários e questões abertas</div><span class="feat-tag">Inteligente</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+          <tr><td colspan="4" style="background:var(--color-bg-alt);font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);">Learning</td></tr>
+          <tr><td><div class="feat-name">Adição de conteúdo próprio e gestão de trilhas por cargo</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">Gestão de cursos presenciais com QR Code de presença</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">Testes, quizzes e certificado de conclusão</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+          <tr><td><div class="feat-name">Criação de conteúdo assistida por IA (roteiro, vídeo, SCORM)</div><span class="feat-tag">Inteligente</span></td><td class="iup-col check-cell"><i class="fa-solid fa-xmark icon-no"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+          <tr><td colspan="4" style="background:var(--color-bg-alt);font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);">Gamificação</td></tr>
+          <tr><td><div class="feat-name">Gamificação vinculada a processos de desenvolvimento (pontos, ranking)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+          <tr><td colspan="4" style="background:var(--color-bg-alt);font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);">Serviço e suporte</td></tr>
+          <tr><td><div class="feat-name">Acesso sem e-mail corporativo (CPF ou token único por WhatsApp)</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+          <tr><td><div class="feat-name">Contratação modular, conforme a necessidade</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
         </table>
+      </div>
+
+      <div style="margin-top:24px;padding:18px 20px;border:1px solid var(--color-border);border-left:4px solid var(--color-primary);border-radius:10px;background:var(--color-bg-alt);">
+        <h4 style="margin:0 0 8px;font-size:14px;">Sobre o nível de atendimento em Learning</h4>
+        <p style="margin:0;font-size:13px;line-height:1.6;color:var(--color-fg-muted);">
+          Hoje a impulseup atua como <strong>hospedeira de LMS</strong>: você sobe vídeos, PDFs e monta a estrutura de trilhas e quizzes dentro da própria plataforma, sem precisar contratar um hospedeiro externo. O que a impulseup ainda não tem, diferente de ferramentas como a Konviva (Sênior), é uma <strong>ferramenta própria de criação de conteúdo assistida por IA</strong> (geração de vídeo, roteiro ou pacotes SCORM a partir de arquivo/texto) — a criação continua sendo feita fora (ex: Canva) e depois hospedada aqui. O Learning é hoje o maior investimento de produto da impulseup, com lançamentos recentes de treinamento presencial e integração com Teams para turmas síncronas, mas para quem já entra buscando o melhor sistema de e-learning do mercado, o módulo mais forte da impulseup continua sendo <strong>Avaliação de Desempenho e Pesquisas</strong>.
+        </p>
       </div>
     </section>
 
