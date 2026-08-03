@@ -258,6 +258,41 @@
   .cenarios-comparativo .additional-value{font-size:13px;font-weight:700;}
   .cenarios-comparativo .additional-status{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:3px;display:inline-block;background:var(--color-bg-alt);color:var(--color-fg-muted);}
 
+  /* PROCESSO DE IMPLEMENTAÇÃO (modelo v4 — cadeia por cluster) */
+  .impl-processo{}
+  .impl-suporte-note{
+    display:flex;align-items:center;gap:10px;background:#EAEAF6;color:#4B4B8A;border-radius:10px;
+    padding:11px 16px;margin-bottom:14px;font-size:12.5px;font-weight:500;
+  }
+  .impl-weeklies-note{
+    display:flex;align-items:center;gap:10px;background:#FFF8E5;color:#8a6400;border-radius:10px;
+    padding:11px 16px;margin-bottom:24px;font-size:12.5px;font-weight:500;
+  }
+  .impl-rows{display:flex;flex-direction:column;gap:26px;}
+  .impl-row-label{font-weight:700;font-size:12.5px;color:var(--color-fg);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .impl-dot{width:8px;height:8px;border-radius:50%;background:var(--color-primary);display:inline-block;}
+  .impl-row-empty{font-size:12px;color:var(--color-fg-muted);font-style:italic;}
+
+  .impl-chain{display:flex;align-items:flex-start;flex-wrap:wrap;row-gap:22px;column-gap:0;overflow-x:auto;padding-bottom:4px;}
+  .impl-step-unit{display:flex;flex-direction:column;align-items:center;width:186px;flex-shrink:0;}
+  .impl-box{
+    font-size:12px;font-weight:600;padding:8px 16px;border-radius:10px;text-align:center;
+    border:1.5px solid var(--color-border);background:var(--color-bg);color:var(--color-fg);width:100%;
+    min-height:52px;display:flex;align-items:center;justify-content:center;line-height:1.3;
+  }
+  .impl-box-weeklies{border-color:#B8860B;background:#FFF8E5;}
+  .role-tag{margin-top:8px;font-size:10px;font-weight:600;padding:2px 9px;border-radius:12px;white-space:nowrap;}
+  .role-consultor{background:#FCE4F2;color:var(--color-primary-hover);}
+  .role-gerente{background:#111;color:#fff;}
+  .role-csi{background:#EAEAF6;color:#4B4B8A;}
+  .impl-tag-weeklies{margin-top:4px;font-size:9px;font-weight:700;color:#8a6400;text-transform:uppercase;letter-spacing:0.03em;}
+  .impl-arrow{color:var(--color-border);font-size:16px;width:22px;min-height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .impl-handoff-divider{width:22px;min-height:78px;flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;}
+  .impl-handoff-divider::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:0;border-left:2px dashed var(--color-primary);}
+  .impl-legend{margin-top:32px;padding-top:20px;border-top:1px solid var(--color-border);display:flex;gap:22px;flex-wrap:wrap;font-size:12px;color:var(--color-fg-muted);}
+  .impl-legend-item{display:flex;align-items:center;gap:6px;}
+  .impl-legend-dot{width:10px;height:10px;border-radius:50%;}
+
   .module-list{display:flex;flex-direction:column;gap:0;margin-bottom:32px;border:1px solid var(--color-border);border-radius:12px;overflow:hidden;}
   .module-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px;border-bottom:1px solid var(--color-border);}
   .module-row:last-child{border-bottom:none;}
@@ -359,8 +394,9 @@
       <button data-tab="5"><span class="num">05</span>Aprovação do projeto</button>
       <button data-tab="6"><span class="num">06</span>Plano de ação</button>
       <button data-tab="7"><span class="num">07</span>Proposta comercial</button>
-      <button data-tab="9"><span class="num">08</span>Serviço Consultivo</button>
-      <button data-tab="8"><span class="num">09</span>Próximos passos</button>
+      <button data-tab="10"><span class="num">08</span>Processo de implementação</button>
+      <button data-tab="9"><span class="num">09</span>Serviço Consultivo</button>
+      <button data-tab="8"><span class="num">10</span>Próximos passos</button>
     </nav>
 
     <main>
@@ -669,6 +705,19 @@
         </div>
         <input type="file" accept="image/*" id="proposalInput">
       </label>
+    </section>
+
+    <!-- ABA 10 — PROCESSO DE IMPLEMENTAÇÃO -->
+    <section class="tab-panel" id="tab-10">
+      <h1 class="section-title">Processo de implementação</h1>
+      <p class="section-sub">Cenário 2 — Toda a empresa (cluster Enterprise)</p>
+      <div class="impl-processo" data-cluster="enterprise"><div class="impl-suporte-note"><b>Suporte técnico</b> acompanha toda a jornada de implementação, do início ao fim — seu papel é garantir que tudo funcione conforme previsto, por isso não aparece preso a uma etapa específica.</div><div class="impl-rows"><div class="impl-row"><div class="impl-row-label"><span class="impl-dot"></span>Jornada Inicial</div><div class="impl-chain"><div class="impl-step-unit"><div class="impl-box">Planejamento Inicial</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Coleta Cronograma</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Workshop Sistema</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Estratégia 1º Acesso</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Apresentação Geral</div><span class="role-tag role-csi">CSI</span></div></div></div><div class="impl-row"><div class="impl-row-label"><span class="impl-dot"></span>Avaliação de Desempenho</div><div class="impl-chain"><div class="impl-step-unit"><div class="impl-box">Coleta de Requisitos</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Validação e Testes</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Validação Final</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Envio e Acompanhamento</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-handoff-divider"></div><div class="impl-step-unit"><div class="impl-box">Relatórios e PDI's</div><span class="role-tag role-gerente">Gerente de contas</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Nine-box e Sucessão</div><span class="role-tag role-gerente">Gerente de contas</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Analytics</div><span class="role-tag role-gerente">Gerente de contas</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Apresentação de Resultados</div><span class="role-tag role-gerente">Gerente de contas</span></div></div></div><div class="impl-row"><div class="impl-row-label"><span class="impl-dot"></span>Pesquisa</div><div class="impl-chain"><div class="impl-step-unit"><div class="impl-box">Coleta de Requisitos</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Validação</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Envio e Acompanhamento</div><span class="role-tag role-consultor">Consultor de implementação</span></div><div class="impl-handoff-divider"></div><div class="impl-step-unit"><div class="impl-box">Analytics</div><span class="role-tag role-gerente">Gerente de contas</span></div><div class="impl-arrow">&rarr;</div><div class="impl-step-unit"><div class="impl-box">Apresentação de Resultados</div><span class="role-tag role-gerente">Gerente de contas</span></div></div></div><div class="impl-row"><div class="impl-row-label"><span class="impl-dot"></span>Learning</div><div class="impl-chain"><div class="impl-step-unit"><div class="impl-box">Workshop Learning</div><span class="role-tag role-consultor">Consultor de implementação</span></div></div></div></div></div>
+      <div class="impl-legend">
+        <div class="impl-legend-item"><span class="impl-legend-dot role-consultor" style="background:#FCE4F2;"></span>Consultor de implementação</div>
+        <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#111;"></span>Gerente de contas</div>
+        <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#EAEAF6;"></span>CSI</div>
+      </div>
+      <p style="font-size:12px;color:var(--color-fg-muted);margin-top:16px;">Etapas extras combinadas especificamente com a SuperLuna podem ser adicionadas depois, direto no site, sem substituir nenhuma etapa fixa. Weeklies de Acompanhamento ainda não confirmado — a incluir se você decidir mais adiante.</p>
     </section>
 
     <!-- ABA 9 — SERVIÇO CONSULTIVO -->
