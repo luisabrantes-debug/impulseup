@@ -178,6 +178,85 @@
   .investment-hero .label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#FF7FC8;margin-bottom:10px;}
   .investment-hero .value{font-size:36px;font-weight:700;color:#fff;}
   .investment-hero-meta{font-size:12.5px;color:var(--color-fg-muted);margin-bottom:32px;}
+  .compare-table{width:100%;border-collapse:collapse;border:1px solid var(--color-border);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+  .compare-table th{padding:18px 20px;text-align:left;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--color-fg-muted);background:var(--color-bg-alt);}
+  .compare-table th.transformar-col{background:var(--color-primary);color:#fff;}
+  .compare-table td{padding:16px 20px;border-top:1px solid var(--color-border);font-size:13.5px;color:var(--color-fg);}
+  .compare-table td.transformar-col{background:#FBEAF0;font-weight:600;}
+  .compare-table td.row-label{color:var(--color-fg-muted);width:26%;}
+  .compare-table tr.price-row td{font-size:22px;font-weight:800;}
+  .compare-table tr.price-row td.transformar-col{color:var(--color-primary);}
+  .compare-quote{background:#FBEAF0;border-radius:10px;padding:16px 20px;text-align:center;font-weight:600;font-size:14px;color:var(--color-primary);font-style:italic;margin-bottom:40px;}
+  .decision-card{border:1px solid var(--color-border);border-radius:14px;padding:28px;margin-bottom:28px;}
+  .decision-card h3{font-size:16px;font-weight:700;margin-bottom:20px;}
+  .decision-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--color-border);font-size:14px;}
+  .decision-row:last-child{border-bottom:none;}
+  .decision-row .val{font-weight:700;}
+  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+  .split-card{border-radius:12px;padding:20px;}
+  .split-card.plataforma{background:#FBEAF0;}
+  .split-card.consultoria{background:#E7F5EC;}
+  .split-card .split-label{font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);margin-bottom:8px;}
+  .split-card .split-value{font-size:22px;font-weight:800;}
+  .split-card.plataforma .split-value{color:var(--color-primary);}
+  .split-card.consultoria .split-value{color:#1D9E75;}
+  .highlight-block{background:var(--color-bg-alt);border-left:3px solid var(--color-primary);border-radius:10px;padding:20px 24px;margin-bottom:16px;font-size:14px;line-height:1.7;font-style:italic;color:var(--color-fg);}
+
+  /* COMPARATIVO DE CENÁRIOS (2 ou 3 alternativas simultâneas) */
+  .cenarios-comparativo .cards{display:grid;grid-template-columns:repeat(3, 1fr);gap:18px;margin-bottom:36px;}
+  @media (max-width:900px){.cenarios-comparativo .cards{grid-template-columns:1fr;}}
+  .cenarios-comparativo .card{
+    background:var(--color-bg);border-radius:16px;overflow:hidden;position:relative;
+    box-shadow:0 1px 3px rgba(0,0,0,0.06);border:2px solid transparent;
+    display:flex;flex-direction:column;padding:0;
+  }
+  .cenarios-comparativo .card.recommended{border-color:var(--color-primary);}
+  .cenarios-comparativo .card-header{padding:18px 20px 16px 20px;position:relative;color:#fff;background:var(--color-fg);}
+  .cenarios-comparativo .card.recommended .card-header{background:var(--color-primary);}
+  .cenarios-comparativo .eyebrow-card{font-size:10.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;opacity:0.85;}
+  .cenarios-comparativo .card-title{font-size:17px;font-weight:700;margin-top:4px;}
+  .cenarios-comparativo .badge-recommended{
+    position:absolute;top:14px;right:16px;background:#fff;color:var(--color-primary);
+    font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;
+    padding:4px 11px;border-radius:20px;
+  }
+  .cenarios-comparativo .card-body{padding:20px;display:flex;flex-direction:column;flex:1;}
+  .cenarios-comparativo .price-line{display:flex;align-items:baseline;gap:6px;}
+  .cenarios-comparativo .price-value{font-size:26px;font-weight:800;color:var(--color-primary);}
+  .cenarios-comparativo .price-unit{font-size:12.5px;color:var(--color-fg-muted);font-weight:500;}
+  .cenarios-comparativo .price-base{font-size:11.5px;color:var(--color-fg-muted);margin-top:2px;}
+  .cenarios-comparativo .divider{border:none;border-top:1px solid var(--color-border);margin:16px 0;}
+  .cenarios-comparativo .inclui-label{font-size:10.5px;font-weight:700;letter-spacing:0.03em;color:var(--color-fg-muted);text-transform:uppercase;margin-bottom:10px;}
+  .cenarios-comparativo .module-desc{font-size:12px;color:var(--color-fg-muted);margin:0 0 10px 0;line-height:1.4;}
+  .cenarios-comparativo .module-desc b{color:var(--color-fg);font-weight:600;}
+  .cenarios-comparativo .check-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+  .cenarios-comparativo .check-list li{font-size:12px;display:flex;gap:8px;align-items:flex-start;line-height:1.4;}
+  .cenarios-comparativo .check-list .tick{color:var(--color-primary);flex-shrink:0;font-weight:700;}
+  .cenarios-comparativo .detalhamento{margin-top:auto;padding-top:16px;}
+  .cenarios-comparativo .detalhamento summary{
+    cursor:pointer;font-size:11.5px;font-weight:600;color:var(--color-primary-hover);
+    list-style:none;display:flex;align-items:center;gap:5px;
+  }
+  .cenarios-comparativo .detalhamento summary::-webkit-details-marker{display:none;}
+  .cenarios-comparativo .detalhamento summary::after{content:'▾';font-size:9px;transition:transform 0.15s;}
+  .cenarios-comparativo .detalhamento[open] summary::after{transform:rotate(180deg);}
+  .cenarios-comparativo .detalhamento-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px;}
+  .cenarios-comparativo .detalhamento-table th{
+    text-align:left;font-weight:600;color:var(--color-fg-muted);padding:6px 4px;
+    border-bottom:1px solid var(--color-border);font-size:10px;text-transform:uppercase;
+  }
+  .cenarios-comparativo .detalhamento-table td{padding:7px 4px;border-bottom:1px solid var(--color-bg-alt);}
+  .cenarios-comparativo .additional-title{font-size:11px;font-weight:700;letter-spacing:0.05em;color:var(--color-fg-muted);text-transform:uppercase;margin:0 0 12px 4px;}
+  .cenarios-comparativo .additional-list{display:flex;flex-direction:column;gap:10px;}
+  .cenarios-comparativo .additional-row{
+    background:var(--color-bg);border-radius:12px;padding:14px 18px;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;box-shadow:0 1px 3px rgba(0,0,0,0.05);
+  }
+  .cenarios-comparativo .additional-name{font-size:13px;font-weight:600;}
+  .cenarios-comparativo .additional-desc{font-size:11.5px;color:var(--color-fg-muted);margin-top:1px;}
+  .cenarios-comparativo .additional-right{text-align:right;}
+  .cenarios-comparativo .additional-value{font-size:13px;font-weight:700;}
+  .cenarios-comparativo .additional-status{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:3px;display:inline-block;background:var(--color-bg-alt);color:var(--color-fg-muted);}
 
   .module-list{display:flex;flex-direction:column;gap:0;margin-bottom:32px;border:1px solid var(--color-border);border-radius:12px;overflow:hidden;}
   .module-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 18px;border-bottom:1px solid var(--color-border);}
@@ -280,7 +359,8 @@
       <button data-tab="5"><span class="num">05</span>Aprovação do projeto</button>
       <button data-tab="6"><span class="num">06</span>Plano de ação</button>
       <button data-tab="7"><span class="num">07</span>Proposta comercial</button>
-      <button data-tab="8"><span class="num">08</span>Próximos passos</button>
+      <button data-tab="9"><span class="num">08</span>Serviço Consultivo</button>
+      <button data-tab="8"><span class="num">09</span>Próximos passos</button>
     </nav>
 
     <main>
@@ -515,47 +595,140 @@
       <h1 class="section-title">Proposta comercial</h1>
       <p class="section-sub">Investimento para a SuperLuna Supermercados</p>
 
-      <div class="empty-state" id="tab7EmptyState">
-        <i class="fa-regular fa-file-invoice-dollar"></i>
-        <h3>Aba liberada após o closer informar a proposta comercial</h3>
-        <p>Assim que o closer passar os valores definidos na ferramenta de precificação da impulseup, esta aba mostra o investimento, os módulos e serviços incluídos e o detalhamento de valores.</p>
+      <div class="block-title"><i class="fa-regular fa-layer-group"></i>Dois caminhos para começar</div>
+      <div class="cenarios-comparativo"><div class="cards"><div class="card"><div class="card-header"><div class="eyebrow-card">Cenário 1</div><div class="card-title">Onboarding</div></div><div class="card-body"><div class="price-line"><span class="price-value">R$ 4.862,50</span><span class="price-unit">/ mês (12x)</span></div><div class="price-base">Investimento total do contrato: R$ 58.350,00</div><hr class="divider"><div class="inclui-label">Inclui</div><ul class="check-list"><li><span class="tick">&#10003;</span>Avaliação de Experiência com envio automático, por WhatsApp</li><li><span class="tick">&#10003;</span>Pesquisa de satisfação dos primeiros dias, sem exigir e-mail corporativo</li><li><span class="tick">&#10003;</span>Trilhas de onboarding por cargo em Learning</li><li><span class="tick">&#10003;</span>PDIs, Feedbacks e Reuniões 1:1 (Desenvolvimento) já inclusos</li></ul><details class="detalhamento"><summary>Ver detalhamento</summary><table class="detalhamento-table"><thead><tr><th>Item</th><th>Quantidade</th><th>Valor unitário</th><th>Valor total</th></tr></thead><tbody><tr><td>Avaliações (300 créditos)</td><td>300</td><td>R$ 83,14</td><td>R$ 24.942,00</td></tr><tr><td>Pesquisas (300 usuários)</td><td>300</td><td>R$ 3,31/mês</td><td>R$ 993,00/mês</td></tr><tr><td>Learning (300 usuários)</td><td>300</td><td>R$ 3,47/mês</td><td>R$ 1.041,00/mês</td></tr><tr><td>Desenvolvimento (300 usuários)</td><td>300</td><td>Incluso</td><td>Incluso</td></tr><tr><td>Plano de Serviço III (ativação)</td><td>—</td><td>Valor único</td><td>R$ 9.000,00</td></tr></tbody></table></details></div></div><div class="card"><div class="card-header"><div class="eyebrow-card">Cenário 2</div><div class="card-title">Toda a empresa</div></div><div class="card-body"><div class="price-line"><span class="price-value">R$ 12.637,50</span><span class="price-unit">/ mês (12x)</span></div><div class="price-base">Investimento total do contrato: R$ 170.650,00</div><hr class="divider"><div class="inclui-label">Inclui tudo do Cenário 1, mais</div><ul class="check-list"><li><span class="tick">&#10003;</span>Avaliação 90/180/360 para toda a base, com nine-box e sucessão</li><li><span class="tick">&#10003;</span>Pesquisas de Clima, Pulso e Engajamento</li><li><span class="tick">&#10003;</span>Learning liberado para todos os colaboradores</li><li><span class="tick">&#10003;</span>PDIs, Feedbacks e Reuniões 1:1 (Desenvolvimento) já inclusos</li></ul><details class="detalhamento"><summary>Ver detalhamento</summary><table class="detalhamento-table"><thead><tr><th>Item</th><th>Quantidade</th><th>Valor unitário</th><th>Valor total</th></tr></thead><tbody><tr><td>Avaliações (3.000 créditos)</td><td>3.000</td><td>R$ 25,53</td><td>R$ 76.590,00</td></tr><tr><td>Pesquisas (3.000 usuários)</td><td>3.000</td><td>R$ 1,02/mês</td><td>R$ 3.060,00/mês</td></tr><tr><td>Learning (3.000 usuários)</td><td>3.000</td><td>R$ 1,07/mês</td><td>R$ 3.195,00/mês</td></tr><tr><td>Desenvolvimento (3.000 usuários)</td><td>3.000</td><td>Incluso</td><td>Incluso</td></tr><tr><td>Plano de Serviço Enterprise (ativação)</td><td>—</td><td>Valor único</td><td>R$ 19.000,00</td></tr></tbody></table></details></div></div></div></div>
+
+      <div class="block-title" style="margin-top:12px;"><i class="fa-regular fa-arrows-left-right"></i>Cenário 2 — qual caminho a SuperLuna prefere seguir?</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>Automatizar<br><span style="font-weight:400;text-transform:none;font-size:12px;">Só a plataforma</span></th>
+            <th class="transformar-col">Transformar<br><span style="font-weight:400;text-transform:none;font-size:12px;">Plataforma + Programa de Decisões</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">O que você recebe</td>
+            <td>Sistema para automatizar o ciclo, com apoio de implantação</td>
+            <td class="transformar-col">Tudo isso + inteligência humana do Programa de Decisões</td>
+          </tr>
+          <tr>
+            <td class="row-label">Serviço</td>
+            <td>Especializado em desempenho e pesquisas, com suporte na implantação</td>
+            <td class="transformar-col">Especialista dedicada (Manu) para o Programa de Decisões</td>
+          </tr>
+          <tr>
+            <td class="row-label">Programa de Decisões</td>
+            <td>Não incluso nesse cenário</td>
+            <td class="transformar-col">Entregue pronto, por ciclo</td>
+          </tr>
+          <tr>
+            <td class="row-label">Quem age sobre os dados</td>
+            <td>Seu RH, com apoio de implantação da impulseup</td>
+            <td class="transformar-col">Seu RH + suas lideranças, construído com a especialista</td>
+          </tr>
+          <tr class="price-row">
+            <td class="row-label">Investimento</td>
+            <td>R$ 170.650,00 <span style="font-size:12px;font-weight:400;color:var(--color-fg-muted);">(1ª R$ 31.637,50 + 11x R$ 12.637,50)</span></td>
+            <td class="transformar-col">R$ 238.910,00 <span style="font-size:12px;font-weight:400;">(1ª R$ 44.292,50 + 11x R$ 17.692,50)</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="compare-quote">"Qual caminho você prefere seguir?"</p>
+
+      <div class="block-title"><i class="fa-regular fa-user-tie"></i>Venda por consultoria</div>
+      <p class="section-sub" style="margin-bottom:24px;">O Programa de Decisões cobre artefatos de Avaliação de Desempenho e Pesquisas. Corresponde a 40% acima do investimento da plataforma nesses dois módulos.</p>
+
+      <div class="decision-card">
+        <h3>Composição do Cenário 2</h3>
+        <div class="decision-row"><span>Plataforma (Avaliação + Pesquisas + Learning + serviço de ativação)</span><span class="val">R$ 170.650,00</span></div>
+        <div class="split-grid">
+          <div class="split-card plataforma">
+            <div class="split-label">Sem consultoria</div>
+            <div class="split-value">R$ 170.650,00</div>
+          </div>
+          <div class="split-card consultoria">
+            <div class="split-label">Programa de Decisões (+40%)</div>
+            <div class="split-value">+ R$ 68.260,00</div>
+          </div>
+        </div>
+        <h3 style="margin-top:24px;">Cenário 2A — Com consultoria (Programa de Decisões)</h3>
+        <div class="decision-row"><span>Total do projeto</span><span class="val" style="color:var(--color-primary);font-size:18px;">R$ 238.910,00</span></div>
+        <div class="decision-row"><span>Condição de pagamento</span><span class="val" style="color:var(--color-primary);">1ª R$ 44.292,50 + 11x R$ 17.692,50</span></div>
+        <h3 style="margin-top:24px;">Cenário 2B — Sem consultoria</h3>
+        <div class="decision-row"><span>Total do projeto</span><span class="val" style="color:var(--color-primary);font-size:18px;">R$ 170.650,00</span></div>
+        <div class="decision-row"><span>Condição de pagamento</span><span class="val" style="color:var(--color-primary);">1ª R$ 31.637,50 + 11x R$ 12.637,50</span></div>
+        <p style="font-size:12.5px;color:var(--color-fg-muted);margin-top:12px;">A SuperLuna deixa de contratar o Programa de Decisões, mantendo apenas a plataforma e o apoio de implantação.</p>
       </div>
 
-      <div id="tab7ProposalWrap" style="display:none;">
-        <div class="investment-hero">
-          <div class="label">Investimento mensal</div>
-          <div class="value">R$ 12.400/mês</div>
+      <label class="proposal-upload-slot" id="proposalSlot" style="margin-top:24px;">
+        <div id="proposalPlaceholder">
+          <i class="fa-regular fa-image" style="font-size:22px;color:var(--color-border);display:block;margin-bottom:10px;"></i>
+          <span style="font-size:13px;color:var(--color-fg-muted);">Clique para anexar o print da calculadora com os valores reais</span>
         </div>
-        <p class="investment-hero-meta">Investimento total do contrato: R$ 148.800 · Validade da proposta: 15 dias · Duração do contrato: 12 meses</p>
+        <input type="file" accept="image/*" id="proposalInput">
+      </label>
+    </section>
 
-        <div class="block-title"><i class="fa-regular fa-layer-group"></i>Módulos e serviços incluídos</div>
-        <div class="module-list">
-          <div class="module-row">
-            <div class="module-row-main"><h4>Avaliação de Desempenho</h4><p>Ciclos completos com nine-box e PDI integrado.</p></div>
-            <div class="module-row-users">500 usuários</div>
-          </div>
-          <div class="module-row">
-            <div class="module-row-main"><h4>Plano de Serviço III</h4><p>Implementação assistida por especialista em DHO.</p></div>
-            <div class="module-row-users"></div>
-          </div>
+    <!-- ABA 9 — SERVIÇO CONSULTIVO -->
+    <section class="tab-panel" id="tab-9">
+      <h1 class="section-title">Serviço Consultivo</h1>
+      <p class="section-sub">Programa de Decisões</p>
+
+      <div class="top-grid">
+        <div class="card">
+          <div class="card-label">O risco</div>
+          <p>Os dados da sua avaliação e das suas pesquisas são ouro, mas o risco é eles nunca saírem do papel. Quando o RH não mostra o impacto no negócio, em algum momento a diretoria operacional questiona se vale a pena manter o processo, e é aí que um projeto valioso começa a morrer.</p>
         </div>
+        <div class="card dark">
+          <div class="card-label">A solução</div>
+          <p>Por isso criamos o Programa de Decisões: as ações estratégicas que precisam acontecer depois da avaliação e da pesquisa, definidas junto com uma especialista em gestão de desempenho, não deixadas por conta de um RH ainda em estruturação.</p>
+        </div>
+      </div>
 
-        <div class="block-title"><i class="fa-regular fa-table"></i>Detalhamento de valores</div>
-        <table class="rfp-table" id="proposalValuesTable">
-          <tr><th>Item</th><th>Usuários</th><th>Valor unitário</th><th>Valor mensal</th><th>Observação</th></tr>
-          <tr><td><div class="feat-name">Avaliação de Desempenho</div></td><td class="check-cell">500</td><td class="check-cell">R$ 22,00</td><td class="check-cell">R$ 11.000,00</td><td class="check-cell">—</td></tr>
-          <tr><td><div class="feat-name">Plano de Serviço III</div></td><td class="check-cell">—</td><td class="check-cell">R$ 16.800,00</td><td class="check-cell">—</td><td class="check-cell">Cobrança única</td></tr>
-          <tr><td colspan="4" style="text-align:right;font-weight:600;">Total do contrato (12 meses)</td><td class="check-cell" style="font-weight:700;color:var(--color-primary);">R$ 148.800</td></tr>
-        </table>
+      <div class="block-title"><i class="fa-regular fa-lightbulb"></i>Como funciona</div>
+      <div class="challenges">
+        <div class="challenge-card"><span class="ch-num">01</span><h4>Análises específicas</h4><p>Leitura pronta pra decidir, não um relatório de dados brutos.</p></div>
+        <div class="challenge-card"><span class="ch-num">02</span><h4>Decisões & ações</h4><p>Você e a especialista definem juntos o que precisa sair do papel.</p></div>
+        <div class="challenge-card"><span class="ch-num">03</span><h4>Valor pra diretoria</h4><p>O RH leva o impacto da avaliação e da pesquisa para a mesa operacional.</p></div>
+      </div>
 
-        <label class="proposal-upload-slot" id="proposalSlot" style="margin-top:24px;">
-          <div id="proposalPlaceholder">
-            <i class="fa-regular fa-image" style="font-size:22px;color:var(--color-border);display:block;margin-bottom:10px;"></i>
-            <span style="font-size:13px;color:var(--color-fg-muted);">Clique para anexar</span>
-          </div>
-          <input type="file" accept="image/*" id="proposalInput">
+      <div class="block-title"><i class="fa-regular fa-user-tie"></i>Especialista dedicada</div>
+      <div class="card" style="display:flex;align-items:center;gap:28px;margin-bottom:48px;">
+        <label class="person-photo" data-initials="M" style="width:96px;height:96px;font-size:24px;flex-shrink:0;">
+          <span>M</span>
+          <input type="file" accept="image/*" class="personPhotoInput" id="manuPhotoInput">
         </label>
+        <div>
+          <h4 style="font-size:18px;font-weight:700;margin-bottom:4px;">Manu</h4>
+          <p style="font-size:13px;color:var(--color-primary);font-weight:600;margin-bottom:8px;">Especialista em gestão de desempenho</p>
+          <p style="font-size:13.5px;color:var(--color-fg-muted);line-height:1.6;">Formada em Psicologia e mestra em gestão de desempenho. +200 projetos de avaliação de desempenho implementados nos últimos 5 anos.</p>
+        </div>
       </div>
+
+      <div class="block-title"><i class="fa-regular fa-clipboard-list"></i>O que entregamos</div>
+      <div class="challenges">
+        <div class="challenge-card"><span class="ch-num">01</span><h4>Mapa de decisões</h4><p>Plano de reconhecimento, plano de acompanhamento e discussão de casos críticos.</p></div>
+        <div class="challenge-card"><span class="ch-num">02</span><h4>Sucessão e liderança</h4><p>Relatório de lideranças, mapa sucessório e próximos passos, essencial com 29 lojas em ritmo de expansão.</p></div>
+        <div class="challenge-card"><span class="ch-num">03</span><h4>Workshop com lideranças</h4><p>1 encontro: visão estratégica do time e como acompanhá-lo por loja.</p></div>
+      </div>
+      <p class="investment-hero-meta">A gente não entrega só dados — ajuda a tirá-los do papel.</p>
+
+      <div class="block-title"><i class="fa-regular fa-scale-balanced"></i>Tecnologia + inteligência humana</div>
+      <div class="top-grid">
+        <div class="card">
+          <div class="card-label">O mercado</div>
+          <p>Quer entregar uma plataforma para automatizar o seu trabalho.</p>
+        </div>
+        <div class="card dark">
+          <div class="card-label">A impulseup</div>
+          <p>Utilizaremos a nossa experiência, aliada a um sistema, para resolver o seu problema.</p>
+        </div>
+      </div>
+
+      <div class="highlight-block">"A discussão de sucessão virou pauta de comitê estratégico, com o RH orquestrando." — Superlógica, cliente impulseup</div>
+      <p class="investment-hero-meta">O Programa de Decisões posiciona a gestão de desempenho e as pesquisas como assunto estratégico da SuperLuna, não mais um processo de RH que precisa se justificar sozinho perante a diretoria operacional.</p>
     </section>
 
     <!-- ABA 8 — PRÓXIMOS PASSOS -->
