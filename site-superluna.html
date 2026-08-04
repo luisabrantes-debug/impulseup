@@ -157,11 +157,12 @@
   .rfp-table .icon-yes{color:#1D9E75;font-size:16px;}
   .rfp-table .icon-no{color:#D4534F;font-size:16px;}
 
-  .video-grid{display:flex;flex-direction:column;gap:28px;margin-top:8px;}
-  .video-card{border:1px solid var(--color-border);border-radius:14px;padding:20px;background:var(--color-surface);}
-  .video-card h4{font-size:15px;font-weight:600;margin-bottom:4px;}
-  .video-card p{font-size:13px;color:var(--color-fg-muted);margin-bottom:16px;line-height:1.5;}
-  .video-embed-wrap{position:relative;width:100%;padding-top:56.25%;border-radius:10px;overflow:hidden;background:#000;}
+  .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px;}
+  @media (max-width:800px){.video-grid{grid-template-columns:1fr;}}
+  .video-card{border:1px solid var(--color-border);border-radius:14px;padding:14px;background:var(--color-surface);}
+  .video-card h4{font-size:13.5px;font-weight:600;margin-bottom:3px;}
+  .video-card p{font-size:12px;color:var(--color-fg-muted);margin-bottom:10px;line-height:1.4;}
+  .video-embed-wrap{position:relative;width:100%;padding-top:56.25%;border-radius:8px;overflow:hidden;background:#000;}
   .video-embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
   .video-embed-empty{background:var(--color-bg-alt);border:1px dashed var(--color-border);}
   .video-paste-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:text;color:var(--color-fg-muted);font-size:13px;padding:24px 24px 54px;text-align:center;}
@@ -500,28 +501,28 @@
       <div id="tab3Content" style="display:block;">
         <div class="video-grid" id="tab3VideoGrid">
           <div class="video-card">
-            <h4>Avaliação por competência (90°)</h4><p>Ciclo segmentado por competência e comportamento, com fechamento em apenas 90° para o público operacional.</p>
+            <h4>Learning: trilhas por cargo e QR Code presencial</h4><p>Conteúdo hospedado na própria plataforma, vinculado a competências, com coleta de presença por QR Code para treinamentos na loja.</p>
             <div class="video-embed-wrap video-embed-empty" data-video-idx="0">
               <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
               <input type="text" class="video-url-input" data-video-idx="0" placeholder="https://...">
             </div>
           </div>
           <div class="video-card">
-            <h4>Onboarding e período de experiência</h4><p>Automatizado a partir da data de admissão, com integração à Senior.</p>
+            <h4>Nine Box e Sucessão</h4><p>Matriz de sucessão flexível, para começar simples e evoluir conforme a maturidade do processo.</p>
             <div class="video-embed-wrap video-embed-empty" data-video-idx="1">
               <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
               <input type="text" class="video-url-input" data-video-idx="1" placeholder="https://...">
             </div>
           </div>
           <div class="video-card">
-            <h4>Learning: trilhas por cargo e QR Code presencial</h4><p>Conteúdo hospedado na própria plataforma, vinculado a competências, com coleta de presença por QR Code para treinamentos na loja.</p>
+            <h4>Onboarding e período de experiência</h4><p>Automatizado a partir da data de admissão, com integração à Senior.</p>
             <div class="video-embed-wrap video-embed-empty" data-video-idx="2">
               <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
               <input type="text" class="video-url-input" data-video-idx="2" placeholder="https://...">
             </div>
           </div>
           <div class="video-card">
-            <h4>Nine Box e Sucessão</h4><p>Matriz de sucessão flexível, para começar simples e evoluir conforme a maturidade do processo.</p>
+            <h4>Pesquisas</h4><p>A preencher.</p>
             <div class="video-embed-wrap video-embed-empty" data-video-idx="3">
               <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
               <input type="text" class="video-url-input" data-video-idx="3" placeholder="https://...">
