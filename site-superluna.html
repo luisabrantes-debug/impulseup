@@ -502,30 +502,26 @@
         <div class="video-grid" id="tab3VideoGrid">
           <div class="video-card">
             <h4>Learning: trilhas por cargo e QR Code presencial</h4><p>Conteúdo hospedado na própria plataforma, vinculado a competências, com coleta de presença por QR Code para treinamentos na loja.</p>
-            <div class="video-embed-wrap video-embed-empty" data-video-idx="0">
-              <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
-              <input type="text" class="video-url-input" data-video-idx="0" placeholder="https://...">
+            <div class="video-embed-wrap" data-video-idx="0">
+              <iframe src="https://player.vimeo.com/video/1215594121" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
           </div>
           <div class="video-card">
             <h4>Nine Box e Sucessão</h4><p>Matriz de sucessão flexível, para começar simples e evoluir conforme a maturidade do processo.</p>
-            <div class="video-embed-wrap video-embed-empty" data-video-idx="1">
-              <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
-              <input type="text" class="video-url-input" data-video-idx="1" placeholder="https://...">
+            <div class="video-embed-wrap" data-video-idx="1">
+              <iframe src="https://www.youtube.com/embed/Oyf6hErkuxM" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
           </div>
           <div class="video-card">
-            <h4>Onboarding e período de experiência</h4><p>Automatizado a partir da data de admissão, com integração à Senior.</p>
-            <div class="video-embed-wrap video-embed-empty" data-video-idx="2">
-              <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
-              <input type="text" class="video-url-input" data-video-idx="2" placeholder="https://...">
+            <h4>Onboarding e avaliação de experiência</h4><p>Automatizado a partir da data de admissão, com integração à Senior.</p>
+            <div class="video-embed-wrap" data-video-idx="2">
+              <iframe src="https://www.youtube.com/embed/R-e5BGnvPY0?start=53" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
           </div>
           <div class="video-card">
             <h4>Pesquisas</h4><p>A preencher.</p>
-            <div class="video-embed-wrap video-embed-empty" data-video-idx="3">
-              <label class="video-paste-label"><i class="fa-regular fa-circle-play"></i><span>Cole aqui o link do vídeo (YouTube ou Drive)</span></label>
-              <input type="text" class="video-url-input" data-video-idx="3" placeholder="https://...">
+            <div class="video-embed-wrap" data-video-idx="3">
+              <iframe src="https://player.vimeo.com/video/1206595851" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
             </div>
           </div>
         </div>
@@ -773,6 +769,10 @@
     if(u.hostname.includes('drive.google.com')){
       const match = u.pathname.match(/\/file\/d\/([^/]+)/);
       if(match) return 'https://drive.google.com/file/d/' + match[1] + '/preview';
+    }
+    if(u.hostname.includes('vimeo.com')){
+      const match = u.pathname.match(/\/(\d+)/);
+      if(match) return 'https://player.vimeo.com/video/' + match[1];
     }
     return null;
   }
