@@ -583,14 +583,6 @@
       <div class="cenarios-comparativo"><div class="cards" style="grid-template-columns:1fr;max-width:420px;"><div class="card"><div class="card-header"><div class="eyebrow-card">Cenário 1</div><div class="card-title">Onboarding</div></div><div class="card-body"><div class="price-line"><span class="price-value">R$ 4.862,50</span><span class="price-unit">/ mês (12x)</span></div><div class="price-base">Investimento total do contrato: R$ 58.350,00</div><hr class="divider"><div class="inclui-label">Inclui</div><ul class="check-list"><li><span class="tick">&#10003;</span>Avaliação de Experiência com envio automático, por WhatsApp</li><li><span class="tick">&#10003;</span>Pesquisa de satisfação dos primeiros dias, sem exigir e-mail corporativo</li><li><span class="tick">&#10003;</span>Trilhas de onboarding por cargo em Learning</li><li><span class="tick">&#10003;</span>PDIs, Feedbacks e Reuniões 1:1 (Desenvolvimento) já inclusos</li></ul><details class="detalhamento"><summary>Ver detalhamento</summary><table class="detalhamento-table"><thead><tr><th>Item</th><th>Quantidade</th><th>Valor unitário</th><th>Valor total</th></tr></thead><tbody><tr><td>Avaliações (300 créditos)</td><td>300</td><td>R$ 83,14</td><td>R$ 24.942,00</td></tr><tr><td>Pesquisas (300 usuários)</td><td>300</td><td>R$ 3,31/mês</td><td>R$ 993,00/mês</td></tr><tr><td>Learning (300 usuários)</td><td>300</td><td>R$ 3,47/mês</td><td>R$ 1.041,00/mês</td></tr><tr><td>Desenvolvimento (300 usuários)</td><td>300</td><td>Incluso</td><td>Incluso</td></tr><tr><td>Plano de Serviço III (ativação)</td><td>—</td><td>Valor único</td><td>R$ 9.000,00</td></tr></tbody></table></details></div></div></div></div>
 
       <p style="font-size:12.5px;color:var(--color-fg-muted);margin-top:8px;">Depois de 6 meses de fidelização, a SuperLuna pode migrar para o projeto completo pagando só a diferença entre os dois cenários, tanto no setup quanto na mensalidade. Veja a proposta completa na próxima aba.</p>
-
-      <label class="proposal-upload-slot" id="proposalSlot" style="margin-top:24px;">
-        <div id="proposalPlaceholder">
-          <i class="fa-regular fa-image" style="font-size:22px;color:var(--color-border);display:block;margin-bottom:10px;"></i>
-          <span style="font-size:13px;color:var(--color-fg-muted);">Clique para anexar o print da calculadora com os valores reais</span>
-        </div>
-        <input type="file" accept="image/*" id="proposalInput">
-      </label>
     </section>
 
     <!-- ABA 11 — PROPOSTA: PROJETO COMPLETO -->
@@ -663,14 +655,6 @@
         <div class="decision-row"><span>Condição de pagamento</span><span class="val" style="color:var(--color-primary);">Setup R$ 19.000,00 + 12x R$ 12.635,65</span></div>
         <p style="font-size:12.5px;color:var(--color-fg-muted);margin-top:12px;">A SuperLuna deixa de contratar o Programa de Decisões, mantendo apenas a plataforma e o apoio de implantação.</p>
       </div>
-
-      <label class="proposal-upload-slot" id="proposalSlot2" style="margin-top:24px;">
-        <div id="proposalPlaceholder2">
-          <i class="fa-regular fa-image" style="font-size:22px;color:var(--color-border);display:block;margin-bottom:10px;"></i>
-          <span style="font-size:13px;color:var(--color-fg-muted);">Clique para anexar o print da calculadora com os valores reais</span>
-        </div>
-        <input type="file" accept="image/*" id="proposalInput2">
-      </label>
     </section>
 
     </main>
@@ -769,53 +753,6 @@
   document.querySelectorAll('.logo-grid-input').forEach(input => {
     input.addEventListener('change', handleLogoGridChange);
   });
-  document.getElementById('proposalInput').addEventListener('change', e => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      const slot = document.getElementById('proposalSlot');
-      slot.innerHTML = '<img src="' + ev.target.result + '"><input type="file" accept="image/*" id="proposalInput">';
-      document.getElementById('proposalInput').addEventListener('change', arguments.callee);
-      saveImage('proposalImage', ev.target.result);
-    };
-    reader.readAsDataURL(file);
-  });
-
-  (function restoreProposalImage(){
-    const store = loadStore();
-    if(store.proposalImage){
-      const slot = document.getElementById('proposalSlot');
-      slot.innerHTML = '<img src="' + store.proposalImage + '">';
-      const input = document.createElement('input');
-      input.type = 'file'; input.accept = 'image/*'; input.id = 'proposalInput';
-      slot.appendChild(input);
-    }
-  })();
-
-  document.getElementById('proposalInput2').addEventListener('change', e => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      const slot = document.getElementById('proposalSlot2');
-      slot.innerHTML = '<img src="' + ev.target.result + '"><input type="file" accept="image/*" id="proposalInput2">';
-      document.getElementById('proposalInput2').addEventListener('change', arguments.callee);
-      saveImage('proposalImage2', ev.target.result);
-    };
-    reader.readAsDataURL(file);
-  });
-
-  (function restoreProposalImage2(){
-    const store = loadStore();
-    if(store.proposalImage2){
-      const slot = document.getElementById('proposalSlot2');
-      slot.innerHTML = '<img src="' + store.proposalImage2 + '">';
-      const input = document.createElement('input');
-      input.type = 'file'; input.accept = 'image/*'; input.id = 'proposalInput2';
-      slot.appendChild(input);
-    }
-  })();
 
   // --- Aba 3 (Demonstração): embed de vídeo a partir de link de YouTube ou Drive ---
   // Reconhece o link colado (pelo closer, no chat ou direto no site) e monta o player
