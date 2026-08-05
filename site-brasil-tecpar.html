@@ -50,7 +50,7 @@
   nav.side-nav button .num{color:var(--color-primary);font-size:11px;flex-shrink:0;}
   nav.side-nav button:hover:not(.active){background:var(--color-bg-alt);}
 
-  .app-shell{display:grid;grid-template-columns:230px 1fr;gap:44px;padding:40px 0 80px;align-items:start;}
+  .app-shell{display:grid;grid-template-columns:230px 1fr;gap:44px;padding:40px 0 80px;align-items:start;transition:grid-template-columns 0.18s ease;}
   @media (max-width:860px){
     .app-shell{grid-template-columns:1fr;padding-top:24px;}
     nav.side-nav{
@@ -59,6 +59,25 @@
     }
     nav.side-nav button{white-space:nowrap;border-left:none;border-bottom:2px solid transparent;border-radius:8px 8px 0 0;}
     nav.side-nav button.active{border-left:none;border-bottom-color:var(--color-primary);}
+  }
+
+  .sidebar-toggle-btn{
+    font-family:'Poppins',sans-serif;background:none;border:none;cursor:pointer;
+    display:flex;align-items:center;gap:8px;color:var(--color-fg-muted);font-size:12px;
+    font-weight:600;padding:8px 14px;border-radius:10px;margin-bottom:6px;align-self:start;
+  }
+  .sidebar-toggle-btn:hover{background:var(--color-bg-alt);color:var(--color-fg);}
+  .sidebar-toggle-btn i{font-size:13px;flex-shrink:0;}
+
+  .app-shell.sidebar-collapsed{grid-template-columns:60px 1fr;}
+  .app-shell.sidebar-collapsed nav.side-nav button{justify-content:center;padding:11px 0;}
+  .app-shell.sidebar-collapsed nav.side-nav button .nav-label{display:none;}
+  .app-shell.sidebar-collapsed .sidebar-toggle-btn{justify-content:center;padding:8px 0;}
+  .app-shell.sidebar-collapsed .sidebar-toggle-btn .nav-label{display:none;}
+  .app-shell.sidebar-collapsed .sidebar-toggle-btn i{transform:rotate(180deg);}
+  @media (max-width:860px){
+    .app-shell.sidebar-collapsed{grid-template-columns:1fr;}
+    .sidebar-toggle-btn{display:none;}
   }
 
   main{min-width:0;}
@@ -407,16 +426,19 @@
 <div class="wrap">
   <div class="app-shell">
     <nav class="side-nav" id="tabNav">
-      <button class="active" data-tab="1"><span class="num">01</span>A impulseup</button>
-      <button data-tab="2"><span class="num">02</span>Diagnóstico</button>
-      <button data-tab="3"><span class="num">03</span>Demonstração</button>
-      <button data-tab="4"><span class="num">04</span>Diferenciais impulseup</button>
-      <button data-tab="5"><span class="num">05</span>Aprovação e plano de ação</button>
-      <button data-tab="6"><span class="num">06</span>Processo de implementação</button>
-      <button data-tab="7"><span class="num">07</span>Proposta comercial</button>
-      <button data-tab="8"><span class="num">08</span>Próximos passos</button>
-      <button type="button" id="exportExecHtmlBtn" class="export-exec-btn">
-        <i class="fa-regular fa-file-code"></i> Resumo executivo (HTML)
+      <button type="button" id="sidebarToggleBtn" class="sidebar-toggle-btn" title="Minimizar menu">
+        <i class="fa-solid fa-angles-left"></i><span class="nav-label">Minimizar menu</span>
+      </button>
+      <button class="active" data-tab="1" title="A impulseup"><span class="num">01</span><span class="nav-label">A impulseup</span></button>
+      <button data-tab="2" title="Diagnóstico"><span class="num">02</span><span class="nav-label">Diagnóstico</span></button>
+      <button data-tab="3" title="Demonstração"><span class="num">03</span><span class="nav-label">Demonstração</span></button>
+      <button data-tab="4" title="Diferenciais impulseup"><span class="num">04</span><span class="nav-label">Diferenciais impulseup</span></button>
+      <button data-tab="5" title="Aprovação e plano de ação"><span class="num">05</span><span class="nav-label">Aprovação e plano de ação</span></button>
+      <button data-tab="6" title="Processo de implementação"><span class="num">06</span><span class="nav-label">Processo de implementação</span></button>
+      <button data-tab="7" title="Proposta comercial"><span class="num">07</span><span class="nav-label">Proposta comercial</span></button>
+      <button data-tab="8" title="Próximos passos"><span class="num">08</span><span class="nav-label">Próximos passos</span></button>
+      <button type="button" id="exportExecHtmlBtn" class="export-exec-btn" title="Resumo executivo (HTML)">
+        <i class="fa-regular fa-file-code"></i><span class="nav-label"> Resumo executivo (HTML)</span>
       </button>
     </nav>
 
@@ -765,6 +787,26 @@
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     });
   });
+
+  // ---------- MINIMIZAR MENU LATERAL ----------
+  (function(){
+    var appShell = document.querySelector('.app-shell');
+    var toggleBtn = document.getElementById('sidebarToggleBtn');
+    if (!appShell || !toggleBtn) return;
+    var STORAGE_KEY = 'iup_sidebar_collapsed_brasil-tecpar';
+    function aplicarEstado(colapsado){
+      appShell.classList.toggle('sidebar-collapsed', colapsado);
+      toggleBtn.title = colapsado ? 'Expandir menu' : 'Minimizar menu';
+    }
+    var salvo = null;
+    try { salvo = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+    aplicarEstado(salvo === '1');
+    toggleBtn.addEventListener('click', function(){
+      var colapsado = !appShell.classList.contains('sidebar-collapsed');
+      aplicarEstado(colapsado);
+      try { localStorage.setItem(STORAGE_KEY, colapsado ? '1' : '0'); } catch(e) {}
+    });
+  })();
 
   // ---------- RESUMO EXECUTIVO (HTML) ----------
   function hexVar(name, fallback){
