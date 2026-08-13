@@ -188,6 +188,17 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
 .frente-col .timeline-item { gap:0.9rem; }
 .frente-col .timeline-title { font-size:0.82rem; }
 .frente-col .timeline-desc { font-size:0.74rem; }
+
+.htimeline-track { margin-bottom:40px; }
+.htimeline-line { position:relative; height:2px; background: var(--color-border); margin:0 6px 0; }
+.htimeline-items { display:flex; }
+.htimeline-item { flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 8px; position:relative; }
+.htimeline-arrow { width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid var(--color-primary); margin-top:-1px; }
+.htimeline-item.marco-final .htimeline-arrow { border-top-color:#CC0088; }
+.htimeline-fase { font-size:0.66rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--color-primary); margin-top:10px; }
+.htimeline-title { font-size:0.85rem; font-weight:700; color: var(--color-fg); margin-top:3px; }
+.htimeline-desc { font-size:0.74rem; color: var(--color-fg-muted); line-height:1.5; margin-top:3px; }
+@media (max-width:860px) { .htimeline-items { flex-direction:column; } .htimeline-line { display:none; } .htimeline-item { align-items:flex-start; text-align:left; margin-bottom:16px; } }
 @media (max-width:900px) {
   .frentes-grid { grid-template-columns:1fr; }
 }
@@ -1015,74 +1026,60 @@ footer { text-align:center; padding:24px; font-size:12px; color: var(--color-fg-
         </div>
       </div>
 
-      <div class="frentes-grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="frente-col">
-          <div class="frente-heading">Trilha Comercial</div>
-          <div class="frente-heading-sub">Negociação e aprovação, em paralelo à implantação</div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot">1</div>
-              <div class="timeline-content">
-                <div class="timeline-fase">Ago/Set 26</div>
-                <div class="timeline-title">Negociação e testes</div>
-                <div class="timeline-desc">Validação comercial e testes da plataforma seguem em curso.</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot">2</div>
-              <div class="timeline-content">
-                <div class="timeline-fase">Set 26</div>
-                <div class="timeline-title">Jurídico</div>
-                <div class="timeline-desc">Análise contratual em paralelo à construção do orçamento de 2027.</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot">3</div>
-              <div class="timeline-content">
-                <div class="timeline-fase">Ago/Set 26</div>
-                <div class="timeline-title">Aprovação de budget pra 27</div>
-                <div class="timeline-desc">Janela de construção orçamentária da G2L para o ano seguinte.</div>
-              </div>
-            </div>
-            <div class="timeline-item marco-final">
-              <div class="timeline-dot">4</div>
-              <div class="timeline-content">
-                <div class="timeline-fase">Dez/26</div>
-                <div class="timeline-title">Assinatura de contrato</div>
-                <div class="timeline-desc">Formalização com faturamento de licenciamento a partir de janeiro de 2027.</div>
-              </div>
-            </div>
+      <div class="frente-heading" style="margin-top:8px;">Trilha Comercial</div>
+      <div class="frente-heading-sub">Negociação e aprovação, em paralelo à implantação</div>
+      <div class="htimeline-track">
+        <div class="htimeline-line"></div>
+        <div class="htimeline-items">
+          <div class="htimeline-item">
+            <div class="htimeline-arrow"></div>
+            <div class="htimeline-fase">Ago/Set 26</div>
+            <div class="htimeline-title">Negociação e testes</div>
+            <div class="htimeline-desc">Validação comercial e testes da plataforma seguem em curso.</div>
+          </div>
+          <div class="htimeline-item">
+            <div class="htimeline-arrow"></div>
+            <div class="htimeline-fase">Set 26</div>
+            <div class="htimeline-title">Jurídico</div>
+            <div class="htimeline-desc">Análise contratual em paralelo à construção do orçamento de 2027.</div>
+          </div>
+          <div class="htimeline-item">
+            <div class="htimeline-arrow"></div>
+            <div class="htimeline-fase">Ago/Set 26</div>
+            <div class="htimeline-title">Aprovação de budget pra 27</div>
+            <div class="htimeline-desc">Janela de construção orçamentária da G2L para o ano seguinte.</div>
+          </div>
+          <div class="htimeline-item marco-final">
+            <div class="htimeline-arrow"></div>
+            <div class="htimeline-fase">Dez/26</div>
+            <div class="htimeline-title">Assinatura de contrato</div>
+            <div class="htimeline-desc">Formalização com faturamento de licenciamento a partir de janeiro de 2027.</div>
           </div>
         </div>
+      </div>
 
-        <div class="frente-col">
-          <div class="frente-heading">Trilha de Implantação</div>
-          <div class="frente-heading-sub">Roda em paralelo, cobrando só o serviço de implantação</div>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot">1</div>
-              <div class="timeline-content">
-                <div class="timeline-fase">Set 26</div>
-                <div class="timeline-title">Início da implantação</div>
-                <div class="timeline-desc">Configuração da base da plataforma, sem cobrança de licenciamento.</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot">2</div>
-              <div class="timeline-content">
-                <div class="timeline-fase">Set/Out 26</div>
-                <div class="timeline-title">Integração Protheus</div>
-                <div class="timeline-desc">Conexão com a folha para movimentação de pessoas.</div>
-              </div>
-            </div>
-            <div class="timeline-item marco-final">
-              <div class="timeline-dot">3</div>
-              <div class="timeline-content">
-                <div class="timeline-fase">Out/Nov 26</div>
-                <div class="timeline-title">Início da migração de histórico</div>
-                <div class="timeline-desc">Migração do histórico do ciclo de metas e treinamentos, cobrada como serviço, não como licenciamento.</div>
-              </div>
-            </div>
+      <div class="frente-heading">Trilha de Implantação</div>
+      <div class="frente-heading-sub">Roda em paralelo, cobrando só o serviço de implantação</div>
+      <div class="htimeline-track">
+        <div class="htimeline-line"></div>
+        <div class="htimeline-items">
+          <div class="htimeline-item">
+            <div class="htimeline-arrow"></div>
+            <div class="htimeline-fase">Set 26</div>
+            <div class="htimeline-title">Início da implantação</div>
+            <div class="htimeline-desc">Configuração da base da plataforma, sem cobrança de licenciamento.</div>
+          </div>
+          <div class="htimeline-item">
+            <div class="htimeline-arrow"></div>
+            <div class="htimeline-fase">Set/Out 26</div>
+            <div class="htimeline-title">Integração Protheus</div>
+            <div class="htimeline-desc">Conexão com a folha para movimentação de pessoas.</div>
+          </div>
+          <div class="htimeline-item marco-final">
+            <div class="htimeline-arrow"></div>
+            <div class="htimeline-fase">Out/Nov 26</div>
+            <div class="htimeline-title">Início da migração de histórico</div>
+            <div class="htimeline-desc">Migração do histórico do ciclo de metas e treinamentos, cobrada como serviço, não como licenciamento.</div>
           </div>
         </div>
       </div>
