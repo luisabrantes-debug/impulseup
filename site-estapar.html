@@ -51,8 +51,9 @@
   nav.side-nav button:hover:not(.active){background:var(--color-bg-alt);}
 
   .app-shell{display:grid;grid-template-columns:230px 1fr;gap:44px;padding:40px 0 80px;align-items:start;}
-  .app-shell.sidebar-collapsed{grid-template-columns:0px 1fr;gap:0;}
+  .app-shell.sidebar-collapsed{display:block;}
   .app-shell.sidebar-collapsed nav.side-nav{display:none;}
+  .app-shell.sidebar-collapsed main{width:100%;max-width:none;}
   .sidebar-toggle{
     display:inline-flex;align-items:center;gap:6px;
     background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:8px;
