@@ -51,6 +51,15 @@
   nav.side-nav button:hover:not(.active){background:var(--color-bg-alt);}
 
   .app-shell{display:grid;grid-template-columns:230px 1fr;gap:44px;padding:40px 0 80px;align-items:start;}
+  .app-shell.sidebar-collapsed{grid-template-columns:0px 1fr;gap:0;}
+  .app-shell.sidebar-collapsed nav.side-nav{display:none;}
+  .sidebar-toggle{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:8px;
+    padding:8px 12px;font-size:12px;font-weight:600;color:var(--color-fg-muted);
+    cursor:pointer;margin-bottom:14px;
+  }
+  .sidebar-toggle:hover{background:var(--color-border);color:var(--color-fg);}
   @media (max-width:860px){
     .app-shell{grid-template-columns:1fr;padding-top:24px;}
     nav.side-nav{
@@ -416,7 +425,7 @@
 </header>
 
 <div class="wrap">
-  <div class="app-shell">
+  <div class="app-shell" id="appShell">
     <nav class="side-nav" id="tabNav">
       <button class="active" data-tab="1"><span class="num">01</span>A impulseup</button>
       <button data-tab="2"><span class="num">02</span>Diagnóstico</button>
@@ -432,6 +441,9 @@
     </nav>
 
     <main>
+    <button type="button" class="sidebar-toggle" id="sidebarToggleBtn">
+      <i class="fa-solid fa-bars" id="sidebarToggleIcon"></i> Esconder menu
+    </button>
 
     <!-- ABA 1 — A IMPULSEUP -->
     <section class="tab-panel active" id="tab-1">
@@ -815,6 +827,17 @@
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     });
   });
+
+  const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+  const appShell = document.getElementById('appShell');
+  if (sidebarToggleBtn && appShell) {
+    sidebarToggleBtn.addEventListener('click', () => {
+      const collapsed = appShell.classList.toggle('sidebar-collapsed');
+      sidebarToggleBtn.innerHTML = collapsed
+        ? '<i class="fa-solid fa-bars"></i> Mostrar menu'
+        : '<i class="fa-solid fa-bars"></i> Esconder menu';
+    });
+  }
 
   // ---------- RESUMO EXECUTIVO (HTML) ----------
   function hexVar(name, fallback){
