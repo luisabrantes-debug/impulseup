@@ -387,6 +387,17 @@
   .export-exec-btn:hover{background:var(--color-primary-hover);}
   .export-exec-btn:disabled{opacity:0.6;cursor:wait;}
   .export-exec-btn i{font-size:13px;}
+  .htimeline-wrap{margin:24px 0 8px;overflow-x:auto;}
+  .htimeline-track{position:relative;display:flex;align-items:flex-start;min-width:760px;padding:0 10px 0 4px;}
+  .htimeline-line{position:absolute;top:9px;left:4px;right:24px;height:2px;background:var(--color-primary);}
+  .htimeline-arrowhead{position:absolute;top:2px;right:8px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid var(--color-primary);}
+  .htimeline-item{position:relative;flex:1;padding:0 10px;text-align:center;}
+  .htimeline-dot{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--color-primary);margin:0 auto 14px;position:relative;z-index:1;}
+  .htimeline-item.marco-final .htimeline-dot{background:var(--color-primary);}
+  .htimeline-fase{font-size:11px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;color:var(--color-primary);}
+  .htimeline-title{font-size:13px;font-weight:700;color:var(--color-fg);margin-top:3px;line-height:1.3;}
+  .htimeline-desc{font-size:11.5px;color:var(--color-fg-muted);margin-top:3px;line-height:1.4;}
+  @media (max-width:860px){.htimeline-wrap{overflow-x:auto;}}
 </style>
 </head>
 <body>
@@ -727,16 +738,20 @@
         </div>
 
         <div class="block-title" style="margin-top:36px;"><i class="fa-regular fa-timeline"></i>Cronograma da implementação</div>
-        <div class="timeline">
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Set/26</span><div><span class="tl-desc">Início da implantação</span><div class="tl-meta">Integração SSO</div></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Out/26</span><div><span class="tl-desc">Configuração e parametrização</span></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Nov/26</span><div><span class="tl-desc">Importação de metas</span></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/26</span><div><span class="tl-desc">Fechamento do ciclo de metas na plataforma</span><div class="tl-meta">Integração Synergy</div></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Jan/27</span><div><span class="tl-desc">Fechamento do cálculo de RV para pagamento</span></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Fev/27</span><div><span class="tl-desc">Início do projeto de Learning</span></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Mai/27</span><div><span class="tl-desc">Implantação Learning e Avaliação de Desempenho</span></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Jun/27</span><div><span class="tl-desc">Avaliação de desempenho</span></div></div>
-          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Jul/27</span><div><span class="tl-desc">Lançamento das pesquisas</span></div></div>
+        <div class="htimeline-wrap">
+          <div class="htimeline-track">
+            <div class="htimeline-line"></div>
+            <div class="htimeline-arrowhead"></div>
+            <div class="htimeline-item"><div class="htimeline-dot"></div><div class="htimeline-fase">Set/26</div><div class="htimeline-title">Início da implantação</div><div class="htimeline-desc">Integração SSO</div></div>
+            <div class="htimeline-item"><div class="htimeline-dot"></div><div class="htimeline-fase">Out/26</div><div class="htimeline-title">Configuração e parametrização</div></div>
+            <div class="htimeline-item"><div class="htimeline-dot"></div><div class="htimeline-fase">Nov/26</div><div class="htimeline-title">Importação de metas</div></div>
+            <div class="htimeline-item marco-final"><div class="htimeline-dot"></div><div class="htimeline-fase">Dez/26</div><div class="htimeline-title">Fechamento do ciclo de metas</div><div class="htimeline-desc">Integração Synergy</div></div>
+            <div class="htimeline-item"><div class="htimeline-dot"></div><div class="htimeline-fase">Jan/27</div><div class="htimeline-title">Fechamento do cálculo de RV</div><div class="htimeline-desc">Para pagamento</div></div>
+            <div class="htimeline-item"><div class="htimeline-dot"></div><div class="htimeline-fase">Fev/27</div><div class="htimeline-title">Início do projeto de Learning</div></div>
+            <div class="htimeline-item"><div class="htimeline-dot"></div><div class="htimeline-fase">Mai/27</div><div class="htimeline-title">Implantação Learning e AD</div></div>
+            <div class="htimeline-item"><div class="htimeline-dot"></div><div class="htimeline-fase">Jun/27</div><div class="htimeline-title">Avaliação de desempenho</div></div>
+            <div class="htimeline-item marco-final"><div class="htimeline-dot"></div><div class="htimeline-fase">Jul/27</div><div class="htimeline-title">Lançamento das pesquisas</div></div>
+          </div>
         </div>
 
         <label class="proposal-upload-slot" id="proposalSlot" style="margin-top:24px;">
