@@ -13,8 +13,8 @@
     --color-fg:#0C0C0C;
     --color-fg-muted:#666666;
     --color-border:#E0E0E0;
-    --color-primary:#CC0088;
-    --color-primary-hover:#A3006D;
+    --color-primary:#4CAF3D;
+    --color-primary-hover:#3D8A31;
     --color-surface:#F4F2EF;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -407,6 +407,36 @@
   .htimeline-title{font-size:13px;font-weight:700;color:var(--color-fg);margin-top:3px;line-height:1.3;}
   .htimeline-desc{font-size:11.5px;color:var(--color-fg-muted);margin-top:3px;line-height:1.4;}
   @media (max-width:860px){.htimeline-wrap{overflow-x:auto;}}
+
+  /* ─── ABA 5 — DORES E SOLUÇÃO PROPOSTA (formato defesa de projeto) ─── */
+  .defesa-subtabs{display:flex;gap:0;border-bottom:1px solid var(--color-border);margin-bottom:28px;}
+  .defesa-subtab-btn{padding:10px 20px;font-size:13px;font-weight:600;color:var(--color-fg-muted);background:none;border:none;border-bottom:3px solid transparent;cursor:pointer;margin-bottom:-1px;}
+  .defesa-subtab-btn.active{color:var(--color-primary);border-bottom-color:var(--color-primary);}
+  .defesa-subpanel{display:none;}
+  .defesa-subpanel.active{display:block;}
+  .dores-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:18px;margin-bottom:36px;}
+  .dor-card{background:var(--color-bg-alt);border-radius:12px;overflow:hidden;}
+  .dor-header{padding:16px 18px 12px;border-bottom:1px solid var(--color-border);}
+  .dor-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:8px;}
+  .tag-risco{background:#FEE2E2;color:#991B1B;}
+  .tag-operacional{background:#FEF3C7;color:#92400E;}
+  .tag-cultura{background:#ECFDF5;color:#065F46;}
+  .tag-estrategico{background:#EFF6FF;color:#1E40AF;}
+  .dor-title{font-size:14px;font-weight:700;color:var(--color-fg);line-height:1.4;}
+  .dor-body{padding:12px 18px 16px;}
+  .dor-desc{font-size:13px;color:var(--color-fg-muted);line-height:1.6;margin-bottom:12px;}
+  .dor-impacto-label{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);margin-bottom:5px;}
+  .dor-impacto-text{font-size:13px;color:var(--color-fg);line-height:1.55;border-left:3px solid var(--color-primary);padding-left:10px;}
+  .solucao-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px;}
+  .sol-card{background:var(--color-bg-alt);border-radius:12px;overflow:hidden;}
+  .sol-card-top{padding:16px 18px 12px;border-bottom:1px solid var(--color-border);}
+  .sol-dor-ref{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);margin-bottom:4px;}
+  .sol-card-title{font-size:14px;font-weight:700;color:var(--color-fg);line-height:1.35;}
+  .sol-video-wrap{position:relative;background:#111;aspect-ratio:16/9;overflow:hidden;}
+  .sol-video-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#1A1A1A;color:rgba(255,255,255,0.45);font-size:12px;}
+  .sol-desc{padding:14px 18px 16px;font-size:13px;color:var(--color-fg-muted);line-height:1.6;}
+  .sol-resolve{display:flex;gap:8px;margin-top:10px;padding:10px 12px;background:var(--color-bg-alt);border-radius:8px;font-size:12px;color:var(--color-fg);line-height:1.5;}
+  .sol-resolve-icon{color:var(--color-primary);flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -432,9 +462,8 @@
       <button data-tab="3"><span class="num">03</span>Demonstração</button>
       <button data-tab="4"><span class="num">04</span>Diferenciais impulseup</button>
       <button data-tab="5"><span class="num">05</span>Aprovação e plano de ação</button>
-      <button data-tab="6"><span class="num">06</span>Processo de implementação</button>
-      <button data-tab="7"><span class="num">07</span>Proposta comercial</button>
-      <button data-tab="8"><span class="num">08</span>Próximos passos</button>
+      <button data-tab="7"><span class="num">06</span>Proposta comercial</button>
+      <button data-tab="8"><span class="num">07</span>Próximos passos</button>
       <button type="button" id="exportExecHtmlBtn" class="export-exec-btn">
         <i class="fa-regular fa-file-code"></i> Resumo executivo (HTML)
       </button>
@@ -644,34 +673,152 @@
     <!-- ABA 5 — APROVAÇÃO E PLANO DE AÇÃO -->
     <section class="tab-panel" id="tab-5">
       <h1 class="section-title">Aprovação e plano de ação</h1>
-      <p class="section-sub">Objetivos de negócio da Estapar, o caminho para chegar lá e o estado futuro com a impulseup</p>
-      <div class="empty-state" id="tab5EmptyState">
-        <i class="fa-regular fa-clipboard"></i>
-        <h3>Aba liberada após a reunião de Diagnóstico</h3>
-        <p>Assim que os desafios forem mapeados, esta aba mostra os objetivos de negócio e RH por trás do projeto, o plano de ação com cronograma para chegar lá, e o estado futuro do negócio com a impulseup — pronta para embasar a apresentação à diretoria.</p>
-      </div>
-      <div id="tab5PlanoWrap" style="display:none;">
-        <!--OBJETIVOS-->
-      </div>
-    </section>
+      <p class="section-sub">Defesa do projeto: dores mapeadas na Estapar e como a impulseup resolve cada uma</p>
 
-    <!-- ABA 6 — PROCESSO DE IMPLEMENTAÇÃO -->
-    <section class="tab-panel" id="tab-6">
-      <h1 class="section-title">Processo de implementação</h1>
-      <p class="section-sub">Como será a jornada de implementação da Estapar com a impulseup</p>
-
-      <div class="empty-state" id="tab6EmptyState">
-        <i class="fa-regular fa-map"></i>
-        <h3>Aba liberada após o closer confirmar cluster, módulos e Weeklies (se Enterprise)</h3>
-        <p>Assim que o cluster de implementação (Low/Mid, High ou Enterprise) e os módulos da proposta forem confirmados, esta aba mostra a cadeia de implementação de cada módulo: etapas e responsáveis do nosso lado.</p>
+      <div class="defesa-subtabs">
+        <button type="button" class="defesa-subtab-btn active" data-subtab="dores">Dores e impactos</button>
+        <button type="button" class="defesa-subtab-btn" data-subtab="solucao">Solução proposta</button>
       </div>
 
-      <div id="tab6ProcessWrap" style="display:none;">
-        <!--IMPL_PROCESSO-->
-        <div class="impl-legend">
-          <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#CC0088;"></span>Consultor de implementação</div>
-          <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#4B4B8A;"></span>CSI</div>
-          <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#111;"></span>Gerente de contas</div>
+      <div class="defesa-subpanel active" id="subtab-dores">
+        <div class="dores-grid">
+
+          <div class="dor-card">
+            <div class="dor-header">
+              <span class="dor-tag tag-risco">Risco / Governança</span>
+              <div class="dor-title">Falta de governança nos fluxos de metas</div>
+            </div>
+            <div class="dor-body">
+              <div class="dor-desc">O sistema atual não garante confiança nas atualizações: colaboradores conseguem editar metas mesmo na etapa de apuração.</div>
+              <div class="dor-impacto-label">Impacto</div>
+              <div class="dor-impacto-text">Compromete a confiabilidade dos dados usados para calcular a remuneração variável e o PLR de mais de 700 pessoas.</div>
+            </div>
+          </div>
+
+          <div class="dor-card">
+            <div class="dor-header">
+              <span class="dor-tag tag-operacional">Operacional</span>
+              <div class="dor-title">Processo massivo e manual de metas</div>
+            </div>
+            <div class="dor-body">
+              <div class="dor-desc">Cerca de 800 pessoas com 4 a 5 metas cada, totalizando 3 a 4 mil metas cadastradas anualmente via planilha e subidas manualmente na ferramenta.</div>
+              <div class="dor-impacto-label">Impacto</div>
+              <div class="dor-impacto-text">Força-tarefa entre novembro e janeiro para fechar apuração e pagamento de PLR em tempo recorde, hoje feita inteiramente à mão.</div>
+            </div>
+          </div>
+
+          <div class="dor-card">
+            <div class="dor-header">
+              <span class="dor-tag tag-estrategico">Estratégico</span>
+              <div class="dor-title">Módulos sem integração entre si</div>
+            </div>
+            <div class="dor-body">
+              <div class="dor-desc">Metas, desempenho, PDI e treinamento não conversam entre si — cada informação do colaborador precisa ser buscada módulo a módulo.</div>
+              <div class="dor-impacto-label">Impacto</div>
+              <div class="dor-impacto-text">BPs não conseguem consolidar o histórico do colaborador para decisões de meritocracia, promoção ou desligamento.</div>
+            </div>
+          </div>
+
+          <div class="dor-card">
+            <div class="dor-header">
+              <span class="dor-tag tag-operacional">Operacional</span>
+              <div class="dor-title">Falta de dashboards e indicadores</div>
+            </div>
+            <div class="dor-body">
+              <div class="dor-desc">Não há visão agregada do percentual de metas atingidas por equipe; calibragens e ciclos 360º são conduzidos fora da plataforma.</div>
+              <div class="dor-impacto-label">Impacto</div>
+              <div class="dor-impacto-text">O RH constrói relatórios manualmente para ter indicadores, perdendo velocidade para agir sobre os resultados do ciclo.</div>
+            </div>
+          </div>
+
+          <div class="dor-card">
+            <div class="dor-header">
+              <span class="dor-tag tag-cultura">Cultura e experiência</span>
+              <div class="dor-title">Baixa adesão da operação</div>
+            </div>
+            <div class="dor-body">
+              <div class="dor-desc">Sistema atual pouco intuitivo, com suporte demorado, hoje restrito ao público corporativo — mais de 7.800 colaboradores da operação ficam de fora.</div>
+              <div class="dor-impacto-label">Impacto</div>
+              <div class="dor-impacto-text">Com rotatividade acima de 70% ao ano no time operacional, a falta de um canal de fácil acesso (como WhatsApp) reduz engajamento e qualidade do dado coletado.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="defesa-subpanel" id="subtab-solucao">
+        <div class="solucao-grid">
+
+          <div class="sol-card">
+            <div class="sol-card-top">
+              <div class="sol-dor-ref">Dor 1 · Governança</div>
+              <div class="sol-card-title">Fluxo de metas com trava por etapa</div>
+            </div>
+            <div class="sol-video-wrap">
+              <div class="sol-video-placeholder"><i class="fa-regular fa-video"></i>Vídeo a confirmar</div>
+            </div>
+            <div class="sol-desc">
+              A impulseup bloqueia edições de meta fora da janela correta de cada etapa do ciclo, com trilha de auditoria de quem alterou o quê e quando.
+              <div class="sol-resolve"><span class="sol-resolve-icon">✓</span><span>Resolve a falta de confiança nos dados usados para cálculo de remuneração variável.</span></div>
+            </div>
+          </div>
+
+          <div class="sol-card">
+            <div class="sol-card-top">
+              <div class="sol-dor-ref">Dor 2 · Operacional</div>
+              <div class="sol-card-title">Importação massiva de metas</div>
+            </div>
+            <div class="sol-video-wrap">
+              <div class="sol-video-placeholder"><i class="fa-regular fa-video"></i>Vídeo a confirmar</div>
+            </div>
+            <div class="sol-desc">
+              Cadastro de metas por planilha, para toda a base de uma vez, com validação automática antes da subida — sem custo adicional por carga massiva.
+              <div class="sol-resolve"><span class="sol-resolve-icon">✓</span><span>Resolve a força-tarefa manual de novembro a janeiro na apuração de PLR.</span></div>
+            </div>
+          </div>
+
+          <div class="sol-card">
+            <div class="sol-card-top">
+              <div class="sol-dor-ref">Dor 3 · Estratégico</div>
+              <div class="sol-card-title">Jornada única do colaborador</div>
+            </div>
+            <div class="sol-video-wrap">
+              <div class="sol-video-placeholder"><i class="fa-regular fa-video"></i>Vídeo a confirmar</div>
+            </div>
+            <div class="sol-desc">
+              Metas, desempenho, remuneração variável e PDI cruzados automaticamente em uma ficha única por colaborador.
+              <div class="sol-resolve"><span class="sol-resolve-icon">✓</span><span>Resolve a fragmentação: BPs deixam de buscar informação módulo a módulo.</span></div>
+            </div>
+          </div>
+
+          <div class="sol-card">
+            <div class="sol-card-top">
+              <div class="sol-dor-ref">Dor 4 · Operacional</div>
+              <div class="sol-card-title">Dashboards nativos de acompanhamento</div>
+            </div>
+            <div class="sol-video-wrap">
+              <div class="sol-video-placeholder"><i class="fa-regular fa-video"></i>Vídeo a confirmar</div>
+            </div>
+            <div class="sol-desc">
+              Visões individuais e coletivas de percentual de metas atingidas, direto na plataforma, sem exportação manual.
+              <div class="sol-resolve"><span class="sol-resolve-icon">✓</span><span>Resolve a falta de indicadores em tempo real para o RH agir mais rápido.</span></div>
+            </div>
+          </div>
+
+          <div class="sol-card">
+            <div class="sol-card-top">
+              <div class="sol-dor-ref">Dor 5 · Cultura e experiência</div>
+              <div class="sol-card-title">Acesso via WhatsApp para a operação</div>
+            </div>
+            <div class="sol-video-wrap">
+              <div class="sol-video-placeholder"><i class="fa-regular fa-video"></i>Vídeo a confirmar</div>
+            </div>
+            <div class="sol-desc">
+              Colaboradores sem e-mail corporativo respondem avaliações e pesquisas por link direto no WhatsApp, muitas vezes sem precisar login.
+              <div class="sol-resolve"><span class="sol-resolve-icon">✓</span><span>Resolve a baixa adesão do público operacional, hoje de fora do sistema atual.</span></div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -825,6 +972,15 @@
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.defesa-subtab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.defesa-subtab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.defesa-subpanel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('subtab-' + btn.dataset.subtab).classList.add('active');
     });
   });
 
