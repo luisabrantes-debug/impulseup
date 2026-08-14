@@ -453,13 +453,9 @@
 <div class="wrap">
   <div class="app-shell" id="appShell">
     <nav class="side-nav" id="tabNav">
-      <button class="active" data-tab="1"><span class="num">01</span>A impulseup</button>
-      <button data-tab="2"><span class="num">02</span>Diagnóstico</button>
-      <button data-tab="3"><span class="num">03</span>Demonstração</button>
-      <button data-tab="4"><span class="num">04</span>Diferenciais impulseup</button>
-      <button data-tab="5"><span class="num">05</span>Aprovação e plano de ação</button>
-      <button data-tab="7"><span class="num">06</span>Proposta comercial</button>
-      <button data-tab="8"><span class="num">07</span>Próximos passos</button>
+      <button class="active" data-tab="5"><span class="num">01</span>Aprovação e plano de ação</button>
+      <button data-tab="7"><span class="num">02</span>Proposta comercial</button>
+      <button data-tab="8"><span class="num">03</span>Próximos passos</button>
       <button type="button" id="exportExecHtmlBtn" class="export-exec-btn">
         <i class="fa-regular fa-file-code"></i> Resumo executivo (HTML)
       </button>
@@ -470,208 +466,37 @@
       <i class="fa-solid fa-bars" id="sidebarToggleIcon"></i> Esconder menu
     </button>
 
-    <!-- ABA 1 — A IMPULSEUP -->
-    <section class="tab-panel active" id="tab-1">
-      <h1 class="section-title">A impulseup</h1>
-      <p class="section-sub">Quem somos e por que empresas como a Construtora Horizonte escolhem a gente</p>
-
-      <div class="stat-grid">
-        <div class="stat-card"><div class="num">400+</div><div class="label">empresas clientes</div></div>
-        <div class="stat-card"><div class="num">180 mil</div><div class="label">usuários ativos</div></div>
-        <div class="stat-card"><div class="num">1M+</div><div class="label">avaliações e pesquisas realizadas</div></div>
-      </div>
-
-      <div class="block-title"><i class="fa-regular fa-building"></i>Empresas que confiam na impulseup</div>
-      <div class="logo-grid" id="logoGrid">
-        <!--LOGO_GRID_SLOTS-->
-      </div>
-
-      <!-- LINHA DE POSICIONAMENTO — fixa, não personalizada por cliente (ver estrutura-abas.md,
-           Aba 1, "Linha de posicionamento"). Marca a diferença impulseup vs. mercado: mercado
-           busca abrangência, impulseup busca profundidade. -->
-      <p class="positioning-line"><i class="fa-solid fa-crosshairs"></i> Enquanto o mercado tem buscado ser cada vez mais abrangente, a impulseup escolheu o caminho da profundidade: menos módulos genéricos, mais especialização em gestão de performance e desenvolvimento.</p>
-
-      <div class="block-title"><i class="fa-regular fa-star"></i>Por que empresas com público operacional escolhem a impulseup</div>
-      <div class="pillars">
-        <!-- Cada pillar-card carrega a tag do critério correspondente em rfp-criterios.json
-             (mesmo padrão da .feat-tag da Aba 4) — ver estrutura-abas.md, Aba 1. -->
-        <div class="pillar-card"><span class="pillar-num">01</span><span class="feat-tag">Fácil</span><h4>Cultura de avaliação chega a quem hoje fica de fora</h4><p>Quando o time de linha de frente consegue participar do ciclo, a empresa passa a enxergar performance e potencial em 100% da operação, não só no time administrativo.</p></div>
-        <div class="pillar-card"><span class="pillar-num">02</span><span class="feat-tag">Atendimento consultivo</span><h4>A virada cultural é conduzida, não só implantada</h4><p>Especialistas em DHO acompanham a adoção do processo — o risco de o projeto emperrar na mudança de hábito cai, e o resultado aparece mais rápido.</p></div>
-        <div class="pillar-card"><span class="pillar-num">03</span><span class="feat-tag">Flexível</span><h4>Cresce por unidade sem perder visão do todo</h4><p>Cada operação mantém suas regras, e a liderança continua enxergando o negócio como um único organismo — decisão de expansão não esbarra em planilha paralela.</p></div>
-      </div>
-
-      <!-- SEÇÃO CATEGORIA 5 (opcional) — incluir apenas quando o cliente já possui uma solução e
-           está migrando (ver references/estrutura-abas.md, campo categoria_5). Omitir por
-           completo esta <div id="migrationSection">...</div> quando não for Categoria 5. -->
-      <div id="migrationSection">
-        <div class="block-title"><i class="fa-solid fa-right-left"></i>Por que as empresas migram para a impulseup?</div>
-        <div class="pillars">
-          <div class="pillar-card"><span class="pillar-num">01</span><h4>Migração do histórico completo</h4><p>Leva todo o histórico de avaliações e o lifecycle do colaborador para dentro da impulseup, sem perder rastreabilidade.</p></div>
-          <div class="pillar-card"><span class="pillar-num">02</span><h4>Time especialista em DHO de ponta a ponta</h4><p>Acompanhamento humano, não só suporte técnico, do desenho do projeto até a operação.</p></div>
-          <div class="pillar-card"><span class="pillar-num">03</span><h4>Flexibilidade total e personalização</h4><p>O projeto se adapta ao que já funciona no cliente, não o contrário.</p></div>
-          <div class="pillar-card"><span class="pillar-num">04</span><h4>Integrações nativas</h4><p>SSO, API aberta, WhatsApp e Slack, sem depender de desenvolvimento sob demanda.</p></div>
-          <div class="pillar-card"><span class="pillar-num">05</span><h4>Onboarding assistido, não apenas self-service</h4><p>O time acompanha a virada de perto — não deixa o cliente sozinho com manual e tutorial em vídeo.</p></div>
-          <div class="pillar-card"><span class="pillar-num">06</span><h4>Continuidade sem lacunas no ciclo</h4><p>Migração possível no meio de um ciclo em andamento, sem reiniciar histórico nem perder dado.</p></div>
-        </div>
-
-        <div class="block-title"><i class="fa-regular fa-building"></i>Empresas que já migraram para a impulseup</div>
-        <div class="logo-grid logo-grid-fixed5" id="migrationLogoGrid">
-          <!--MIGRATION_LOGO_SLOTS-->
-        </div>
-      </div>
-    </section>
-
-    <!-- ABA 2 — DIAGNÓSTICO -->
-    <section class="tab-panel" id="tab-2">
-      <h1 class="section-title">Diagnóstico — Estapar</h1>
-      <p class="section-sub">Reunião de conexão</p>
-
-      <div class="top-grid">
-        <div class="card">
-          <div class="card-label">Perfil</div>
-          <p>Gestão de desempenho para a operação de RH da Estapar, conduzida por Juliana Almeida e Istefani Prates (BP de Gestão de Desempenho).</p>
-        </div>
-        <div class="card dark">
-          <div class="card-label">Momento atual</div>
-          <p>Substituição do sistema atual (Smart Leader) por falta de governança, baixa adoção e suporte lento. Implantação faseada: piloto de Pesquisa em maio, seguido por Metas e OKRs.</p>
-        </div>
-      </div>
-
-      <div class="block-title"><i class="fa-regular fa-flag"></i>Desafios mapeados</div>
-      <div class="challenges">
-        <div class="challenge-card"><span class="ch-num">01</span><h4>Falta de governança nos fluxos</h4><p>O sistema atual não garante confiança nas atualizações, permitindo que colaboradores editem metas mesmo na etapa de apuração.</p></div>
-        <div class="challenge-card"><span class="ch-num">02</span><h4>Sistema pouco intuitivo</h4><p>Colaboradores não acessam a plataforma no dia a dia por não considerá-la fácil de usar, o que impacta o acompanhamento de metas e pontos focais.</p></div>
-        <div class="challenge-card"><span class="ch-num">03</span><h4>Falta de ferramentas de análise</h4><p>Não conseguem conduzir calibragens e ciclos 360/potencial de forma facilitada — tudo é feito fora da plataforma.</p></div>
-        <div class="centered-row">
-          <div class="challenge-card"><span class="ch-num">04</span><h4>Falta de suporte</h4><p>Suporte demorado, sem evolução do produto, com colaboradores com muitas dúvidas no dia a dia.</p></div>
-          <div class="challenge-card"><span class="ch-num">05</span><h4>Desgaste operacional</h4><p>Centenas de horas do RH gastas em tabulações e exportações — todo o processo de consolidação é feito fora da plataforma.</p></div>
-        </div>
-      </div>
+    <section class="tab-panel active" id="tab-5">
+      <h1 class="section-title">Aprovação e plano de ação</h1>
+      <p class="section-sub">Defesa do projeto: dores mapeadas na Estapar e como a impulseup resolve cada uma</p>
 
       <div class="block-title"><i class="fa-regular fa-user-tie"></i>Responsáveis pelo projeto</div>
       <div class="team" id="teamGrid">
         <div class="person-card">
-          <label class="person-photo" data-initials="JA"><span>JA</span><input type="file" accept="image/*" class="personPhotoInput"></label>
-          <div>
-            <h4 contenteditable="true" class="person-name">Juliana Almeida</h4>
-            <p contenteditable="true" class="person-role">BP de Gestão de Desempenho</p>
-          </div>
-        </div>
-        <div class="person-card">
           <label class="person-photo" data-initials="IP"><span>IP</span><input type="file" accept="image/*" class="personPhotoInput"></label>
           <div>
             <h4 contenteditable="true" class="person-name">Istefani Prates</h4>
-            <p contenteditable="true" class="person-role">BP de Gestão de Desempenho</p>
+            <p contenteditable="true" class="person-role">Cargo a preencher</p>
           </div>
         </div>
         <div class="person-card">
-          <label class="person-photo" data-initials="??"><span>??</span><input type="file" accept="image/*" class="personPhotoInput"></label>
+          <label class="person-photo" data-initials="TG"><span>TG</span><input type="file" accept="image/*" class="personPhotoInput"></label>
           <div>
-            <h4 contenteditable="true" class="person-name">Nome a preencher</h4>
-            <p contenteditable="true" class="person-role">Diretor(a) de RH</p>
+            <h4 contenteditable="true" class="person-name">Thayla Gomes</h4>
+            <p contenteditable="true" class="person-role">Cargo a preencher</p>
+          </div>
+        </div>
+        <div class="person-card">
+          <label class="person-photo" data-initials="RA"><span>RA</span><input type="file" accept="image/*" class="personPhotoInput"></label>
+          <div>
+            <h4 contenteditable="true" class="person-name">Rozimery Anastacia</h4>
+            <p contenteditable="true" class="person-role">Cargo a preencher</p>
           </div>
         </div>
       </div>
       <button type="button" id="addPersonBtn" class="add-person-btn"><i class="fa-solid fa-plus"></i> Adicionar pessoa</button>
 
-      <div class="block-title"><i class="fa-regular fa-calendar"></i>Cronograma preliminar</div>
-      <div class="timeline">
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">23/04 a 30/04</span><span class="tl-desc">OK da proposta e trâmite jurídico</span></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">30/04</span><span class="tl-desc">Assinatura do contrato</span></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">04/05 a 13/05</span><span class="tl-desc">Planejamento inicial, recebimento e importação da base de usuários, configuração da pesquisa e acessos</span></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">11/05 a 18/05</span><span class="tl-desc">Comunicação do lançamento, validação final e testes</span></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">18/05</span><span class="tl-desc">Lançamento da pesquisa — meta: pesquisa no ar em menos de 4 semanas após a aprovação</span></div>
-      </div>
-    </section>
-
-    <!-- ABA 3 — DEMONSTRAÇÃO -->
-    <section class="tab-panel" id="tab-3">
-      <h1 class="section-title">Demonstração</h1>
-      <p class="section-sub">Vídeos da plataforma, orientados aos desafios da Estapar</p>
-      <div class="empty-state" id="tab3EmptyState">
-        <i class="fa-regular fa-circle-play"></i>
-        <h3>Aba liberada após a reunião de Demo</h3>
-        <p>O closer vai incluir aqui vídeos curtos mostrando a solução aplicada aos desafios mapeados no Diagnóstico.</p>
-      </div>
-      <div id="tab3Content" style="display:none;">
-        <div class="stat-grid" id="tab3ImpactoGrid">
-          <!-- Preenchido pela skill a partir de "impacto" (estrutura-abas.md, Aba 3). Ex:
-               <div class="stat-card"><div class="num">32%</div><div class="label">redução no tempo de ciclo de avaliação</div></div> -->
-        </div>
-        <div style="overflow-x:auto;margin-bottom:40px;">
-          <table class="rfp-table" id="tab3ComparativoTable">
-            <thead>
-              <tr><th>Situação atual</th><th>Módulo impulseup</th><th>Como fica</th></tr>
-            </thead>
-            <tbody>
-              <!-- Preenchido pela skill a partir de "comparativo" (máx. 4 linhas). Ex:
-                   <tr><td>Avaliação só em planilha</td><td class="feat-name">Ciclos de avaliação</td><td>Fluxo 100% digital com lembretes automáticos</td></tr> -->
-            </tbody>
-          </table>
-        </div>
-        <div class="video-grid" id="tab3VideoGrid">
-          <!-- Preenchido pela skill a partir de "videos" (estrutura-abas.md, Aba 3), um .video-card por vídeo.
-               Ver scripts/gerar_video_embed.py::gerar_bloco_video() para a lógica de geração.
-
-               Caso 1 — url_video já veio do closer (link de Drive ou YouTube) e foi reconhecida:
-               <div class="video-card">
-                 <h4>{{titulo}}</h4><p>{{descricao}}</p>
-                 <div class="video-embed-wrap">
-                   <iframe src="{{embed_url}}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-                 </div>
-               </div>
-
-               Caso 2 — url_video veio mas não foi possível gerar embed (ex: link de pasta do Drive,
-               sem permissão de embed): mostrar card de link em vez de iframe.
-               <div class="video-card">
-                 <h4>{{titulo}}</h4><p>{{descricao}}</p>
-                 <div class="video-link-card">
-                   <i class="fa-brands fa-google-drive"></i>
-                   <p>Vídeo disponível para acesso externo</p>
-                   <a href="{{url_video}}" target="_blank" rel="noopener" class="video-link-btn">Assistir vídeo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                 </div>
-               </div>
-
-               Caso 3 — vídeo ainda sem url_video: slot de colagem manual, para o closer colar o link
-               direto no site (fica salvo no localStorage do navegador via saveImage/loadStore).
-               <div class="video-card">
-                 <h4>{{titulo}}</h4><p>{{descricao}}</p>
-                 <div class="video-embed-wrap video-embed-empty" data-video-idx="{{indice}}">
-                   <label class="video-paste-label">
-                     <i class="fa-regular fa-circle-play"></i>
-                     <span>Cole aqui o link do vídeo (YouTube ou Drive)</span>
-                   </label>
-                   <input type="text" class="video-url-input" data-video-idx="{{indice}}" placeholder="https://...">
-                 </div>
-               </div> -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ABA 4 — DIFERENCIAIS IMPULSEUP -->
-    <section class="tab-panel" id="tab-4">
-      <h1 class="section-title">Diferenciais impulseup</h1>
-      <p class="section-sub">Comparativo com base nos critérios mais importantes para este projeto</p>
-      <div class="empty-state" id="tab4EmptyState">
-        <i class="fa-regular fa-list-check"></i>
-        <h3>Aba liberada após a reunião de Diagnóstico</h3>
-        <p>Assim que o closer finalizar o diagnóstico, esta aba mostra o comparativo entre a impulseup e os concorrentes identificados na conversa. Se nenhum concorrente específico for mencionado, o comparativo é feito contra "Outras soluções", com resultado mediano.</p>
-      </div>
-      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;display:none;">
-        <table class="rfp-table" id="tab4Table">
-          <!-- Preenchido pela skill site-cliente-impulseup a partir da transcrição da reunião de Diagnóstico e de references/rfp-criterios.json.
-               Cada critério exibe sua tag (campo "tags" do JSON) junto ao nome, ex:
-               <tr><td><div class="feat-name">Formatos de avaliação diferentes (90/180/360)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>...</tr> -->
-        </table>
-      </div>
-    </section>
-
-    <!-- ABA 5 — APROVAÇÃO E PLANO DE AÇÃO -->
-    <section class="tab-panel" id="tab-5">
-      <h1 class="section-title">Aprovação e plano de ação</h1>
-      <p class="section-sub">Defesa do projeto: dores mapeadas na Estapar e como a impulseup resolve cada uma</p>
-
-      <div class="defesa-subtabs">
+      <div class="defesa-subtabs" style="margin-top:32px;">
         <button type="button" class="defesa-subtab-btn active" data-subtab="dores">Dores e impactos</button>
         <button type="button" class="defesa-subtab-btn" data-subtab="solucao">Solução proposta</button>
       </div>
