@@ -438,6 +438,18 @@
   .sol-desc{padding:14px 18px 16px;font-size:13px;color:var(--color-fg-muted);line-height:1.6;}
   .sol-resolve{display:flex;gap:8px;margin-top:10px;padding:10px 12px;background:var(--color-bg-alt);border-radius:8px;font-size:12px;color:var(--color-fg);line-height:1.5;}
   .sol-resolve-icon{color:var(--color-primary);flex-shrink:0;}
+  .roi-table-wrap{background:var(--color-bg-alt);border-radius:12px;overflow:hidden;}
+  .roi-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .roi-table thead tr{background:var(--color-fg);color:#fff;}
+  .roi-table thead th{padding:12px 16px;text-align:left;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;}
+  .roi-table tbody tr{border-bottom:1px solid var(--color-border);}
+  .roi-table tbody tr:last-child{border-bottom:none;}
+  .roi-table td{padding:14px 16px;color:var(--color-fg);vertical-align:top;}
+  .roi-table td:first-child{font-weight:600;}
+  .roi-table .valor-cell{font-weight:700;color:var(--color-primary);white-space:nowrap;}
+  .roi-input{border:1px dashed var(--color-border);border-radius:6px;padding:4px 8px;font-size:13px;color:var(--color-fg);min-width:90px;display:inline-block;}
+  .roi-input[contenteditable="true"]:empty:before{content:attr(data-placeholder);color:var(--color-fg-muted);}
+  .roi-input[contenteditable="true"]:hover,.roi-input[contenteditable="true"]:focus{background:#fff;outline:none;}
 </style>
 </head>
 <body>
@@ -503,6 +515,7 @@
       <div class="defesa-subtabs" style="margin-top:32px;">
         <button type="button" class="defesa-subtab-btn active" data-subtab="dores">Dores e impactos</button>
         <button type="button" class="defesa-subtab-btn" data-subtab="solucao">Solução proposta</button>
+        <button type="button" class="defesa-subtab-btn" data-subtab="roi">ROI do projeto</button>
       </div>
 
       <div class="defesa-subpanel active" id="subtab-dores">
@@ -644,6 +657,33 @@
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <div class="defesa-subpanel" id="subtab-roi">
+        <p style="font-size:13px;color:var(--color-fg-muted);margin:-8px 0 24px;">Linhas de retorno a serem quantificadas junto com a Estapar em reunião — valores a preencher.</p>
+        <div class="roi-table-wrap">
+          <table class="roi-table">
+            <thead>
+              <tr>
+                <th>Linha de ROI</th>
+                <th>Como se traduz</th>
+                <th>Impacto estimado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Eficiência operacional</td>
+                <td>Redução de tempo na execução de processos de calibragem, compilação de metas e remuneração variável, hoje feitos manualmente em planilha.</td>
+                <td class="valor-cell"><span class="roi-input" contenteditable="true" data-placeholder="A preencher"></span></td>
+              </tr>
+              <tr>
+                <td>Talentos</td>
+                <td>Redução de rotatividade de talentos-chave através de mapeamento ágil. Aumento de performance através de metas melhor acompanhadas.</td>
+                <td class="valor-cell"><span class="roi-input" contenteditable="true" data-placeholder="A preencher"></span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
