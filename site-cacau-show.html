@@ -488,13 +488,26 @@
       </div>
 
       <div class="block-title"><i class="fa-regular fa-star"></i>Por que empresas do varejo escolhem a impulseup</div>
-      <div class="pillars pillars-lg">
-        <!-- Pilares selecionados a partir de rfp-criterios.json, correlacionados aos desafios
-             mapeados na Ação 02 do call planning (retrabalho manual de consolidação, análises
-             fragmentadas e controle do processo em escala). -->
-        <div class="pillar-card"><i class="fa-solid fa-sliders pillar-icon"></i><span class="pillar-num">01</span><span class="feat-tag">Confiável</span><h4>Acesso segmentado para BPs</h4><p>Cada BP de RH acessa só o recorte de lojas ou área que precisa acompanhar, com controle de visibilidade e privilégios administrativos configurado por unidade, sem depender de planilha separada para isolar essa visão.</p></div>
-        <div class="pillar-card"><i class="fa-solid fa-chart-column pillar-icon"></i><span class="pillar-num">02</span><span class="feat-tag">Inteligente</span><h4>Visão cruzada por loja, área ou diretoria, sem planilha paralela</h4><p>Com uma base de milhares de colaboradores espalhados pelas lojas, comparar resultado por unidade ou por área deixa de ser um levantamento manual e passa a ser uma consulta direta na plataforma.</p></div>
-        <div class="pillar-card"><i class="fa-solid fa-user-group pillar-icon"></i><span class="pillar-num">03</span><span class="feat-tag">Flexível</span><h4>Total flexibilidade na estruturação de processos</h4><p>Você define o formato de cada ciclo do seu jeito, e a pesquisa de clima pode ser enviada e respondida direto por WhatsApp, o que ajuda a alcançar quem está na ponta da operação, não só no time administrativo.</p></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px;">
+        <!-- Seção independente, com estilo inline próprio (não reaproveita .pillar-card), pois o
+             card precisa ficar no mesmo tamanho/estilo de referência pedido por Luís: fundo cinza
+             claro, ícone no topo, título grande, texto em cinza. Pilares ainda ligados a critérios
+             reais de rfp-criterios.json (Confiável / Inteligente / Flexível). -->
+        <div style="background:#F2F0EE;border-radius:16px;padding:40px 32px;min-height:260px;">
+          <i class="fa-solid fa-sliders" style="font-size:32px;color:#CC0088;display:block;margin-bottom:24px;"></i>
+          <h4 style="font-size:22px;font-weight:700;color:#111;margin:0 0 16px 0;line-height:1.3;">Acesso segmentado para BPs</h4>
+          <p style="font-size:16px;color:#6b6b6b;line-height:1.7;margin:0;">Cada BP de RH acessa só o recorte de lojas ou área que precisa acompanhar, com controle de visibilidade e privilégios administrativos configurado por unidade, sem depender de planilha separada para isolar essa visão.</p>
+        </div>
+        <div style="background:#F2F0EE;border-radius:16px;padding:40px 32px;min-height:260px;">
+          <i class="fa-solid fa-chart-column" style="font-size:32px;color:#CC0088;display:block;margin-bottom:24px;"></i>
+          <h4 style="font-size:22px;font-weight:700;color:#111;margin:0 0 16px 0;line-height:1.3;">Visão cruzada por loja, área ou diretoria</h4>
+          <p style="font-size:16px;color:#6b6b6b;line-height:1.7;margin:0;">Com uma base de milhares de colaboradores espalhados pelas lojas, comparar resultado por unidade ou por área deixa de ser um levantamento manual e passa a ser uma consulta direta na plataforma.</p>
+        </div>
+        <div style="background:#F2F0EE;border-radius:16px;padding:40px 32px;min-height:260px;">
+          <i class="fa-solid fa-user-group" style="font-size:32px;color:#CC0088;display:block;margin-bottom:24px;"></i>
+          <h4 style="font-size:22px;font-weight:700;color:#111;margin:0 0 16px 0;line-height:1.3;">Total flexibilidade na estruturação de processos</h4>
+          <p style="font-size:16px;color:#6b6b6b;line-height:1.7;margin:0;">Você define o formato de cada ciclo do seu jeito, e a pesquisa de clima pode ser enviada e respondida direto por WhatsApp, o que ajuda a alcançar quem está na ponta da operação, não só no time administrativo.</p>
+        </div>
       </div>
 
       <!-- SEÇÃO CATEGORIA 5 (opcional) — incluir apenas quando o cliente já possui uma solução e
