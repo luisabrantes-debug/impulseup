@@ -131,6 +131,12 @@
   .logo-grid-slot:hover{border-color:var(--color-primary);}
 
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
+  .pillars-lg{gap:24px;}
+  .pillars-lg .pillar-card{padding:32px 28px;min-height:220px;}
+  .pillars-lg .pillar-card .pillar-num{display:none;}
+  .pillars-lg .pillar-card .feat-tag{margin-bottom:16px;}
+  .pillars-lg .pillar-card h4{font-size:20px;margin-bottom:14px;}
+  .pillars-lg .pillar-card p{font-size:15px;line-height:1.7;}
   .positioning-line{font-size:15px;font-weight:600;color:var(--color-fg);background:#FBEAF0;border-left:3px solid var(--color-primary);border-radius:8px;padding:16px 20px;margin-bottom:32px;line-height:1.5;}
   .positioning-line i{color:var(--color-primary);margin-right:6px;}
 
@@ -481,7 +487,7 @@
       </div>
 
       <div class="block-title"><i class="fa-regular fa-star"></i>Por que empresas do varejo escolhem a impulseup</div>
-      <div class="pillars">
+      <div class="pillars pillars-lg">
         <!-- Pilares selecionados a partir de rfp-criterios.json, correlacionados aos desafios
              mapeados na Ação 02 do call planning (retrabalho manual de consolidação, análises
              fragmentadas e controle do processo em escala). -->
