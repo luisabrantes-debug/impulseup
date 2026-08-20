@@ -132,11 +132,12 @@
 
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
   .pillars-lg{gap:24px !important;}
-  .pillars-lg .pillar-card{padding:36px 30px !important;min-height:240px !important;}
+  .pillars-lg .pillar-card{padding:40px 32px !important;min-height:260px !important;border:none !important;background:#F2F0EE !important;border-radius:16px !important;}
   .pillars-lg .pillar-card .pillar-num{display:none !important;}
-  .pillars-lg .pillar-card .feat-tag{margin-bottom:18px !important;font-size:13px !important;}
-  .pillars-lg .pillar-card h4{font-size:22px !important;margin-bottom:16px !important;line-height:1.3 !important;}
-  .pillars-lg .pillar-card p{font-size:16px !important;line-height:1.7 !important;}
+  .pillars-lg .pillar-card .pillar-icon{display:block !important;font-size:30px !important;color:var(--color-primary) !important;margin-bottom:22px !important;}
+  .pillars-lg .pillar-card .feat-tag{display:none !important;}
+  .pillars-lg .pillar-card h4{font-size:23px !important;font-weight:700 !important;margin-bottom:16px !important;line-height:1.3 !important;color:#111 !important;}
+  .pillars-lg .pillar-card p{font-size:16px !important;line-height:1.7 !important;color:#6b6b6b !important;}
   .positioning-line{font-size:15px;font-weight:600;color:var(--color-fg);background:#FBEAF0;border-left:3px solid var(--color-primary);border-radius:8px;padding:16px 20px;margin-bottom:32px;line-height:1.5;}
   .positioning-line i{color:var(--color-primary);margin-right:6px;}
 
@@ -491,9 +492,9 @@
         <!-- Pilares selecionados a partir de rfp-criterios.json, correlacionados aos desafios
              mapeados na Ação 02 do call planning (retrabalho manual de consolidação, análises
              fragmentadas e controle do processo em escala). -->
-        <div class="pillar-card"><span class="pillar-num">01</span><span class="feat-tag">Confiável</span><h4>Acesso segmentado para BPs</h4><p>Cada BP de RH acessa só o recorte de lojas ou área que precisa acompanhar, com controle de visibilidade e privilégios administrativos configurado por unidade, sem depender de planilha separada para isolar essa visão.</p></div>
-        <div class="pillar-card"><span class="pillar-num">02</span><span class="feat-tag">Inteligente</span><h4>Visão cruzada por loja, área ou diretoria, sem planilha paralela</h4><p>Com uma base de milhares de colaboradores espalhados pelas lojas, comparar resultado por unidade ou por área deixa de ser um levantamento manual e passa a ser uma consulta direta na plataforma.</p></div>
-        <div class="pillar-card"><span class="pillar-num">03</span><span class="feat-tag">Flexível</span><h4>Total flexibilidade na estruturação de processos</h4><p>Você define o formato de cada ciclo do seu jeito, e a pesquisa de clima pode ser enviada e respondida direto por WhatsApp, o que ajuda a alcançar quem está na ponta da operação, não só no time administrativo.</p></div>
+        <div class="pillar-card"><i class="fa-solid fa-sliders pillar-icon"></i><span class="pillar-num">01</span><span class="feat-tag">Confiável</span><h4>Acesso segmentado para BPs</h4><p>Cada BP de RH acessa só o recorte de lojas ou área que precisa acompanhar, com controle de visibilidade e privilégios administrativos configurado por unidade, sem depender de planilha separada para isolar essa visão.</p></div>
+        <div class="pillar-card"><i class="fa-solid fa-chart-column pillar-icon"></i><span class="pillar-num">02</span><span class="feat-tag">Inteligente</span><h4>Visão cruzada por loja, área ou diretoria, sem planilha paralela</h4><p>Com uma base de milhares de colaboradores espalhados pelas lojas, comparar resultado por unidade ou por área deixa de ser um levantamento manual e passa a ser uma consulta direta na plataforma.</p></div>
+        <div class="pillar-card"><i class="fa-solid fa-user-group pillar-icon"></i><span class="pillar-num">03</span><span class="feat-tag">Flexível</span><h4>Total flexibilidade na estruturação de processos</h4><p>Você define o formato de cada ciclo do seu jeito, e a pesquisa de clima pode ser enviada e respondida direto por WhatsApp, o que ajuda a alcançar quem está na ponta da operação, não só no time administrativo.</p></div>
       </div>
 
       <!-- SEÇÃO CATEGORIA 5 (opcional) — incluir apenas quando o cliente já possui uma solução e
