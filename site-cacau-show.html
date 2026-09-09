@@ -119,6 +119,45 @@
   .activation-card p{font-size:12.5px;color:var(--color-fg-muted);line-height:1.5;margin-bottom:10px;}
   .activation-card .price{font-size:16px;font-weight:700;color:var(--color-primary);}
 
+  /* ---- ABA 6 — TELA DA PROPOSTA (réplica do modelo enviado) ---- */
+  .prop-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;}
+  .prop-header h1{font-size:30px;font-weight:800;color:var(--color-primary);letter-spacing:0.01em;text-transform:uppercase;margin-bottom:6px;}
+  .prop-header .prop-sub{font-size:14px;color:var(--color-fg-muted);}
+  .prop-validity{background:var(--color-bg-alt);border-radius:10px;padding:10px 18px;text-align:center;flex-shrink:0;}
+  .prop-validity .label{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-fg-muted);margin-bottom:4px;}
+  .prop-validity .value{font-size:15px;font-weight:700;}
+  .prop-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start;}
+  .prop-block-title{font-size:15px;font-weight:700;margin-bottom:16px;padding-left:12px;border-left:3px solid var(--color-primary);}
+  .prop-modules{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;}
+  .prop-module-card{border:1px solid var(--color-border);border-radius:12px;padding:18px 20px;}
+  .prop-module-card .mod-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;}
+  .prop-module-card .mod-head i{color:var(--color-primary);font-size:16px;margin-top:2px;}
+  .prop-module-card h4{font-size:14.5px;font-weight:700;margin-bottom:2px;}
+  .prop-module-card .mod-sub{font-size:12px;color:var(--color-fg-muted);}
+  .prop-module-card .mod-row{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--color-border);padding-top:10px;}
+  .prop-module-card .mod-row .mod-col .mlabel{font-size:9.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);margin-bottom:3px;}
+  .prop-module-card .mod-row .mod-col .mvalue{font-size:14.5px;font-weight:700;}
+  .prop-module-card .mod-row .mod-col.right{text-align:right;}
+  .prop-module-card .mod-row .mod-col .munit{font-size:14px;font-weight:700;color:var(--color-primary);}
+  .prop-module-card .mod-row .mod-col .mtotal{font-size:10.5px;color:var(--color-fg-muted);margin-top:2px;}
+  .prop-activation-card{border:1px solid var(--color-border);border-radius:12px;padding:22px;text-align:center;max-width:280px;}
+  .prop-activation-card i{font-size:20px;color:var(--color-primary);margin-bottom:10px;display:block;}
+  .prop-activation-card h4{font-size:14px;font-weight:700;margin-bottom:6px;}
+  .prop-activation-card p{font-size:12px;color:var(--color-fg-muted);line-height:1.5;margin-bottom:10px;}
+  .prop-activation-card .price{font-size:15.5px;font-weight:700;color:var(--color-primary);}
+  .prop-payment-box{border-top:3px solid var(--color-primary);background:var(--color-bg-alt);border-radius:12px;padding:26px 24px;text-align:center;margin-bottom:20px;}
+  .prop-payment-box .label{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--color-fg-muted);margin-bottom:14px;}
+  .prop-payment-box .installments{font-size:18px;font-weight:700;color:var(--color-primary);line-height:1.7;}
+  .prop-total-box{border-left:3px solid var(--color-primary);background:var(--color-surface);border-radius:12px;padding:22px 24px;}
+  .prop-total-box .label{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-fg-muted);margin-bottom:6px;}
+  .prop-total-box .value{font-size:27px;font-weight:800;}
+  .prop-total-box .meta{font-size:13px;color:var(--color-fg-muted);margin-top:8px;}
+  .prop-total-box .meta i{color:var(--color-primary);margin-right:5px;}
+  @media (max-width:860px){
+    .prop-grid{grid-template-columns:1fr;}
+    .prop-modules{grid-template-columns:1fr;}
+  }
+
   .challenges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
   .challenges.cols-2{grid-template-columns:repeat(2,1fr);}
   .challenge-card{border:1px solid var(--color-border);border-radius:12px;padding:20px;}
@@ -721,60 +760,73 @@
 
     <!-- ABA 6 — PROPOSTA COMERCIAL -->
     <section class="tab-panel" id="tab-6">
-      <span class="proposal-validity-badge"><span class="label">Validade da proposta</span><br><span class="value">5 dias</span></span>
-      <h1 class="section-title">Proposta comercial</h1>
-      <p class="section-sub">Solução completa de gestão &amp; performance</p>
+      <div class="prop-header">
+        <div>
+          <h1>Proposta comercial</h1>
+          <p class="prop-sub">Solução completa de gestão &amp; performance</p>
+        </div>
+        <div class="prop-validity">
+          <div class="label">Validade da proposta</div>
+          <div class="value">5 dias</div>
+        </div>
+      </div>
 
       <div id="tab7ProposalWrap">
-        <div class="block-title"><i class="fa-regular fa-layer-group"></i>Detalhamento dos módulos</div>
-        <div class="module-list">
-          <div class="module-row">
-            <div class="module-row-main"><h4>Avaliações</h4><p>Ciclos 90/180/360°, avaliação de experiência e feedback contínuo.</p></div>
-            <div class="module-row-users">2.000 créditos<br><span style="font-weight:700;color:var(--color-primary);">R$ 60,08</span><br><span style="font-size:12px;color:var(--color-fg-muted);">Total: R$ 120.160,00</span></div>
+        <div class="prop-grid">
+          <div>
+            <div class="prop-block-title">Detalhamento dos módulos</div>
+            <div class="prop-modules">
+              <div class="prop-module-card">
+                <div class="mod-head"><i class="fa-regular fa-clipboard-check"></i><div><h4>Avaliações</h4><div class="mod-sub">Ciclos 90/180/360°, av. experiência e feedback contínuo</div></div></div>
+                <div class="mod-row">
+                  <div class="mod-col"><div class="mlabel">Créditos</div><div class="mvalue">2000</div></div>
+                  <div class="mod-col right"><div class="mlabel">Valor unit.</div><div class="munit">R$ 60,08</div><div class="mtotal">Total: R$ 120.160,00</div></div>
+                </div>
+              </div>
+              <div class="prop-module-card">
+                <div class="mod-head"><i class="fa-regular fa-face-smile"></i><div><h4>Pesquisas</h4><div class="mod-sub">Clima, Pulso e Engajamento</div></div></div>
+                <div class="mod-row">
+                  <div class="mod-col"><div class="mlabel">Usuários</div><div class="mvalue">2000</div></div>
+                  <div class="mod-col right"><div class="mlabel">Valor unit.</div><div class="munit">R$ 2,39 /mês</div><div class="mtotal">Total: R$ 4.780,00 /mês</div></div>
+                </div>
+              </div>
+              <div class="prop-module-card">
+                <div class="mod-head"><i class="fa-regular fa-bullseye"></i><div><h4>Metas e OKRs</h4><div class="mod-sub">Indicadores e gestão estratégica</div></div></div>
+                <div class="mod-row">
+                  <div class="mod-col"><div class="mlabel">Usuários</div><div class="mvalue">2000</div></div>
+                  <div class="mod-col right"><div class="mlabel">Valor unit.</div><div class="munit">R$ 4,46 /mês</div><div class="mtotal">Total: R$ 8.920,00 /mês</div></div>
+                </div>
+              </div>
+              <div class="prop-module-card">
+                <div class="mod-head"><i class="fa-regular fa-seedling"></i><div><h4>Desenvolvimento</h4><div class="mod-sub">PDIs, Feedbacks, Reuniões 1:1, Ações e Iniciativas</div></div></div>
+                <div class="mod-row">
+                  <div class="mod-col"><div class="mlabel">Usuários</div><div class="mvalue">2000</div></div>
+                  <div class="mod-col right"><div class="mlabel">Status</div><div class="munit">Incluso</div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="prop-block-title">Serviços de Ativação e Sucesso</div>
+            <div class="prop-activation-card">
+              <i class="fa-solid fa-rocket"></i>
+              <h4>Plano de Serviço Enterprise</h4>
+              <p>Incluso: Avaliação de Desempenho, Metas, Pesquisas</p>
+              <div class="price">R$ 27.104,00</div>
+            </div>
           </div>
-          <div class="module-row">
-            <div class="module-row-main"><h4>Pesquisas</h4><p>Clima, pulso e engajamento.</p></div>
-            <div class="module-row-users">2.000 usuários<br><span style="font-weight:700;color:var(--color-primary);">R$ 2,39/mês</span><br><span style="font-size:12px;color:var(--color-fg-muted);">Total: R$ 4.780,00/mês</span></div>
-          </div>
-          <div class="module-row">
-            <div class="module-row-main"><h4>Metas e OKRs</h4><p>Indicadores e gestão estratégica.</p></div>
-            <div class="module-row-users">2.000 usuários<br><span style="font-weight:700;color:var(--color-primary);">R$ 4,46/mês</span><br><span style="font-size:12px;color:var(--color-fg-muted);">Total: R$ 8.920,00/mês</span></div>
-          </div>
-          <div class="module-row">
-            <div class="module-row-main"><h4>Desenvolvimento</h4><p>PDIs, feedbacks, reuniões 1:1, ações e iniciativas.</p></div>
-            <div class="module-row-users">2.000 usuários<br><span style="font-weight:700;color:var(--color-primary);">Incluso</span></div>
+
+          <div>
+            <div class="prop-payment-box">
+              <div class="label">Condição de pagamento</div>
+              <div class="installments">1ª: R$ 50.817,33<br>11X R$ 23.713,33</div>
+            </div>
+            <div class="prop-total-box">
+              <div class="label">Investimento total do contrato</div>
+              <div class="value">R$ 311.664,00</div>
+              <div class="meta"><i class="fa-solid fa-shield-check"></i>Contrato de 12 Meses</div>
+            </div>
           </div>
         </div>
-
-        <div class="block-title"><i class="fa-regular fa-rocket"></i>Serviços de Ativação e Sucesso</div>
-        <div class="activation-card">
-          <i class="fa-solid fa-rocket"></i>
-          <h4>Plano de Serviço Enterprise</h4>
-          <p>Incluso: Avaliação de Desempenho, Metas, Pesquisas</p>
-          <div class="price">R$ 27.104,00</div>
-        </div>
-
-        <div class="payment-panel">
-          <div class="label">Condição de pagamento</div>
-          <div class="installments">1ª: R$ 50.817,33<br>11x R$ 23.713,33</div>
-        </div>
-
-        <div class="total-contract-panel">
-          <div class="label">Investimento total do contrato</div>
-          <div class="value">R$ 311.664,00</div>
-          <div class="meta"><i class="fa-solid fa-shield-check" style="color:var(--color-primary);"></i> Contrato de 12 meses</div>
-        </div>
-
-        <div class="block-title"><i class="fa-regular fa-table"></i>Detalhamento de valores</div>
-        <table class="rfp-table" id="proposalValuesTable">
-          <tr><th>Item</th><th>Créditos/Usuários</th><th>Valor unitário</th><th>Total</th></tr>
-          <tr><td><div class="feat-name">Avaliações</div></td><td class="check-cell">2.000 créditos</td><td class="check-cell">R$ 60,08</td><td class="check-cell">R$ 120.160,00</td></tr>
-          <tr><td><div class="feat-name">Metas e OKRs</div></td><td class="check-cell">2.000</td><td class="check-cell">R$ 4,46/mês</td><td class="check-cell">R$ 8.920,00/mês</td></tr>
-          <tr><td><div class="feat-name">Pesquisas</div></td><td class="check-cell">2.000</td><td class="check-cell">R$ 2,39/mês</td><td class="check-cell">R$ 4.780,00/mês</td></tr>
-          <tr><td><div class="feat-name">Desenvolvimento</div></td><td class="check-cell">2.000</td><td class="check-cell">—</td><td class="check-cell">Incluso</td></tr>
-          <tr><td><div class="feat-name">Plano de Serviço Enterprise</div></td><td class="check-cell">—</td><td class="check-cell">—</td><td class="check-cell">R$ 27.104,00</td></tr>
-          <tr><td colspan="3" style="text-align:right;font-weight:600;">Investimento total do contrato (12 meses)</td><td class="check-cell" style="font-weight:700;color:var(--color-primary);">R$ 311.664,00</td></tr>
-        </table>
 
         <label class="proposal-upload-slot" id="proposalSlot" style="margin-top:24px;">
           <div id="proposalPlaceholder">
