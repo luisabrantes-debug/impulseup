@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book de Competências | impulseup</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F4F2EF;
+  --color-fg: #0C0C0C;
+  --color-fg-muted: #666666;
+  --color-border: #E0E0E0;
+  --color-primary: #CC0088;
+  --color-primary-hover: #A3006D;
+  --color-primary-active: #770055;
+  --color-surface: #F4F2EF;
+  --font-family: 'Poppins', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  transition: background 200ms ease, color 200ms ease;
+  line-height: 1.7;
+}
+
+.cover {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6vw;
+  background: radial-gradient(circle at 80% 20%, rgba(204,0,136,0.18), transparent 55%), var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+.cover::after {
+  content: "";
+  position: absolute;
+  right: -10%;
+  bottom: -20%;
+  width: 480px;
+  height: 480px;
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+  opacity: 0.35;
+}
+.cover .tag {
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+}
+.cover h1 {
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  margin: 0 0 1rem 0;
+  max-width: 16ch;
+}
+.cover p {
+  color: var(--color-fg-muted);
+  font-size: 1.15rem;
+  max-width: 46ch;
+  margin: 0 0 2rem 0;
+}
+.cover .brand {
+  position: absolute;
+  bottom: 4vw;
+  left: 6vw;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.cover .brand span { color: var(--color-primary); }
+
+nav.sections {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding: 0 4vw;
+}
+nav.sections a {
+  color: var(--color-fg-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 1.2rem 1.2rem;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+nav.sections a:hover,
+nav.sections a.active {
+  color: var(--color-fg);
+  border-bottom-color: var(--color-primary);
+}
+
+section.block {
+  padding: 5rem 6vw;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.block-head {
+  margin-bottom: 3rem;
+  max-width: 60ch;
+}
+.block-head .eyebrow {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.block-head h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  margin: 0 0 0.8rem 0;
+}
+.block-head p {
+  color: var(--color-fg-muted);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.75rem;
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 18px rgba(204,0,136,0.18);
+  transform: translateY(-2px);
+}
+.card h3 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.card .desc {
+  color: var(--color-fg-muted);
+  font-size: 0.95rem;
+  margin: 0 0 1rem 0;
+}
+.card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+}
+.card ul li {
+  margin-bottom: 0.45rem;
+  color: var(--color-fg);
+}
+.card ul li::marker {
+  color: var(--color-primary);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 2rem;
+  padding: 0.2rem 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+.future-section {
+  background: linear-gradient(180deg, var(--color-bg) 0%, rgba(204,0,136,0.06) 100%);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.future-section .card {
+  border-color: rgba(204,0,136,0.35);
+}
+.future-section .card:hover {
+  box-shadow: 0 0 24px rgba(204,0,136,0.3);
+}
+
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.comp-table thead th {
+  text-align: left;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.comp-row {
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 150ms ease;
+}
+.comp-row:hover {
+  background: rgba(204,0,136,0.08);
+}
+.comp-row td {
+  padding: 1.1rem 1.5rem;
+  vertical-align: middle;
+}
+.comp-row .comp-name {
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.comp-row .chevron {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  transition: transform 200ms ease;
+  color: var(--color-primary);
+}
+.comp-row.open .chevron {
+  transform: rotate(90deg);
+}
+.comp-row .comp-desc {
+  color: var(--color-fg-muted);
+  font-size: 0.9rem;
+}
+.behaviors-row {
+  display: none;
+  border-bottom: 1px solid var(--color-border);
+}
+.behaviors-row.open {
+  display: table-row;
+}
+.behaviors-row td {
+  padding: 0 1.5rem 1.4rem 1.5rem;
+  background: var(--color-bg-alt);
+}
+.behaviors-row ul {
+  margin: 0.8rem 0 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+.behaviors-row ul li {
+  margin-bottom: 0.5rem;
+}
+.behaviors-row ul li::marker {
+  color: var(--color-primary);
+}
+@media (max-width: 640px) {
+  .comp-table thead { display: none; }
+  .comp-row td:first-child { display: block; }
+  .comp-row .comp-desc { display: block; padding-top: 0.3rem; }
+}
+
+footer {
+  padding: 3rem 6vw 4rem;
+  color: var(--color-fg-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+footer span { color: var(--color-primary); font-weight: 600; }
+
+@media (max-width: 640px) {
+  .cover { padding: 8vw 6vw; }
+  section.block { padding: 3.5rem 5vw; }
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="tag">Book de Competências</div>
+  <h1>As capacidades que sustentam performance de verdade</h1>
+  <p>Um mapa vivo das competências técnicas, de liderança e de resultado que formam a régua de avaliação de desempenho, com uma frente adicional pensada para o profissional que vai atuar ao lado da inteligência artificial.</p>
+  <div class="brand">impulse<span>up</span></div>
+</div>
+
+<nav class="sections" id="navSections">
+  <a href="#tecnicas">Competências Técnicas</a>
+  <a href="#lideranca">Competências de Liderança</a>
+  <a href="#resultado">Competências de Resultado</a>
+  <a href="#comportamentais">Competências Comportamentais</a>
+  <a href="#futuro">Competências para o Futuro</a>
+</nav>
+
+<!-- TÉCNICAS -->
+<section class="block" id="tecnicas">
+  <div class="block-head">
+    <div class="eyebrow">01 · Técnicas</div>
+    <h2>Competências Técnicas</h2>
+    <p>O domínio prático do ofício. São as capacidades que garantem qualidade, precisão e confiabilidade na entrega do trabalho, independentemente da área de atuação. Clique em cada competência para ver os comportamentos que a compõem.</p>
+  </div>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th style="width:32%">Competência</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Domínio técnico</td>
+        <td class="comp-desc">Capacidade especializada em conhecimentos, técnicas e práticas necessárias para desempenhar com eficácia as responsabilidades da função.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Aplica com precisão os conhecimentos técnicos adquiridos no dia a dia</li>
+        <li>Mantém-se atualizado sobre as últimas tendências e avanços da área</li>
+        <li>Resolve problemas complexos relacionados à sua especialização</li>
+        <li>Compartilha conhecimento com colegas, oferecendo orientação quando necessário</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Ferramentas de trabalho</td>
+        <td class="comp-desc">Capacidade de utilizar efetivamente as ferramentas disponíveis para otimizar a produtividade e alcançar resultados de alta qualidade.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Domina as ferramentas necessárias para executar as tarefas com precisão</li>
+        <li>Organiza e gerencia o trabalho de forma sistemática com o suporte certo</li>
+        <li>Explora novas funcionalidades para ganhar produtividade</li>
+        <li>Adapta-se com facilidade a mudanças de ferramentas e novas tecnologias</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Inteligência analítica</td>
+        <td class="comp-desc">Capacidade de analisar, coletar e interpretar dados com precisão para tomar decisões embasadas e resolver problemas complexos.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Identifica padrões e tendências relevantes nos dados</li>
+        <li>Avalia criticamente informações e fontes antes de decidir</li>
+        <li>Conecta diferentes bases de dados para gerar insight</li>
+        <li>Resolve problemas com abordagem analítica e baseada em evidências</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Informática e tecnologia</td>
+        <td class="comp-desc">Conhecimento e habilidade no uso de tecnologias e sistemas de informática aplicados à rotina profissional.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Utiliza com fluência os sistemas centrais da operação</li>
+        <li>Resolve problemas técnicos de primeiro nível sem depender de suporte</li>
+        <li>Acompanha atualizações de sistema e as incorpora rapidamente</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Bancos de dados</td>
+        <td class="comp-desc">Capacidade de trabalhar com bancos de dados relacionais ou não relacionais para estruturar e consultar informação.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Constrói e interpreta consultas para extrair informação relevante</li>
+        <li>Garante a integridade e a organização dos dados utilizados</li>
+        <li>Aplica boas práticas de modelagem e governança de dados</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Segurança da informação</td>
+        <td class="comp-desc">Conhecimento sobre práticas de segurança no manuseio de dados, incluindo proteção, criptografia e prevenção de incidentes.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Segue os protocolos de segurança e privacidade estabelecidos</li>
+        <li>Identifica riscos de exposição de dados sensíveis antes que se tornem problema</li>
+        <li>Orienta colegas sobre boas práticas de proteção da informação</li>
+      </ul></td></tr>
+
+    </tbody>
+  </table>
+</section>
+
+<!-- LIDERANÇA -->
+<section class="block" id="lideranca">
+  <div class="block-head">
+    <div class="eyebrow">02 · Liderança</div>
+    <h2>Competências de Liderança</h2>
+    <p>A capacidade de influenciar pessoas e conduzir times rumo a um objetivo comum, com ética, clareza e consistência. Liderança aqui não é cargo, é comportamento. Clique em cada competência para ver os comportamentos que a compõem.</p>
+  </div>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th style="width:32%">Competência</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Liderança</td>
+        <td class="comp-desc">Capacidade de influenciar, motivar e guiar outras pessoas em direção a objetivos comuns de forma ética e positiva.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Define metas claras e realistas para a equipe</li>
+        <li>Cria uma visão estratégica e constrói o caminho para chegar lá</li>
+        <li>Fornece feedback construtivo com frequência</li>
+        <li>Trata os liderados com respeito, empatia e tolerância</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Gestão de pessoas</td>
+        <td class="comp-desc">Capacidade de liderar, motivar e desenvolver colaboradores para alcançar os objetivos organizacionais de forma eficiente e harmoniosa.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Identifica as necessidades de desenvolvimento de cada colaborador</li>
+        <li>Reconhece e valoriza o desempenho e as contribuições da equipe</li>
+        <li>Resolve conflitos de maneira assertiva, preservando o ambiente colaborativo</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Distribuição de tarefas</td>
+        <td class="comp-desc">Capacidade de atribuir tarefas e responsabilidades apropriadas a cada membro da equipe, com orientação clara e confiança nas suas habilidades.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Atribui tarefas de acordo com as competências de cada pessoa</li>
+        <li>Fornece orientações claras sobre expectativas e objetivos</li>
+        <li>Monitora o progresso e devolve feedback construtivo quando necessário</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Gestão de conflitos</td>
+        <td class="comp-desc">Capacidade de identificar, lidar e resolver conflitos de forma construtiva, mantendo um ambiente de trabalho produtivo.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Escuta ativamente todas as partes envolvidas</li>
+        <li>Mantém controle emocional diante de tensão e divergência</li>
+        <li>Media e negocia para alcançar acordos satisfatórios</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Feedback</td>
+        <td class="comp-desc">Capacidade de fornecer devolutivas construtivas, relevantes e objetivas, promovendo desenvolvimento e alinhamento contínuo.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Comunica-se de forma clara, específica e direcionada</li>
+        <li>Equilibra pontos de melhoria com reconhecimento de pontos fortes</li>
+        <li>Está aberto a receber feedback e a agir sobre ele</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Visão sistêmica</td>
+        <td class="comp-desc">Capacidade de analisar o negócio como um todo, compreendendo processos, sistemas e as conexões entre eles.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Analisa como o trabalho da própria área impacta o restante da organização</li>
+        <li>Antecipa oportunidades e desafios futuros para o time e para o negócio</li>
+        <li>Propõe melhorias na integração entre etapas e áreas</li>
+      </ul></td></tr>
+
+    </tbody>
+  </table>
+</section>
+
+<!-- RESULTADO -->
+<section class="block" id="resultado">
+  <div class="block-head">
+    <div class="eyebrow">03 · Resultado</div>
+    <h2>Competências de Resultado</h2>
+    <p>A capacidade de transformar esforço em entrega concreta. Aqui está o que separa quem se movimenta de quem, de fato, entrega. Clique em cada competência para ver os comportamentos que a compõem.</p>
+  </div>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th style="width:32%">Competência</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Orientação para resultados</td>
+        <td class="comp-desc">Capacidade de estabelecer metas e direcionar esforços para alcançá-las de maneira eficaz e eficiente.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Prioriza as ações que contribuem diretamente para o resultado desejado</li>
+        <li>Define metas de forma clara e objetiva</li>
+        <li>Supera obstáculos e lida com pressão de forma construtiva</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Excelência em resultados</td>
+        <td class="comp-desc">Capacidade de alcançar consistentemente um desempenho excepcional, superando metas de forma sustentável.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Supera continuamente as expectativas e as metas estabelecidas</li>
+        <li>Age com foco e determinação para alcançar o melhor resultado possível</li>
+        <li>Assume responsabilidade pelos resultados e busca elevar o padrão</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Produtividade</td>
+        <td class="comp-desc">Capacidade de realizar tarefas e alcançar resultados de forma eficiente, cumprindo padrões de qualidade, quantidade e prazo.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Prioriza tarefas com base em impacto e esforço</li>
+        <li>Concentra-se em uma entrega de cada vez, minimizando interrupções</li>
+        <li>Identifica formas de tornar o trabalho mais ágil</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Gestão de tempo</td>
+        <td class="comp-desc">Capacidade de organizar e priorizar tarefas de forma eficiente, cumprindo prazos e otimizando o tempo disponível.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Planeja o cronograma diário com prioridades claras</li>
+        <li>Evita procrastinação e mantém o foco</li>
+        <li>Antecipa-se a prazos e entrega dentro do estipulado</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Iniciativa e proatividade</td>
+        <td class="comp-desc">Capacidade de identificar oportunidades e agir de forma independente, antes mesmo de ser solicitado.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Propõe soluções antes que o problema seja percebido pelos demais</li>
+        <li>Assume responsabilidades além do escopo original quando faz sentido</li>
+        <li>Antecipa necessidades futuras e se planeja para elas</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Gestão de projetos</td>
+        <td class="comp-desc">Capacidade de planejar, executar, monitorar e controlar projetos de forma eficaz, garantindo objetivos, prazos e orçamento.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Estabelece metas e um plano de projeto detalhado</li>
+        <li>Acompanha o progresso e corrige desvios com agilidade</li>
+        <li>Comunica status de forma eficaz para todos os envolvidos</li>
+      </ul></td></tr>
+
+    </tbody>
+  </table>
+</section>
+
+<!-- COMPORTAMENTAIS -->
+<section class="block" id="comportamentais">
+  <div class="block-head">
+    <div class="eyebrow">04 · Comportamentais</div>
+    <h2>Competências Comportamentais</h2>
+    <p>O conjunto completo de comportamentos que sustentam a convivência, a colaboração e a maturidade profissional no dia a dia. Clique em cada competência para ver os comportamentos que a compõem.</p>
+  </div>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th style="width:32%">Competência</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody id="compTableBody">
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Adaptabilidade</td>
+        <td class="comp-desc">Capacidade de se ajustar e responder de forma flexível e eficaz a mudanças, desafios e novas situações.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Se adapta rapidamente a mudanças de planos e prioridades</li>
+        <li>Aceita feedback e incorpora melhorias em suas práticas de trabalho</li>
+        <li>Demonstra disposição para assumir novas tarefas ou responsabilidades</li>
+        <li>Mantém uma mente aberta e busca novas abordagens para resolver problemas</li>
+        <li>Lida de forma positiva com situações de pressão e ambiguidade</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Aprendizagem</td>
+        <td class="comp-desc">Disposição e dedicação para adquirir novos conhecimentos e competências ao longo da carreira, buscando se manter atualizado.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Procura oportunidades de aprimoramento profissional dentro ou fora do trabalho</li>
+        <li>Reconhece conhecimentos e habilidades que ainda precisam ser aprimorados</li>
+        <li>Adquire e aplica novos conhecimentos no trabalho</li>
+        <li>Colabora com colegas, compartilhando conhecimentos e experiências</li>
+        <li>Busca feedback regularmente e está aberto a aprender com ele</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Autodesenvolvimento</td>
+        <td class="comp-desc">Busca, por iniciativa própria, aprimoramento pessoal e profissional na área de atuação de forma contínua.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Procura oportunidades para o desenvolvimento profissional e pessoal</li>
+        <li>Reserva tempo regularmente para autorreflexão e avaliação do próprio progresso</li>
+        <li>Mantém-se atualizado sobre as tendências e avanços da sua área de atuação</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Comprometimento</td>
+        <td class="comp-desc">Disposição e dedicação em cumprir responsabilidades, honrar compromissos e agir com responsabilidade rumo aos objetivos da equipe.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Cumpre prazos e metas, entregando o trabalho dentro do padrão de qualidade esperado</li>
+        <li>Está disponível para colaborar com os colegas de equipe quando necessário</li>
+        <li>Assume responsabilidade por suas ações e decisões, sem atribuir falhas a terceiros</li>
+        <li>Mantém-se focado nas tarefas, evitando distrações</li>
+        <li>Demonstra interesse genuíno nos objetivos da equipe</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Comunicação</td>
+        <td class="comp-desc">Capacidade de transmitir informações de forma clara, concisa e eficaz, promovendo compreensão e alinhamento entre a equipe.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Transmite informações de maneira clara e objetiva, evitando ambiguidades</li>
+        <li>Ouve ativamente e demonstra interesse genuíno nas contribuições dos colegas</li>
+        <li>Adapta sua comunicação de acordo com o público-alvo</li>
+        <li>É respeitoso ao fornecer feedback construtivo e aberto a recebê-lo</li>
+        <li>Comunica-se de forma assertiva, clara e diplomática</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Confiança</td>
+        <td class="comp-desc">Ser confiável, cumprir compromissos, manter a integridade e demonstrar consistência em ações e palavras.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Cumpre sempre com suas promessas e compromissos</li>
+        <li>Mantém a confidencialidade das informações confiadas a ela</li>
+        <li>É honesta em todas as suas interações, evitando falsidades ou enganos</li>
+        <li>Demonstra lealdade e apoio aos colegas de equipe</li>
+        <li>Assume responsabilidade por seus erros e trabalha para corrigi-los</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Criatividade</td>
+        <td class="comp-desc">Capacidade de gerar ideias originais, inovadoras e viáveis, aplicando soluções criativas para resolver problemas.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Gera ideias criativas e fora do convencional para abordar desafios</li>
+        <li>Explora diferentes perspectivas e pensa "fora da caixa"</li>
+        <li>Experimenta novas abordagens e métodos de trabalho</li>
+        <li>Encoraja e valoriza a expressão de ideias criativas dos colegas</li>
+        <li>Utiliza recursos como brainstorming e prototipagem</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Curiosidade</td>
+        <td class="comp-desc">Disposição e motivação para buscar constantemente novos conhecimentos e fazer perguntas relevantes.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Pesquisa ativamente informações relevantes e atualizadas</li>
+        <li>Explora diferentes abordagens e soluções para os desafios do trabalho</li>
+        <li>Faz perguntas pertinentes e desafiadoras para entender questões complexas</li>
+        <li>Procura oportunidades de aprendizado em projetos que estimulam novas habilidades</li>
+        <li>Demonstra entusiasmo em experimentar novas ideias, métodos ou tecnologias</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Empatia</td>
+        <td class="comp-desc">Capacidade de compreender e se colocar no lugar dos outros, com sensibilidade, respeito e consideração.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Ouve atentamente as preocupações e perspectivas dos colegas</li>
+        <li>Mostra respeito e consideração pelos sentimentos e necessidades dos outros</li>
+        <li>É sensível às diferentes realidades e experiências dos colegas</li>
+        <li>Oferece suporte emocional quando necessário</li>
+        <li>Colabora de forma cooperativa, reconhecendo contribuições individuais</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Engajamento</td>
+        <td class="comp-desc">Demonstrar entusiasmo, comprometimento e motivação, mantendo alto envolvimento com a equipe e a organização.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Demonstra entusiasmo e energia ao realizar as tarefas</li>
+        <li>Está comprometido em cumprir metas com alto padrão de qualidade</li>
+        <li>Colabora de forma proativa, oferecendo ajuda quando necessário</li>
+        <li>Busca constantemente oportunidades de aprendizado e crescimento</li>
+        <li>Mantém-se envolvido e engajado nas discussões relacionadas ao trabalho</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Inteligência emocional</td>
+        <td class="comp-desc">Capacidade de reconhecer, compreender e gerenciar as emoções próprias e dos outros.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Controla impulsos e reações emocionais negativas</li>
+        <li>Usa o tom adequado em conversas e e-mails, mesmo em momentos críticos</li>
+        <li>Reconhece as emoções e perspectivas das pessoas com quem se relaciona</li>
+        <li>Lida bem com as frustrações enfrentadas no ambiente de trabalho</li>
+        <li>Adapta-se a mudanças de contexto e cenário com facilidade</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Negociação</td>
+        <td class="comp-desc">Capacidade de argumentar e explorar possibilidades buscando um resultado mutuamente positivo e sustentável.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Expressa suas ideias de forma clara e concisa</li>
+        <li>Ouve ativamente as outras partes envolvidas na negociação</li>
+        <li>Identifica pontos de convergência entre as partes envolvidas</li>
+        <li>Influencia com argumentos convincentes e dados relevantes</li>
+        <li>Apresenta soluções sustentáveis e relevantes para ambas as partes</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Organização</td>
+        <td class="comp-desc">Capacidade de estruturar e gerenciar eficientemente tarefas, recursos e informações de forma sistemática.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Utiliza sistemas eficazes para organizar informações, documentos e recursos</li>
+        <li>Estabelece padrões para definir procedimentos, buscando praticidade e qualidade</li>
+        <li>Estabelece prazos realistas para a conclusão das atividades</li>
+        <li>Administra o tempo por atividade, considerando o grau de prioridade</li>
+        <li>Mantém o ambiente físico e virtual organizado e livre de desordem</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Planejamento</td>
+        <td class="comp-desc">Capacidade de criar planos estratégicos, estabelecer metas e definir ações para alcançá-las, prevenindo riscos.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Divide o plano em etapas menores, definindo marcos intermediários</li>
+        <li>Define prazos para acompanhar o progresso das ações</li>
+        <li>Estabelece metas específicas, mensuráveis, alcançáveis, relevantes e com prazo (SMART)</li>
+        <li>Avalia o ambiente interno e externo que possa influenciar o planejamento</li>
+        <li>Mapeia os riscos de cada atividade</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Pontualidade</td>
+        <td class="comp-desc">Cumprir horários e prazos estabelecidos, demonstrando respeito pelos compromissos.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Chega no horário estabelecido para o início do trabalho</li>
+        <li>Cumpre os prazos das tarefas e projetos</li>
+        <li>Participa das reuniões e compromissos agendados pontualmente</li>
+        <li>Está preparado para iniciar as atividades assim que o expediente começa</li>
+        <li>Respeita os horários de intervalo e retorno ao trabalho</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Relacionamento interpessoal</td>
+        <td class="comp-desc">Capacidade de estabelecer e manter relacionamentos saudáveis, harmoniosos e produtivos com outras pessoas.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Investe tempo e esforço para construir conexões positivas e duradouras</li>
+        <li>Relaciona-se com colegas e clientes de forma ética, respeitosa e empática</li>
+        <li>Lida com situações delicadas ou conflitos de forma sensível e diplomática</li>
+        <li>Trabalha de forma eficaz em equipe, compartilhando responsabilidades e ideias</li>
+        <li>Convive com as diferenças de forma paciente e empática</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Resiliência</td>
+        <td class="comp-desc">Capacidade de enfrentar desafios, adaptar-se às mudanças e superar obstáculos de forma eficaz e positiva.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Supera obstáculos e adversidades com determinação e persistência</li>
+        <li>Adapta-se rapidamente a mudanças e novas situações de trabalho</li>
+        <li>Mantém o equilíbrio emocional mesmo diante de pressão e estresse</li>
+        <li>Aprende com as experiências negativas e busca soluções construtivas</li>
+        <li>Mantém uma atitude positiva e motivada diante de desafios</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Resolução de problemas</td>
+        <td class="comp-desc">Capacidade de identificar e analisar problemas em sua totalidade, colocando em prática soluções eficazes.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Mantém uma postura calma e equilibrada diante de um problema</li>
+        <li>Busca a origem dos problemas, ao invés de focar apenas nos sintomas</li>
+        <li>Identifica o problema, definindo-o claramente</li>
+        <li>Analisa os recursos disponíveis e as possíveis restrições ao propor um plano</li>
+        <li>Cria um plano de ação com etapas claras para a solução do problema</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Responsabilidade</td>
+        <td class="comp-desc">Capacidade de assumir e cumprir obrigações, agir de maneira ética e responsabilizar-se por ações e resultados.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Segue as normas, diretrizes e valores da organização</li>
+        <li>Cumpre os compromissos assumidos</li>
+        <li>Conclui suas atividades no prazo acordado</li>
+        <li>Assume responsabilidade por suas ações, decisões e resultados</li>
+        <li>Trabalha para corrigir os erros cometidos</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Trabalho em equipe</td>
+        <td class="comp-desc">Capacidade de colaborar efetivamente em atividades com outras pessoas de forma produtiva e respeitosa.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Trata os outros com respeito e tolerância</li>
+        <li>Tem empatia pelas perspectivas e necessidades dos demais membros da equipe</li>
+        <li>Comunica-se de forma clara e aberta com os outros membros da equipe</li>
+        <li>Compartilha informações, recursos e aprendizados com os colegas</li>
+        <li>Incentiva a participação dos demais membros da equipe</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Pensamento crítico</td>
+        <td class="comp-desc">Capacidade de analisar, avaliar e interpretar informações de forma objetiva e imparcial, considerando diferentes perspectivas.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Questiona premissas antes de aceitar uma conclusão como verdadeira</li>
+        <li>Separa fatos de opiniões ao avaliar uma situação</li>
+        <li>Busca evidências e dados antes de formar um julgamento</li>
+        <li>Considera perspectivas divergentes antes de decidir</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Pensamento estratégico</td>
+        <td class="comp-desc">Capacidade de analisar de forma abrangente, planejar e tomar decisões alinhadas aos objetivos da organização.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Conecta decisões do dia a dia aos objetivos de longo prazo da organização</li>
+        <li>Avalia diferentes cenários antes de definir um curso de ação</li>
+        <li>Considera fatores internos e externos ao tomar decisões relevantes</li>
+        <li>Antecipa movimentos do mercado e da concorrência</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Flexibilidade cognitiva</td>
+        <td class="comp-desc">Capacidade de adaptar-se e ajustar-se a novas ideias, abordagens e mudanças de contexto no trabalho.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Alterna entre diferentes linhas de raciocínio conforme a situação exige</li>
+        <li>Revisa uma posição diante de novos dados ou argumentos</li>
+        <li>Concilia pontos de vista aparentemente opostos em busca de uma solução</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Aspiração</td>
+        <td class="comp-desc">Ter ambição, estabelecer metas desafiadoras e buscar ativamente o crescimento e o progresso profissional.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Tem interesse em se desenvolver e atuar em funções mais seniores</li>
+        <li>Possui mentalidade orientada a objetivos e busca novas conquistas</li>
+        <li>Tem determinação e persistência para alcançar suas metas</li>
+        <li>Conecta-se com profissionais inspiradores e busca mentores para o seu crescimento</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Autoestima</td>
+        <td class="comp-desc">Reconhecer e valorizar suas próprias habilidades, conquistas e valor dentro do ambiente de trabalho.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Demonstra confiança ao enfrentar desafios e tarefas complexas</li>
+        <li>Consegue separar o feedback de desempenho de seu valor pessoal</li>
+        <li>Não tem medo de contribuir com suas perspectivas</li>
+        <li>Define expectativas realistas e prioriza o equilíbrio entre vida pessoal e trabalho</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Aptidão operacional</td>
+        <td class="comp-desc">Tomar a iniciativa e executar tarefas de maneira eficiente, assumindo responsabilidades e cumprindo prazos com diligência.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Toma a iniciativa e assume a responsabilidade por suas tarefas e projetos</li>
+        <li>Cumpre prazos com diligência e senso de urgência</li>
+        <li>É proativa, antecipa-se aos problemas e toma medidas preventivas</li>
+        <li>Toma decisões de forma ágil e eficaz</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Aperfeiçoamento da equipe</td>
+        <td class="comp-desc">Promover e apoiar o crescimento profissional da equipe, com feedback construtivo e orientação.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Fornece feedback construtivo e regular para identificar áreas de desenvolvimento</li>
+        <li>Oferece oportunidades de treinamento e capacitação</li>
+        <li>Estimula o compartilhamento de conhecimento entre os colaboradores</li>
+        <li>Reconhece e valoriza o esforço e o progresso da equipe</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Influência e conexão</td>
+        <td class="comp-desc">Influência e conexão para estabelecer relacionamentos positivos, engajar pessoas e alcançar resultados colaborativos.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Estabelece conexões autênticas com colegas, líderes e outros departamentos</li>
+        <li>Demonstra habilidades persuasivas ao apresentar ideias</li>
+        <li>Busca oportunidades de networking e relacionamentos sólidos</li>
+        <li>Utiliza sua rede de contatos para obter suporte em projetos</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Posicionamento</td>
+        <td class="comp-desc">Se posicionar de forma eficaz e estratégica dentro da organização para alcançar objetivos profissionais.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Apresenta postura ativa, questionando e propondo novas ideias</li>
+        <li>Identifica os impactos que as atividades do seu setor têm sobre os outros</li>
+        <li>Age de acordo com os objetivos estratégicos e valores da empresa</li>
+        <li>Adapta-se às mudanças organizacionais e a novas direções estratégicas</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Previsibilidade</td>
+        <td class="comp-desc">Capacidade de antecipar eventos, resultados ou situações com base em informações disponíveis.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Acompanha o progresso e os resultados das ações em andamento</li>
+        <li>Desenvolve planos de ação com base em previsões e projeções para o futuro</li>
+        <li>Projeta diferentes cenários possíveis com base nas informações disponíveis</li>
+        <li>Mantém os dados relevantes para sua atuação organizados e atualizados</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Gestão Ágil</td>
+        <td class="comp-desc">Gerenciar projetos de forma flexível e adaptativa, promovendo entrega contínua de valor e resposta rápida a mudanças.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Realiza reuniões diárias de acompanhamento do progresso do trabalho</li>
+        <li>Define metas claras e mensuráveis em conjunto com a equipe</li>
+        <li>Prioriza as tarefas com base na sua importância e valor para o cliente</li>
+        <li>Adapta-se rapidamente a mudanças e ajusta o plano de trabalho</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Gestão de Riscos</td>
+        <td class="comp-desc">Identificar, avaliar, mitigar e monitorar riscos de forma proativa, minimizando impactos negativos.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Identifica e analisa riscos potenciais relacionados às atividades em andamento</li>
+        <li>Desenvolve planos de contingência eficazes</li>
+        <li>Monitora continuamente os riscos existentes, ajustando estratégias quando necessário</li>
+        <li>Comunica de forma clara os riscos para as partes interessadas</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Conhecimento em OKR</td>
+        <td class="comp-desc">Compreender e alinhar-se com as metas estabelecidas pela organização, orientando ações para alcançar os objetivos propostos.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Estabelece metas claras e mensuráveis para si e para a equipe</li>
+        <li>Monitora regularmente o progresso em relação às metas estabelecidas</li>
+        <li>Ajusta estratégias e recursos conforme necessário para atingir as metas</li>
+        <li>Celebra e reconhece os marcos e conquistas alcançados</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Tomada de decisão</td>
+        <td class="comp-desc">Analisar informações relevantes, avaliar alternativas e escolher o curso de ação mais apropriado em diferentes situações.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Pondera prós e contras antes de decidir, mesmo sob pressão</li>
+        <li>Assume a decisão tomada e as consequências que vêm com ela</li>
+        <li>Busca dados adicionais quando a informação disponível é insuficiente</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Coaching/Mentoria</td>
+        <td class="comp-desc">Desenvolver o potencial dos membros da equipe por meio de orientação, feedback construtivo e apoio contínuo.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Dedica tempo regular para conversas de desenvolvimento</li>
+        <li>Ajuda o outro a encontrar a própria resposta, em vez de entregar a solução pronta</li>
+        <li>Acompanha a evolução combinada ao longo do tempo</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Empreendedorismo</td>
+        <td class="comp-desc">Identificar e aproveitar oportunidades, assumir riscos calculados e buscar resultados diferenciados no trabalho.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Identifica oportunidades de negócio antes que se tornem óbvias</li>
+        <li>Assume risco calculado, com plano de mitigação definido</li>
+        <li>Testa soluções novas em pequena escala antes de escalar</li>
+      </ul></td></tr>
+
+    </tbody>
+  </table>
+</section>
+
+<!-- FUTURO -->
+<section class="block future-section" id="futuro">
+  <div class="block-head">
+    <div class="eyebrow">05 · Futuro</div>
+    <h2>Competências para o Futuro</h2>
+    <p>O mercado já está mudando a régua. Estas são as competências que a impulseup está incorporando ao book para preparar o time para trabalhar lado a lado com inteligência artificial e agentes autônomos. Clique em cada competência para ver os comportamentos que a compõem.</p>
+  </div>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th style="width:32%">Competência</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Fluência em inteligência artificial aplicada <span class="badge" style="margin:0 0 0 0.6rem;">Nova</span></td>
+        <td class="comp-desc">Capacidade de compreender o que a IA generativa faz bem, onde ela falha, e de incorporá-la ao trabalho do dia a dia com critério.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Reconhece quais tarefas ganham velocidade e qualidade com apoio de IA</li>
+        <li>Combina o uso da ferramenta com julgamento humano no resultado final</li>
+        <li>Atualiza-se continuamente sobre novas capacidades disponíveis no mercado</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Orquestração de agentes autônomos <span class="badge" style="margin:0 0 0 0.6rem;">Nova</span></td>
+        <td class="comp-desc">Capacidade de desenhar, configurar e supervisionar agentes de IA que executam tarefas encadeadas com pouca intervenção humana.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Mapeia processos que podem ser delegados a um agente com segurança</li>
+        <li>Define pontos de checagem humana nos fluxos automatizados</li>
+        <li>Ajusta o comportamento do agente a partir dos resultados observados</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Prompt engineering estratégico <span class="badge" style="margin:0 0 0 0.6rem;">Nova</span></td>
+        <td class="comp-desc">Capacidade de estruturar instruções claras e orientadas a negócio para extrair o melhor resultado de modelos de IA.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Traduz um objetivo de negócio em instruções precisas para o modelo</li>
+        <li>Itera sobre o resultado até atingir o padrão de qualidade esperado</li>
+        <li>Documenta prompts que funcionam bem para reuso do time</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Curadoria crítica de outputs de IA <span class="badge" style="margin:0 0 0 0.6rem;">Nova</span></td>
+        <td class="comp-desc">Capacidade de revisar, validar e assumir responsabilidade pelo que a inteligência artificial produz antes de entregar ao cliente ou à empresa.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Confere fatos, números e citações gerados por IA antes de publicar</li>
+        <li>Identifica vieses ou erros sutis que passariam despercebidos</li>
+        <li>Nunca repassa um output de IA como entrega final sem revisão humana</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Automação inteligente de processos <span class="badge" style="margin:0 0 0 0.6rem;">Nova</span></td>
+        <td class="comp-desc">Capacidade de combinar ferramentas no-code, low-code e IA para eliminar trabalho manual repetitivo e ganhar escala.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Identifica processos manuais com potencial de automação</li>
+        <li>Constrói fluxos simples de automação sem depender de times técnicos</li>
+        <li>Mede o ganho de tempo e qualidade gerado pela automação implementada</li>
+      </ul></td></tr>
+
+      <tr class="comp-row" onclick="toggleRow(this)">
+        <td class="comp-name"><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>Colaboração híbrida humano-IA <span class="badge" style="margin:0 0 0 0.6rem;">Nova</span></td>
+        <td class="comp-desc">Capacidade de organizar o próprio trabalho e o da equipe considerando pessoas e agentes de IA como parte do mesmo time.</td>
+      </tr>
+      <tr class="behaviors-row"><td colspan="2"><ul>
+        <li>Define claramente o que fica com o humano e o que fica com a IA</li>
+        <li>Comunica ao time e ao cliente onde a IA foi utilizada no processo</li>
+        <li>Mantém a responsabilidade final e a ética sempre com o profissional humano</li>
+      </ul></td></tr>
+
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  Book de Competências · <span>impulseup</span> · elaborado para orientar avaliação de desempenho e planos de desenvolvimento
+</footer>
+
+<script>
+function toggleRow(row) {
+  const behaviorsRow = row.nextElementSibling;
+  row.classList.toggle('open');
+  behaviorsRow.classList.toggle('open');
+}
+
+// Highlight de seção ativa na navegação
+const sections = document.querySelectorAll('section.block');
+const navLinks = document.querySelectorAll('nav.sections a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`nav.sections a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
