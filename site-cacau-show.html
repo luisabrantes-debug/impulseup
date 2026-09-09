@@ -89,6 +89,20 @@
   .block-title{font-size:15px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
   .block-title i{color:var(--color-primary);font-size:16px;}
 
+  .test-deadline{display:flex;align-items:center;gap:14px;background:var(--color-surface);border-radius:14px;padding:22px 28px;margin-bottom:36px;}
+  .test-deadline i{font-size:20px;color:var(--color-primary);}
+  .test-deadline .label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-fg-muted);margin-bottom:4px;}
+  .test-deadline .value{font-size:17px;font-weight:700;}
+  .test-checklist{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;}
+  .test-item{display:flex;align-items:flex-start;gap:14px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:18px 20px;transition:border-color .15s,background .15s;}
+  .test-item.checked{border-color:var(--color-primary);background:color-mix(in srgb, var(--color-primary) 6%, var(--color-surface));}
+  .test-item input[type="checkbox"]{width:20px;height:20px;flex-shrink:0;margin-top:2px;accent-color:var(--color-primary);cursor:pointer;}
+  .test-item .test-item-body{flex:1;}
+  .test-item .test-item-num{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-primary);display:block;margin-bottom:4px;}
+  .test-item .test-item-desc{font-size:14.5px;line-height:1.6;color:var(--color-fg);}
+  .test-item.checked .test-item-desc{color:var(--color-fg-muted);text-decoration:line-through;}
+  .test-progress{font-size:12.5px;color:var(--color-fg-muted);margin:-24px 0 28px 0;}
+
   .challenges{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
   .challenges.cols-2{grid-template-columns:repeat(2,1fr);}
   .challenge-card{border:1px solid var(--color-border);border-radius:12px;padding:20px;}
@@ -437,6 +451,7 @@
       <button data-tab="6"><span class="num">06</span>Processo de implementação</button>
       <button data-tab="7"><span class="num">07</span>Proposta comercial</button>
       <button data-tab="8"><span class="num">08</span>Próximos passos</button>
+      <button data-tab="9"><span class="num">09</span>Plano de testes</button>
       <button type="button" id="exportExecHtmlBtn" class="export-exec-btn">
         <i class="fa-regular fa-file-code"></i> Resumo executivo (HTML)
       </button>
@@ -766,6 +781,81 @@
       </div>
     </section>
 
+    <!-- ABA 9 — PLANO DE TESTES -->
+    <section class="tab-panel" id="tab-9">
+      <h1 class="section-title">Plano de testes</h1>
+      <p class="section-sub">Critérios que a Cacau Show vai validar no ambiente de teste</p>
+
+      <div class="test-deadline">
+        <i class="fa-regular fa-calendar-clock"></i>
+        <div>
+          <div class="label">Prazo do teste</div>
+          <div class="value" contenteditable="true">A confirmar</div>
+        </div>
+      </div>
+
+      <div class="block-title"><i class="fa-regular fa-list-check"></i>Critérios a validar</div>
+      <p class="test-progress" id="testProgress"></p>
+      <div class="test-checklist" id="testChecklist">
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-1">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 1</span>
+            <span class="test-item-desc">Perfil 360 — histórico consolidado do colaborador (avaliações, PDI e metas numa única visão)</span>
+          </div>
+        </label>
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-2">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 2</span>
+            <span class="test-item-desc">Nine Box conectado, com cruzamento automático entre metas e competências na calibragem</span>
+          </div>
+        </label>
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-3">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 3</span>
+            <span class="test-item-desc">Analytics de metas, desempenho e pesquisas em tempo real, sem exportação para Excel</span>
+          </div>
+        </label>
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-4">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 4</span>
+            <span class="test-item-desc">Fluxo de aprovação e ajuste de metas com autonomia do RH, sem abrir chamado com fornecedor</span>
+          </div>
+        </label>
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-5">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 5</span>
+            <span class="test-item-desc">Notificações automáticas de pendências por WhatsApp, e-mail e SMS</span>
+          </div>
+        </label>
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-6">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 6</span>
+            <span class="test-item-desc">Pesquisas personalizadas com análise de comentários por IA (alertas de risco)</span>
+          </div>
+        </label>
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-7">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 7</span>
+            <span class="test-item-desc">Envio e resposta de pesquisas por WhatsApp, alcançando colaboradores sem e-mail corporativo</span>
+          </div>
+        </label>
+        <label class="test-item">
+          <input type="checkbox" data-test-id="cacau-teste-8">
+          <div class="test-item-body">
+            <span class="test-item-num">Critério 8</span>
+            <span class="test-item-desc">Conexão da base de dados e hierarquias com apoio da Jess (dados e indicadores)</span>
+          </div>
+        </label>
+      </div>
+    </section>
+
     </main>
   </div>
 </div>
@@ -803,6 +893,31 @@
       document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
     });
   });
+
+  // ---------- ABA 9 — PLANO DE TESTES (checklist persistente) ----------
+  (function(){
+    const list = document.getElementById('testChecklist');
+    if(!list) return;
+    const progress = document.getElementById('testProgress');
+    const boxes = Array.from(list.querySelectorAll('input[type="checkbox"]'));
+    function storageKey(id){ return 'planoTestes:' + id; }
+    function updateProgress(){
+      const done = boxes.filter(b => b.checked).length;
+      progress.textContent = done + ' de ' + boxes.length + ' critérios validados';
+    }
+    boxes.forEach(box => {
+      const saved = localStorage.getItem(storageKey(box.dataset.testId));
+      if(saved === '1'){ box.checked = true; }
+      const item = box.closest('.test-item');
+      if(box.checked) item.classList.add('checked');
+      box.addEventListener('change', () => {
+        localStorage.setItem(storageKey(box.dataset.testId), box.checked ? '1' : '0');
+        item.classList.toggle('checked', box.checked);
+        updateProgress();
+      });
+    });
+    updateProgress();
+  })();
 
   // ---------- RESUMO EXECUTIVO (HTML) ----------
   function hexVar(name, fallback){
