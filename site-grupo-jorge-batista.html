@@ -51,6 +51,14 @@
   nav.side-nav button:hover:not(.active){background:var(--color-bg-alt);}
 
   .app-shell{display:grid;grid-template-columns:230px 1fr;gap:44px;padding:40px 0 80px;align-items:start;}
+  .app-shell.nav-collapsed{grid-template-columns:0 1fr;gap:0;}
+  .app-shell.nav-collapsed nav.side-nav{display:none;}
+  .nav-toggle-btn{
+    font-family:'Poppins',sans-serif;background:none;border:1px solid var(--color-border);border-radius:8px;
+    cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+    color:var(--color-fg-muted);flex-shrink:0;margin-right:4px;
+  }
+  .nav-toggle-btn:hover{border-color:var(--color-primary);color:var(--color-primary);}
   @media (max-width:860px){
     .app-shell{grid-template-columns:1fr;padding-top:24px;}
     nav.side-nav{
@@ -404,6 +412,9 @@
 <header>
   <div class="wrap">
     <div class="header-row">
+      <button type="button" id="navToggleBtn" class="nav-toggle-btn" title="Esconder/mostrar menu" aria-label="Esconder/mostrar menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
       <span class="brand-iup">impulse<span>up</span></span>
       <div class="divider-v"></div>
       <div>
@@ -751,6 +762,15 @@
 </footer>
 
 <script>
+  // ---------- ESCONDER/MOSTRAR BARRA LATERAL ----------
+  const navToggleBtn = document.getElementById('navToggleBtn');
+  const appShellEl = document.querySelector('.app-shell');
+  if (navToggleBtn && appShellEl) {
+    navToggleBtn.addEventListener('click', () => {
+      appShellEl.classList.toggle('nav-collapsed');
+    });
+  }
+
   document.querySelectorAll('#tabNav button[data-tab]').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#tabNav button[data-tab]').forEach(b => b.classList.remove('active'));
