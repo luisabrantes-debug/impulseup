@@ -618,16 +618,129 @@
     <section class="tab-panel" id="tab-4">
       <h1 class="section-title">Diferenciais impulseup</h1>
       <p class="section-sub">Comparativo com base nos critérios mais importantes para este projeto</p>
-      <div class="empty-state" id="tab4EmptyState">
+      <div class="empty-state" id="tab4EmptyState" style="display:none;">
         <i class="fa-regular fa-list-check"></i>
         <h3>Aba liberada após a reunião de Diagnóstico</h3>
         <p>Assim que o closer finalizar o diagnóstico, esta aba mostra o comparativo entre a impulseup e os concorrentes identificados na conversa. Se nenhum concorrente específico for mencionado, o comparativo é feito contra "Outras soluções", com resultado mediano.</p>
       </div>
-      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;display:none;">
+      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;display:block;">
         <table class="rfp-table" id="tab4Table">
-          <!-- Preenchido pela skill site-cliente-impulseup a partir da transcrição da reunião de Diagnóstico e de references/rfp-criterios.json.
-               Cada critério exibe sua tag (campo "tags" do JSON) junto ao nome, ex:
-               <tr><td><div class="feat-name">Formatos de avaliação diferentes (90/180/360)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>...</tr> -->
+          <thead>
+            <tr>
+              <th>Critério</th>
+              <th class="iup-col">impulseup</th>
+              <th>Gupy</th>
+              <th>Elofy</th>
+              <th>Senior Team Guide</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="feat-name">Formatos de avaliação diferentes (90/180/360)</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Competências específicas e exclusivas (líder, não líder, cargo, área ou outros)</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Personalização da escala de resposta (tamanho, valores, nomes), por competência ou grupo</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Pesos diferentes por tipo de avaliador, por competência</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Envio de avaliações por SMS e WhatsApp</div><span class="feat-tag">Fácil</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Planejamento de carreira e sucessão</div><span class="feat-tag">Liderança</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Customização dos eixos da matriz n-Box (flexibilidade total de dimensões)</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Comparação de resultados por cargo, área, diretoria, etc.</div><span class="feat-tag">Inteligente</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Análises avançadas com filtros customizados</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Conexão de gaps da avaliação com PDI e cursos de desenvolvimento</div><span class="feat-tag">Inteligente</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Biblioteca de ações de desenvolvimento personalizada</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Acesso sem e-mail corporativo</div><span class="feat-tag">Fácil</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Controle de visibilidade e privilégios administrativos</div><span class="feat-tag">Confiável</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell">—</td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Contratação modular, conforme necessidade</div><span class="feat-tag">Flexível</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell">—</td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+            </tr>
+            <tr>
+              <td><div class="feat-name">Envio de notificações por SMS e WhatsApp</div><span class="feat-tag">Fácil</span></td>
+              <td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+              <td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </section>
@@ -636,13 +749,296 @@
     <section class="tab-panel" id="tab-5">
       <h1 class="section-title">Aprovação e plano de ação</h1>
       <p class="section-sub">Objetivos de negócio da Grupo Jorge Batista, o caminho para chegar lá e o estado futuro com a impulseup</p>
-      <div class="empty-state" id="tab5EmptyState">
+      <div class="empty-state" id="tab5EmptyState" style="display:none;">
         <i class="fa-regular fa-clipboard"></i>
         <h3>Aba liberada após a reunião de Diagnóstico</h3>
         <p>Assim que os desafios forem mapeados, esta aba mostra os objetivos de negócio e RH por trás do projeto, o plano de ação com cronograma para chegar lá, e o estado futuro do negócio com a impulseup — pronta para embasar a apresentação à diretoria.</p>
       </div>
-      <div id="tab5PlanoWrap" style="display:none;">
-        <!--OBJETIVOS-->
+      <div id="tab5PlanoWrap" style="display:block;">
+      <div class="objetivo-card">
+        <div class="objetivo-header">
+          <div class="objetivo-num">01</div>
+          <div>
+            <h3>Padronizar a gestão de desempenho nas duas operações</h3>
+            <p>Sair do modelo pontual de 2024 para um ciclo estruturado, contínuo e sustentável, cobrindo Nazária e Globo.</p>
+          </div>
+        </div>
+        <div class="objetivo-body">
+          <div class="objetivo-compare-col">
+            <div class="objetivo-compare-box atual">
+              <span class="objetivo-compare-label">Situação atual</span>
+              <p>A avaliação já foi tentada em 2024, mas não seguiu adiante por falta de uma pessoa dedicada ao processo e de uma ferramenta que sustentasse a rotina.</p>
+            </div>
+            <div class="objetivo-compare-box meta">
+              <span class="objetivo-compare-label">Meta</span>
+              <p>Ciclo de avaliação rodando de forma contínua nas duas operações, com dono definido do processo e regras próprias por público (180 para o público geral, 360 para lideranças).</p>
+            </div>
+            <div class="objetivo-indicador">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <span class="objetivo-indicador-label">Indicador de sucesso</span>
+                <p>Ciclo completo concluído nas duas operações sem interrupção ao longo do ano.</p>
+              </div>
+            </div>
+          </div>
+          <div class="objetivo-plan-col">
+            <div class="objetivo-etapas-title">Plano de ação</div>
+            <div class="objetivo-etapas">
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">1</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 1</span>
+                <h4>Parametrização do modelo</h4>
+                <p>Construção da avaliação com as competências e pesos que o Grupo Jorge Batista já vem desenhando com o time comercial.</p>
+                <span class="objetivo-etapa-resp">Responsável: conjunta</span>
+              </div>
+            </div>
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">2</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 1–2</span>
+                <h4>Piloto no público comercial</h4>
+                <p>Rodada piloto com os 300 a 500 colaboradores do comercial da Nazária.</p>
+                <span class="objetivo-etapa-resp">Responsável: impulseup</span>
+              </div>
+            </div>
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">3</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 3 em diante</span>
+                <h4>Acompanhamento contínuo</h4>
+                <p>Rotina de acompanhamento do ciclo para evitar que o processo pare de novo, como aconteceu em 2024.</p>
+                <span class="objetivo-etapa-resp">Responsável: conjunta</span>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="approval-outcome">
+          <div class="approval-outcome-title"><i class="fa-solid fa-flag-checkered"></i>Estado futuro</div>
+          <div class="approval-outcome-grid">
+            <div class="approval-stage futuro">
+              <span class="approval-stage-label">Para o RH/DHO</span>
+              <p>Um único ciclo, com pesos e formatos configuráveis por público (180/360), sem depender de planilha paralela para sustentar a rotina.</p>
+            </div>
+            <div class="approval-stage negocio">
+              <span class="approval-stage-label">Para o negócio</span>
+              <p>Continuidade do processo mesmo diante de mudanças internas — como a reestruturação do RH que interrompeu a iniciativa em 2024 — reduzindo o risco de nova descontinuidade.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="objetivo-card">
+        <div class="objetivo-header">
+          <div class="objetivo-num">02</div>
+          <div>
+            <h3>Construir visão de sucessão para o administrativo</h3>
+            <p>Sair da seleção externa por urgência para um mapa de sucessores prontos, sobretudo no administrativo das duas empresas.</p>
+          </div>
+        </div>
+        <div class="objetivo-body">
+          <div class="objetivo-compare-col">
+            <div class="objetivo-compare-box atual">
+              <span class="objetivo-compare-label">Situação atual</span>
+              <p>O programa de sucessão (Coração Azul) funcionou por dois anos, mas está parado há um ano. Hoje, quando um cargo abre, a saída é buscar fora, sem sucessores mapeados.</p>
+            </div>
+            <div class="objetivo-compare-box meta">
+              <span class="objetivo-compare-label">Meta</span>
+              <p>Cargos críticos do administrativo com sucessores identificados e nível de prontidão claro, reduzindo a dependência de contratação externa emergencial.</p>
+            </div>
+            <div class="objetivo-indicador">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <span class="objetivo-indicador-label">Indicador de sucesso</span>
+                <p>Número de posições críticas do administrativo com ao menos um sucessor mapeado e sua prontidão registrada.</p>
+              </div>
+            </div>
+          </div>
+          <div class="objetivo-plan-col">
+            <div class="objetivo-etapas-title">Plano de ação</div>
+            <div class="objetivo-etapas">
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">1</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 2</span>
+                <h4>Mapeamento de posições críticas</h4>
+                <p>Identificação das posições com maior risco de saída e maior impacto, priorizando o administrativo.</p>
+                <span class="objetivo-etapa-resp">Responsável: {{NOME_EMPRESA}}</span>
+              </div>
+            </div>
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">2</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 2–3</span>
+                <h4>Cruzamento competência x potencial</h4>
+                <p>Construção do quadrante para o público administrativo, que ainda não tem dados de resultado consolidados.</p>
+                <span class="objetivo-etapa-resp">Responsável: impulseup</span>
+              </div>
+            </div>
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">3</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 4 em diante</span>
+                <h4>Acompanhamento da árvore de sucessão</h4>
+                <p>Revisão periódica de prontidão dos sucessores mapeados.</p>
+                <span class="objetivo-etapa-resp">Responsável: conjunta</span>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="approval-outcome">
+          <div class="approval-outcome-title"><i class="fa-solid fa-flag-checkered"></i>Estado futuro</div>
+          <div class="approval-outcome-grid">
+            <div class="approval-stage futuro">
+              <span class="approval-stage-label">Para o RH/DHO</span>
+              <p>Árvore de sucessores por posição crítica, com risco de saída e nível de prontidão visíveis para o DHO, sem depender de feeling na hora da vaga abrir.</p>
+            </div>
+            <div class="approval-stage negocio">
+              <span class="approval-stage-label">Para o negócio</span>
+              <p>Menos tempo e custo com contratação externa emergencial em áreas que, segundo o relato do DHO, hoje 'gritam' por gente preparada para assumir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="objetivo-card">
+        <div class="objetivo-header">
+          <div class="objetivo-num">03</div>
+          <div>
+            <h3>Conectar avaliação, PDI e desenvolvimento real</h3>
+            <p>Passar a medir se as ações de desenvolvimento (trilhas, treinamentos) de fato mudam o desempenho do colaborador.</p>
+          </div>
+        </div>
+        <div class="objetivo-body">
+          <div class="objetivo-compare-col">
+            <div class="objetivo-compare-box atual">
+              <span class="objetivo-compare-label">Situação atual</span>
+              <p>Hoje o Grupo Jorge Batista não consegue afirmar se as trilhas já em andamento no Aludos estão gerando evolução real, porque avaliação e desenvolvimento vivem desconectados.</p>
+            </div>
+            <div class="objetivo-compare-box meta">
+              <span class="objetivo-compare-label">Meta</span>
+              <p>Cada gap identificado na avaliação vira um plano de desenvolvimento individual rastreável, aproveitando o que já existe no Aludos em vez de duplicar conteúdo.</p>
+            </div>
+            <div class="objetivo-indicador">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <span class="objetivo-indicador-label">Indicador de sucesso</span>
+                <p>PDIs criados a partir de gaps de avaliação e conectados a trilhas do Aludos já existentes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="objetivo-plan-col">
+            <div class="objetivo-etapas-title">Plano de ação</div>
+            <div class="objetivo-etapas">
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">1</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 2</span>
+                <h4>Biblioteca de PDIs</h4>
+                <p>Montagem da biblioteca de ações conectando competências avaliadas às trilhas já existentes no Aludos.</p>
+                <span class="objetivo-etapa-resp">Responsável: impulseup</span>
+              </div>
+            </div>
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">2</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 3</span>
+                <h4>Conexão gap → PDI</h4>
+                <p>Parametrização da conexão automática entre gap de avaliação e sugestão de PDI.</p>
+                <span class="objetivo-etapa-resp">Responsável: impulseup</span>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="approval-outcome">
+          <div class="approval-outcome-title"><i class="fa-solid fa-flag-checkered"></i>Estado futuro</div>
+          <div class="approval-outcome-grid">
+            <div class="approval-stage futuro">
+              <span class="approval-stage-label">Para o RH/DHO</span>
+              <p>Biblioteca de PDIs conectada aos gaps da avaliação, sem precisar trocar o Aludos, que o Grupo Jorge Batista já está implantando.</p>
+            </div>
+            <div class="approval-stage negocio">
+              <span class="approval-stage-label">Para o negócio</span>
+              <p>Decisão de desenvolvimento baseada em dado — qual ação levou à melhora de qual indicador — em vez de percepção isolada do gestor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="objetivo-card">
+        <div class="objetivo-header">
+          <div class="objetivo-num">04</div>
+          <div>
+            <h3>Levar o processo até quem está na loja</h3>
+            <p>Garantir adesão do público comercial/loja, que hoje não tem rotina de acesso a computador ou e-mail corporativo.</p>
+          </div>
+        </div>
+        <div class="objetivo-body">
+          <div class="objetivo-compare-col">
+            <div class="objetivo-compare-box atual">
+              <span class="objetivo-compare-label">Situação atual</span>
+              <p>O piloto comercial da Nazária já soma de 300 a 500 pessoas, boa parte sem acesso fácil a computador ou e-mail corporativo no dia a dia.</p>
+            </div>
+            <div class="objetivo-compare-box meta">
+              <span class="objetivo-compare-label">Meta</span>
+              <p>Avaliação respondida via WhatsApp, sem exigência de login, com adesão real desse público, sem custo adicional pelo canal de disparo.</p>
+            </div>
+            <div class="objetivo-indicador">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <span class="objetivo-indicador-label">Indicador de sucesso</span>
+                <p>Percentual de adesão do público comercial/loja no piloto via WhatsApp.</p>
+              </div>
+            </div>
+          </div>
+          <div class="objetivo-plan-col">
+            <div class="objetivo-etapas-title">Plano de ação</div>
+            <div class="objetivo-etapas">
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">1</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 1–2</span>
+                <h4>Configuração dos canais</h4>
+                <p>Configuração de disparo por WhatsApp para o público comercial/loja dentro do piloto.</p>
+                <span class="objetivo-etapa-resp">Responsável: impulseup</span>
+              </div>
+            </div>
+            <div class="objetivo-etapa">
+              <div class="objetivo-etapa-dot">2</div>
+              <div class="objetivo-etapa-line"></div>
+              <div class="objetivo-etapa-content">
+                <span class="objetivo-etapa-period">Mês 2</span>
+                <h4>Acompanhamento de adesão</h4>
+                <p>Monitoramento em tempo real de quem respondeu, com reenvio de link para quem ainda não respondeu.</p>
+                <span class="objetivo-etapa-resp">Responsável: {{NOME_EMPRESA}}</span>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="approval-outcome">
+          <div class="approval-outcome-title"><i class="fa-solid fa-flag-checkered"></i>Estado futuro</div>
+          <div class="approval-outcome-grid">
+            <div class="approval-stage futuro">
+              <span class="approval-stage-label">Para o RH/DHO</span>
+              <p>Envio e resposta de avaliação por WhatsApp sem necessidade de login, com dashboard de adesão em tempo real por loja ou unidade.</p>
+            </div>
+            <div class="approval-stage negocio">
+              <span class="approval-stage-label">Para o negócio</span>
+              <p>Adesão real do público de loja/comercial no piloto, sem custo adicional pelo canal — o disparo por WhatsApp e SMS é incluso no plano.</p>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
 
