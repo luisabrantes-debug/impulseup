@@ -1090,7 +1090,7 @@
       <div class="timeline">
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">16 set</span><div><span class="tl-desc">Reunião de Diagnóstico</span><div class="tl-meta">Entender contexto e desafios · Noely, Andressa e Adriano</div></div></div>
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div class="tg-head" id="tgHead" role="button" tabindex="0" aria-expanded="false" aria-controls="tgCollapse"><div class="tg-line"><span class="tl-desc">Demonstração personalizada</span><i class="fa-solid fa-chevron-down tg-chevron" aria-hidden="true"></i></div><div class="tl-meta">Mostrar solução aplicada aos desafios mapeados</div></div></div>
-        <div class="tg-collapse" id="tgCollapse"><div class="tg-collapse-inner"><div class="tg-panel"><div class="tg-field"><span class="tg-title">Quem são os participantes do teste?</span><div class="tg-list" id="tgParticipants"></div></div><div class="tg-field"><span class="tg-title">Quais são os módulos que serão testados?</span><div class="tg-list" id="tgModules"></div></div><div class="tg-field"><span class="tg-title">O que queremos testar? Quais são os critérios de sucesso do teste?</span><div class="tg-add-row"><input type="text" id="tgCritInput" placeholder="Ex.: Enviar avaliação por WhatsApp" maxlength="200"><button type="button" class="tg-add-btn" id="tgCritAdd">Adicionar</button></div><div class="tg-list" id="tgCriteria"></div></div></div></div></div>
+        <div class="tg-collapse" id="tgCollapse"><div class="tg-collapse-inner"><div class="tg-panel"><div class="tg-field"><span class="tg-title">Quem são os participantes do teste?</span><div class="tg-add-row"><input type="text" id="tgPartInput" placeholder="Adicionar outro participante" maxlength="80"><button type="button" class="tg-add-btn" id="tgPartAdd">Adicionar</button></div><div class="tg-list" id="tgParticipants"></div></div><div class="tg-field"><span class="tg-title">Quais são os módulos que serão testados?</span><div class="tg-list" id="tgModules"></div></div><div class="tg-field"><span class="tg-title">O que queremos testar? Quais são os critérios de sucesso do teste?</span><div class="tg-add-row"><input type="text" id="tgCritInput" placeholder="Ex.: Enviar avaliação por WhatsApp" maxlength="200"><button type="button" class="tg-add-btn" id="tgCritAdd">Adicionar</button></div><div class="tg-list" id="tgCriteria"></div></div></div></div></div>
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Construção de projeto e proposta</span><div class="tl-meta">Definir escopo e cenários de investimento</div></div></div>
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Apresentação para diretoria</span></div></div>
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Aprovação da proposta</span></div></div>
@@ -1382,7 +1382,7 @@
     function load(){
       let d = {};
       try{ d = (JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'))[TG_KEY] || {}; }catch(e){}
-      return { p: d.p || {}, m: d.m || {}, c: Array.isArray(d.c) ? d.c : [] };
+      return { p: d.p || {}, m: d.m || {}, c: Array.isArray(d.c) ? d.c : [], x: Array.isArray(d.x) ? d.x : [] };
     }
     function save(d){
       try{
@@ -1410,9 +1410,9 @@
     function renderParticipants(){
       boxP.innerHTML = '';
       const cards = document.querySelectorAll('#teamGrid .person-card');
-      if(!cards.length){
+      if(!cards.length && !state.x.length){
         const e = document.createElement('div'); e.className = 'tg-empty';
-        e.textContent = 'Nenhum responsável cadastrado no Diagnóstico.';
+        e.textContent = 'Nenhum participante cadastrado.';
         boxP.appendChild(e); return;
       }
       cards.forEach((card, idx) => {
@@ -1421,7 +1421,40 @@
         const checked = state.p[idx] === undefined ? true : !!state.p[idx];
         boxP.appendChild(makeCheck(nome, checked, v => { state.p[idx] = v; save(state); }));
       });
+      // Participantes extras (adicionados só para o teste, fora do Diagnóstico)
+      state.x.forEach(pt => {
+        const row = document.createElement('div');
+        row.className = 'tg-crit';
+        const cb = document.createElement('input');
+        cb.type = 'checkbox'; cb.checked = pt.on !== false;
+        cb.setAttribute('aria-label', 'Participante do teste');
+        const txt = document.createElement('span');
+        txt.className = 'tg-crit-text'; txt.textContent = pt.text;
+        const del = document.createElement('button');
+        del.type = 'button'; del.className = 'tg-del';
+        del.setAttribute('aria-label', 'Excluir participante');
+        del.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        const toggle = () => { pt.on = cb.checked; save(state); };
+        cb.addEventListener('change', toggle);
+        txt.addEventListener('click', () => { cb.checked = !cb.checked; toggle(); });
+        del.addEventListener('click', () => {
+          state.x = state.x.filter(y => y.id !== pt.id);
+          save(state); renderParticipants();
+        });
+        row.appendChild(cb); row.appendChild(txt); row.appendChild(del);
+        boxP.appendChild(row);
+      });
     }
+
+    const partInp = document.getElementById('tgPartInput');
+    function addParticipant(){
+      const t = partInp.value.trim();
+      if(!t) return;
+      state.x.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text: t, on: true });
+      save(state); partInp.value = ''; renderParticipants(); partInp.focus();
+    }
+    document.getElementById('tgPartAdd').addEventListener('click', addParticipant);
+    partInp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); addParticipant(); } });
 
     function renderModules(){
       boxM.innerHTML = '';
