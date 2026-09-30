@@ -421,6 +421,42 @@
   .export-exec-btn:hover{background:var(--color-primary-hover);}
   .export-exec-btn:disabled{opacity:0.6;cursor:wait;}
   .export-exec-btn i{font-size:13px;}
+
+  /* ---- Painel expansível "Teste guiado da plataforma" (Próximos passos) ---- */
+  .tg-head{cursor:pointer;user-select:none;border-radius:6px;outline:none;}
+  .tg-head:focus-visible{box-shadow:0 0 0 2px var(--color-primary);}
+  .tg-line{display:flex;align-items:center;gap:10px;}
+  .tg-chevron{font-size:12px;color:var(--color-primary);transition:transform .35s ease;flex-shrink:0;}
+  .tg-head[aria-expanded="true"] .tg-chevron{transform:rotate(180deg);}
+  .tl-item.tg-open{border-bottom-color:transparent;}
+  .tg-collapse{display:grid;grid-template-rows:0fr;opacity:0;visibility:hidden;
+    transition:grid-template-rows .35s ease,opacity .3s ease,visibility 0s linear .35s;}
+  .tg-collapse.open{grid-template-rows:1fr;opacity:1;visibility:visible;
+    transition:grid-template-rows .35s ease,opacity .3s ease,visibility 0s;}
+  .tg-collapse-inner{overflow:hidden;min-height:0;}
+  .tg-panel{background:#FDEEF7;border:1px solid #F6CFE6;border-radius:12px;padding:20px 24px;margin:0 0 16px;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;}
+  .tg-field{min-width:0;}
+  .tg-title{display:block;font-size:13.5px;font-weight:700;color:var(--color-fg);margin-bottom:12px;line-height:1.4;}
+  .tg-list{display:flex;flex-direction:column;gap:9px;}
+  .tg-item{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:400;color:var(--color-fg);cursor:pointer;line-height:1.4;}
+  .tg-item input[type="checkbox"]{accent-color:var(--color-primary);width:16px;height:16px;flex-shrink:0;cursor:pointer;}
+  .tg-item span{font-weight:400;}
+  .tg-empty{font-size:12.5px;font-weight:400;color:var(--color-fg-muted);}
+  .tg-add-row{display:flex;gap:8px;margin-bottom:12px;}
+  .tg-add-row input[type="text"]{flex:1;min-width:0;font-family:'Poppins',sans-serif;font-size:13px;font-weight:400;
+    padding:9px 12px;border:1px solid #EBC3DC;border-radius:8px;background:#fff;color:var(--color-fg);outline:none;}
+  .tg-add-row input[type="text"]:focus{border-color:var(--color-primary);}
+  .tg-add-btn{font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;padding:9px 16px;border:none;border-radius:8px;
+    background:var(--color-primary);color:#fff;cursor:pointer;flex-shrink:0;}
+  .tg-add-btn:hover{background:var(--color-primary-hover);}
+  .tg-crit{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:400;line-height:1.4;}
+  .tg-crit input[type="checkbox"]{accent-color:var(--color-primary);width:16px;height:16px;flex-shrink:0;cursor:pointer;margin-top:2px;}
+  .tg-crit-text{flex:1;min-width:0;font-weight:400;word-break:break-word;cursor:pointer;}
+  .tg-crit.done .tg-crit-text{text-decoration:line-through;color:var(--color-fg-muted);}
+  .tg-del{background:none;border:none;color:var(--color-fg-muted);font-size:13px;cursor:pointer;padding:2px 4px;border-radius:4px;flex-shrink:0;line-height:1;}
+  .tg-del:hover{color:var(--color-primary);background:#fff;}
+  @media (max-width:860px){.tg-panel{grid-template-columns:1fr;gap:22px;}}
 </style>
 </head>
 <body>
@@ -1053,7 +1089,8 @@
       <p class="section-sub">Jornada de compra da Grupo Jorge Batista</p>
       <div class="timeline">
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">16 set</span><div><span class="tl-desc">Reunião de Diagnóstico</span><div class="tl-meta">Entender contexto e desafios · Noely, Andressa e Adriano</div></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Demonstração personalizada</span><div class="tl-meta">Mostrar solução aplicada aos desafios mapeados</div></div></div>
+        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div class="tg-head" id="tgHead" role="button" tabindex="0" aria-expanded="false" aria-controls="tgCollapse"><div class="tg-line"><span class="tl-desc">Demonstração personalizada</span><i class="fa-solid fa-chevron-down tg-chevron" aria-hidden="true"></i></div><div class="tl-meta">Mostrar solução aplicada aos desafios mapeados</div></div></div>
+        <div class="tg-collapse" id="tgCollapse"><div class="tg-collapse-inner"><div class="tg-panel"><div class="tg-field"><span class="tg-title">Quem são os participantes do teste?</span><div class="tg-list" id="tgParticipants"></div></div><div class="tg-field"><span class="tg-title">Quais são os módulos que serão testados?</span><div class="tg-list" id="tgModules"></div></div><div class="tg-field"><span class="tg-title">O que queremos testar? Quais são os critérios de sucesso do teste?</span><div class="tg-add-row"><input type="text" id="tgCritInput" placeholder="Ex.: Enviar avaliação por WhatsApp" maxlength="200"><button type="button" class="tg-add-btn" id="tgCritAdd">Adicionar</button></div><div class="tg-list" id="tgCriteria"></div></div></div></div></div>
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Construção de projeto e proposta</span><div class="tl-meta">Definir escopo e cenários de investimento</div></div></div>
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Apresentação para diretoria</span></div></div>
         <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Aprovação da proposta</span></div></div>
@@ -1188,7 +1225,8 @@
   document.querySelectorAll('.logo-grid-input').forEach(input => {
     input.addEventListener('change', handleLogoGridChange);
   });
-  document.getElementById('proposalInput').addEventListener('change', e => {
+  const proposalInputEl = document.getElementById('proposalInput');
+  if(proposalInputEl) proposalInputEl.addEventListener('change', e => {
     const file = e.target.files[0];
     if(!file) return;
     const reader = new FileReader();
@@ -1319,6 +1357,150 @@
       step.querySelector('.impl-step-text').focus();
     });
   });
+
+  // --- Aba 8: painel expansível "Teste guiado da plataforma" ---
+  // Chave versionada: se a regra de valores padrão mudar, trocar para teste_guiado_v2 (etc.)
+  // para que seleções antigas salvas no navegador não sobrescrevam o novo padrão.
+  (function(){
+    const TG_KEY = 'teste_guiado_v1';
+    const MODULOS = [
+      {id:'avaliacoes', nome:'Avaliações', padrao:true},
+      {id:'pesquisas',  nome:'Pesquisas',  padrao:false},
+      {id:'metas',      nome:"Metas e OKR's", padrao:false},
+      {id:'learning',   nome:'Learning',   padrao:false},
+      {id:'remvar',     nome:'Rem. Variável', padrao:false}
+    ];
+    const head = document.getElementById('tgHead');
+    const collapse = document.getElementById('tgCollapse');
+    if(!head || !collapse) return;
+    const item = head.closest('.tl-item');
+    const boxP = document.getElementById('tgParticipants');
+    const boxM = document.getElementById('tgModules');
+    const boxC = document.getElementById('tgCriteria');
+    const inp = document.getElementById('tgCritInput');
+
+    function load(){
+      let d = {};
+      try{ d = (JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'))[TG_KEY] || {}; }catch(e){}
+      return { p: d.p || {}, m: d.m || {}, c: Array.isArray(d.c) ? d.c : [] };
+    }
+    function save(d){
+      try{
+        const store = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        store[TG_KEY] = d;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+      }catch(e){}
+    }
+    let state = load();
+
+    function makeCheck(labelText, checked, onChange){
+      const lb = document.createElement('label');
+      lb.className = 'tg-item';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.checked = checked;
+      cb.addEventListener('change', () => onChange(cb.checked));
+      const sp = document.createElement('span');
+      sp.textContent = labelText;
+      lb.appendChild(cb); lb.appendChild(sp);
+      return lb;
+    }
+
+    // Participantes: lidos ao vivo dos Responsáveis pelo projeto (aba Diagnóstico).
+    // Padrão: todos marcados até o usuário desmarcar.
+    function renderParticipants(){
+      boxP.innerHTML = '';
+      const cards = document.querySelectorAll('#teamGrid .person-card');
+      if(!cards.length){
+        const e = document.createElement('div'); e.className = 'tg-empty';
+        e.textContent = 'Nenhum responsável cadastrado no Diagnóstico.';
+        boxP.appendChild(e); return;
+      }
+      cards.forEach((card, idx) => {
+        const nameEl = card.querySelector('.person-name');
+        const nome = ((nameEl && nameEl.textContent) || '').trim() || 'Nome a preencher';
+        const checked = state.p[idx] === undefined ? true : !!state.p[idx];
+        boxP.appendChild(makeCheck(nome, checked, v => { state.p[idx] = v; save(state); }));
+      });
+    }
+
+    function renderModules(){
+      boxM.innerHTML = '';
+      MODULOS.forEach(mod => {
+        const checked = state.m[mod.id] === undefined ? mod.padrao : !!state.m[mod.id];
+        boxM.appendChild(makeCheck(mod.nome, checked, v => { state.m[mod.id] = v; save(state); }));
+      });
+    }
+
+    function renderCriteria(){
+      boxC.innerHTML = '';
+      if(!state.c.length){
+        const e = document.createElement('div'); e.className = 'tg-empty';
+        e.textContent = 'Nenhum critério adicionado ainda.';
+        boxC.appendChild(e); return;
+      }
+      state.c.forEach(crit => {
+        const row = document.createElement('div');
+        row.className = 'tg-crit' + (crit.done ? ' done' : '');
+        const cb = document.createElement('input');
+        cb.type = 'checkbox'; cb.checked = !!crit.done;
+        cb.setAttribute('aria-label', 'Critério testado');
+        const txt = document.createElement('span');
+        txt.className = 'tg-crit-text'; txt.textContent = crit.text;
+        const del = document.createElement('button');
+        del.type = 'button'; del.className = 'tg-del';
+        del.setAttribute('aria-label', 'Excluir critério');
+        del.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        const toggle = () => {
+          crit.done = cb.checked;
+          row.classList.toggle('done', crit.done);
+          save(state);
+        };
+        cb.addEventListener('change', toggle);
+        txt.addEventListener('click', () => { cb.checked = !cb.checked; toggle(); });
+        del.addEventListener('click', () => {
+          state.c = state.c.filter(x => x.id !== crit.id);
+          save(state); renderCriteria();
+        });
+        row.appendChild(cb); row.appendChild(txt); row.appendChild(del);
+        boxC.appendChild(row);
+      });
+    }
+
+    function addCriterion(){
+      const t = inp.value.trim();
+      if(!t) return;
+      state.c.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), text: t, done: false });
+      save(state); inp.value = ''; renderCriteria(); inp.focus();
+    }
+    document.getElementById('tgCritAdd').addEventListener('click', addCriterion);
+    inp.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); addCriterion(); } });
+
+    // Abrir/fechar (clique na seta ou no texto da etapa; Enter/Espaço no teclado)
+    function toggleTG(){
+      const open = !collapse.classList.contains('open');
+      if(open) renderParticipants();
+      collapse.classList.toggle('open', open);
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+      item.classList.toggle('tg-open', open);
+    }
+    head.addEventListener('click', toggleTG);
+    head.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggleTG(); }
+    });
+
+    // Mantém a lista de participantes sincronizada com o Diagnóstico
+    // (pessoa adicionada, nome editado ou card removido reaparece aqui sem editar código).
+    const teamGrid = document.getElementById('teamGrid');
+    if(teamGrid){
+      let raf = 0;
+      new MutationObserver(() => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(renderParticipants);
+      }).observe(teamGrid, { childList:true, subtree:true, characterData:true });
+    }
+
+    renderParticipants(); renderModules(); renderCriteria();
+  })();
 </script>
 
 </body>
