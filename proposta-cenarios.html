@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proposta comercial | impulseup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    --font-family: 'Poppins', Arial, sans-serif;
+    --color-bg: #FFFFFF;
+    --color-bg-alt: #F4F2EF;
+    --color-fg: #0C0C0C;
+    --color-fg-muted: #666666;
+    --color-border: #E0E0E0;
+    --color-primary: #CC0088;
+    --color-primary-hover: #A3006D;
+    --color-primary-active: #770055;
+    --color-surface: #F4F2EF;
+    --glow: rgba(204,0,136,.2);
+    --glow-soft: rgba(204,0,136,.12);
+    color-scheme: light;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--color-bg); }
+  body { font-family: var(--font-family); color: var(--color-fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  header.top { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; }
+  .brand { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; color: var(--color-fg); }
+  .brand span { color: var(--color-primary); }
+
+  .hero { padding: 40px 0 32px; }
+  .eyebrow { display: inline-block; font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 16px; }
+  h1 { font-weight: 900; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.03em; max-width: 18ch; }
+  h1 em { font-style: normal; color: var(--color-primary); }
+  .hero p { margin-top: 20px; max-width: 60ch; color: var(--color-fg-muted); font-size: 1.05rem; line-height: 1.8; }
+
+  .scenario-label { font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-fg-muted); margin: 32px 0 12px; }
+  .tabs { display: flex; gap: 12px; flex-wrap: wrap; }
+  .tab {
+    min-height: 56px; padding: 8px 24px; border-radius: 0.5rem;
+    background: var(--color-surface); color: var(--color-fg); border: 1px solid var(--color-border);
+    font-family: var(--font-family); cursor: pointer; text-align: left;
+    transition: border-color 200ms ease, box-shadow 200ms ease, background 200ms ease;
+  }
+  .tab .n { display: block; font-weight: 800; font-size: 1.35rem; line-height: 1.2; letter-spacing: -0.02em; }
+  .tab .u { display: block; font-weight: 400; font-size: .75rem; color: var(--color-fg-muted); }
+  .tab:hover { border-color: var(--color-primary); box-shadow: 0 0 8px var(--glow-soft); }
+  .tab:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
+  .tab[aria-selected="true"] { background: var(--color-primary); border-color: var(--color-primary); color: #FFFFFF; box-shadow: 0 0 20px var(--glow); }
+  .tab[aria-selected="true"] .u { color: rgba(255,255,255,.85); }
+
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+  .card {
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: 0.75rem; padding: 28px; display: flex; flex-direction: column;
+    transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+  }
+  .card:hover { border-color: var(--color-primary); box-shadow: 0 0 12px var(--glow-soft); transform: translateY(-2px); }
+  .card .tag { font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--color-primary); }
+  .card h2 { font-weight: 700; font-size: 1.3rem; line-height: 1.3; margin: 8px 0 6px; letter-spacing: -0.01em; }
+  .card .sub { color: var(--color-fg-muted); font-size: .85rem; font-weight: 300; min-height: 2.6em; }
+
+  .mods { margin: 20px 0 24px; display: grid; gap: 10px; }
+  .mod { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 0.5rem; }
+  .mod summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 12px 14px; min-height: 44px; font-weight: 700; font-size: .95rem; }
+  .mod summary::-webkit-details-marker { display: none; }
+  .mod summary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; border-radius: 0.5rem; }
+  .mod summary .ck { flex: 0 0 18px; width: 18px; height: 18px; color: var(--color-primary); }
+  .mod summary .chev { margin-left: auto; width: 16px; height: 16px; color: var(--color-fg-muted); transition: transform 200ms ease; }
+  .mod[open] summary .chev { transform: rotate(180deg); }
+  .mod .body { padding: 0 14px 14px 42px; }
+  .mod .lead { font-size: .8rem; color: var(--color-fg-muted); font-weight: 300; margin-bottom: 8px; }
+  .mod ul { list-style: none; display: grid; gap: 6px; }
+  .mod li { position: relative; padding-left: 14px; font-size: .8rem; line-height: 1.5; }
+  .mod li::before { content: ""; position: absolute; left: 0; top: .55em; width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); }
+  .mod.off { background: transparent; border-style: dashed; opacity: .6; }
+  .mod.off .row { display: flex; align-items: center; gap: 10px; padding: 12px 14px; min-height: 44px; font-weight: 600; font-size: .95rem; color: var(--color-fg-muted); }
+  .mod.off .row svg { flex: 0 0 18px; width: 18px; height: 18px; }
+  .mod.off .row em { margin-left: auto; font-style: normal; font-weight: 400; font-size: .7rem; }
+
+  .prices { margin-top: auto; border-top: 1px solid var(--color-border); padding-top: 20px; display: grid; gap: 18px; }
+  .price-label { font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--color-fg-muted); }
+  .price-value { font-weight: 800; font-size: 1.9rem; letter-spacing: -0.02em; line-height: 1.2; }
+  .price-value small { font-size: .85rem; font-weight: 400; color: var(--color-fg-muted); letter-spacing: 0; }
+  .price-value.tbd { color: var(--color-fg-muted); font-weight: 600; font-size: 1.35rem; }
+  .impl-block { margin-top: -6px; }
+  .impl-block .price-value { font-size: 1.05rem; font-weight: 600; }
+  .impl-block .price-value small { font-size: .72rem; }
+  .impl-block .price-value.tbd { font-size: 1rem; }
+  .total-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 14px; border-top: 1px dashed var(--color-border); font-size: .85rem; color: var(--color-fg-muted); }
+  .total-row strong { color: var(--color-fg); font-weight: 600; }
+
+  /* Módulos inclusos */
+  .included { margin: 56px 0 0; }
+  .included h3 { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .included > p { color: var(--color-fg-muted); font-size: .9rem; margin-bottom: 20px; }
+  .inc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .inc {
+    display: flex; gap: 14px; align-items: flex-start; padding: 20px;
+    background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 0.75rem;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+  .inc:hover { border-color: var(--color-primary); box-shadow: 0 0 8px var(--glow-soft); }
+  .inc svg { flex: 0 0 28px; width: 28px; height: 28px; color: var(--color-primary); margin-top: 2px; }
+  .inc h4 { font-weight: 700; font-size: 1rem; line-height: 1.3; margin-bottom: 4px; }
+  .inc p { font-size: .82rem; color: var(--color-fg-muted); line-height: 1.6; }
+  .inc.ia { border-color: var(--color-primary); }
+
+  .overview { margin: 56px 0 24px; }
+  .overview h3 { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .overview p { color: var(--color-fg-muted); font-size: .9rem; margin-bottom: 20px; }
+  .table-scroll { overflow-x: auto; border: 1px solid var(--color-border); border-radius: 0.75rem; }
+  table { width: 100%; border-collapse: collapse; min-width: 720px; font-size: .9rem; }
+  th, td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--color-border); }
+  thead th { background: var(--color-surface); font-weight: 600; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--color-fg-muted); }
+  tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+  tbody th { font-weight: 700; }
+  td .impl { display: block; font-size: .75rem; color: var(--color-fg-muted); margin-top: 2px; }
+  td .tbd { color: var(--color-fg-muted); }
+
+  .notes { margin: 32px 0 0; padding: 20px 24px; border-left: 3px solid var(--color-primary); background: var(--color-surface); border-radius: 0 0.5rem 0.5rem 0; font-size: .85rem; color: var(--color-fg-muted); }
+  footer { margin: 48px 0 24px; padding-top: 24px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .8rem; color: var(--color-fg-muted); }
+
+  .fade { animation: fade 250ms ease-out; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .fade { animation: none; } .card, .tab, .inc, .mod .chev { transition: none; } }
+
+  @media (max-width: 1024px) { .plans { grid-template-columns: 1fr; } .card .sub { min-height: 0; } .inc-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .inc-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .wrap { padding: 0 16px; } .tab { flex: 1 1 100%; } .card { padding: 22px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">impulse<span>up</span></div>
+  </header>
+
+  <section class="hero">
+    <span class="eyebrow">Proposta comercial</span>
+    <h1>Escolha o cenário e a <em>solução</em> ideal</h1>
+    <p>Três tamanhos de operação, três níveis de solução. Selecione o número de colaboradores para ver o investimento de implantação e as mensalidades de cada proposta.</p>
+
+    <div class="scenario-label" id="scenario-label">Cenário por número de colaboradores</div>
+    <div class="tabs" role="tablist" aria-labelledby="scenario-label" id="tabs"></div>
+  </section>
+
+  <main>
+    <section class="plans fade" id="plans" aria-live="polite"></section>
+
+    <section class="included">
+      <h3>Módulos inclusos</h3>
+      <p>Todos os módulos abaixo estão inclusos gratuitamente em qualquer uma das três propostas.</p>
+      <div class="inc-grid" id="inc-grid"></div>
+    </section>
+
+    <section class="overview">
+      <h3>Visão geral dos cenários</h3>
+      <p>Mensalidade e valor de implantação de cada proposta, lado a lado.</p>
+      <div class="table-scroll">
+        <table id="overview-table"></table>
+      </div>
+    </section>
+
+    <div class="notes">
+      Valores de implantação são pagos uma única vez. Mensalidades são recorrentes e variam conforme o número de colaboradores do cenário escolhido. Os escopos de cada módulo podem ser ajustados na negociação.
+    </div>
+  </main>
+
+  <footer>
+    <span>impulseup | Gestão de desempenho</span>
+    <span>Proposta sujeita a validação comercial</span>
+  </footer>
+</div>
+
+<script>
+/* =========================================================
+   DADOS DA PROPOSTA
+   Valores numéricos em reais. null = "A definir".
+   ========================================================= */
+const PROPOSTAS = [
+  { id: 'ad',   tag: 'Proposta 1', nome: 'Avaliação de Desempenho',
+    sub: 'A base para estruturar ciclos, resultados e decisões de talentos.',
+    modulos: { avaliacoes: true, pesquisas: false, learning: false } },
+  { id: 'adp',  tag: 'Proposta 2', nome: 'Avaliação de Desempenho + Pesquisas',
+    sub: 'Desempenho conectado à percepção e ao engajamento das pessoas.',
+    modulos: { avaliacoes: true, pesquisas: true, learning: false } },
+  { id: 'adpl', tag: 'Proposta 3', nome: 'Avaliação de Desempenho + Pesquisas + Learning',
+    sub: 'O ciclo completo: avaliar, escutar e desenvolver em uma só plataforma.',
+    modulos: { avaliacoes: true, pesquisas: true, learning: true } }
+];
+
+const CENARIOS = [
+  { id: 'c1500', colaboradores: 1500, valores: {
+      ad:   { implantacao: 9000,  mensalidade: 7510 },
+      adp:  { implantacao: 11000, mensalidade: 11755 },
+      adpl: { implantacao: 15000, mensalidade: 14860 } } },
+  { id: 'c2500', colaboradores: 2500, valores: {
+      ad:   { implantacao: 9000,  mensalidade: 12516.57 },
+      adp:  { implantacao: 11000, mensalidade: 19591 },
+      adpl: { implantacao: 15000, mensalidade: 24766 } } },
+  { id: 'c23000', colaboradores: 23000, valores: {
+      ad:   { implantacao: 95000, mensalidade: 55185.52 },
+      adp:  { implantacao: 95000, mensalidade: 91653.74 },
+      adpl: { implantacao: 95000, mensalidade: 129952.01 } } }
+];
+
+const MODULOS = [
+  { key: 'avaliacoes', label: 'Avaliações',
+    lead: 'Avalie sem vieses com um processo sob medida.',
+    itens: [
+      'Avaliações de experiência',
+      'Avaliações flexíveis 90°, 180°, 360°',
+      'Relatório individual personalizável',
+      'Ninebox integrado com metas',
+      'IA integrada para insights poderosos',
+      'Feedback contínuo',
+      'Analytics com comparativo entre avaliações',
+      'Mapeamento de talentos e sucessores'
+    ] },
+  { key: 'pesquisas', label: 'Pesquisas',
+    lead: 'Mensure o engajamento e a satisfação do seu time.',
+    itens: [
+      'Pesquisa de clima com modelo ou personalizada',
+      'eNPS, pesquisa pulsada ou customizada',
+      'Pesquisas confidenciais, anônimas ou identificáveis',
+      'Analytics com mapa de calor',
+      'Comparativo evolutivo de pesquisas',
+      'Analytics especial para lideranças'
+    ] },
+  { key: 'learning', label: 'Learning',
+    lead: 'Desenvolva cada colaborador no que mais precisam.',
+    itens: [
+      'Conteúdos diversificados, como vídeos, textos e PDFs',
+      'Experiência agradável para engajamento dos usuários',
+      'Dashboard de acompanhamento para líderes e administradores',
+      'Gestão de turmas com controle de conclusão'
+    ] }
+];
+
+const INCLUSOS = [
+  { nome: 'Feedbacks', desc: 'Crie uma cultura de feedbacks para alcançar o desenvolvimento contínuo.',
+    icon: '<path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/>' },
+  { nome: 'PDI', desc: 'Planeje, personalize e acompanhe o desenvolvimento das suas pessoas.',
+    icon: '<path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/>' },
+  { nome: 'Reuniões', desc: 'Aproxime gestores e colaboradores em um espaço de alinhamento e planejamento.',
+    icon: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>' },
+  { nome: 'Ações e iniciativas', desc: 'Gerencie entregas, alinhe prazos e defina prioridades para alcançar os objetivos.',
+    icon: '<path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8M13 12h8M13 18h8"/>' },
+  { nome: 'Competências', desc: 'Mapeie todas as habilidades que as suas equipes precisam para alcançar os seus objetivos.',
+    icon: '<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>' },
+  { nome: 'Minha equipe', desc: 'Tenha lideranças mais maduras, com uma visão completa dos seus times.',
+    icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' },
+  { nome: 'Mural de reconhecimento', desc: 'Deixe as conquistas públicas para que cada pessoa possa ser reconhecida pelos seus feitos.',
+    icon: '<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>' },
+  { nome: 'Dashboard do administrador', desc: 'Tenha uma visão completa sobre o andamento das suas iniciativas em uma só tela.',
+    icon: '<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>' },
+  { nome: 'IAp', desc: 'Traga mais inteligência para os processos, ganhando tempo, credibilidade e poder analítico.', destaque: true,
+    icon: '<path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.13-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.13a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.13 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.13a.5.5 0 0 1-.96 0z"/>' }
+];
+
+/* ========================================================= */
+const SVG = (inner, cls) => `<svg class="${cls || ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+const ICON_CHECK = c => SVG('<circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/>', c);
+const ICON_MINUS = SVG('<circle cx="12" cy="12" r="10"/><path d="M8 12h8"/>');
+const ICON_CHEV = c => SVG('<path d="m6 9 6 6 6-6"/>', c);
+
+const brl = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0, maximumFractionDigits: 2 });
+const fmtN = n => new Intl.NumberFormat('pt-BR').format(n);
+const isNum = v => typeof v === 'number' && !isNaN(v);
+
+let cenarioAtual = 0;
+
+function renderTabs() {
+  const el = document.getElementById('tabs');
+  el.innerHTML = CENARIOS.map((c, i) => `
+    <button class="tab" role="tab" type="button" id="tab-${c.id}" aria-selected="${i === cenarioAtual}" aria-controls="plans" data-i="${i}">
+      <span class="n">${fmtN(c.colaboradores)}</span>
+      <span class="u">colaboradores</span>
+    </button>`).join('');
+  el.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
+    cenarioAtual = Number(b.dataset.i);
+    renderTabs(); renderPlans();
+  }));
+}
+
+function priceBlock(v, suffix) {
+  return isNum(v)
+    ? `<div class="price-value">${brl.format(v)}${suffix ? ` <small>${suffix}</small>` : ''}</div>`
+    : `<div class="price-value tbd">A definir</div>`;
+}
+
+function renderPlans() {
+  const c = CENARIOS[cenarioAtual];
+  const el = document.getElementById('plans');
+  el.classList.remove('fade'); void el.offsetWidth; el.classList.add('fade');
+  el.innerHTML = PROPOSTAS.map(p => {
+    const v = c.valores[p.id];
+    const total12 = (isNum(v.implantacao) && isNum(v.mensalidade)) ? v.implantacao + 12 * v.mensalidade : null;
+    return `
+    <article class="card">
+      <span class="tag">${p.tag}</span>
+      <h2>${p.nome}</h2>
+      <p class="sub">${p.sub}</p>
+      <div class="mods">
+        ${MODULOS.map(m => p.modulos[m.key] ? `
+          <details class="mod" open>
+            <summary>${ICON_CHECK('ck')}<span>${m.label}</span>${ICON_CHEV('chev')}</summary>
+            <div class="body">
+              <p class="lead">${m.lead}</p>
+              <ul>${m.itens.map(i => `<li>${i}</li>`).join('')}</ul>
+            </div>
+          </details>` : `
+          <div class="mod off"><div class="row">${ICON_MINUS}<span>${m.label}</span><em>não incluso</em></div></div>`).join('')}
+      </div>
+      <div class="prices">
+        <div>
+          <div class="price-label">Mensalidade</div>
+          ${priceBlock(v.mensalidade, '/ mês')}
+        </div>
+        <div class="impl-block">
+          <div class="price-label">Valor de implantação</div>
+          ${priceBlock(v.implantacao, 'pagamento único')}
+        </div>
+        <div class="total-row">
+          <span>Investimento no 1º ano</span>
+          <strong>${isNum(total12) ? brl.format(total12) : 'A definir'}</strong>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+function renderIncluded() {
+  document.getElementById('inc-grid').innerHTML = INCLUSOS.map(m => `
+    <div class="inc${m.destaque ? ' ia' : ''}">
+      ${SVG(m.icon)}
+      <div><h4>${m.nome}</h4><p>${m.desc}</p></div>
+    </div>`).join('');
+}
+
+function cell(v) {
+  const m = isNum(v.mensalidade) ? `<strong>${brl.format(v.mensalidade)}</strong> / mês` : '<span class="tbd">A definir</span>';
+  const i = isNum(v.implantacao) ? `Implantação: ${brl.format(v.implantacao)}` : 'Implantação: a definir';
+  return `${m}<span class="impl">${i}</span>`;
+}
+
+function renderOverview() {
+  document.getElementById('overview-table').innerHTML = `
+    <thead><tr>
+      <th scope="col">Cenário</th>
+      ${PROPOSTAS.map(p => `<th scope="col">${p.nome}</th>`).join('')}
+    </tr></thead>
+    <tbody>
+      ${CENARIOS.map(c => `
+        <tr>
+          <th scope="row">${fmtN(c.colaboradores)} colaboradores</th>
+          ${PROPOSTAS.map(p => `<td>${cell(c.valores[p.id])}</td>`).join('')}
+        </tr>`).join('')}
+    </tbody>`;
+}
+
+renderTabs(); renderPlans(); renderIncluded(); renderOverview();
+</script>
+</body>
+</html>
