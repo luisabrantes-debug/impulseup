@@ -447,6 +447,21 @@
   .sol-card-title[contenteditable="true"]:hover,.sol-desc[contenteditable="true"]:hover,.sol-resolve[contenteditable="true"]:hover,
   .dor-title[contenteditable="true"]:focus,.dor-desc[contenteditable="true"]:focus,.dor-impacto-text[contenteditable="true"]:focus,
   .sol-card-title[contenteditable="true"]:focus,.sol-desc[contenteditable="true"]:focus,.sol-resolve[contenteditable="true"]:focus{background:var(--color-surface);}
+
+  /* ─── COMPARATIVO RFP (sub-aba) ─── */
+  .rfp-resumo{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px;}
+  .rfp-resumo-card{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:12px;padding:14px 18px;}
+  .rfp-resumo-card.destaque{background:color-mix(in srgb, var(--color-primary) 10%, #fff);border-color:var(--color-primary);}
+  #rfpTable th.iup-col,#rfpTable td.iup-col{background:color-mix(in srgb, var(--color-primary) 10%, #fff);}
+  .rfp-resumo-lbl{font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-fg-muted);}
+  .rfp-resumo-card.destaque .rfp-resumo-lbl{color:var(--color-primary);}
+  .rfp-resumo-num{font-size:22px;font-weight:800;color:var(--color-fg);margin-top:4px;}
+  .rfp-resumo-card.destaque .rfp-resumo-num{color:var(--color-primary);}
+  #rfpTable td{vertical-align:middle;padding:12px 14px;}
+  #rfpTable .f3-cell{cursor:pointer;user-select:none;}
+  .chip-validar{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:#FEF3C7;color:#92400E;white-space:nowrap;word-spacing:0.25em;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+  @media (max-width:860px){.rfp-resumo{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -511,6 +526,7 @@
         <button type="button" class="defesa-subtab-btn active" data-subtab="dores">Dores e impactos</button>
         <button type="button" class="defesa-subtab-btn" data-subtab="solucao">Solução proposta</button>
         <button type="button" class="defesa-subtab-btn" data-subtab="roi">ROI do projeto</button>
+        <button type="button" class="defesa-subtab-btn" data-subtab="rfp">Comparativo da RFP</button>
       </div>
 
       <div class="defesa-subpanel active" id="subtab-dores">
@@ -681,6 +697,60 @@
           </table>
         </div>
       </div>
+    
+      <div class="defesa-subpanel" id="subtab-rfp">
+        <p style="font-size:13px;color:var(--color-fg-muted);margin:-8px 0 20px;">Critérios da RFP da Estapar comparados entre a plataforma atual, a impulseup e o Fornecedor 3, que segue em validação.</p>
+
+        <div class="rfp-resumo">
+          <div class="rfp-resumo-card"><div class="rfp-resumo-lbl">Smart Leader (atual)</div><div class="rfp-resumo-num"><span id="rfpTotSL">11</span> de 34</div></div>
+          <div class="rfp-resumo-card destaque"><div class="rfp-resumo-lbl">impulseup</div><div class="rfp-resumo-num"><span>34</span> de 34</div></div>
+          <div class="rfp-resumo-card"><div class="rfp-resumo-lbl">Fornecedor 3</div><div class="rfp-resumo-num" id="rfpTotF3">A validar</div></div>
+        </div>
+
+        <table class="rfp-table" id="rfpTable">
+          <thead><tr><th>Critério</th><th>Smart Leader (atual)</th><th class="iup-col">impulseup</th><th>Fornecedor 3</th></tr></thead>
+          <tbody>
+            <tr class="rfp-cat-row"><td colspan="4">Gestão de Metas</td></tr>
+<tr><td><div class="feat-name">Fluxo de aprovação de metas.</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Compartilhamento de metas automatizado.</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Possibilidade de estruturar calendário de abertura e fechamento de atualizações de metas</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Dashboards de acompanhamento em tempo real de aprovações por estrutura</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Dashboards de acompanhamento de colaboradores sem metas ou com peso diferente de 100%</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Módulo de remuneração variável para cálculo das bonificações</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Inclusão de Gatilhos, Múltiplos variáveis por cargos para cálculo de bonificação.</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Plataforma intuitiva para usuários</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Plataforma intuitiva para RH e BPs.</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Acesso segmentado para BPs.</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Conexão de PDIs com treinamentos</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Possibilidade de avaliação 360 facilitada.</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr class="rfp-cat-row"><td colspan="4">Avaliação de Desempenho</td></tr>
+<tr><td><div class="feat-name">Nine-Box que conecta informações dos colaboradores, com One-Page do colaborador</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Módulo de Sucessão com mapeamento de cargos-chave e posições críticas</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Árvore de Sucessão</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Histórico do colaborador em uma única tela.</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Cruzamento de Competências com Metas.</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Inteligência artificial conectada ao relatório para análise de gaps individuais</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Insights de inteligência artificial para RH, conectando dados de desempenho</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr class="rfp-cat-row"><td colspan="4">Pesquisas</td></tr>
+<tr><td><div class="feat-name">Comparativo histórico de resultados de pesquisas</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Diversos formatos de pesquisa (pulso, clima, NPS, etc.)</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Possibilidade de resposta sem necessidade de e-mail corporativo</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Integração com Whatsapp / SMS</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Mapa de Calor para análises de áreas e filtros customizados</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Inteligência Artificial para Análise de pesquisas</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Criação de planos de ação a partir dos resultados</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr class="rfp-cat-row"><td colspan="4">Learning</td></tr>
+<tr><td><div class="feat-name">Integração de PDIs com Learning</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Subir conteúdos em diferentes formatos</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Organização de cursos em categorias e trilhas de aprendizado</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Gestão de Cursos Presenciais</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Gestão de cursos Onlines</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Aplicação de quizzes e avaliações</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Avaliação de Eficácia</div></td><td class="check-cell" data-s="Não"><i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+<tr><td><div class="feat-name">Emissão de certificado</div></td><td class="check-cell" data-s="Sim"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell iup-col"><i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span></td><td class="check-cell f3-cell" data-s="validar" title="Clique para alternar: A validar, Sim, Não"><span class="chip-validar">A validar</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <!-- ABA 7 — PROPOSTA COMERCIAL -->
@@ -819,6 +889,32 @@
       document.getElementById('subtab-' + btn.dataset.subtab).classList.add('active');
     });
   });
+
+
+  /* Comparativo RFP: Fornecedor 3 alterna entre A validar, Sim e Não */
+  (function(){
+    var cells = document.querySelectorAll('#rfpTable .f3-cell');
+    var ordem = ['validar','Sim','Não'];
+    var total = cells.length;
+    function render(td){
+      var s = td.dataset.s;
+      if (s === 'Sim') td.innerHTML = '<i class="fa-solid fa-circle-check icon-yes" title="Atende"></i><span class="sr-only">Sim</span>';
+      else if (s === 'Não') td.innerHTML = '<i class="fa-solid fa-circle-xmark icon-no" title="Não atende"></i><span class="sr-only">Não</span>';
+      else td.innerHTML = '<span class="chip-validar">A validar</span>';
+    }
+    function totais(){
+      var sim = 0, pend = 0;
+      cells.forEach(function(td){ if (td.dataset.s === 'Sim') sim++; else if (td.dataset.s === 'validar') pend++; });
+      var el = document.getElementById('rfpTotF3');
+      if (el) el.textContent = pend === total ? 'A validar' : (sim + ' de ' + total + (pend ? ' · ' + pend + ' a validar' : ''));
+    }
+    cells.forEach(function(td){
+      td.addEventListener('click', function(){
+        td.dataset.s = ordem[(ordem.indexOf(td.dataset.s) + 1) % ordem.length];
+        render(td); totais();
+      });
+    });
+  })();
 
   const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
   const appShell = document.getElementById('appShell');
