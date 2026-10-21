@@ -661,17 +661,30 @@
     <!-- ABA 4 — DIFERENCIAIS IMPULSEUP -->
     <section class="tab-panel" id="tab-4">
       <h1 class="section-title">Diferenciais impulseup</h1>
-      <p class="section-sub">Comparativo com base nos critérios mais importantes para este projeto</p>
-      <div class="empty-state" id="tab4EmptyState">
-        <i class="fa-regular fa-list-check"></i>
-        <h3>Aba liberada após a reunião de Diagnóstico</h3>
-        <p>Assim que o closer finalizar o diagnóstico, esta aba mostra o comparativo entre a impulseup e os concorrentes identificados na conversa. Se nenhum concorrente específico for mencionado, o comparativo é feito contra "Outras soluções", com resultado mediano.</p>
-      </div>
-      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;display:none;">
+      <p class="section-sub">O que só a impulseup entrega para o projeto da Dr. Oetker</p>
+      <div class="empty-state" id="tab4EmptyState" style="display:none;"></div>
+      <p class="section-sub" style="margin-top:8px;">Recursos que a impulseup entrega e que as principais plataformas de gestão de desempenho do mercado brasileiro, na maioria, não oferecem. Base: comparativo com 5 plataformas líderes do segmento.</p>
+      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;">
         <table class="rfp-table" id="tab4Table">
-          <!-- Preenchido pela skill site-cliente-impulseup a partir da transcrição da reunião de Diagnóstico e de references/rfp-criterios.json.
-               Cada critério exibe sua tag (campo "tags" do JSON) junto ao nome, ex:
-               <tr><td><div class="feat-name">Formatos de avaliação diferentes (90/180/360)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>...</tr> -->
+          <tr><th>Recurso</th><th class="iup-col">impulseup</th><th>Outras ferramentas do mercado</th></tr>
+          <tr><td><div class="feat-name">Gestores podem acompanhar o status das respostas de suas equipes</div><div class="feat-desc">Avaliação de Desempenho</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Gestores podem liberar os relatórios diretamente para seus liderados</div><div class="feat-desc">Avaliação de Desempenho</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Avaliação de consenso pode ser aprovada, ao final, pelo colaborador</div><div class="feat-desc">Avaliação de Desempenho</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Envio de avaliações por SMS e WhatsApp</div><div class="feat-desc">Avaliação de Desempenho</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Distribuição automática ou personalizada de pesos</div><div class="feat-desc">Metas e OKRs</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Fluxo de aprovação de metas e de progresso de metas</div><div class="feat-desc">Metas e OKRs</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Fórmulas para cálculo de progresso de metas</div><div class="feat-desc">Metas e OKRs</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">1 de 5 atende</div></td></tr>
+          <tr><td><div class="feat-name">Permite construir modelos de metas predefinidos</div><div class="feat-desc">Metas e OKRs</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Gerenciamento de ações e contramedidas para metas não alcançadas</div><div class="feat-desc">Metas e OKRs</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">1 de 5 atende</div></td></tr>
+          <tr><td><div class="feat-name">Permite construir qualquer formato de matriz (2x2, 3x3, 4x1 etc.)</div><div class="feat-desc">Matriz n-Box</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Importação de dados externos</div><div class="feat-desc">Matriz n-Box</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Permite calibrar respostas de questões abertas</div><div class="feat-desc">Matriz n-Box</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Análises avançadas com filtros customizados</div><div class="feat-desc">Análises e Relatórios</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">1 de 5 atende</div></td></tr>
+          <tr><td><div class="feat-name">Biblioteca de ações de desenvolvimento personalizada</div><div class="feat-desc">PDI</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Envio de relatório periódico para gestores sobre execução dos PDIs</div><div class="feat-desc">PDI</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Competências vinculadas ao feedback</div><div class="feat-desc">Feedback</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">Nenhuma atende</div></td></tr>
+          <tr><td><div class="feat-name">Equipe de implementação com psicólogos organizacionais</div><div class="feat-desc">Serviço e Suporte</div><span class="feat-tag">Atendimento consultivo</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">1 de 5 atende</div></td></tr>
+          <tr><td><div class="feat-name">Material consolidado de resultados para diretoria</div><div class="feat-desc">Serviço e Suporte</div><span class="feat-tag">Atendimento consultivo</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i><div class="feat-desc" style="margin-top:4px;">1 de 5 atende</div></td></tr>
         </table>
       </div>
     </section>
@@ -813,7 +826,93 @@
       "tag": "Liderança"
     }
   ],
-  "comparativo": null,
+  "comparativo": {
+    "concorrentes": [
+      "Outras ferramentas"
+    ],
+    "criterios": [
+      {
+        "nome": "Gestores podem acompanhar o status das respostas de suas equipes",
+        "tag": "Liderança",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Gestores podem liberar os relatórios diretamente para seus liderados",
+        "tag": "Liderança",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Avaliação de consenso pode ser aprovada, ao final, pelo colaborador",
+        "tag": "Confiável",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Envio de avaliações por SMS e WhatsApp",
+        "tag": "Fácil",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Distribuição automática ou personalizada de pesos",
+        "tag": "Flexível",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Fluxo de aprovação de metas e de progresso de metas",
+        "tag": "Confiável",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Fórmulas para cálculo de progresso de metas",
+        "tag": "Flexível",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Permite construir modelos de metas predefinidos",
+        "tag": "Fácil",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Gerenciamento de ações e contramedidas para metas não alcançadas",
+        "tag": "Liderança",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      },
+      {
+        "nome": "Permite construir qualquer formato de matriz (2x2, 3x3, 4x1 etc.)",
+        "tag": "Flexível",
+        "impulseup": true,
+        "porConcorrente": [
+          false
+        ]
+      }
+    ]
+  },
   "investimento": {
     "parcelaValor": "R$ 9.600/mês",
     "duracaoContrato": "12 meses"
