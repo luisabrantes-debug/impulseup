@@ -125,6 +125,8 @@
   .tl-date[contenteditable="true"]:hover,.tl-date[contenteditable="true"]:focus{background:var(--color-surface);}
   .tl-desc{font-size:14px;font-weight:600;}
   .tl-meta{font-size:12.5px;color:var(--color-fg-muted);margin-top:2px;}
+  .tl-item.tl-next .tl-dot{background:transparent;border:2px solid var(--color-primary);}
+  .tl-item.tl-next .tl-desc{color:var(--color-fg-muted);}
 
   .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
   .stat-card{background:var(--color-surface);border-radius:14px;padding:22px;text-align:center;}
@@ -1086,16 +1088,20 @@
     <!-- ABA 8 — PRÓXIMOS PASSOS -->
     <section class="tab-panel" id="tab-8">
       <h1 class="section-title">Próximos passos</h1>
-      <p class="section-sub">Jornada de compra da Grupo Jorge Batista</p>
+      <p class="section-sub">Jornada de compra do Grupo Jorge Batista</p>
       <div class="timeline">
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">16 set</span><div><span class="tl-desc">Reunião de Diagnóstico</span><div class="tl-meta">Entender contexto e desafios · Noely, Andressa e Adriano</div></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div class="tg-head" id="tgHead" role="button" tabindex="0" aria-expanded="false" aria-controls="tgCollapse"><div class="tg-line"><span class="tl-desc">Demonstração personalizada</span><i class="fa-solid fa-chevron-down tg-chevron" aria-hidden="true"></i></div><div class="tl-meta">Mostrar solução aplicada aos desafios mapeados</div></div></div>
+        <div class="tl-item tl-done"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">16 set</span><div><span class="tl-desc">Reunião de Diagnóstico</span><div class="tl-meta">Entender contexto e desafios · Noely, Andressa e Adriano</div></div></div>
+        <div class="tl-item tl-done"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">18 set</span><div><span class="tl-desc">Demonstração da plataforma</span><div class="tl-meta">Solução aplicada aos desafios mapeados</div></div></div>
+        <div class="tl-item tl-done"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">25 set</span><div><span class="tl-desc">Apresentação de proposta</span><div class="tl-meta">Escopo e cenários de investimento</div></div></div>
+        <div class="tl-item tl-done"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">30 set</span><div class="tg-head" id="tgHead" role="button" tabindex="0" aria-expanded="false" aria-controls="tgCollapse"><div class="tg-line"><span class="tl-desc">Agenda de testes</span><i class="fa-solid fa-chevron-down tg-chevron" aria-hidden="true"></i></div><div class="tl-meta">Participantes, módulos e critérios de sucesso do teste</div></div></div>
         <div class="tg-collapse" id="tgCollapse"><div class="tg-collapse-inner"><div class="tg-panel"><div class="tg-field"><span class="tg-title">Quem são os participantes do teste?</span><div class="tg-add-row"><input type="text" id="tgPartInput" placeholder="Adicionar outro participante" maxlength="80"><button type="button" class="tg-add-btn" id="tgPartAdd">Adicionar</button></div><div class="tg-list" id="tgParticipants"></div></div><div class="tg-field"><span class="tg-title">Quais são os módulos que serão testados?</span><div class="tg-list" id="tgModules"></div></div><div class="tg-field"><span class="tg-title">O que queremos testar? Quais são os critérios de sucesso do teste?</span><div class="tg-add-row"><input type="text" id="tgCritInput" placeholder="Ex.: Enviar avaliação por WhatsApp" maxlength="200"><button type="button" class="tg-add-btn" id="tgCritAdd">Adicionar</button></div><div class="tg-list" id="tgCriteria"></div></div></div></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Construção de projeto e proposta</span><div class="tl-meta">Definir escopo e cenários de investimento</div></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Apresentação para diretoria</span></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Aprovação da proposta</span></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Revisão jurídica</span></div></div>
-        <div class="tl-item"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Assinatura e kickoff</span></div></div>
+        <div class="tl-item tl-done"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">05 out</span><div><span class="tl-desc">Evolução dos testes</span><div class="tl-meta">Acompanhamento do teste na plataforma</div></div></div>
+        <div class="tl-item tl-done"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">09 out</span><div><span class="tl-desc">Apresentação da proposta revisada</span></div></div>
+        <div class="tl-item tl-done"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">28 out</span><div><span class="tl-desc">Agentes de IA</span><div class="tl-meta">Apresentação dos Agentes de IA da impulseup</div></div></div>
+        <div class="tl-item tl-next"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Apresentação para diretoria</span></div></div>
+        <div class="tl-item tl-next"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Negociação final</span></div></div>
+        <div class="tl-item tl-next"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Revisão jurídica</span></div></div>
+        <div class="tl-item tl-next"><span class="tl-dot"></span><span class="tl-date" contenteditable="true">A definir</span><div><span class="tl-desc">Assinaturas e início do projeto</span></div></div>
       </div>
 
     </section>
@@ -1315,7 +1321,7 @@
     attachEditableSave(el, key);
   });
   document.querySelectorAll('.tl-date[contenteditable]').forEach((el, idx) => {
-    attachEditableSave(el, 'tl_date_' + idx);
+    attachEditableSave(el, 'tl_date_v2_' + idx);
   });
 
   (function restoreEditableText(){
@@ -1327,7 +1333,7 @@
       if(store[key] !== undefined) el.textContent = store[key];
     });
     document.querySelectorAll('.tl-date[contenteditable]').forEach((el, idx) => {
-      const key = 'tl_date_' + idx;
+      const key = 'tl_date_v2_' + idx;
       if(store[key] !== undefined) el.textContent = store[key];
     });
   })();
