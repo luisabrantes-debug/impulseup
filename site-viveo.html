@@ -292,6 +292,76 @@
   @media (max-width:980px){.approval-stages{grid-template-columns:1fr;}.approval-outcome-grid{grid-template-columns:1fr 1fr;}}
   @media (max-width:560px){.approval-outcome-grid{grid-template-columns:1fr;}}
 
+
+  /* ===== Business case ROI (Aba 5) ===== */
+  .roi-wrap{display:flex;flex-direction:column;gap:22px;}
+  .roi-intro{background:var(--color-fg);color:#fff;border-radius:16px;padding:24px 26px;}
+  .roi-intro .roi-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#FF7FC8;display:block;margin-bottom:8px;}
+  .roi-intro h3{font-size:20px;font-weight:700;line-height:1.35;margin-bottom:8px;}
+  .roi-intro p{font-size:13px;line-height:1.6;color:#DADADA;}
+  .roi-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .roi-fact{border:1px solid var(--color-border);border-radius:14px;padding:18px;text-align:center;}
+  .roi-fact .v{font-size:30px;font-weight:700;color:var(--color-primary);line-height:1.1;}
+  .roi-fact .l{font-size:12px;color:var(--color-fg-muted);line-height:1.5;margin-top:6px;}
+  .roi-card{border:1px solid var(--color-border);border-radius:16px;padding:22px 24px;}
+  .roi-card-title{font-size:15.5px;font-weight:700;margin-bottom:4px;}
+  .roi-card-sub{font-size:12px;color:var(--color-fg-muted);margin-bottom:18px;line-height:1.5;}
+  .roi-chart-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:20px;align-items:stretch;}
+  .roi-bars{display:flex;flex-direction:column;gap:14px;justify-content:center;}
+  .roi-bar-row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;}
+  .roi-bar-label{font-size:12px;font-weight:600;line-height:1.35;}
+  .roi-bar-label small{display:block;font-weight:400;color:var(--color-fg-muted);font-size:10.5px;}
+  .roi-bar-track{background:var(--color-bg-alt);border-radius:8px;height:30px;position:relative;overflow:hidden;}
+  .roi-bar-fill{height:100%;background:var(--color-primary);border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-size:12px;font-weight:700;width:0;transition:width 1s ease;white-space:nowrap;}
+  .roi-bar-fill.dark{background:var(--color-fg);}
+  .roi-bar-fill.muted{background:#B9B9B9;}
+  .roi-total{background:var(--color-fg);border-radius:14px;color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:center;text-align:center;}
+  .roi-total .v{font-size:36px;font-weight:700;line-height:1.1;}
+  .roi-total .l{font-size:12px;color:#CFCFCF;margin:6px 0 14px;}
+  .roi-total ul{list-style:none;text-align:left;font-size:11.5px;color:#EDEDED;line-height:1.7;border-top:1px solid rgba(255,255,255,.15);padding-top:12px;}
+  .roi-per{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px;}
+  .roi-per-item{border-radius:14px;padding:18px;text-align:center;border:2px solid var(--color-border);}
+  .roi-per-item.main{border-color:var(--color-primary);background:#FBEAF0;}
+  .roi-per-item.ref{border-color:var(--color-fg);}
+  .roi-per-item .v{font-size:26px;font-weight:700;line-height:1.1;}
+  .roi-per-item.main .v{color:var(--color-primary);}
+  .roi-per-item .t{font-size:13px;font-weight:700;margin-top:6px;}
+  .roi-per-item .d{font-size:11.5px;color:var(--color-fg-muted);margin-top:3px;line-height:1.45;}
+  .roi-note{font-size:12.5px;color:var(--color-fg);line-height:1.6;margin-top:16px;background:var(--color-bg-alt);border-radius:12px;padding:13px 16px;}
+  .roi-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+  .roi-table th{background:var(--color-primary);color:#fff;text-align:left;padding:10px 12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;}
+  .roi-table th:last-child{background:var(--color-fg);}
+  .roi-table td{padding:10px 12px;border-bottom:1px solid var(--color-border);}
+  .roi-table td:last-child{color:var(--color-fg-muted);font-size:11.5px;}
+  .roi-tag{display:inline-block;font-size:10px;font-weight:700;border-radius:20px;padding:2px 9px;}
+  .roi-tag.viveo{background:#E7F5EC;color:#1E7A43;}
+  .roi-tag.valid{background:#FFF3E0;color:#A25B00;}
+  .roi-tag.estudo{background:#E8EEF8;color:#2D4F8A;}
+  .roi-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .roi-box{border-radius:14px;padding:20px 22px;}
+  .roi-box.light{border:1px solid var(--color-border);}
+  .roi-box.dark{background:var(--color-fg);color:#fff;}
+  .roi-box h4{font-size:14.5px;font-weight:700;margin-bottom:8px;}
+  .roi-box.light h4{color:var(--color-primary);}
+  .roi-box p,.roi-box li{font-size:12.5px;line-height:1.6;}
+  .roi-box.dark li{color:#EDEDED;}
+  .roi-box ul{padding-left:18px;margin:0;}
+  .roi-box .src{font-size:11px;margin-top:10px;opacity:.75;}
+  .roi-levers{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .roi-lever{border:1px solid var(--color-border);border-radius:14px;padding:18px;display:grid;grid-template-columns:34px 1fr;gap:12px;}
+  .roi-lever .n{width:34px;height:34px;border-radius:50%;background:var(--color-primary);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .roi-lever h4{font-size:13.5px;font-weight:700;margin-bottom:4px;}
+  .roi-lever p{font-size:12px;color:var(--color-fg-muted);line-height:1.55;margin-bottom:8px;}
+  .roi-lever .tag{display:inline-block;background:#FBEAF0;color:var(--color-primary);font-size:10.5px;font-weight:700;border-radius:20px;padding:3px 10px;}
+  .roi-next{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .roi-next-item{border:1px solid var(--color-border);border-radius:14px;padding:18px;}
+  .roi-next-item .n{font-size:28px;font-weight:700;color:var(--color-primary);line-height:1;}
+  .roi-next-item h4{font-size:13.5px;font-weight:700;margin:8px 0 4px;}
+  .roi-next-item p{font-size:12px;color:var(--color-fg-muted);line-height:1.55;}
+  .roi-sources{font-size:11px;color:var(--color-fg-muted);line-height:1.7;}
+  .roi-sources li{margin-bottom:4px;}
+  @media (max-width:900px){.roi-chart-grid,.roi-two,.roi-levers{grid-template-columns:1fr;}.roi-facts,.roi-per,.roi-next{grid-template-columns:1fr;}.roi-bar-row{grid-template-columns:1fr;gap:6px;}}
+
   .objetivo-card{border:1px solid var(--color-border);border-radius:16px;padding:22px 24px;margin-bottom:20px;}
   .objetivo-card:last-child{margin-bottom:0;}
   .objetivo-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
@@ -833,12 +903,124 @@
     <section class="tab-panel" id="tab-5">
       <h1 class="section-title">Aprovação e plano de ação</h1>
       <p class="section-sub">Objetivos de negócio da Viveo, o caminho para chegar lá e o estado futuro com a impulseup</p>
-      <div class="empty-state" id="tab5EmptyState">
+      <div class="empty-state" id="tab5EmptyState" style="display:none;">
         <i class="fa-regular fa-clipboard"></i>
         <h3>Aba liberada após a reunião de Diagnóstico</h3>
         <p>Assim que os desafios forem mapeados, esta aba mostra os objetivos de negócio e RH por trás do projeto, o plano de ação com cronograma para chegar lá, e o estado futuro do negócio com a impulseup — pronta para embasar a apresentação à diretoria.</p>
       </div>
-      <div id="tab5PlanoWrap" style="display:none;">
+      <div id="tab5PlanoWrap">
+        <div class="roi-wrap" id="roiBusinessCase">
+          <div class="roi-intro">
+            <span class="roi-eyebrow">Business case · O custo de uma saída crítica</span>
+            <h3>Cada posição crítica que a Viveo perde sem sucessor preparado custa até R$ 480 mil</h3>
+            <p>Nos últimos meses, foram três saídas de posições-chave, incluindo diretores industriais, com cerca de três meses de impacto em resultado, clima e sobrecarga até a reposição. Preparar sucessores antes da saída é o que reduz esse custo.</p>
+          </div>
+
+          <div class="roi-facts">
+            <div class="roi-fact"><div class="v">3</div><div class="l">posições-chave perdidas, incluindo diretores industriais</div></div>
+            <div class="roi-fact"><div class="v">~3 meses</div><div class="l">de impacto até a reposição, em resultado, clima e sobrecarga</div></div>
+            <div class="roi-fact"><div class="v">140</div><div class="l">gerentes com calibração e sucessão feitas fora do sistema</div></div>
+          </div>
+
+          <div class="roi-card">
+            <div class="roi-card-title">Três saídas críticas custaram cerca de R$ 1,44 milhão</div>
+            <div class="roi-card-sub">Composição do custo estimado, considerando as três posições e salário médio de R$ 30 mil por mês</div>
+            <div class="roi-chart-grid">
+              <div class="roi-bars">
+<div class="roi-bar-row"><div class="roi-bar-label">Rampa do substituto<small>~3,2 meses de custo por posição</small></div><div class="roi-bar-track"><div class="roi-bar-fill " data-w="100.0">R$ 495 mil</div></div></div>
+<div class="roi-bar-row"><div class="roi-bar-label">Vacância da posição<small>3 meses × R$ 51 mil × 3</small></div><div class="roi-bar-track"><div class="roi-bar-fill " data-w="92.7">R$ 459 mil</div></div></div>
+<div class="roi-bar-row"><div class="roi-bar-label">Busca externa<small>25% de R$ 360 mil por posição</small></div><div class="roi-bar-track"><div class="roi-bar-fill " data-w="54.5">R$ 270 mil</div></div></div>
+<div class="roi-bar-row"><div class="roi-bar-label">Prêmio salarial<small>20% do salário no 1º ano</small></div><div class="roi-bar-track"><div class="roi-bar-fill " data-w="43.6">R$ 216 mil</div></div></div>
+              </div>
+              <div class="roi-total">
+                <div class="v">R$ 1,44 mi</div>
+                <div class="l">custo estimado das 3 saídas</div>
+                <ul>
+                  <li>Vacância com encargos: R$ 459 mil</li>
+                  <li>Rampa até a produtividade plena: R$ 495 mil</li>
+                  <li>Busca externa: R$ 270 mil</li>
+                  <li>Prêmio salarial no 1º ano: R$ 216 mil</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="roi-card">
+            <div class="roi-card-title">Por saída, o modelo fica abaixo da referência de mercado</div>
+            <div class="roi-card-sub">Custo por posição de gerência ou diretoria, com salário médio de R$ 30 mil por mês</div>
+            <div class="roi-bars">
+<div class="roi-bar-row"><div class="roi-bar-label">Piso conservador<small>Só a vacância, pelo salário</small></div><div class="roi-bar-track"><div class="roi-bar-fill muted" data-w="12.5">R$ 90 mil</div></div></div>
+<div class="roi-bar-row"><div class="roi-bar-label">Modelo completo<small>Vacância, rampa, busca e prêmio</small></div><div class="roi-bar-track"><div class="roi-bar-fill " data-w="66.7">R$ 480 mil</div></div></div>
+<div class="roi-bar-row"><div class="roi-bar-label">Referência Gallup<small>200% do salário anual</small></div><div class="roi-bar-track"><div class="roi-bar-fill dark" data-w="100.0">R$ 720 mil</div></div></div>
+            </div>
+            <div class="roi-note">A conta parte de baixo para cima e chega a cerca de dois terços da referência da Gallup para reposição de líderes. Por isso o número é conservador.</div>
+          </div>
+
+          <div class="roi-card">
+            <div class="roi-card-title">Premissas do modelo</div>
+            <div class="roi-card-sub">Cada número tem origem explícita, para ser substituído pelos dados reais da Viveo</div>
+            <div style="overflow-x:auto;">
+            <table class="roi-table">
+              <thead><tr><th>Premissa</th><th>Valor</th><th>Origem</th></tr></thead>
+              <tbody>
+                <tr><td>Posições-chave perdidas</td><td>3</td><td><span class="roi-tag viveo">Viveo</span> Reunião de diagnóstico</td></tr>
+                <tr><td>Tempo até a reposição</td><td>~3 meses</td><td><span class="roi-tag viveo">Viveo</span> Reunião de diagnóstico</td></tr>
+                <tr><td>Salário médio de gerente ou diretor</td><td>R$ 30 mil/mês</td><td><span class="roi-tag valid">A validar</span> Premissa a confirmar com a Viveo</td></tr>
+                <tr><td>Custo total da posição (encargos e benefícios)</td><td>1,7x o salário</td><td><span class="roi-tag valid">A validar</span> Premissa de mercado</td></tr>
+                <tr><td>Busca externa (headhunter)</td><td>25% da remuneração anual</td><td><span class="roi-tag valid">A validar</span> Premissa de mercado</td></tr>
+                <tr><td>Prêmio salarial do contratado externo</td><td>~18% a 20%</td><td><span class="roi-tag estudo">Estudo</span> Bidwell, Wharton</td></tr>
+                <tr><td>Rampa até a produtividade plena</td><td>28 semanas</td><td><span class="roi-tag estudo">Estudo</span> Oxford Economics</td></tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+
+          <div class="roi-two">
+            <div class="roi-box light">
+              <h4>Vacância é contribuição perdida, não economia</h4>
+              <p>O salário que deixa de ser pago durante a vacância é o piso do valor que a posição entrega: decisões que atrasam, projetos que param e metas da área que ficam sem dono.</p>
+              <p class="src">A Oxford Economics mostra que a produção perdida enquanto o substituto ganha ritmo é o maior componente do custo de reposição.</p>
+            </div>
+            <div class="roi-box dark">
+              <h4>O que não entra na conta</h4>
+              <ul>
+                <li>Queda de produtividade da equipe sem liderança</li>
+                <li>Sobrecarga de quem cobriu a posição</li>
+                <li>Piora de clima e saídas em cadeia</li>
+                <li>Conhecimento do negócio que sai com a pessoa</li>
+              </ul>
+              <p class="src">Segundo a Gallup, o gestor responde por pelo menos 70% da variação no engajamento das equipes.</p>
+            </div>
+          </div>
+
+          <div class="roi-card">
+            <div class="roi-card-title">Onde a gestão de desempenho atua nesse custo</div>
+            <div class="roi-card-sub">Cada frente reduz um componente do modelo</div>
+            <div class="roi-levers">
+              <div class="roi-lever"><div class="n">01</div><div><h4>Sucessores mapeados</h4><p>Planejamento de carreira e sucessão no sistema encurta a vacância: quando a saída acontece, o substituto já está identificado.</p><span class="tag">Reduz vacância</span></div></div>
+              <div class="roi-lever"><div class="n">02</div><div><h4>Promoção interna com base</h4><p>Calibração e Nine Box no mesmo ambiente da avaliação dão segurança para promover de dentro, evitando busca externa e prêmio salarial.</p><span class="tag">Reduz busca e prêmio</span></div></div>
+              <div class="roi-lever"><div class="n">03</div><div><h4>Rampa mais curta</h4><p>Quem é promovido internamente já conhece o negócio. Wharton mostra desempenho melhor que o de contratados externos nos dois primeiros anos.</p><span class="tag">Reduz rampa</span></div></div>
+              <div class="roi-lever"><div class="n">04</div><div><h4>Risco visível antes da saída</h4><p>Comparação de resultados por área e diretoria e PDIs conectados aos gaps mostram onde estão os talentos e onde falta sucessor.</p><span class="tag">Antecipa o risco</span></div></div>
+            </div>
+          </div>
+
+          <div class="roi-card">
+            <div class="roi-card-title">Para fechar o número com dados da Viveo</div>
+            <div class="roi-card-sub">Três informações transformam o modelo no business case do orçamento de 2027</div>
+            <div class="roi-next">
+              <div class="roi-next-item"><div class="n">1</div><h4>Remuneração real</h4><p>Salário médio das posições que saíram e custo total com encargos e benefícios.</p></div>
+              <div class="roi-next-item"><div class="n">2</div><h4>Como foi a reposição</h4><p>Se houve headhunter, quanto custou e se o substituto veio de fora ou foi promovido.</p></div>
+              <div class="roi-next-item"><div class="n">3</div><h4>Efeito nas áreas</h4><p>O que aconteceu com as metas das áreas durante os meses de vacância.</p></div>
+            </div>
+          </div>
+
+          <ul class="roi-sources">
+            <li>Oxford Economics e Unum (2014). The Cost of Brain Drain. Rampa média de 28 semanas até a produtividade plena em empresas com mais de 250 colaboradores.</li>
+            <li>Bidwell, M. (2011). Paying More to Get Less: The Effects of External Hiring versus Internal Mobility. Administrative Science Quarterly. Contratados externos ganham cerca de 18% a mais e têm desempenho inferior nos dois primeiros anos.</li>
+            <li>Gallup. State of the American Manager. Gestores respondem por pelo menos 70% da variação no engajamento das equipes. Estimativa de reposição de líderes em cerca de 200% do salário.</li>
+            <li>Estudos realizados nos EUA e no Reino Unido, usados como referência de ordem de grandeza. Os valores finais dependem dos dados da Viveo.</li>
+          </ul>
+        </div>
         <!--OBJETIVOS-->
       </div>
     </section>
@@ -1606,5 +1788,12 @@ ${comparativoSectionHtml}
   });
 </script>
 
+<script>
+(function(){
+  function animarROI(){document.querySelectorAll('#roiBusinessCase .roi-bar-fill').forEach(function(el){el.style.width=el.getAttribute('data-w')+'%';});}
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#tabNav button[data-tab="5"]');if(b){setTimeout(animarROI,80);}});
+  window.addEventListener('load',function(){var t=document.getElementById('tab-5');if(t&&t.classList.contains('active'))animarROI();setTimeout(animarROI,1500);});
+})();
+</script>
 </body>
 </html>
