@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Viveo · Projeto de sucessão e gestão de desempenho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0F4B55;--p2:#1B6F7B;--p3:#E7F1F2;--fg:#13242A;--mut:#5F7176;--bd:#DCE6E8;--bg:#F6F9F9;--w:#FFFFFF;--accent:#2FA39A;color-scheme:light;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--p:#5FB8C2;--p2:#7FCAD2;--p3:#16343A;--fg:#E6EEF0;--mut:#9FB2B6;--bd:#28434A;--bg:#0E1B1F;--w:#132429;--accent:#4FC3B8;color-scheme:dark;}}
+:root[data-theme="dark"]{--p:#5FB8C2;--p2:#7FCAD2;--p3:#16343A;--fg:#E6EEF0;--mut:#9FB2B6;--bd:#28434A;--bg:#0E1B1F;--w:#132429;--accent:#4FC3B8;color-scheme:dark;}
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--fg);font-size:14px;line-height:1.55;}
+header{background:var(--w);border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);z-index:20;}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--w);}
+.hd{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.logo{height:26px;width:auto;}
+.logo path{fill:var(--p);} 
+nav{display:flex;gap:6px;flex-wrap:wrap;}
+nav button{border:0;background:transparent;font:inherit;font-size:13px;font-weight:600;color:var(--mut);padding:9px 14px;border-radius:10px;cursor:pointer;}
+nav button .n{color:var(--p2);margin-right:6px;}
+nav button.active{background:var(--p);color:#fff;}
+nav button.active .n{color:#BFE3E6;}
+main{max-width:1180px;margin:0 auto;padding:28px 24px 60px;}
+.panel{display:none;}.panel.active{display:block;}
+.hero{background:var(--p);color:#fff;border-radius:18px;padding:34px 34px;margin-bottom:20px;}
+.hero.small{padding:28px 32px;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#9FD6DB;display:block;margin-bottom:10px;}
+.hero h1{font-size:clamp(22px,3vw,30px);line-height:1.25;font-weight:700;max-width:880px;margin-bottom:10px;}
+.hero p{font-size:14px;color:#D6ECEE;max-width:860px;}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px;}
+.kpis.three{grid-template-columns:repeat(3,1fr);margin:20px 0;}
+.kpi{background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:18px;}
+.kpi .v{font-size:30px;font-weight:800;color:var(--p);line-height:1.1;}
+.kpi .l{font-size:12px;color:var(--mut);margin-top:6px;}
+.sec{font-size:20px;font-weight:700;margin:34px 0 4px;}
+.sec-sub{font-size:13px;color:var(--mut);margin-bottom:16px;}
+.dores{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.dor{background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:20px;display:flex;flex-direction:column;}
+.dor-num{font-size:12px;font-weight:800;color:var(--accent);}
+.dor h4{font-size:15px;margin:4px 0 8px;}
+.dor p{font-size:12.5px;color:var(--mut);flex:1;}
+.dor-imp{margin-top:14px;background:var(--p3);border-radius:10px;padding:10px 12px;font-size:12px;color:var(--fg);}
+.dor-imp span{display:block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--p2);margin-bottom:3px;}
+.card{background:var(--w);border:1px solid var(--bd);border-radius:16px;padding:22px 24px;margin-bottom:16px;}
+.card-t{font-size:16px;font-weight:700;}
+.card-s{font-size:12.5px;color:var(--mut);margin:3px 0 18px;}
+.chart-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:20px;}
+.bars{display:flex;flex-direction:column;gap:14px;justify-content:center;}
+.bar-row{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:center;}
+.bar-label{font-size:12.5px;font-weight:600;line-height:1.3;}
+.bar-label small{display:block;font-weight:400;color:var(--mut);font-size:11px;}
+.bar-track{background:var(--p3);border-radius:8px;height:32px;overflow:hidden;}
+.bar-fill{height:100%;width:0;background:var(--p2);border-radius:8px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#fff;font-size:12px;font-weight:700;white-space:nowrap;min-width:fit-content;transition:width 1s ease;}
+.bar-fill.dark{background:var(--p);}
+.bar-fill.soft{background:#8FB5BA;}
+.bar-fill.acc{background:var(--accent);}
+.total{background:var(--p);color:#fff;border-radius:14px;padding:22px;text-align:center;display:flex;flex-direction:column;justify-content:center;}
+.total .v{font-size:36px;font-weight:800;}
+.total .l{font-size:12px;color:#CFE6E8;margin:4px 0 14px;}
+.total ul{list-style:none;text-align:left;font-size:12px;line-height:1.75;border-top:1px solid rgba(255,255,255,.2);padding-top:12px;}
+.note{margin-top:16px;background:var(--p3);border-radius:12px;padding:13px 16px;font-size:13px;}
+.note.wide{margin-top:20px;}
+.tw{overflow-x:auto;}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;}
+.tbl th{background:var(--p);color:#fff;text-align:left;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:10px 12px;}
+.tbl td{padding:11px 12px;border-bottom:1px solid var(--bd);vertical-align:top;}
+.tbl td.c{text-align:center;vertical-align:middle;white-space:nowrap;}
+.map{background:var(--w);border:1px solid var(--bd);border-radius:12px;overflow:hidden;}
+.map td.md{font-weight:700;width:28%;}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;border-radius:20px;padding:2px 9px;margin-right:4px;}
+.t-dado{background:#DDF3EE;color:#16705F;}.t-val{background:#FFF1DC;color:#9A5A00;}.t-est{background:#E3ECF6;color:#2C4E7E;}.t-ben{background:var(--p3);color:var(--p);}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.box{border-radius:14px;padding:20px 22px;}
+.box.light{background:var(--w);border:1px solid var(--bd);}
+.box.dark{background:var(--p);color:#fff;}
+.box h4{font-size:15px;margin-bottom:8px;}
+.box.light h4{color:var(--p);}
+.box p,.box li{font-size:13px;}
+.box ul{padding-left:18px;}
+.box .src{font-size:11.5px;opacity:.8;margin-top:10px;}
+.sources{font-size:11px;color:var(--mut);padding-left:18px;margin-top:10px;}
+.sources li{margin-bottom:4px;}
+.legend{display:flex;flex-wrap:wrap;gap:18px;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:20px;}
+.legend span{display:flex;align-items:center;gap:7px;}.legend i{width:10px;height:10px;border-radius:50%;display:inline-block;}
+.grp{margin-bottom:24px;}
+.grp-t{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--p2);margin-bottom:10px;}
+.cmp{width:100%;border-collapse:collapse;background:var(--w);border:1px solid var(--bd);border-radius:12px;overflow:hidden;font-size:13px;}
+.cmp th{background:var(--fg);color:var(--bg);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:11px 14px;text-align:center;}
+.cmp th:first-child{text-align:left;}
+.cmp td{padding:13px 14px;border-top:1px solid var(--bd);vertical-align:middle;}
+.cmp td:first-child{width:62%;}.cmp td.c{text-align:center;}
+.fn{font-weight:600;font-size:13.5px;}.ev{font-size:12px;color:var(--mut);margin-top:4px;}
+.chip{display:inline-block;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;}
+.c-sim{background:#DCFCE7;color:#15803D;}.c-nao{background:#FEE2E2;color:#991B1B;}.c-par{background:#FEF3C7;color:#92400E;}.c-fora{background:#ECECEC;color:#555;}
+.foot{font-size:12px;color:var(--mut);}
+.levers{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.lever{background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:18px;display:grid;grid-template-columns:36px 1fr;gap:12px;}
+.lever .n,.step .n{width:36px;height:36px;border-radius:50%;background:var(--p);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.lever h4{font-size:14px;margin-bottom:4px;}.lever p{font-size:12.5px;color:var(--mut);margin-bottom:8px;}
+.invest{display:grid;grid-template-columns:1fr 1.6fr;gap:16px;}
+.inv-main{background:var(--p);color:#fff;border-radius:16px;padding:26px;display:flex;flex-direction:column;justify-content:center;}
+.inv-main span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9FD6DB;}
+.inv-main .v{font-size:42px;font-weight:800;line-height:1.1;margin:8px 0 6px;}
+.inv-main .l{font-size:13px;color:#D6ECEE;}
+.inv-scope{background:var(--w);border:1px solid var(--bd);border-radius:16px;padding:22px 24px;}
+.inv-scope h4{font-size:15px;margin-bottom:10px;color:var(--p);}
+.inv-scope ul{padding-left:18px;font-size:13px;line-height:1.8;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.step{background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:18px;}
+.step h4{font-size:14px;margin:10px 0 4px;}.step p{font-size:12.5px;color:var(--mut);}
+footer{max-width:1180px;margin:0 auto;padding:0 24px 30px;font-size:11px;color:var(--mut);}
+@media (max-width:900px){.kpis,.kpis.three,.dores,.steps{grid-template-columns:1fr 1fr;}.chart-grid,.two,.levers,.invest{grid-template-columns:1fr;}}
+@media (max-width:560px){.kpis,.kpis.three,.dores,.steps{grid-template-columns:1fr;}.bar-row{grid-template-columns:1fr;gap:6px;}.hero{padding:24px 20px;}.cmp td:first-child{width:auto;}}
+</style></head><body>
+<header><div class="hd"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ class="logo" role="img" aria-label="Viveo" viewBox="0 0 515.000000 118.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)"
+fill="#0f4b55" stroke="none">
+<path d="M1364 1169 c-61 -17 -99 -85 -82 -146 28 -105 232 -122 283 -23 57
+109 -62 210 -201 169z"/>
+<path d="M3285 826 c-289 -70 -429 -330 -310 -573 40 -81 92 -133 182 -181 91
+-48 172 -65 308 -66 183 0 305 40 411 136 50 46 94 110 94 138 0 6 -44 10
+-120 10 l-119 0 -16 -30 c-25 -48 -75 -99 -119 -123 -59 -31 -193 -31 -252 0
+-84 45 -145 136 -148 223 l-1 45 385 3 c211 1 388 6 393 11 14 14 -11 121 -43
+188 -52 106 -162 185 -302 218 -76 18 -272 19 -343 1z m294 -120 c67 -35 110
+-94 131 -183 l8 -33 -264 0 -264 0 6 28 c11 53 59 135 96 165 75 60 194 70
+287 23z"/>
+<path d="M4455 826 c-146 -35 -254 -116 -312 -234 -36 -71 -38 -81 -37 -166 1
+-118 26 -185 99 -265 61 -65 139 -111 235 -137 88 -24 281 -24 369 -1 278 74
+412 332 299 574 -49 105 -186 202 -326 232 -69 14 -263 13 -327 -3z m294 -119
+c96 -48 146 -159 139 -306 -7 -133 -51 -215 -143 -264 -61 -33 -184 -31 -245
+3 -57 32 -106 97 -126 168 -19 64 -15 207 7 257 38 86 104 146 183 166 47 12
+135 1 185 -24z"/>
+<path d="M4 813 c62 -172 257 -632 283 -667 67 -93 208 -155 320 -142 110 13
+214 73 269 155 19 30 274 648 274 666 0 14 -148 3 -186 -14 -76 -34 -101 -78
+-223 -383 -62 -156 -120 -291 -128 -300 -20 -23 -45 -23 -71 -1 -11 10 -72
+148 -136 308 -124 309 -142 339 -221 376 -27 13 -63 19 -114 19 -65 0 -72 -2
+-67 -17z"/>
+<path d="M1305 817 c-3 -6 -4 -190 -3 -407 l3 -395 120 0 120 0 3 408 2 407
+-120 0 c-87 0 -122 -3 -125 -13z"/>
+<path d="M1733 818 c188 -475 255 -632 283 -671 68 -94 209 -156 321 -143 118
+14 225 79 277 169 22 38 266 635 266 651 0 15 -146 5 -186 -13 -73 -33 -98
+-76 -221 -381 -63 -157 -122 -293 -130 -302 -20 -23 -45 -23 -71 -1 -10 10
+-63 128 -117 263 -151 377 -153 381 -240 421 -48 22 -190 27 -182 7z"/>
+</g>
+</svg>
+<nav>
+<button data-v="cenario" class="active"><span class="n">01</span>Cenário atual e impactos</button>
+<button data-v="solucoes"><span class="n">02</span>Análise de soluções</button>
+<button data-v="proposta"><span class="n">03</span>Proposta comercial</button>
+</nav></div></header>
+<main>
+<section class="panel active" id="t1">
+  <div class="hero">
+    <span class="eyebrow">Projeto de sucessão e gestão de desempenho · Orçamento 2027</span>
+    <h1>Sem sucessores preparados, cada saída crítica pode custar até R$ 480 mil à Viveo</h1>
+    <p>A Viveo está integrando a gestão de pessoas à estratégia: novo planejamento estratégico, revisão de cultura e novas competências a partir de janeiro de 2027. O processo de desempenho atual não sustenta esse movimento, e o custo disso já apareceu nas saídas de posições-chave.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">~7 mil</div><div class="l">colaboradores</div></div>
+    <div class="kpi"><div class="v">+50%</div><div class="l">do quadro é operacional, sem acesso a computador</div></div>
+    <div class="kpi"><div class="v">140</div><div class="l">gerentes calibrados fora do sistema no último ciclo</div></div>
+    <div class="kpi"><div class="v">3</div><div class="l">posições-chave perdidas, incluindo diretores industriais</div></div>
+  </div>
+
+  <h2 class="sec">Principais dores do processo atual</h2>
+  <p class="sec-sub">Levantadas pelo time de DHO a partir do último ciclo de avaliação</p>
+  <div class="dores"><div class="dor"><span class="dor-num">01</span><h4>Sucessão sem sucessores preparados</h4><p>Três posições-chave saíram, incluindo diretores industriais que a empresa não esperava perder. Eram pessoas com muito tempo de casa e não havia sucessores preparados.</p><div class="dor-imp"><span>Impacto</span>Impacto em clima, saída de outras pessoas e sobrecarga das equipes. A pesquisa de clima mostra intenção de saída também na alta liderança.</div></div>
+<div class="dor"><span class="dor-num">02</span><h4>Calibração e Nine Box fora do sistema</h4><p>No ciclo dos cerca de 140 gerentes, competências, potencial, Nine Box, calibração e sucessão foram consolidados com consultoria, fora da plataforma.</p><div class="dor-imp"><span>Impacto</span>Decisões de talento sem rastreabilidade em um único lugar e esforço manual do DHO a cada ciclo.</div></div>
+<div class="dor"><span class="dor-num">03</span><h4>Pesos do 360 que não se ajustam</h4><p>Quando um avaliador não responde, a avaliação precisa ser forçada e os pesos não se redistribuem. A correção exigiu uma fórmula manual extensa.</p><div class="dor-imp"><span>Impacto</span>Atraso e risco de erro nos resultados entregues às BPs e à liderança.</div></div>
+<div class="dor"><span class="dor-num">04</span><h4>Metas sem governança</h4><p>A aprovação de metas acontece só entre duas pessoas, sem camadas, sem faixas de atingimento e sem validação final do DHO. As metas individuais foram suspensas.</p><div class="dor-imp"><span>Impacto</span>O planejamento estratégico e o orçamento de 2027 precisam ser cascateados em metas, e hoje não há estrutura para isso.</div></div>
+<div class="dor"><span class="dor-num">05</span><h4>Feedback sem visibilidade</h4><p>Saber quem enviou e quem recebeu feedback exigiu um relatório desenvolvido por terceiro, ainda com erros e sem histórico. Gestores relatam navegação pouco intuitiva.</p><div class="dor-imp"><span>Impacto</span>Dependência de desenvolvimento externo e baixa visibilidade de adesão, com líderes que têm mais de 30 pessoas na equipe.</div></div>
+<div class="dor"><span class="dor-num">06</span><h4>Operação fora do ciclo</h4><p>Mais de 50% do quadro é operacional, sem acesso a computador, e está sem avaliação formal no sistema há cerca de dois anos.</p><div class="dor-imp"><span>Impacto</span>Metade da força de trabalho sem dado de desempenho para decisões de desenvolvimento, promoção e sucessão.</div></div></div>
+
+  <h2 class="sec">Quanto custa uma saída crítica</h2>
+  <p class="sec-sub">Modelo de cálculo para posições de gerência e diretoria, com salário médio de R$ 30 mil por mês</p>
+  <div class="card">
+    <div class="card-t">As três saídas recentes representam cerca de R$ 1,44 milhão</div>
+    <div class="card-s">Composição do custo estimado, considerando as três posições</div>
+    <div class="chart-grid">
+      <div class="bars"><div class="bar-row"><div class="bar-label">Rampa do substituto<small>~3,2 meses de custo por posição</small></div><div class="bar-track"><div class="bar-fill " data-w="100.0">R$ 495 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">Vacância da posição<small>3 meses × R$ 51 mil × 3</small></div><div class="bar-track"><div class="bar-fill " data-w="92.7">R$ 459 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">Busca externa<small>25% de R$ 360 mil por posição</small></div><div class="bar-track"><div class="bar-fill " data-w="54.5">R$ 270 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">Prêmio salarial<small>20% do salário no 1º ano</small></div><div class="bar-track"><div class="bar-fill " data-w="43.6">R$ 216 mil</div></div></div></div>
+      <div class="total"><div class="v">R$ 1,44 mi</div><div class="l">custo estimado das 3 saídas</div>
+        <ul><li>Vacância com encargos: R$ 459 mil</li><li>Rampa até a produtividade plena: R$ 495 mil</li><li>Busca externa: R$ 270 mil</li><li>Prêmio salarial no 1º ano: R$ 216 mil</li></ul></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-t">Por saída, o modelo fica abaixo da referência de mercado</div>
+    <div class="card-s">Custo por posição de gerência ou diretoria</div>
+    <div class="bars"><div class="bar-row"><div class="bar-label">Piso conservador<small>Só a vacância, pelo salário</small></div><div class="bar-track"><div class="bar-fill soft" data-w="12.5">R$ 90 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">Modelo completo<small>Vacância, rampa, busca e prêmio</small></div><div class="bar-track"><div class="bar-fill " data-w="66.7">R$ 480 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">Referência Gallup<small>200% do salário anual de um líder</small></div><div class="bar-track"><div class="bar-fill dark" data-w="100.0">R$ 720 mil</div></div></div></div>
+    <div class="note">A conta parte de baixo para cima e chega a cerca de dois terços da referência da Gallup para reposição de líderes. Por isso o número é conservador.</div>
+  </div>
+  <div class="card">
+    <div class="card-t">Premissas do modelo</div>
+    <div class="card-s">Cada número tem origem explícita, para ser substituído pelos dados internos da Viveo</div>
+    <div class="tw"><table class="tbl">
+      <thead><tr><th>Premissa</th><th>Valor</th><th>Origem</th></tr></thead>
+      <tbody>
+        <tr><td>Posições-chave perdidas</td><td>3</td><td><span class="tag t-dado">Dado interno</span> Levantamento do DHO</td></tr>
+        <tr><td>Tempo até a reposição</td><td>3 meses</td><td><span class="tag t-val">A validar</span> Premissa a confirmar com dados internos</td></tr>
+        <tr><td>Salário médio de gerente ou diretor</td><td>R$ 30 mil/mês</td><td><span class="tag t-val">A validar</span> Premissa a confirmar com dados internos</td></tr>
+        <tr><td>Custo total da posição (encargos e benefícios)</td><td>1,7x o salário</td><td><span class="tag t-val">A validar</span> Premissa de mercado</td></tr>
+        <tr><td>Busca externa (headhunter)</td><td>25% da remuneração anual</td><td><span class="tag t-val">A validar</span> Premissa de mercado</td></tr>
+        <tr><td>Prêmio salarial do contratado externo</td><td>~18% a 20%</td><td><span class="tag t-est">Estudo</span> Bidwell, Wharton</td></tr>
+        <tr><td>Rampa até a produtividade plena</td><td>28 semanas</td><td><span class="tag t-est">Estudo</span> Oxford Economics</td></tr>
+      </tbody></table></div>
+  </div>
+  <div class="two">
+    <div class="box light"><h4>Vacância é contribuição perdida, não economia</h4><p>O salário que deixa de ser pago durante a vacância é o piso do valor que a posição entrega: decisões que atrasam, projetos que param e metas da área que ficam sem dono.</p><p class="src">A Oxford Economics mostra que a produção perdida enquanto o substituto ganha ritmo é o maior componente do custo de reposição.</p></div>
+    <div class="box dark"><h4>O que não entra na conta</h4><ul><li>Queda de produtividade da equipe sem liderança</li><li>Sobrecarga de quem cobriu a posição</li><li>Piora de clima e saídas em cadeia</li><li>Conhecimento do negócio que sai com a pessoa</li></ul><p class="src">Segundo a Gallup, o gestor responde por pelo menos 70% da variação no engajamento das equipes.</p></div>
+  </div>
+  <ul class="sources">
+    <li>Oxford Economics e Unum (2014). The Cost of Brain Drain. Rampa média de 28 semanas até a produtividade plena em empresas com mais de 250 colaboradores.</li>
+    <li>Bidwell, M. (2011). Paying More to Get Less: The Effects of External Hiring versus Internal Mobility. Administrative Science Quarterly. Contratados externos ganham cerca de 18% a mais e têm desempenho inferior nos dois primeiros anos.</li>
+    <li>Gallup. State of the American Manager. Gestores respondem por pelo menos 70% da variação no engajamento das equipes. Estimativa de reposição de líderes em cerca de 200% do salário.</li>
+    <li>Estudos realizados nos EUA e no Reino Unido, usados como referência de ordem de grandeza.</li>
+  </ul>
+</section>
+<section class="panel" id="t2">
+  <div class="hero small">
+    <span class="eyebrow">Análise de soluções</span>
+    <h1>O que a solução atual atende e o que fica de fora</h1>
+    <p>Comparativo entre a Senior, solução atual da Viveo, e a impulseup, a partir das dores do processo atual. Cada linha traz o que foi observado no último ciclo.</p>
+  </div>
+  <div class="legend"><span><i style="background:#16A34A"></i>Sim, atende</span><span><i style="background:#D97706"></i>Parcial, atende com limitações</span><span><i style="background:#DC2626"></i>Não atende</span><span><i style="background:#9A9A9A"></i>Feito fora do sistema hoje</span></div>
+  <div class="grp"><div class="grp-t">Avaliação de desempenho</div><div class="tw"><table class="cmp"><thead><tr><th>Requisito</th><th>Senior (atual)</th><th>impulseup</th></tr></thead><tbody><tr><td><div class="fn">Formatos de avaliação diferentes (90/180/360)</div><div class="ev">Hoje a Viveo roda 360 para a gestão, 270 para especialistas, 180 para o administrativo e 90 para a operação.</div></td><td class="c"><span class="chip c-sim">✓ Sim</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr><tr><td><div class="fn">Indicação de pares pelo usuário, gestor, administrador ou aleatório</div><div class="ev">A indicação de pares para o 360 é feita pelo gestor, dentro do sistema.</div></td><td class="c"><span class="chip c-sim">✓ Sim</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr><tr><td><div class="fn">Pesos diferentes por tipo de avaliador, por competência</div><div class="ev">Os pesos por avaliador existem, mas quando um avaliador não responde a avaliação precisa ser forçada e os pesos não se redistribuem.</div></td><td class="c"><span class="chip c-sim">✓ Sim</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr></tbody></table></div></div><div class="grp"><div class="grp-t">Calibração, Nine Box e sucessão</div><div class="tw"><table class="cmp"><thead><tr><th>Requisito</th><th>Senior (atual)</th><th>impulseup</th></tr></thead><tbody><tr><td><div class="fn">Calibração de resultados (por quadrante, seção ou competência)</div><div class="ev">No ciclo dos cerca de 140 gerentes, Nine Box e calibração foram feitos com apoio de consultoria, fora do sistema.</div></td><td class="c"><span class="chip c-fora">Feito fora do sistema</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr><tr><td><div class="fn">Planejamento de carreira e sucessão</div><div class="ev">A definição de sucessão e os exercícios de prontidão para diretores e gerentes acontecem fora da plataforma.</div></td><td class="c"><span class="chip c-fora">Feito fora do sistema</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr></tbody></table></div></div><div class="grp"><div class="grp-t">Gestão de metas</div><div class="tw"><table class="cmp"><thead><tr><th>Requisito</th><th>Senior (atual)</th><th>impulseup</th></tr></thead><tbody><tr><td><div class="fn">Fluxo de aprovação de metas e de progresso de metas</div><div class="ev">Hoje a aprovação é só entre duas pessoas. Não há camadas (colaborador, gestor e DHO) nem validação final das metas.</div></td><td class="c"><span class="chip c-par">~ Parcial</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr><tr><td><div class="fn">Fórmulas para cálculo de progresso de metas</div><div class="ev">Não há interpolação linear nem limites de atingimento para calcular o progresso das metas.</div></td><td class="c"><span class="chip c-nao">✕ Não</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr></tbody></table></div></div><div class="grp"><div class="grp-t">Feedback e relatórios</div><div class="tw"><table class="cmp"><thead><tr><th>Requisito</th><th>Senior (atual)</th><th>impulseup</th></tr></thead><tbody><tr><td><div class="fn">Registro de feedbacks (categorizados, compartilhados)</div><div class="ev">Ver quem enviou e quem recebeu feedback exigiu um relatório desenvolvido por terceiro, ainda com erros e sem histórico.</div></td><td class="c"><span class="chip c-par">~ Parcial</span></td><td class="c"><span class="chip c-sim">✓ Sim</span></td></tr></tbody></table></div></div>
+  <p class="foot">A avaliação da Senior considera o uso atual da ferramenta na Viveo, conforme relatado pelo time de DHO.</p>
+
+  <h2 class="sec">Como cada dor é endereçada</h2>
+  <p class="sec-sub">Recursos da impulseup ligados a cada ponto do cenário atual</p>
+  <div class="tw"><table class="tbl map"><thead><tr><th>Dor</th><th>Como a solução endereça</th><th>Efeito</th></tr></thead><tbody><tr><td class="md">Sucessão sem sucessores preparados</td><td>Planejamento de carreira e sucessão, com matriz Nine Box disponível também para os gestores</td><td class="c"><span class="tag t-ben">Reduz vacância</span></td></tr><tr><td class="md">Calibração e Nine Box fora do sistema</td><td>Calibração de resultados por quadrante, seção ou competência, no mesmo ambiente da avaliação</td><td class="c"><span class="tag t-ben">Reduz busca e prêmio</span></td></tr><tr><td class="md">Pesos do 360 que não se ajustam</td><td>Pesos por tipo de avaliador e por competência, e gestores acompanhando o status das respostas da equipe</td><td class="c"><span class="tag t-ben">Ciclo confiável</span></td></tr><tr><td class="md">Metas sem governança</td><td>Fluxo de aprovação de metas e de progresso, fórmulas de cálculo e alinhamento de metas aos objetivos da empresa</td><td class="c"><span class="tag t-ben">Estratégia cascateada</span></td></tr><tr><td class="md">Feedback sem visibilidade</td><td>Registro de feedbacks categorizados e comparação de resultados por cargo, área e diretoria</td><td class="c"><span class="tag t-ben">Visibilidade de adesão</span></td></tr><tr><td class="md">Operação fora do ciclo</td><td>Envio de avaliações por SMS e WhatsApp e acesso sem e-mail corporativo</td><td class="c"><span class="tag t-ben">Toda a companhia no ciclo</span></td></tr></tbody></table></div>
+
+  <h2 class="sec">Onde a solução atua no custo de uma saída crítica</h2>
+  <p class="sec-sub">Cada frente reduz um componente do modelo apresentado no cenário atual</p>
+  <div class="levers">
+    <div class="lever"><div class="n">01</div><div><h4>Sucessores mapeados</h4><p>Com o planejamento de sucessão no sistema, quando a saída acontece o substituto já está identificado, o que encurta a vacância.</p><span class="tag t-ben">Reduz vacância</span></div></div>
+    <div class="lever"><div class="n">02</div><div><h4>Promoção interna com base</h4><p>Calibração e Nine Box no mesmo ambiente da avaliação dão segurança para promover de dentro, evitando busca externa e prêmio salarial.</p><span class="tag t-ben">Reduz busca e prêmio</span></div></div>
+    <div class="lever"><div class="n">03</div><div><h4>Rampa mais curta</h4><p>Quem é promovido internamente já conhece o negócio. Wharton mostra desempenho melhor que o de contratados externos nos dois primeiros anos.</p><span class="tag t-ben">Reduz rampa</span></div></div>
+    <div class="lever"><div class="n">04</div><div><h4>Risco visível antes da saída</h4><p>A comparação de resultados por área e diretoria mostra onde estão os talentos e onde falta sucessor, antes que a saída aconteça.</p><span class="tag t-ben">Antecipa o risco</span></div></div>
+  </div>
+</section>
+<section class="panel" id="t3">
+  <div class="hero small">
+    <span class="eyebrow">Proposta comercial</span>
+    <h1>Um investimento que se paga com uma única saída crítica evitada</h1>
+    <p>Escopo inicial focado na liderança, onde está o maior risco de sucessão, com possibilidade de expansão para toda a companhia.</p>
+  </div>
+  <div class="invest">
+    <div class="inv-main"><span>Investimento anual</span><div class="v">R$ 60 mil</div><div class="l">equivalente a R$ 5 mil por mês · 580 usuários</div></div>
+    <div class="inv-scope"><h4>Escopo considerado</h4><ul>
+      <li>Avaliação de desempenho da liderança, cerca de 580 pessoas, nos formatos 360, 270 e 180</li>
+      <li>Calibração, Nine Box e planejamento de sucessão no mesmo ambiente da avaliação</li>
+      <li>Metas com fluxo de aprovação e alinhamento aos objetivos da empresa</li>
+      <li>Implementação antes da abertura do ciclo, prevista para janeiro de 2027</li></ul></div>
+  </div>
+  <div class="kpis three">
+    <div class="kpi"><div class="v">8x</div><div class="l">custo de uma saída crítica (modelo completo) em relação ao investimento anual</div></div>
+    <div class="kpi"><div class="v">1,5x</div><div class="l">mesmo no piso conservador, uma saída evitada supera o investimento do ano</div></div>
+    <div class="kpi"><div class="v">24x</div><div class="l">custo das três saídas recentes em relação ao investimento anual</div></div>
+  </div>
+  <div class="card">
+    <div class="card-t">Investimento comparado ao custo de uma saída crítica</div>
+    <div class="card-s">Valores anuais, em R$, com as premissas apresentadas no cenário atual</div>
+    <div class="bars"><div class="bar-row"><div class="bar-label">Investimento anual<small>Projeto proposto</small></div><div class="bar-track"><div class="bar-fill acc" data-w="4.2">R$ 60 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">Uma saída crítica (piso)<small>Só a vacância</small></div><div class="bar-track"><div class="bar-fill soft" data-w="6.2">R$ 90 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">Uma saída crítica<small>Modelo completo</small></div><div class="bar-track"><div class="bar-fill " data-w="33.3">R$ 480 mil</div></div></div>
+<div class="bar-row"><div class="bar-label">As três saídas recentes<small>Modelo completo</small></div><div class="bar-track"><div class="bar-fill dark" data-w="100.0">R$ 1,44 mi</div></div></div></div>
+    <div class="note">Ponto de equilíbrio: evitar uma única saída crítica a cada oito anos, ou repor internamente um sucessor mapeado, já cobre o investimento.</div>
+  </div>
+  <h2 class="sec">Caminho para aprovação</h2>
+  <p class="sec-sub">Etapas até o início do ciclo de 2027</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h4>Validar premissas</h4><p>Substituir as premissas do modelo por dados internos: remuneração das posições, tempo real de reposição e uso de busca externa.</p></div>
+    <div class="step"><div class="n">2</div><h4>Rodadas do orçamento</h4><p>Apresentação ao FP&amp;A e à alta liderança dentro das rodadas de orçamento de 2027.</p></div>
+    <div class="step"><div class="n">3</div><h4>Aprovação e contratação</h4><p>Aprovação formal, revisão jurídica e assinatura.</p></div>
+    <div class="step"><div class="n">4</div><h4>Implementação</h4><p>Configuração do ciclo e da sucessão antes da abertura da avaliação, em janeiro de 2027.</p></div>
+  </div>
+  <div class="note wide">Evolução possível: estender o ciclo para toda a companhia, incluindo o público operacional via WhatsApp, com escopo e investimento a definir em uma segunda etapa.</div>
+</section></main>
+<footer>Documento de defesa do projeto · Viveo · Outubro de 2026</footer>
+<script>
+(function(){
+  var views={"cenario":"t1","solucoes":"t2","proposta":"t3"};
+  function anim(p){p.querySelectorAll('.bar-fill').forEach(function(e){e.style.width='0';});requestAnimationFrame(function(){setTimeout(function(){p.querySelectorAll('.bar-fill').forEach(function(e){e.style.width=e.getAttribute('data-w')+'%';});},60);});}
+  function show(v){var id=views[v]||'t1';document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.id===id);});document.querySelectorAll('nav button').forEach(function(b){b.classList.toggle('active',b.dataset.v===(views[v]?v:'cenario'));});anim(document.getElementById(id));window.scrollTo(0,0);}
+  document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){if(location.hash!=='#'+b.dataset.v){location.hash=b.dataset.v;}else{show(b.dataset.v);}});});
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1));});
+  show(location.hash.slice(1));
+})();
+</script></body></html>
