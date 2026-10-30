@@ -4,7 +4,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--p:#0F4B55;--p2:#1B6F7B;--p3:#E7F1F2;--fg:#13242A;--mut:#5F7176;--bd:#DCE6E8;--bg:#F6F9F9;--w:#FFFFFF;--accent:#2FA39A;color-scheme:light;}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--p:#5FB8C2;--p2:#7FCAD2;--p3:#16343A;--fg:#E6EEF0;--mut:#9FB2B6;--bd:#28434A;--bg:#0E1B1F;--w:#132429;--accent:#4FC3B8;color-scheme:dark;}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar-fill{color:#0E1B1F;}:root:not([data-theme="light"]){--p:#5FB8C2;--p2:#7FCAD2;--p3:#16343A;--fg:#E6EEF0;--mut:#9FB2B6;--bd:#28434A;--bg:#0E1B1F;--w:#132429;--accent:#4FC3B8;color-scheme:dark;}}
+:root[data-theme="dark"] .bar-fill,:root[data-theme="dark"] .total{color:#0E1B1F;}
 :root[data-theme="dark"]{--p:#5FB8C2;--p2:#7FCAD2;--p3:#16343A;--fg:#E6EEF0;--mut:#9FB2B6;--bd:#28434A;--bg:#0E1B1F;--w:#132429;--accent:#4FC3B8;color-scheme:dark;}
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
@@ -178,14 +179,6 @@ c96 -48 146 -159 139 -306 -7 -133 -51 -215 -143 -264 -61 -33 -184 -31 -245
       <div class="total"><div class="v">R$ 1,44 mi</div><div class="l">custo estimado das 3 saídas</div>
         <ul><li>Vacância com encargos: R$ 459 mil</li><li>Rampa até a produtividade plena: R$ 495 mil</li><li>Busca externa: R$ 270 mil</li><li>Prêmio salarial no 1º ano: R$ 216 mil</li></ul></div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-t">Por saída, o modelo fica abaixo da referência de mercado</div>
-    <div class="card-s">Custo por posição de gerência ou diretoria</div>
-    <div class="bars"><div class="bar-row"><div class="bar-label">Piso conservador<small>Só a vacância, pelo salário</small></div><div class="bar-track"><div class="bar-fill soft" data-w="12.5">R$ 90 mil</div></div></div>
-<div class="bar-row"><div class="bar-label">Modelo completo<small>Vacância, rampa, busca e prêmio</small></div><div class="bar-track"><div class="bar-fill " data-w="66.7">R$ 480 mil</div></div></div>
-<div class="bar-row"><div class="bar-label">Referência Gallup<small>200% do salário anual de um líder</small></div><div class="bar-track"><div class="bar-fill dark" data-w="100.0">R$ 720 mil</div></div></div></div>
-    <div class="note">A conta parte de baixo para cima e chega a cerca de dois terços da referência da Gallup para reposição de líderes. Por isso o número é conservador.</div>
   </div>
   <div class="card">
     <div class="card-t">Premissas do modelo</div>
