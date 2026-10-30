@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Viveo · Projeto de sucessão e gestão de desempenho</title>
+<title>Viveo · Precisão na gestão de pessoas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -109,6 +109,18 @@ main{max-width:1180px;margin:0 auto;padding:28px 24px 60px;}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
 .step{background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:18px;}
 .step h4{font-size:14px;margin:10px 0 4px;}.step p{font-size:12.5px;color:var(--mut);}
+.goal{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;margin-bottom:8px;}
+.goal-box{background:var(--w);border:1px solid var(--bd);border-radius:16px;padding:22px 24px;}
+.goal-box.main{background:var(--p3);border-color:transparent;}
+.goal-box span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--p2);margin-bottom:8px;}
+.goal-box h3{font-size:18px;line-height:1.4;color:var(--fg);}
+.goal-box p{font-size:13.5px;color:var(--mut);}
+.strat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.strat-card{background:var(--w);border:1px solid var(--bd);border-radius:14px;padding:20px;}
+.strat-card .n{width:36px;height:36px;border-radius:50%;background:var(--pbg);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.strat-card h4{font-size:15px;margin-bottom:6px;}
+.strat-card p{font-size:12.5px;color:var(--mut);}
+@media (max-width:900px){.goal{grid-template-columns:1fr;}.strat{grid-template-columns:1fr;}}
 footer{max-width:1180px;margin:0 auto;padding:0 24px 30px;font-size:11px;color:var(--mut);}
 @media (max-width:900px){.kpis,.kpis.three,.dores,.steps{grid-template-columns:1fr 1fr;}.chart-grid,.two,.levers,.invest{grid-template-columns:1fr;}}
 @media (max-width:560px){.kpis,.kpis.three,.dores,.steps{grid-template-columns:1fr;}.bar-row{grid-template-columns:1fr;gap:6px;}.hero{padding:24px 20px;}.cmp td:first-child{width:auto;}}
@@ -155,9 +167,20 @@ c96 -48 146 -159 139 -306 -7 -133 -51 -215 -143 -264 -61 -33 -184 -31 -245
 <main>
 <section class="panel active" id="t1">
   <div class="hero">
-    <span class="eyebrow">Projeto de sucessão e gestão de desempenho · Orçamento 2027</span>
-    <h1>Sem sucessores preparados, cada saída crítica pode custar até R$ 480 mil à Viveo</h1>
-    <p>A Viveo está integrando a gestão de pessoas à estratégia: novo planejamento estratégico, revisão de cultura e novas competências a partir de janeiro de 2027. O processo de desempenho atual não sustenta esse movimento, e o custo disso já apareceu nas saídas de posições-chave.</p>
+    <span class="eyebrow">Projeto · Orçamento 2027</span>
+    <h1>Precisão na gestão de pessoas: sucessão e desempenho para a Viveo do futuro</h1>
+    <p>A Viveo concluiu sua reestruturação financeira e entrou em um novo ciclo, com foco em simplificação, excelência operacional e fortalecimento da agenda de pessoas. Este projeto leva para a gestão de pessoas a mesma disciplina que a companhia já aplica à operação.</p>
+  </div>
+  <div class="goal">
+    <div class="goal-box main"><span>Objetivo do projeto</span><h3>Obter dados confiáveis para a tomada de decisão sobre sucessão e carreira, preparando a Viveo para o futuro</h3></div>
+    <div class="goal-box"><span>Por que isso não é possível hoje</span><p>O sistema atual não entrega dados em tempo real para as lideranças nem facilita o processo. Calibração, sucessão e análise de resultados dependem de consolidação manual, planilhas paralelas e relatórios desenvolvidos fora da plataforma.</p></div>
+  </div>
+  <h2 class="sec">Como o projeto se conecta à estratégia da Viveo</h2>
+  <p class="sec-sub">Três frentes ligadas às prioridades do novo ciclo da companhia</p>
+  <div class="strat">
+    <div class="strat-card"><div class="n">01</div><h4>Melhoria contínua</h4><p>Redução do esforço operacional do DHO e das lideranças, com menos retrabalho, menos consolidação manual e menos dependência de relatórios externos a cada ciclo.</p></div>
+    <div class="strat-card"><div class="n">02</div><h4>Agenda de pessoas fortalecida</h4><p>Visão de talentos em tempo real para entender quem são as pessoas que vão liderar a Viveo do futuro e reduzir o risco de cada saída em posições-chave.</p></div>
+    <div class="strat-card"><div class="n">03</div><h4>Governança de metas</h4><p>Processo estruturado de aprovação e validação de metas, para que o planejamento estratégico e o orçamento de 2027 cheguem a cada área e possam ser acompanhados.</p></div>
   </div>
 
   <h2 class="sec">Principais dores do processo atual</h2>
