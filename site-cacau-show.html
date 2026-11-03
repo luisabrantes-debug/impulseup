@@ -208,6 +208,20 @@
   .tl-desc{font-size:14px;font-weight:600;}
   .tl-meta{font-size:12.5px;color:var(--color-fg-muted);margin-top:2px;}
 
+  .impl-note{background:var(--color-bg-alt);border-radius:10px;padding:14px 18px;font-size:12.5px;color:var(--color-fg-muted);margin-bottom:16px;line-height:1.5;}
+  .impl-note i{color:var(--color-primary);margin-right:6px;}
+  .impl-note.weeklies{border-left:3px solid var(--color-primary);background:var(--color-surface);}
+  .impl-module-block{margin-bottom:32px;}
+  .impl-module-title{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+  .impl-module-title i{color:var(--color-primary);}
+  .impl-module-sub{font-size:12px;color:var(--color-fg-muted);margin-bottom:14px;}
+  .role-tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:20px;margin-left:8px;flex-shrink:0;}
+  .role-tag.consultor{background:#FBEAF0;color:var(--color-primary);}
+  .role-tag.gerente{background:#EDEDF5;color:#4B4B8A;}
+  .role-tag.csi{background:#111;color:#fff;}
+  .impl-handoff{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--color-primary);margin:10px 0;}
+  .impl-handoff::before,.impl-handoff::after{content:"";flex:1;border-top:1px dashed var(--color-primary);}
+
   .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
   .stat-card{background:var(--color-surface);border-radius:14px;padding:22px;text-align:center;}
   .stat-card .num{font-size:30px;font-weight:800;color:var(--color-primary);}
@@ -784,19 +798,55 @@
       <h1 class="section-title">Processo de implementação</h1>
       <p class="section-sub">Como será a jornada de implementação da Cacau Show com a impulseup</p>
 
-      <div class="empty-state" id="tab6EmptyState">
-        <i class="fa-regular fa-map"></i>
-        <h3>Aba liberada após o closer confirmar cluster, módulos e Weeklies (se Enterprise)</h3>
-        <p>Assim que o cluster de implementação (Low/Mid, High ou Enterprise) e os módulos da proposta forem confirmados, esta aba mostra a cadeia de implementação de cada módulo: etapas e responsáveis do nosso lado.</p>
-      </div>
+      <div id="tab6ProcessWrap">
+        
+        <div class="impl-note"><i class="fa-solid fa-headset"></i>Suporte técnico acompanha toda a jornada de implementação, do início ao fim — seu papel é garantir que tudo funcione conforme previsto, por isso não aparece preso a uma etapa específica.</div>
+        <div class="impl-note weeklies"><i class="fa-solid fa-star"></i>Weeklies de Acompanhamento incluído neste plano. Reuniões semanais dedicadas com o gerente de contas para acelerar resultado e manter o projeto sempre em evolução.</div>
 
-      <div id="tab6ProcessWrap" style="display:none;">
-        <!--IMPL_PROCESSO-->
-        <div class="impl-legend">
-          <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#CC0088;"></span>Consultor de implementação</div>
-          <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#4B4B8A;"></span>CSI</div>
-          <div class="impl-legend-item"><span class="impl-legend-dot" style="background:#111;"></span>Gerente de contas</div>
+        <div class="impl-module-block">
+          <div class="impl-module-title"><i class="fa-solid fa-flag"></i>Jornada Inicial</div>
+          <div class="impl-module-sub">Comum a todos os módulos contratados</div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Nov/26</span><div><span class="tl-desc">Planejamento Inicial</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Alinhamento de cronograma e responsáveis de cada lado.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Nov/26</span><div><span class="tl-desc">Coleta Cronograma</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Levantamento de datas e marcos internos da Cacau Show.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Nov/Dez</span><div><span class="tl-desc">Workshop Sistema</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Apresentação da plataforma para o time envolvido na implantação.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/26</span><div><span class="tl-desc">Estratégia 1º Acesso</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Definição de como liberar o primeiro acesso para os colaboradores.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/26</span><div><span class="tl-desc">Apresentação Geral</span><span class="role-tag csi">CSI</span><div class="tl-meta">Kickoff institucional com o time ampliado da Cacau Show.</div></div></div>
         </div>
+
+        <div class="impl-module-block">
+          <div class="impl-module-title"><i class="fa-solid fa-chart-line"></i>Avaliação de Desempenho</div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Nov/Dez</span><div><span class="tl-desc">Coleta de Requisitos</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Levantamento de competências, comportamentos e estrutura de ciclo.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/26</span><div><span class="tl-desc">Validação e Testes</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Testes no ambiente com dados reais da Cacau Show.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/Jan</span><div><span class="tl-desc">Validação Final</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Aprovação final do ciclo antes do envio.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Jan/26</span><div><span class="tl-desc">Envio e Acompanhamento</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Abertura do ciclo para os colaboradores, com acompanhamento de adesão.</div></div></div>
+          <div class="impl-handoff">Passagem para o gerente de contas</div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Fev em diante</span><div><span class="tl-desc">Relatórios e PDI's</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Liberação dos relatórios e planos de desenvolvimento individuais.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Fev em diante</span><div><span class="tl-desc">Nine-box e Sucessão</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Calibração e mapa de sucessão a partir do resultado do ciclo.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Fev em diante</span><div><span class="tl-desc">Analytics</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Visões de análise cruzada por área, diretoria e unidade de negócio.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Fev em diante</span><div><span class="tl-desc">Apresentação de Resultados</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Devolutiva estruturada para a liderança da Cacau Show.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Contínuo</span><div><span class="tl-desc">Weeklies de Acompanhamento</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Reuniões semanais com o gerente de contas para acelerar resultado.</div></div></div>
+        </div>
+
+        <div class="impl-module-block">
+          <div class="impl-module-title"><i class="fa-solid fa-bullseye"></i>Gestão de Metas</div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/Jan</span><div><span class="tl-desc">Importação do histórico</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Migração do histórico de metas da ferramenta atual, sem custo (condição especial da proposta).</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Jan/Fev</span><div><span class="tl-desc">Início da contratação de metas na plataforma</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Parametrização das regras de cálculo, cascateamento e fluxo de aprovação.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Mar/26</span><div><span class="tl-desc">Go Live</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Abertura do ciclo de metas para todos os colaboradores.</div></div></div>
+          <div class="impl-handoff">Passagem para o gerente de contas</div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Mar em diante</span><div><span class="tl-desc">Checkpoint de Metas</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Acompanhamento mensal de apuração e evolução das metas.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Contínuo</span><div><span class="tl-desc">Weeklies de Acompanhamento</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Reuniões semanais com o gerente de contas para acelerar resultado.</div></div></div>
+        </div>
+
+        <div class="impl-module-block">
+          <div class="impl-module-title"><i class="fa-solid fa-comments"></i>Pesquisa</div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Nov/Dez</span><div><span class="tl-desc">Coleta de Requisitos</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Levantamento dos formatos de pesquisa (clima, pulso, NPS).</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/26</span><div><span class="tl-desc">Validação</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Validação do formulário e das regras de envio.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Dez/Jan</span><div><span class="tl-desc">Envio e Acompanhamento</span><span class="role-tag consultor">Consultor</span><div class="tl-meta">Disparo da pesquisa e acompanhamento da taxa de resposta.</div></div></div>
+          <div class="impl-handoff">Passagem para o gerente de contas</div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Fev em diante</span><div><span class="tl-desc">Analytics</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Mapas de calor e cruzamentos por área, comercial, financeiro e marketing.</div></div></div>
+          <div class="tl-item"><span class="tl-dot"></span><span class="tl-date">Fev em diante</span><div><span class="tl-desc">Apresentação de Resultados</span><span class="role-tag gerente">Gerente</span><div class="tl-meta">Devolutiva estruturada para a liderança da Cacau Show.</div></div></div>
+        </div>
+
       </div>
     </section>
 
