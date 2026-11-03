@@ -733,17 +733,49 @@
     <section class="tab-panel" id="tab-4">
       <h1 class="section-title">Diferenciais impulseup</h1>
       <p class="section-sub">Comparativo com base nos critérios mais importantes para este projeto</p>
-      <div class="empty-state" id="tab4EmptyState">
-        <i class="fa-regular fa-list-check"></i>
-        <h3>Aba liberada após a reunião de Diagnóstico</h3>
-        <p>Assim que o closer finalizar o diagnóstico, esta aba mostra o comparativo entre a impulseup e os concorrentes identificados na conversa. Se nenhum concorrente específico for mencionado, o comparativo é feito contra "Outras soluções", com resultado mediano.</p>
-      </div>
-      <div id="tab4TableWrap" style="margin-top:24px;overflow-x:auto;display:none;">
+      <div id="tab4TableWrap" style="overflow-x:auto;">
+        <div class="stat-grid" style="margin-top:24px;margin-bottom:24px;">
+          <div class="stat-card"><div class="num">24/24</div><div class="label">critérios do projeto atendidos pela impulseup</div></div>
+          <div class="stat-card"><div class="num">8/24</div><div class="label">critérios atendidos pela Feedz</div></div>
+          <div class="stat-card"><div class="num">16</div><div class="label">diferenciais exclusivos impulseup neste comparativo</div></div>
+        </div>
         <table class="rfp-table" id="tab4Table">
-          <!-- Preenchido pela skill site-cliente-impulseup a partir da transcrição da reunião de Diagnóstico e de references/rfp-criterios.json.
-               Cada critério exibe sua tag (campo "tags" do JSON) junto ao nome, ex:
-               <tr><td><div class="feat-name">Formatos de avaliação diferentes (90/180/360)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td>...</tr> -->
+          <thead><tr><th>Critério</th><th class="iup-col">impulseup</th><th>Feedz</th></tr></thead>
+          <tbody>
+            <tr class="rfp-cat-row"><td colspan="3">Metas e OKRs</td></tr>
+            <tr><td><div class="feat-name">Alinhamento de metas e objetivos</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr><td><div class="feat-name">Metas compartilhadas</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr><td><div class="feat-name">Fórmulas para cálculo de progresso de metas</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Distribuição automática ou personalizada de pesos</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Fluxo de aprovação de metas e de progresso de metas</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Gerenciamento de ações e contramedidas para metas não alcançadas</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Gráfico de evolução</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr><td><div class="feat-name">Painel de alertas para administração</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr class="rfp-cat-row"><td colspan="3">Avaliação de Desempenho</td></tr>
+            <tr><td><div class="feat-name">Competências específicas e exclusivas (líder, não líder, cargo, área ou outros)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr><td><div class="feat-name">Criação de campos customizados para análises e filtros</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Conexão automática entre Metas, OKRs e Avaliação</div><span class="feat-tag">Inteligente</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr><td><div class="feat-name">Gestores podem acompanhar o status das respostas de suas equipes</div><span class="feat-tag">Liderança</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Envio de avaliações por SMS e WhatsApp</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr class="rfp-cat-row"><td colspan="3">Matriz n-Box e Calibração</td></tr>
+            <tr><td><div class="feat-name">Customização dos eixos da matriz n-Box (flexibilidade total de dimensões)</div><span class="feat-tag">Flexível</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Calibração de resultados (por quadrante, seção ou competência)</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr class="rfp-cat-row"><td colspan="3">Análises e Inteligência</td></tr>
+            <tr><td><div class="feat-name">Comparação de resultados por cargo, área, diretoria, etc.</div><span class="feat-tag">Inteligente</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Comparação de performance e desenvolvimento ao longo do tempo</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr><td><div class="feat-name">Inteligência Artificial para insights automáticos</div><span class="feat-tag">Inteligente</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr class="rfp-cat-row"><td colspan="3">Pesquisas de Clima</td></tr>
+            <tr><td><div class="feat-name">Comparativo histórico de resultados de pesquisas</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">IA para análise de comentários e questões abertas</div><span class="feat-tag">Inteligente</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr class="rfp-cat-row"><td colspan="3">PDI e Desenvolvimento</td></tr>
+            <tr><td><div class="feat-name">Conexão de gaps da avaliação com PDI e cursos de desenvolvimento</div><span class="feat-tag">Inteligente</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr class="rfp-cat-row"><td colspan="3">Serviço e Acesso</td></tr>
+            <tr><td><div class="feat-name">Acesso sem e-mail corporativo</div><span class="feat-tag">Fácil</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+            <tr><td><div class="feat-name">Controle de visibilidade e privilégios administrativos</div><span class="feat-tag">Confiável</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-check icon-yes"></i></td></tr>
+            <tr><td><div class="feat-name">Material consolidado de resultados para diretoria</div><span class="feat-tag">Atendimento consultivo</span></td><td class="iup-col check-cell"><i class="fa-solid fa-check icon-yes"></i></td><td class="check-cell"><i class="fa-solid fa-xmark icon-no"></i></td></tr>
+          </tbody>
         </table>
+        <p style="font-size:12px;color:var(--color-fg-muted);margin-top:14px;">Critérios selecionados a partir das necessidades levantadas pela Cacau Show nas reuniões de diagnóstico e demonstração. Comparativo baseado no mapeamento de mercado da impulseup.</p>
       </div>
     </section>
 
@@ -852,14 +884,6 @@
             </div>
           </div>
         </div>
-
-        <label class="proposal-upload-slot" id="proposalSlot" style="margin-top:24px;">
-          <div id="proposalPlaceholder">
-            <i class="fa-regular fa-image" style="font-size:22px;color:var(--color-border);display:block;margin-bottom:10px;"></i>
-            <span style="font-size:13px;color:var(--color-fg-muted);">Clique para anexar</span>
-          </div>
-          <input type="file" accept="image/*" id="proposalInput">
-        </label>
       </div>
     </section>
 
@@ -971,7 +995,7 @@
   "desafiosCentrais": [],
   "objetivos": [],
   "pilaresDestaque": [],
-  "comparativo": null,
+  "comparativo": {"concorrentes": ["Feedz"], "criterios": [{"nome": "Fórmulas para cálculo de progresso de metas", "impulseup": true, "porConcorrente": [false]}, {"nome": "Distribuição automática ou personalizada de pesos", "impulseup": true, "porConcorrente": [false]}, {"nome": "Fluxo de aprovação de metas e de progresso de metas", "impulseup": true, "porConcorrente": [false]}, {"nome": "Gerenciamento de ações e contramedidas para metas não alcançadas", "impulseup": true, "porConcorrente": [false]}, {"nome": "Painel de alertas para administração", "impulseup": true, "porConcorrente": [false]}, {"nome": "Criação de campos customizados para análises e filtros", "impulseup": true, "porConcorrente": [false]}, {"nome": "Gestores podem acompanhar o status das respostas de suas equipes", "impulseup": true, "porConcorrente": [false]}, {"nome": "Alinhamento de metas e objetivos", "impulseup": true, "porConcorrente": [true]}, {"nome": "Metas compartilhadas", "impulseup": true, "porConcorrente": [true]}, {"nome": "Gráfico de evolução", "impulseup": true, "porConcorrente": [true]}]},
   "investimento": null,
   "cronogramaMacro": []
 }
@@ -1378,30 +1402,6 @@ ${comparativoSectionHtml}
   document.querySelectorAll('.logo-grid-input').forEach(input => {
     input.addEventListener('change', handleLogoGridChange);
   });
-  document.getElementById('proposalInput').addEventListener('change', e => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      const slot = document.getElementById('proposalSlot');
-      slot.innerHTML = '<img src="' + ev.target.result + '"><input type="file" accept="image/*" id="proposalInput">';
-      document.getElementById('proposalInput').addEventListener('change', arguments.callee);
-      saveImage('proposalImage', ev.target.result);
-    };
-    reader.readAsDataURL(file);
-  });
-
-  (function restoreProposalImage(){
-    const store = loadStore();
-    if(store.proposalImage){
-      const slot = document.getElementById('proposalSlot');
-      slot.innerHTML = '<img src="' + store.proposalImage + '">';
-      const input = document.createElement('input');
-      input.type = 'file'; input.accept = 'image/*'; input.id = 'proposalInput';
-      slot.appendChild(input);
-    }
-  })();
-
   // --- Aba 3 (Demonstração): embed de vídeo a partir de link de YouTube ou Drive ---
   // Reconhece o link colado (pelo closer, no chat ou direto no site) e monta o player
   // certo. Se não reconhecer o domínio/formato, cai num card com botão "Assistir vídeo"
