@@ -153,6 +153,16 @@
   .prop-total-box .value{font-size:27px;font-weight:800;}
   .prop-total-box .meta{font-size:13px;color:var(--color-fg-muted);margin-top:8px;}
   .prop-total-box .meta i{color:var(--color-primary);margin-right:5px;}
+  .prop-special-box{margin-top:20px;background:var(--color-surface);border:1px solid var(--color-primary);border-radius:12px;padding:22px 24px;}
+  .prop-special-box .label{font-size:11px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--color-primary);margin-bottom:14px;}
+  .prop-special-box .label i{margin-right:6px;}
+  .prop-special-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--color-bg-alt);}
+  .prop-special-item:first-of-type{border-top:none;padding-top:0;}
+  .prop-special-item > i{color:var(--color-primary);font-size:16px;margin-top:2px;width:18px;text-align:center;flex-shrink:0;}
+  .prop-special-item h5{margin:0;font-size:14px;font-weight:700;}
+  .prop-special-item p{margin:3px 0 0;font-size:12.5px;color:var(--color-fg-muted);line-height:1.45;}
+  .prop-special-item .old{text-decoration:line-through;color:var(--color-fg-muted);font-weight:500;}
+  .prop-special-item .new{color:var(--color-primary);font-weight:800;}
   @media (max-width:860px){
     .prop-grid{grid-template-columns:1fr;}
     .prop-modules{grid-template-columns:1fr;}
@@ -767,7 +777,7 @@
         </div>
         <div class="prop-validity">
           <div class="label">Validade da proposta</div>
-          <div class="value">5 dias</div>
+          <div class="value">Até 30/11/2026</div>
         </div>
       </div>
 
@@ -824,6 +834,21 @@
               <div class="label">Investimento total do contrato</div>
               <div class="value">R$ 311.664,00</div>
               <div class="meta"><i class="fa-solid fa-shield-check"></i>Contrato de 12 Meses</div>
+            </div>
+            <div class="prop-special-box">
+              <div class="label"><i class="fa-solid fa-star"></i>Condições especiais</div>
+              <div class="prop-special-item">
+                <i class="fa-solid fa-calendar-check"></i>
+                <div><h5>60 dias de carência para pagamento</h5><p>Mais fôlego para iniciar o projeto antes do primeiro pagamento.</p></div>
+              </div>
+              <div class="prop-special-item">
+                <i class="fa-solid fa-right-left"></i>
+                <div><h5>Sem duplicidade de pagamentos</h5><p>Vocês saem da plataforma atual sem pagar duas ferramentas ao mesmo tempo.</p></div>
+              </div>
+              <div class="prop-special-item">
+                <i class="fa-solid fa-database"></i>
+                <div><h5>Isenção completa na migração de histórico</h5><p>De <span class="old">R$ 10.000,00</span> por <span class="new">R$ 0,00</span></p></div>
+              </div>
             </div>
           </div>
         </div>
