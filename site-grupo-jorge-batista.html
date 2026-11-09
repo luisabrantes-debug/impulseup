@@ -468,10 +468,12 @@
   .demo-switch button.active .dn{color:#fff;opacity:.85;}
   .demo-switch button .ok{display:none;color:#1a9d57;font-weight:800;}
   .demo-switch button.done .ok{display:inline;}
-  .demo-frame{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:20px;padding:18px;display:grid;grid-template-columns:minmax(210px,250px) minmax(0,1fr) minmax(210px,250px);grid-template-rows:auto minmax(0,1fr) auto;gap:14px;}
-  .demo-top{grid-column:1 / -1;display:flex;align-items:center;gap:14px;background:var(--color-fg);color:#fff;border-radius:14px;padding:12px 18px;}
+  .demo-frame{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:20px;padding:12px;display:flex;flex-direction:column;gap:10px;}
+  .demo-top{display:flex;align-items:center;gap:14px;background:var(--color-fg);color:#fff;border-radius:14px;padding:12px 18px;}
   .demo-top .badge-dor{background:var(--color-primary);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;padding:5px 12px;border-radius:20px;white-space:nowrap;}
-  .demo-top .headline-dor{font-size:17px;font-weight:700;line-height:1.25;}
+  .demo-top .headline-dor{font-size:17px;font-weight:700;line-height:1.25;flex:1;}
+  .demo-top .demo-btn{background:rgba(255,255,255,.14);color:#fff;padding:7px 13px;font-size:12px;}
+  .demo-top .demo-btn.validated{background:#1a9d57;}
   .demo-side{background:var(--color-bg);border:1px solid var(--color-border);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:12.5px;line-height:1.5;}
   .demo-side h4{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--color-primary);}
   .demo-side p{color:var(--color-fg);}
@@ -480,7 +482,7 @@
   .demo-side li::before{content:"\2713";color:var(--color-primary);font-weight:800;flex-shrink:0;}
   .demo-side .q{margin-top:auto;padding-top:12px;border-top:1px dashed var(--color-border);font-weight:600;color:var(--color-fg);}
   .demo-side .q span{display:block;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--color-fg-muted);margin-bottom:4px;}
-  .demo-stage{position:relative;background:#0C0C0C;border-radius:14px;overflow:hidden;min-width:0;width:100%;aspect-ratio:16/9;align-self:start;display:flex;align-items:center;justify-content:center;}
+  .demo-stage{position:relative;background:#0C0C0C;border-radius:14px;overflow:hidden;min-width:0;width:min(100%, calc((100vh - 190px) * 16 / 9));margin:0 auto;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
   .demo-side{min-width:0;}
   .demo-stage video{width:100%;height:100%;object-fit:contain;background:#000;display:none;}
   .demo-stage.live video{display:block;}
@@ -505,13 +507,11 @@
   .demo-nav .demo-btn.primary{background:var(--color-fg);color:#fff;border-color:var(--color-fg);}
   .demo-nav .demo-btn.validated{background:#1a9d57;color:#fff;border-color:#1a9d57;}
   .demo-hint{font-size:11px;color:var(--color-fg-muted);margin-top:10px;}
-  .demo-frame:fullscreen{border-radius:0;padding:14px;height:100vh;grid-template-columns:minmax(200px,240px) minmax(0,1fr) minmax(200px,240px);}
-  .demo-frame:fullscreen .demo-stage{aspect-ratio:auto;height:100%;align-self:stretch;}
-  @media (max-width:1100px){
-    .demo-frame{grid-template-columns:1fr;grid-template-rows:auto;}
-    .demo-stage{order:2;}
-    .demo-side.left{order:3;} .demo-side.right{order:4;} .demo-bottom{order:5;}
-  }
+  .demo-frame:fullscreen{border-radius:0;padding:12px;height:100vh;}
+  .demo-frame:fullscreen .demo-stage{aspect-ratio:auto;width:100%;flex:1;margin:0;}
+  #tab-3.palco .section-title,#tab-3.palco .section-sub{display:none;}
+  #tab-3.palco .demo-stage{width:min(100%, calc((100vh - 150px) * 16 / 9));}
+  @media (max-width:900px){ .demo-stage{width:100% !important;} }
 </style>
 </head>
 <body>
@@ -669,13 +669,9 @@
         <div class="demo-top">
           <span class="badge-dor" id="demoBadge">DOR 1</span>
           <span class="headline-dor" id="demoHeadline"></span>
+          <button type="button" class="demo-btn" id="demoValidate">Dor validada</button>
         </div>
 
-        <aside class="demo-side left">
-          <h4>O que ouvimos</h4>
-          <p id="demoHeard"></p>
-          <div class="q"><span>Pergunta de validação</span><div id="demoQuestion"></div></div>
-        </aside>
 
         <div class="demo-stage" id="demoStage">
           <video id="demoVideo" autoplay muted playsinline></video>
@@ -693,21 +689,8 @@
           </div>
         </div>
 
-        <aside class="demo-side right">
-          <h4>O que vamos mostrar</h4>
-          <ul id="demoShow"></ul>
-        </aside>
 
-        <div class="demo-bottom">
-          <div class="demo-dots" id="demoDots"><span></span><span></span><span></span></div>
-          <div class="demo-nav">
-            <button type="button" class="demo-btn" id="demoPrev">&larr; Anterior</button>
-            <button type="button" class="demo-btn" id="demoValidate">Dor validada</button>
-            <button type="button" class="demo-btn primary" id="demoNext">Próxima dor &rarr;</button>
-          </div>
-        </div>
       </div>
-      <p class="demo-hint">Atalhos: teclas 1, 2 e 3 trocam a dor; setas navegam. A tela compartilhada continua rodando ao trocar de dor.</p>
     </section>
 
     <!-- ABA 4 — DIFERENCIAIS IMPULSEUP -->
@@ -1674,28 +1657,21 @@
   const $ = id => document.getElementById(id);
   const frame=$('demoFrame'), stage=$('demoStage'), video=$('demoVideo');
   if(!frame) return;
-  let cur=0; const validated=[false,false,false]; let stream=null, pipWin=null;
+  let cur=0; const validated=[false,false,false]; let stream=null, pipWin=null, autoCollapsed=false;
 
   function render(){
     const d=DORES[cur];
     $('demoBadge').textContent=d.badge; $('demoHeadline').textContent=d.headline;
-    $('demoHeard').textContent=d.heard; $('demoQuestion').textContent=d.q;
-    $('demoShow').innerHTML=d.show.map(t=>'<li>'+t+'</li>').join('');
     document.querySelectorAll('#demoSwitch button').forEach((b,i)=>{
       b.classList.toggle('active',i===cur); b.classList.toggle('done',validated[i]);
     });
-    document.querySelectorAll('#demoDots span').forEach((s,i)=>s.classList.toggle('on',i<=cur));
     const v=$('demoValidate'); v.classList.toggle('validated',validated[cur]);
     v.textContent=validated[cur]?'Dor validada \u2713':'Dor validada';
-    $('demoPrev').style.visibility=cur===0?'hidden':'visible';
-    const n=$('demoNext'); n.textContent=cur===DORES.length-1?'Concluir demonstração':'Próxima dor \u2192';
     renderPip();
   }
   function go(i){ cur=Math.max(0,Math.min(DORES.length-1,i)); render(); }
 
   document.querySelectorAll('#demoSwitch button').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.dor)));
-  $('demoPrev').addEventListener('click',()=>go(cur-1));
-  $('demoNext').addEventListener('click',()=>{ if(cur<DORES.length-1) go(cur+1); });
   $('demoValidate').addEventListener('click',()=>{ validated[cur]=!validated[cur]; render(); });
   document.addEventListener('keydown',e=>{
     if(!$('tab-3').classList.contains('active')) return;
@@ -1708,7 +1684,8 @@
   function setMsg(t){ $('demoMsg').textContent=t||''; }
   function stopShare(){
     if(stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; }
-    video.srcObject=null; stage.classList.remove('live');
+    video.srcObject=null; stage.classList.remove('live'); $('tab-3').classList.remove('palco');
+    if(autoCollapsed){ const sh=document.querySelector('.app-shell'); if(sh) sh.classList.remove('nav-collapsed'); autoCollapsed=false; }
   }
   async function startShare(){
     setMsg('');
@@ -1721,6 +1698,8 @@
         selfBrowserSurface:'exclude', surfaceSwitching:'include', monitorTypeSurfaces:'exclude'
       });
       video.srcObject=stream; stage.classList.add('live');
+      const sh=document.querySelector('.app-shell'); if(sh&&!sh.classList.contains('nav-collapsed')){ sh.classList.add('nav-collapsed'); autoCollapsed=true; }
+      $('tab-3').classList.add('palco');
       stream.getVideoTracks()[0].addEventListener('ended',stopShare);
     }catch(err){
       stream=null;
