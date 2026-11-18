@@ -428,6 +428,57 @@
   .export-exec-btn:hover{background:var(--color-primary-hover);}
   .export-exec-btn:disabled{opacity:0.6;cursor:wait;}
   .export-exec-btn i{font-size:13px;}
+
+  /* ---------- ABA PRÓXIMOS PASSOS (cronograma) ---------- */
+  .pp-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px;}
+  .pp-stats .stat-card{padding:20px 16px;}
+  .pp-stats .stat-card .num{font-size:28px;}
+  .pp-stats .stat-card.accent{background:var(--color-primary);}
+  .pp-stats .stat-card.accent .num,.pp-stats .stat-card.accent .label{color:#fff;}
+  .pp-group{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-primary);margin:0 0 18px;display:flex;align-items:center;gap:10px;}
+  .pp-group::after{content:'';flex:1;height:1px;background:var(--color-border);}
+  .pp-list{margin-bottom:40px;}
+  .pp-item{display:grid;grid-template-columns:128px 28px 1fr;column-gap:18px;position:relative;padding-bottom:20px;}
+  .pp-item:last-child{padding-bottom:0;}
+  .pp-date{text-align:right;padding-top:12px;}
+  .pp-date .pp-pre{display:block;font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-primary);margin-bottom:1px;}
+  .pp-date .pp-day{display:block;font-size:19px;font-weight:800;line-height:1.15;color:var(--color-fg);outline:none;border-radius:4px;}
+  .pp-date .pp-day[contenteditable="true"]:hover,.pp-date .pp-day[contenteditable="true"]:focus{background:var(--color-surface);}
+  .pp-date .pp-wd{display:block;font-size:12px;color:var(--color-fg-muted);margin-top:1px;}
+  .pp-mark{position:relative;display:flex;justify-content:center;padding-top:12px;}
+  .pp-mark::after{content:'';position:absolute;top:40px;bottom:-20px;left:50%;width:2px;margin-left:-1px;background:var(--color-border);}
+  .pp-item:last-child .pp-mark::after{display:none;}
+  .pp-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;background:#fff;border:2px solid var(--color-primary);color:var(--color-primary);position:relative;z-index:1;}
+  .pp-item.done .pp-dot{background:var(--color-primary);color:#fff;}
+  .pp-item.done .pp-mark::after{background:var(--color-primary);}
+  .pp-item.today .pp-dot{background:var(--color-primary);color:#fff;box-shadow:0 0 0 5px rgba(106,15,65,0.16);}
+  .pp-item.today .pp-mark::after{background:repeating-linear-gradient(to bottom,var(--color-primary) 0 5px,transparent 5px 9px);}
+  .pp-item.next .pp-dot{border-style:dashed;}
+  .pp-item.goal .pp-dot{background:var(--color-fg);border-color:var(--color-fg);color:#fff;}
+  .pp-card{border:1px solid var(--color-border);border-radius:12px;padding:16px 20px;background:#fff;}
+  .pp-item.done .pp-card{background:var(--color-surface);border-color:transparent;}
+  .pp-item.today .pp-card{border-color:var(--color-primary);box-shadow:0 2px 14px rgba(106,15,65,0.10);}
+  .pp-item.next .pp-card{border-style:dashed;}
+  .pp-item.goal .pp-card{background:var(--color-fg);border-color:var(--color-fg);}
+  .pp-item.goal .pp-card h4,.pp-item.goal .pp-card p{color:#fff;}
+  .pp-item.goal .pp-card p{color:#EDEDED;}
+  .pp-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+  .pp-card h4{font-size:15px;font-weight:700;}
+  .pp-card p{font-size:13px;color:var(--color-fg-muted);line-height:1.65;}
+  .pp-badge{font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:20px;background:#F5EEF2;color:var(--color-primary);white-space:nowrap;}
+  .pp-badge.solid{background:var(--color-primary);color:#fff;}
+  .pp-badge.line{background:#fff;border:1px solid var(--color-primary);}
+  .pp-badge.light{background:rgba(255,255,255,0.16);color:#fff;}
+  @media (max-width:860px){
+    .pp-stats{grid-template-columns:repeat(2,1fr);}
+    .pp-item{grid-template-columns:28px 1fr;column-gap:14px;}
+    .pp-date{grid-column:2;grid-row:1;text-align:left;padding-top:0;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px;}
+    .pp-date .pp-pre{margin-bottom:0;}
+    .pp-date .pp-day{font-size:16px;}
+    .pp-mark{grid-column:1;grid-row:1 / span 2;padding-top:0;}
+    .pp-mark::after{top:28px;}
+    .pp-card{grid-column:2;grid-row:2;}
+  }
 </style>
 </head>
 <body>
@@ -455,6 +506,7 @@
       <button data-tab="3"><span class="num">02</span>Solução proposta</button>
       <button data-tab="2"><span class="num">03</span>Implantação</button>
       <button data-tab="4"><span class="num">04</span>Investimento</button>
+      <button data-tab="5"><span class="num">05</span>Pr&oacute;ximos passos</button>
     </nav>
 
     <main>
@@ -709,6 +761,99 @@
       </div>
     </section>
 
+    
+    <section class="tab-panel" id="tab-5">
+      <h1 class="section-title">Pr&oacute;ximos passos</h1>
+      <p class="section-sub">Cronograma das reuni&otilde;es j&aacute; realizadas e dos passos at&eacute; a assinatura e o in&iacute;cio do projeto</p>
+
+      <div class="pp-stats">
+        <div class="stat-card"><div class="num">5</div><div class="label">reuni&otilde;es realizadas at&eacute; hoje</div></div>
+        <div class="stat-card"><div class="num">24/11</div><div class="label">Apresenta&ccedil;&atilde;o impulseup &amp; S&oacute;cio</div></div>
+        <div class="stat-card"><div class="num">30/11</div><div class="label">Assinatura do contrato</div></div>
+        <div class="stat-card accent"><div class="num">01/12</div><div class="label">In&iacute;cio do projeto</div></div>
+      </div>
+
+      <div class="pp-group">Jornada at&eacute; aqui</div>
+      <div class="pp-list">
+        <div class="pp-item done">
+          <div class="pp-date"><span class="pp-day">31 ago</span><span class="pp-wd">segunda-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-check"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Reuni&atilde;o de conex&atilde;o</h4><span class="pp-badge">Realizada</span></div>
+            <p>Entendimento do contexto da LBCA, com cerca de 800 colaboradores e 90% em trabalho remoto, e dos objetivos do projeto: Avalia&ccedil;&atilde;o de Desempenho, Metas e PDI.</p>
+          </div>
+        </div>
+        <div class="pp-item done">
+          <div class="pp-date"><span class="pp-day">04 set</span><span class="pp-wd">sexta-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-check"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Demonstra&ccedil;&atilde;o da plataforma</h4><span class="pp-badge">Realizada</span></div>
+            <p>Apresenta&ccedil;&atilde;o da plataforma impulseup, com foco em Avalia&ccedil;&atilde;o de Desempenho e Metas.</p>
+          </div>
+        </div>
+        <div class="pp-item done">
+          <div class="pp-date"><span class="pp-day">10 set</span><span class="pp-wd">quinta-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-check"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Ambiente de testes e desenho de Metas</h4><span class="pp-badge">Realizada</span></div>
+            <p>Apresenta&ccedil;&atilde;o do ambiente de testes com a identidade da LBCA, estrutura de Metas com submetas, ciclos quadrimestrais e Avalia&ccedil;&atilde;o por compet&ecirc;ncias. Proposta ajustada apresentada.</p>
+          </div>
+        </div>
+        <div class="pp-item done">
+          <div class="pp-date"><span class="pp-day">17 set</span><span class="pp-wd">quinta-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-check"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Alinhamento com a diretoria</h4><span class="pp-badge">Realizada</span></div>
+            <p>Alinhamento sobre o desenho do projeto e as condi&ccedil;&otilde;es da proposta, com avan&ccedil;o para a etapa de negocia&ccedil;&atilde;o.</p>
+          </div>
+        </div>
+        <div class="pp-item today">
+          <div class="pp-date"><span class="pp-day">18 nov</span><span class="pp-wd">quarta-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-robot"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Agentes de IA</h4><span class="pp-badge solid">Hoje</span></div>
+            <p>Apresenta&ccedil;&atilde;o dos Agentes de IA da plataforma impulseup.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pp-group">At&eacute; a assinatura e o in&iacute;cio do projeto</div>
+      <div class="pp-list">
+        <div class="pp-item next">
+          <div class="pp-date"><span class="pp-day" contenteditable="true">24 nov</span><span class="pp-wd">ter&ccedil;a-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-users"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Apresenta&ccedil;&atilde;o impulseup &amp; S&oacute;cio</h4><span class="pp-badge line">Previsto</span></div>
+            <p>Apresenta&ccedil;&atilde;o do projeto ao S&oacute;cio, para validar o desenho e as condi&ccedil;&otilde;es antes da contrata&ccedil;&atilde;o.</p>
+          </div>
+        </div>
+        <div class="pp-item next">
+          <div class="pp-date"><span class="pp-pre">At&eacute;</span><span class="pp-day" contenteditable="true">25 nov</span><span class="pp-wd">quarta-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-scale-balanced"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Revis&atilde;o jur&iacute;dica</h4><span class="pp-badge line">Prazo</span></div>
+            <p>An&aacute;lise e ajustes do contrato pelas &aacute;reas jur&iacute;dicas da LBCA e da impulseup.</p>
+          </div>
+        </div>
+        <div class="pp-item next">
+          <div class="pp-date"><span class="pp-pre">At&eacute;</span><span class="pp-day" contenteditable="true">30 nov</span><span class="pp-wd">segunda-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-file-signature"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>Assinatura do contrato</h4><span class="pp-badge line">Prazo</span></div>
+            <p>Formaliza&ccedil;&atilde;o da contrata&ccedil;&atilde;o, com as assinaturas das duas partes.</p>
+          </div>
+        </div>
+        <div class="pp-item goal">
+          <div class="pp-date"><span class="pp-day" contenteditable="true">01 dez</span><span class="pp-wd">ter&ccedil;a-feira</span></div>
+          <div class="pp-mark"><div class="pp-dot"><i class="fa-solid fa-flag-checkered"></i></div></div>
+          <div class="pp-card">
+            <div class="pp-head"><h4>In&iacute;cio do projeto</h4><span class="pp-badge light">Marco final</span></div>
+            <p>Kickoff e come&ccedil;o da implanta&ccedil;&atilde;o da plataforma.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     </main>
   </div>
 </div>
@@ -797,7 +942,7 @@
     ]
   },
   "investimento": null,
-  "cronogramaMacro": null
+  "cronogramaMacro": [{"data": "24 nov", "titulo": "Apresentação impulseup & Sócio"}, {"data": "25 nov", "titulo": "Revisão jurídica"}, {"data": "30 nov", "titulo": "Assinatura do contrato"}, {"data": "01 dez", "titulo": "Início do projeto"}]
 }
 </script>
 
